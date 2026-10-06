@@ -357,7 +357,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <div><dt>Wiring</dt><dd>A 5&nbsp;V lead from the hub to every panel, 23&nbsp;in at most. Blocks chain hub to hub with standard Cirrus panel cables.</dd></div>
       <div><dt>Frames</dt><dd>Rib, folded 5052 aluminum, to launch; Hoop, roll-formed ZM steel, at volume. Both 6&nbsp;in deep with a 2&nbsp;in back flange drilled every 2&nbsp;in.</dd></div>
       <div><dt>Screen depth</dt><dd>6&nbsp;7/8&nbsp;in, mid pack for outdoor cabinets</dd></div>
-      <div><dt>Weight, complete</dt><dd>4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.7 on Hoop, for a 3&nbsp;x&nbsp;3 block</dd></div>
+      <div><dt>Weight, complete</dt><dd>4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.6 on Hoop, for a 3&nbsp;x&nbsp;3 block</dd></div>
       <div><dt>Joints</dt><dd>Tapered pins set every block, then M8&nbsp;x&nbsp;16 bolts run into nuts in the next block. One 13&nbsp;mm socket.</dd></div>
       <div><dt>Mounting</dt><dd>Angle iron or square tube on the hole grid. A leveled base rail starts the first row.</dd></div>
       <div><dt>Service</dt><dd>From the front with no tools: lift out the hub&#39;s panel (and the one above it on a 3&nbsp;ft tall block), then the hub comes out through the same opening</dd></div>
@@ -608,7 +608,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <li><b>Hub pins.</b> Confirm the staked FF-C06 pins with a push out and torque test on seam rail samples, aluminum and steel, before the tooling is cut.</li>
       <li><b>Tooling and piece cost.</b> Rated Low, Medium or High, Rib against Hoop, for one 3&nbsp;x&nbsp;3 frame and its hub mount. Fabricator quotes will set the cost.</li>
       <li><b>Other block sizes.</b> Smaller blocks have more frame edge per square foot than a 3&nbsp;x&nbsp;3: 1.25 times as much for the 2&nbsp;x&nbsp;3 and 3&nbsp;x&nbsp;2, and 1.5 times for the 2&nbsp;x&nbsp;2.</li>
-      <li><b>Weights.</b> Panels are taken as 3&nbsp;lb each and the L hub as 5.5&nbsp;lb. A full 3&nbsp;x&nbsp;3 block comes to 4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.7 on Hoop, lighter than Daktronics, Watchfire and Optec.</li>
+      <li><b>Weights.</b> Panels are taken as 3&nbsp;lb each and the L hub as 5.5&nbsp;lb. A full 3&nbsp;x&nbsp;3 block comes to 4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.6 on Hoop, lighter than Daktronics, Watchfire and Optec.</li>
       <li><b>Wind.</b> 50&nbsp;psf is a planning number. The sign company&#39;s engineer sets the real one for each site, as both Daktronics and Watchfire require.</li>
       <li><b>Logo strip.</b> Color and gloss get signed off on a printed sample over the coated metal: the logo near RAL 7024 graphite gray at high gloss, the frame RAL 9005 black at a low matte gloss. Print adhesion and outdoor wear are checked on the same samples.</li>
       <li><b>Hole grid.</b> 7/16&nbsp;in holes for 3/8&nbsp;in or M10 bolts. The sign company&#39;s engineer sets the bolt size and spacing for each job; the grid only makes sure the holes are there.</li>
@@ -777,7 +777,7 @@ const CONCEPTS=[
   vents:'Four rows of 11&nbsp;mm round holes on every wall, punched in line on a 22&nbsp;mm pitch, the same eight to every foot up the sides, clear of the logo strip and the joint stations.',
   logo:'The same gloss print as Rib, up both sides of every frame after powder coat, so every block is the same part. Nothing is debossed, so the punch line needs no logo tool.',
   pros:['Lowest piece cost of the two, once volume pays for the line','The flange and every hole are punched in line, with no extra labor','One weld per frame and no rivets'],
-  cons:['High tooling: a full roll forming line','Heavier: 28&nbsp;lb for a 3&nbsp;x&nbsp;3 frame','Beats Rib on cost only at high volume']}
+  cons:['High tooling: a full roll forming line','Heavier: 27&nbsp;lb for a 3&nbsp;x&nbsp;3 frame','Beats Rib on cost only at high volume']}
 ];
 const BY={};CONCEPTS.forEach(c=>BY[c.k]=c);
 const REC=['rib','hoop'];   // launch pick, volume pick
@@ -802,13 +802,13 @@ const RESEARCH=[
   'Seams: Samsung XPR allows about 0.2 to 0.7&nbsp;mm at 6 to 10&nbsp;mm pitch.',
   'Cabinet makers use die-cast, extruded and sheet aluminum. Sheet metal costs 30 to 50% less up front, die casting holds the tightest tolerance and needs costly molds.']}
 ];
-const TAKEAWAYS=['Nobody expects the display maker to supply the structure. Everybody expects mounting points on the cabinet back that bolt or weld to the sign company&#39;s steel, and Optec ships its cabinets with continuous angle iron.','Self locating joints plus a few bolts is the norm, and seams are held to about 0.4&nbsp;mm.','Front service with a hex key at most, and power boxes that tilt or lift out once modules are off.','No maker publishes a "support every 4&nbsp;ft" rule; it sits with the engineer. Firefly at 4.9 to 6.7&nbsp;lb per sq&nbsp;ft is lighter than all three.'];
+const TAKEAWAYS=['Nobody expects the display maker to supply the structure. Everybody expects mounting points on the cabinet back that bolt or weld to the sign company&#39;s steel, and Optec ships its cabinets with continuous angle iron.','Self locating joints plus a few bolts is the norm, and seams are held to about 0.4&nbsp;mm.','Front service with a hex key at most, and power boxes that tilt or lift out once modules are off.','No maker publishes a "support every 4&nbsp;ft" rule; it sits with the engineer. Firefly at 4.9 to 6.6&nbsp;lb per sq&nbsp;ft is lighter than all three.'];
 const BRACKET='<b>Mounting: a drilled flange on every block, a base rail and clips in the box</b><p style="margin:6px 0 8px">Leave the structure to the sign company, as Daktronics and Watchfire do, but make its job easy: every block carries the same drilled flange, so the steel can go wherever the building wants it.</p><ol>'+
  '<li><b>Back flange.</b> 2&nbsp;in wide on all four edges, with 7/16&nbsp;in holes every 2&nbsp;in for 3/8&nbsp;in or M10 bolts. Angle iron bolts straight to it with no clips. On every planner wall the row lines are 2 or 3&nbsp;ft apart, so an angle on each row line meets the 4&nbsp;ft rule with room to spare.</li>'+
  '<li><b>Base rail, in the box.</b> A 6&nbsp;x&nbsp;2&nbsp;x&nbsp;1/4&nbsp;in aluminum tube cut to the wall width, with a threaded locating pin and a tapped M8 hole in the middle of every foot, the same spots as the top of a block. It sits on leveled seats on the uprights (by others, for example a 6&nbsp;x&nbsp;4&nbsp;x&nbsp;1/4 angle) no more than 5&nbsp;ft apart, and the first row drops onto it. Daktronics DVX installs also begin with a leveled starter angle.</li>'+
  '<li><b>Firefly clip.</b> For square tube: a short length of 4&nbsp;x&nbsp;4&nbsp;x&nbsp;3/8&nbsp;in galvanized steel angle bolts into a side flange hole and onto the tube with one 5/8&nbsp;in bolt, or welds to it. The 4&nbsp;in wide clip spans a side seam and takes a hole in each block.</li>'+
  '<li><b>Angle kit.</b> Optional angles cut to length and drilled on the same grid for each planner wall, like the continuous angle Optec ships.</li>'+
- '<li><b>No lift eyes.</b> An empty 3&nbsp;x&nbsp;3 frame weighs about 12&nbsp;lb (Rib) to 28&nbsp;lb (Hoop), so a crew hangs frames by hand and drops the panels in afterward.</li></ol>';
+ '<li><b>No lift eyes.</b> An empty 3&nbsp;x&nbsp;3 frame weighs about 12&nbsp;lb (Rib) to 27&nbsp;lb (Hoop), so a crew hangs frames by hand and drops the panels in afterward.</li></ol>';
 const SOURCES=[
  ['Daktronics Galaxy GS6 manual','https://www.daktronics.com/web-documents/manuals/dd3125389.pdf'],
  ['Daktronics Galaxy mounting drawing','https://www.daktronics.com/web-documents/Drawings/4986637.pdf'],
