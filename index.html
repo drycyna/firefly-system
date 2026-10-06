@@ -249,7 +249,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
     <div>
       <div class="eyebrow">Project Firefly &middot; complete system &middot; for the teams building it</div>
       <h1>Firefly System</h1>
-      <p class="lede">Firefly is an outdoor LED display built from 1&nbsp;ft panels in four block sizes. Each block carries its own power supply and control card in one slim L hub, and its panels hang on pins with no tools. This page covers the whole product: the panel, hub and wiring, both metal frames (Rib in folded aluminum, Hoop in roll-formed steel), how blocks join and mount, and a full set of fabrication drawings.</p>
+      <p class="lede">Firefly is an outdoor LED display built from 1&nbsp;ft panels in four block sizes. Each block carries its own power supply and control card in one slim L hub in the middle of the block, with a short 5&nbsp;V lead to every panel, and its panels hang on pins with no tools. This page covers the whole product: the panel, hub and wiring, both metal frames (Rib in folded aluminum, Hoop in roll-formed steel), how blocks join and mount, and a full set of fabrication drawings.</p>
     </div>
     <div class="chips" aria-label="Key numbers">
       <span class="chip"><b>6 7/8 in</b> screen depth</span>
@@ -332,7 +332,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
         <div class="togs">
           <label class="tog"><input type="checkbox" id="t-panels" checked><span></span>Panels</label>
           <label class="tog"><input type="checkbox" id="t-labels" checked><span></span>Labels</label>
-          <label class="tog"><input type="checkbox" id="t-harness" checked><span></span>Harness</label>
+          <label class="tog"><input type="checkbox" id="t-harness" checked><span></span>Leads</label>
           <label class="tog"><input type="checkbox" id="t-inside"><span></span>Inside hub</label>
         </div>
       </div>
@@ -350,17 +350,17 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
     <h2>The system at a glance</h2>
     <p class="sub">One supply and one card per block instead of one per 2&nbsp;sq&nbsp;ft cabinet, in a screen that hangs, joins and services without tools.</p>
     <dl class="spec">
-      <div><dt>Panel</dt><dd>12&nbsp;x&nbsp;12&nbsp;in, 7/8&nbsp;in deep, silicone potted face, one connector at the center of its back and a 48&nbsp;V to 5&nbsp;V converter</dd></div>
+      <div><dt>Panel</dt><dd>12&nbsp;x&nbsp;12&nbsp;in, 7/8&nbsp;in deep, silicone potted face, one connector at the center of its back for 5&nbsp;V and data, no converter</dd></div>
       <div><dt>Pitch and brightness</dt><dd>4, 6, 9 or 12&nbsp;mm and 7,500&nbsp;nits (targets)</dd></div>
       <div><dt>Blocks</dt><dd>3&nbsp;x&nbsp;3, 3&nbsp;x&nbsp;2, 2&nbsp;x&nbsp;3 and 2&nbsp;x&nbsp;2 ft, height first, each hung one way only. Any whole foot wall from 2&nbsp;ft up.</dd></div>
-      <div><dt>Power and control</dt><dd>One L hub per block, 9.8&nbsp;x&nbsp;9&nbsp;x&nbsp;1.6&nbsp;in: a 750&nbsp;W supply on a 3&nbsp;x&nbsp;3 or 500&nbsp;W on the others, AC to 48&nbsp;V, and the receiving card</dd></div>
-      <div><dt>Wiring</dt><dd>One cable from the hub to every panel. Blocks chain hub to hub with standard Cirrus panel cables.</dd></div>
+      <div><dt>Power and control</dt><dd>One L hub in the middle of every block, 9.8&nbsp;x&nbsp;9&nbsp;x&nbsp;1.6&nbsp;in: a 750&nbsp;W supply on a 3&nbsp;x&nbsp;3 or 500&nbsp;W on the others, AC to 5&nbsp;V, and the receiving card</dd></div>
+      <div><dt>Wiring</dt><dd>A 5&nbsp;V lead from the hub to every panel, 23&nbsp;in at most. Blocks chain hub to hub with standard Cirrus panel cables.</dd></div>
       <div><dt>Frames</dt><dd>Rib, folded 5052 aluminum, to launch; Hoop, roll-formed ZM steel, at volume. Both 6&nbsp;in deep with a 2&nbsp;in back flange drilled every 2&nbsp;in.</dd></div>
       <div><dt>Screen depth</dt><dd>6&nbsp;7/8&nbsp;in, mid pack for outdoor cabinets</dd></div>
       <div><dt>Weight, complete</dt><dd>4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.7 on Hoop, for a 3&nbsp;x&nbsp;3 block</dd></div>
       <div><dt>Joints</dt><dd>Tapered pins set every block, then M8&nbsp;x&nbsp;16 bolts run into nuts in the next block. One 13&nbsp;mm socket.</dd></div>
       <div><dt>Mounting</dt><dd>Angle iron or square tube on the hole grid. A leveled base rail starts the first row.</dd></div>
-      <div><dt>Service</dt><dd>From the front with no tools: lift out a panel, then the hub comes out through the same opening</dd></div>
+      <div><dt>Service</dt><dd>From the front with no tools: lift out the hub&#39;s panel (and the one above it on a 3&nbsp;ft tall block), then the hub comes out through the same opening</dd></div>
       <div><dt>Supplies and cards</dt><dd>8 of each on a 5&nbsp;x&nbsp;10&nbsp;ft wall, against 25 in a 2&nbsp;sq&nbsp;ft cabinet design</dd></div>
     </dl>
   </section>
@@ -380,10 +380,10 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <h2>The panel and its gravity lock</h2>
       <p class="sub">Push it in, let go, and gravity holds it. No tools and no latch. Sheet C-1.</p>
       <ol>
-        <li>Each panel is 7/8&nbsp;in deep: an LED face sealed with silicone potting on a thin aluminum back tray, with one sealed connector at the center of its back and a small 48&nbsp;V to 5&nbsp;V converter. There is no gasket.</li>
+        <li>Each panel is 7/8&nbsp;in deep: an LED face sealed with silicone potting on a thin aluminum back tray, with one sealed connector at the center of its back that takes 5&nbsp;V and data from the hub. There is no gasket.</li>
         <li>Four small plastic bosses (glass filled, UV stabilized) stand off its back, one per pin, each with a round end and softened edges. Each holds a 6&nbsp;mm 316 stainless pin pointing out to the side: two 70&nbsp;mm below the panel top and two 60&nbsp;mm above its bottom.</li>
         <li>The U rails open toward the panels. The leg next to the bosses has a J groove for each pin: straight back from the front edge, then down 1/2&nbsp;in into a pocket. On Rib the rails fold out of the walls and seam channels; on Hoop they are rolled and punched into the ring.</li>
-        <li>To hang a panel, plug its drop tap into the center of its back, line the four pins up with their grooves, push it in and let go. It drops 1/2&nbsp;in and stays there. The lip in front of each pocket holds it against wind suction.</li>
+        <li>To hang a panel, plug its lead into the center of its back, line the four pins up with their grooves, push it in and let go. It drops 1/2&nbsp;in and stays there. The lip in front of each pocket holds it against wind suction.</li>
         <li>It comes out only by lifting it 1/2&nbsp;in first, then pulling it toward you. Panels touch edge to edge, so they go on from the bottom row up and come off from the top down; to swap one, lift out the panels above it in its column first.</li>
         <li>The far side of each U hides the pins from the side and its closed back hides them from behind. Inside a block one seam rail carries both neighboring columns; at a block seam the two side walls touch, each with its own U.</li>
       </ol>
@@ -399,54 +399,53 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
           <g transform="translate(20,30) scale(.82)">
             <rect x="0" y="0" width="304.8" height="304.8" fill="none" stroke="currentColor" stroke-dasharray="4 4"/>
             <rect x="20" y="20" width="264.8" height="264.8" fill="var(--chip)" stroke="currentColor"/>
-            <path d="M 0 2 h 305 v 228 h -80 v -118 h -225 z" fill="url(#hatch)" stroke="var(--bad)" stroke-width="2.2" style="color:var(--bad)"/>
+            <path d="M 0 2 h 305 v 110 h -225 v 118 h -80 z" fill="url(#hatch)" stroke="var(--bad)" stroke-width="2.2" style="color:var(--bad)"/>
           </g>
           <text x="20" y="18">FIRST L HUB, 12 x 9 IN</text>
           <text x="20" y="302" style="fill:var(--bad)">Too wide: back service only</text>
           <g transform="translate(300,30) scale(.82)">
             <rect x="0" y="0" width="304.8" height="304.8" fill="none" stroke="currentColor" stroke-dasharray="4 4"/>
             <rect x="20" y="20" width="264.8" height="264.8" fill="var(--chip)" stroke="currentColor"/>
-            <path d="M 27.4 30 h 250 v 228 h -105 v -103 h -145 z" fill="none" stroke="var(--good)" stroke-width="2.6" stroke-linejoin="round"/>
-            <text x="100" y="98" text-anchor="middle" font-size="14" style="fill:var(--good)">9.8 x 9 in</text>
+            <path d="M 27.4 30 h 250 v 125 h -145 v 103 h -105 z" fill="none" stroke="var(--good)" stroke-width="2.6" stroke-linejoin="round"/>
+            <text x="190" y="98" text-anchor="middle" font-size="14" style="fill:var(--good)">9.8 x 9 in</text>
           </g>
           <text x="300" y="18">FIREFLY L HUB</text>
           <text x="300" y="302" style="fill:var(--good)">Fits with 0.3 in to spare each side</text>
           <text x="20" y="330" font-size="10">Front view. Dashed: one panel, 12 in. Gray: the opening between rails, 10.4 in.</text>
         </g>
       </svg>
-      <p>The hub sits behind the top right panel seen from the front, the top left seen from the back: the arm across the top, the leg down the outer side, 1.6&nbsp;in thick, with one cable out of the foot of the leg. The arm is 9.8&nbsp;in long and 4.9&nbsp;in tall and the leg 4.1&nbsp;in wide, 9&nbsp;in overall, so it passes the 10.4&nbsp;in opening with the panel out.</p>
+      <p>The hub sits in the middle of the block, its center 1&nbsp;1/2&nbsp;ft in from the left and 1&nbsp;1/2&nbsp;ft up seen from the front on every block, so no panel is more than one panel away. The arm runs across the top and the leg down the left, beside the seam rail it hangs on. It is 1.6&nbsp;in thick, with one plug for all the panel leads under the arm. The arm is 9.8&nbsp;in long and 4.9&nbsp;in tall and the leg 4.1&nbsp;in wide, 9&nbsp;in overall, so it passes the 10.4&nbsp;in opening with its panel out.</p>
       <h3>Inside</h3>
-      <p>The supply is split around the inside corner: its 48&nbsp;V output stage and the harness eFuse sit in the arm, the PFC front end and bulk capacitors at the top of the leg, and the receiving card below them, above the cable gland at the foot. The Cirrus IN and OUT face back, side by side in the middle of the arm. Turn on Inside hub in Block view to see the boards.</p>
+      <p>The supply makes 5&nbsp;V straight from AC and is split around the inside corner: its 5&nbsp;V output stage runs across the arm with a fuse for every lead below it, beside the socket for the lead plug, the PFC front end and bulk capacitors sit at the top of the leg, and the receiving card at its foot. The Cirrus IN and OUT face back, side by side on the arm. Turn on Inside hub in Block view to see the boards.</p>
       <h3>Mounting and heat</h3>
-      <p>Rib hangs the hub from its top flange and Hoop tilts it on a hinge shelf, both shown below; neither fixes anything to a side wall. The hub sits in the open 6&nbsp;in cavity behind the panels, with vents in every frame wall.</p>
+      <p>Both frames hang the hub the same way, on two pins in the seam rail beside it, shown below; nothing that holds it touches an outer wall. It sits in the open 6&nbsp;in cavity behind the panels, with vents in every frame wall. Making 5&nbsp;V in the hub moves the panels&#39; converter losses into it as well, about twice the heat it had at 48&nbsp;V, so the hub&#39;s cooling gets checked in a test block (see open items).</p>
     </section>
   </div>
 
   <div class="grid2">
     <section class="card">
-      <h2>Rib: the hub hangs from the top</h2>
-      <p class="sub">One hook, one spring pin, nothing on the side walls. Sheet R-5.</p>
-      <div id="hangerfig"></div>
-      <p class="cap" style="margin:0 0 12px">Side view through the spring pin, from the outer side, front to the right.</p>
-      <p>A small folded hanger is riveted inside the top back flange, so the flange still takes angle iron and nothing touches a side wall. A stainless hook on top of the hub&#39;s arm hangs on the hanger&#39;s lip, right over the hub&#39;s center of gravity, so the hub hangs plumb, and a spring pin on the hook snaps through the lip.</p>
-      <p>With the panel out, pull the orange knob and lift the hub 1/2&nbsp;in so the hook clears the lip. Ease it forward a little and lower it, so the hook passes under the top wall&#39;s front lip, and bring it out the front. The IN, OUT and harness stay plugged in on service loops until the hub is out.</p>
+      <h2>The hub hangs like a panel</h2>
+      <p class="sub">Two pins in the seam rail, one spring plunger, the same on both frames. Sheets R-5 and H-5.</p>
+      <div id="hubmountfig"></div>
+      <p class="cap" style="margin:0 0 12px">Side view at the hook plate, seen from the seam rail with the rail cut away, front to the right. Dashed: hidden.</p>
+      <p>Two 316 stainless shoulder pins, &Oslash;8 with a &Oslash;13 head, are staked into the right leg of the seam rail 1&nbsp;ft in, 6&nbsp;5/16&nbsp;in apart and 2&nbsp;3/16&nbsp;in back from the panels. A stainless hook plate on the hub&#39;s leg has two grooves that run in from its back edge and turn up 1/2&nbsp;in into a pocket, the same gravity lock the panels use. The hub goes in level, drops 1/2&nbsp;in onto the pins and hangs there, and a spring plunger snaps through the plate into a hole in the rail, so it can&#39;t lift. Nothing is fixed to an outer wall, and both frames take the same hub.</p>
+      <p>With its panels out, unplug the lead plug under the hub, pull the orange knob at the top of the leg, lift the hub 1/2&nbsp;in, ease it forward off the pins and bring it out the front. The Cirrus IN and OUT stay plugged in on service loops until the hub is out.</p>
     </section>
     <section class="card">
-      <h2>Hoop: the hub tilts out</h2>
-      <p class="sub">Two hinge pins below, one spring latch above. Sheet H-5.</p>
-      <div id="hoophubfig"></div>
-      <p class="cap" style="margin:0 0 12px">Side view from the outer side with the side wall left off, front to the right. Dashed: the hub tilted 38 degrees.</p>
-      <p>A hinge shelf clinched to the seam rail carries two stainless hinge pins in its ears, and two hooks at the foot of the hub&#39;s leg sit on them. A spring latch on a strap clinched under the top flange catches the hub&#39;s arm. Nothing touches a side wall.</p>
-      <p>With the panel out, press the latch and the hub tilts forward 38 degrees on the pins, bringing the Cirrus IN and OUT on its back up into reach. Lift it 1/2&nbsp;in off the pins and bring it out the front.</p>
+      <h2>Why the hub sits in the middle</h2>
+      <p class="sub">5&nbsp;V loses more in a wire the farther it runs, so the hub sits where every lead is short.</p>
+      <div id="leadfig"></div>
+      <p class="cap" style="margin:0 0 12px">A 3&nbsp;x&nbsp;3 seen from the back, every lead to scale. Orange: the longest.</p>
+      <p>At full white a panel draws about 13&nbsp;A at 5&nbsp;V, about 117&nbsp;A for a whole 3&nbsp;x&nbsp;3, so every panel gets its own 12&nbsp;AWG lead and every foot of lead costs about 1% of that 5&nbsp;V. With the hub behind a corner panel the far panel&#39;s lead would run 40&nbsp;in and lose about 3%; from the middle every panel is next to the hub&#39;s panel or diagonal to it, so no lead runs past 23&nbsp;in, under 2%, and all nine together use about a quarter less wire. The hub sits in the same spot on all four blocks, 1&nbsp;1/2&nbsp;ft in and 1&nbsp;1/2&nbsp;ft up, so the longest lead is 23&nbsp;in on every block. It hangs on the seam rail at 1&nbsp;ft, clear of the left wall where the side M8s go in.</p>
     </section>
   </div>
 
   <section class="card" id="power">
     <h2>Wiring and power</h2>
-    <p class="sub">One cable inside each block and one Cirrus panel cable between blocks.</p>
+    <p class="sub">A short 5&nbsp;V lead to every panel inside each block, and one Cirrus panel cable between blocks.</p>
     <div class="dgrid">
-      <section><h3>Inside a block</h3><p>One cable leaves the hub through a gland at the foot of its leg and runs down the outer side, the left seen from the back. A T feeds each upper row and the bottom row takes a plain turn, so a 3&nbsp;x&nbsp;3 has two Ts and a turn. Every row cable runs 4&nbsp;in below the panel centers, and every panel gets the same overmolded drop tap with a short tail up into the connector at the center of its back. Data runs along each row, and a tap passes it on when its panel is out.</p></section>
-      <section><h3>A 48 V harness</h3><p>The supply makes 48&nbsp;V, so the cable stays about 1/2&nbsp;in thick at the hub. Each panel has its own small converter to 5&nbsp;V with its own fuse, so a faulty panel drops out alone, and one eFuse in the hub protects the whole harness.</p></section>
+      <section><h3>Inside a block</h3><p>Every panel gets its own lead, and all of them meet in one overmolded plug that plugs up into the socket under the hub&#39;s arm. The leads fan out behind the hub, 3&nbsp;5/16&nbsp;in back from the panels, each straight to a point beside its panel, then forward and up into the connector at the center of its back, so every lead ends the same way. Each lead carries its panel&#39;s 5&nbsp;V and data, so a panel that is out takes nothing else down, and one plug unplugs them all for a hub swap.</p></section>
+      <section><h3>5 V from the hub</h3><p>The supply turns AC into 5&nbsp;V in the hub, so the panels carry no converters. The leads are short because 5&nbsp;V loses more in a long wire: 23&nbsp;in at most on every block, under 2% at full white on 12&nbsp;AWG. The 750&nbsp;W supply makes up to 150&nbsp;A at 5&nbsp;V for the 117&nbsp;A a 3&nbsp;x&nbsp;3 draws at full white. Each lead has its own fuse in the hub, so a faulty panel drops out alone. If the panels can run on less than 5&nbsp;V, the same leads and hub carry it.</p></section>
       <section><h3>Between blocks</h3><p>The IN and OUT on each hub match the Cirrus outdoor panel connectors, power and data in one cable: IN on the right and OUT on the left seen from the back. One standard Cirrus panel cable runs from each hub&#39;s OUT to the next hub&#39;s IN. AC passes through a 20&nbsp;A bus in each hub and the card passes the data on, so the Cirrus controller lead and power injectors work as they do today.</p></section>
     </div>
     <div class="mountwrap">
@@ -477,7 +476,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
         <li><b>Two lines on every wall, a joint every foot.</b> A front line 1&nbsp;1/2&nbsp;in back from the front edge and a back line 4&nbsp;3/8&nbsp;in back. The top has a tapered pin on the front line and an M8 nut on the back line in the middle of every foot; the bottom has a round socket and an M8 hole at the same spots. The right side (seen from the front) has M8 nuts on both lines at 18 and 30&nbsp;in up a 3&nbsp;ft side and 18&nbsp;in up a 2&nbsp;ft side, and the left side has M8 holes at the same spots.</li>
         <li><b>Drop straight down, bolt down, bolt across.</b> A leveled base rail with the same pins starts the first row. Every block drops straight down onto the pins below it, so it lands in place with nothing to slide, then an M8 in every foot bolts it down and two M8s at each station of its side seam bolt it to its neighbor. Every bolt is the same M8&nbsp;x&nbsp;16.</li>
         <li><b>The same gravity lock.</b> 20&nbsp;mm U rails, J grooves and a 1/2&nbsp;in drop on both, so the same panels hang in either frame.</li>
-        <li><b>The L hub in the top right bay seen from the front</b>, the top left seen from the back, with one cable out of the foot of its leg and the Cirrus IN and OUT on its back. Nothing that holds it is fixed to a side wall, and its leads leave through the open back, so neither frame has a cable hole.</li>
+        <li><b>The L hub in the middle of every block</b>, 1&nbsp;1/2&nbsp;ft in and 1&nbsp;1/2&nbsp;ft up seen from the front, on two stainless pins staked into the seam rail beside it, with one plug for its 5&nbsp;V leads under the arm and the Cirrus IN and OUT on its back. Nothing that holds it is fixed to an outer wall, and its IN and OUT leads leave through the open back, so neither frame has a cable hole.</li>
       </ol>
     </section>
 
@@ -555,7 +554,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <section><h3>Side seams</h3><p>The pins below set where every block sits, so the side M8s only clamp the seam shut. Even with the steel running up and down, so a side seam carried the full 1,200&nbsp;lb&middot;in per foot, the two M8s at each station work as a couple 4&nbsp;3/8&nbsp;in deep: the worst bolt, on a 2&nbsp;ft seam with one station, sees about 550&nbsp;lb, 11% of its proof load, and on a 3&nbsp;ft seam about 410&nbsp;lb.</p></section>
       <section><h3>Side walls over 4 ft</h3><p>11&nbsp;MPa in Rib and 15&nbsp;MPa in Hoop, 7% and 5% of yield, bending 0.013&nbsp;in and 0.006&nbsp;in. The U rail, the back flange and its lip, and Rib&#39;s two beads all work with the wall.</p></section>
       <section><h3>Seam rails over 3 ft</h3><p>The plain channels see 20&nbsp;MPa in Rib (12% of yield) and 25&nbsp;MPa in Hoop (9%), bending 0.025&nbsp;in and 0.009&nbsp;in.</p></section>
-      <section><h3>Hub mounts</h3><p>At twice the hub&#39;s weight for handling, Rib&#39;s hanger shelf sees 35&nbsp;MPa and moves 0.2&nbsp;mm, and its three rivets about 140&nbsp;N each. Hoop&#39;s hinge shelf sees 30&nbsp;MPa and moves 0.2&nbsp;mm, and the two clinches at its root about 420&nbsp;N each in tension.</p></section>
+      <section><h3>Hub mount</h3><p>At twice the hub&#39;s weight for handling, each pin carries under 50&nbsp;N, its weight share plus the pull from the hub hanging off one side. That is about 1&nbsp;MPa in the &Oslash;8 stainless shank, and its staked spigot bears on the seam rail at under 10&nbsp;MPa in Rib&#39;s 2&nbsp;mm aluminum and Hoop&#39;s 1.2&nbsp;mm steel.</p></section>
       <section><h3>Base rail</h3><p>Carrying a 3&nbsp;ft row of Hoop blocks, the heavier frame, between seats 5&nbsp;ft apart, it sees about 2&nbsp;MPa and sags about 0.3&nbsp;mm. The steel on the first row line takes over from there.</p></section>
     </div>
   </section>
@@ -604,8 +603,9 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <li><b>Rib or Hoop.</b> Rib is the recommended frame to launch, with Hoop as the volume frame. Both are drawn in full so either can be quoted.</li>
       <li><b>Cirrus IN and OUT connector.</b> The exact part and its dimensions are still needed. The model and drawings use a 30&nbsp;mm twist lock on 60&nbsp;mm centers as a placeholder.</li>
       <li><b>Joint torque.</b> Every joint bolt runs in by hand with a 13&nbsp;mm socket and no impact driver, as on Cirrus frames today. The tightening torque gets set with the nut supplier: PEM nuts in 1.6&nbsp;mm aluminum on Rib, weld nuts in 1.2&nbsp;mm steel on Hoop. The base rail M8s are held to 12&nbsp;N&middot;m until confirmed.</li>
-      <li><b>Hub heat.</b> The hub now hangs in the open 6&nbsp;in cavity, with vents in every wall, rather than bolting to the rails through thermal pads. Earlier work had the screen dimming 10 to 15% at peak only with sustained full white in direct sun at about 104&nbsp;F; that needs a fresh check in a test block.</li>
-      <li><b>Hoop shelf clinches.</b> Confirm the two clinches at the root of the hinge shelf with a pull test on a clinched sample before the tooling is cut.</li>
+      <li><b>Hub heat.</b> Making 5&nbsp;V in the hub moves the panels&#39; converter losses into it, about twice the heat it had at 48&nbsp;V, and it hangs in the open 6&nbsp;in cavity behind the middle of the block, with vents in every wall. Earlier work had the screen dimming 10 to 15% at peak only with sustained full white in direct sun at about 104&nbsp;F; a test block has to recheck that with the 5&nbsp;V hub.</li>
+      <li><b>5&nbsp;V leads.</b> Wire size, the lead plug and the panel connector get set with the panel and supply makers. The page takes about 13&nbsp;A per panel at full white, 117&nbsp;A for a 3&nbsp;x&nbsp;3, and 12&nbsp;AWG wire, about 1% loss per foot of lead.</li>
+      <li><b>Hub pins.</b> Confirm the staked FF-C06 pins with a push out and torque test on seam rail samples, aluminum and steel, before the tooling is cut.</li>
       <li><b>Tooling and piece cost.</b> Rated Low, Medium or High, Rib against Hoop, for one 3&nbsp;x&nbsp;3 frame and its hub mount. Fabricator quotes will set the cost.</li>
       <li><b>Other block sizes.</b> Smaller blocks have more frame edge per square foot than a 3&nbsp;x&nbsp;3: 1.25 times as much for the 2&nbsp;x&nbsp;3 and 3&nbsp;x&nbsp;2, and 1.5 times for the 2&nbsp;x&nbsp;2.</li>
       <li><b>Weights.</b> Panels are taken as 3&nbsp;lb each and the L hub as 5.5&nbsp;lb. A full 3&nbsp;x&nbsp;3 block comes to 4.9&nbsp;lb per sq&nbsp;ft on Rib and 6.7 on Hoop, lighter than Daktronics, Watchfire and Optec.</li>
@@ -669,7 +669,7 @@ function steelLines(H,W){
 // uprights (by others) no more than 5 ft apart, the outer two 1 ft in from the ends (less on a narrow wall), in ft
 const uprights=W=>{const n=Math.max(2,Math.ceil((W-2)/5)+1),a=Math.min(1,W/4);return Array.from({length:n},(_,i)=>a+(W-2*a)*i/(n-1));};
 // bare frame masses in kg, before powder coat, without panels or hub (from the frame drawings)
-const FRAME_KG={'3x3':{rib:5.4,hoop:12.7},'3x2':{rib:4.1,hoop:9.4},'2x3':{rib:4.2,hoop:10.1},'2x2':{rib:3.2,hoop:7.4}};
+const FRAME_KG={'3x3':{rib:5.3,hoop:12.2},'3x2':{rib:4.0,hoop:9.0},'2x3':{rib:4.1,hoop:9.7},'2x2':{rib:3.1,hoop:7.0}};
 // the hub to hub chain on a wall: the bottom row first, then up, snaking, from the left end seen from the front
 function chainOrder(H,W){
   const plan=wallPlan(H,W),ys=[...new Set(plan.map(q=>q.y))].sort((a,b)=>a-b),out=[];
@@ -687,34 +687,92 @@ function holesIn(C,R,mitre){
   for(let y=1;y<R*12;y+=2){add(1,y);add(C*12-1,y);}
   return mitre?out.filter(([x,y])=>!((x<2||x>C*12-2)&&(y<2||y>R*12-2))):out;
 }
+// ---------- the hub ----------
+// One L hub per block holds the supply, AC in and 5 V out, and the receiving card. 5 V loses more in a wire the farther it
+// runs, so the hub sits in the middle of the block, not a corner: its center is 1 1/2 ft in from the left and 1 1/2 ft up,
+// seen from the front, on all four blocks. That is behind the middle panel of a 3x3, the right panel of a 3x2's middle row,
+// the middle panel of a 2x3's top row and the top right panel of a 2x2: always a bay with the seam rail 1 ft in on its
+// left, and every other panel of the block beside the hub's panel or diagonal to it. Hub mm, seen from the front: x right
+// and y up from its center, d back from the panels' back plane. The leg (Lg wide, full height) runs down the left beside
+// the seam rail, the arm (A tall) across the top, and the space under the arm right of the leg is the notch.
+const HUBD={W:250,H:228,A:125,Lg:105,T:41,d0:30,x:457.2,y:457.2,r:22,ri:12,
+  io:{x:44.8,y:74,dx:35,r:15.5,len:45},           // Cirrus IN (left, seen from the front) and OUT on the back of the arm
+  port:{x:44.8,d:50},                              // the lead plug's socket under the arm, in the notch
+  pin:{dy:80,d:50,r:4,hr:6.5,ht:2.5,sh:3.5},       // two FF-C06 pins on the seam rail at hub y -80 and 80, d 50
+  plate:{t:2,gap:0.5,y:110,d:[32,69]},             // the hook plate on the leg (hub assembly), 0.5 off the seam rail
+  plg:{dy:100,d:42,r:3.25},                        // the spring plunger's hole in the seam rail
+  spider:{x:44.8,y:-51.2,w:44,h:40,d:[37,63]},     // the lead plug, hanging in the notch below its socket
+  lead:{d:84,tail:24,conn:17}};                    // leads run d 84, then forward to the panel connector at d 24
+const hubC=()=>({x:HUBD.x,y:HUBD.y});
+// the outline seen from the front, block mm, every corner rounded (r outside, ri at the inside corner of the L)
+function hubPts(m){m=m||0;const h=HUBD,x0=h.x-h.W/2+m,x1=h.x+h.W/2-m,y0=h.y-h.H/2+m,y1=h.y+h.H/2-m,xl=h.x-h.W/2+h.Lg-m,ya=h.y+h.H/2-h.A+m;
+  return [[x0,y1],[x0,y0],[xl,y0],[xl,ya],[x1,ya],[x1,y1]];}
+const HUB_RADII=()=>[HUBD.r,HUBD.r,HUBD.r,HUBD.ri,HUBD.r,HUBD.r];
+// the seam rail it hangs on: the outer face of the rail's right leg, and the two pin heights (block mm)
+const HUB_RAIL=GEO.P+20;
+const hubPinY=()=>[HUBD.y-HUBD.pin.dy,HUBD.y+HUBD.pin.dy];
+// The leads, one to every panel. Each leaves the back of the lead plug, runs straight back to d 84, then straight out at
+// d 84 to a point beside its panel that sits where the plug sits beside the hub's panel (44.8 right of and 51.2 below the
+// panel's center), so the leads fan out in a star and every lead ends the same way: forward to d 24, across and up into
+// the bottom of the panel's connector. The hub's own panel takes its lead from the front of the plug. Block mm, [x, y, d].
+// hc, hr: the column and row of the hub's panel, 1 and 1 on every block (other values only for the corner comparison).
+function leadPath(c,r,hc,hr){
+  hc=hc==null?1:hc;hr=hr==null?1:hr;
+  const h=HUBD,sp=h.spider,L=h.lead,Sx=(hc+0.5)*GEO.P+sp.x,Sy=(hr+0.5)*GEO.P+sp.y,Px=(c+0.5)*GEO.P,Py=(r+0.5)*GEO.P,Fx=Px+sp.x,Fy=Py+sp.y;
+  const tail=[[Fx,Fy,L.tail],[Px,Fy,L.tail],[Px,Py-L.conn,L.tail]];
+  if(c===hc&&r===hr)return [[Sx,Sy,sp.d[0]]].concat(tail);
+  const dl=Math.hypot(Fx-Sx,Fy-Sy),ux=(Fx-Sx)/dl,uy=(Fy-Sy)/dl,s0=[Sx+9*ux,Sy+9*uy];
+  return [[s0[0],s0[1],sp.d[1]],[s0[0],s0[1],L.d],[Fx,Fy,L.d]].concat(tail);
+}
+const pathLen=p=>p.reduce((a,q,i)=>i?a+Math.hypot(q[0]-p[i-1][0],q[1]-p[i-1][1],q[2]-p[i-1][2]):0,0);
+// lead lengths in a block, inches: the longest and all of them together, with the hub in the middle or (corner) behind the
+// top right panel seen from the front
+function leadStats(C,R,corner){let m=0,t=0;
+  for(let c=0;c<C;c++)for(let r=0;r<R;r++){const l=pathLen(corner?leadPath(c,r,C-1,R-1):leadPath(c,r))/25.4;m=Math.max(m,l);t+=l;}
+  return {max:m,total:t};}
+const leadMaxIn=(C,R)=>leadStats(C,R).max;
+// the hook plate on the hub's leg in its own plane, hub mm [d, y]: its outline with the two grooves, arcs as chords
+function plateOutline(n){
+  n=n||8;const h=HUBD,P=h.plate,pn=h.pin,gc=pn.r+0.5,d0=P.d[0],d1=P.d[1],dp=pn.d,out=[[d0,-P.y],[d1,-P.y]];
+  const arc=(cd,cy,a0,a1)=>{for(let i=0;i<=n;i++){const a=a0+(a1-a0)*i/n;out.push([cd+gc*Math.cos(a),cy+gc*Math.sin(a)]);}};
+  for(const ys of [-pn.dy,pn.dy]){const yr=ys-GEO.drop;
+    out.push([d1,yr-gc],[dp,yr-gc]);arc(dp,yr,-Math.PI/2,-Math.PI);out.push([dp-gc,ys]);arc(dp,ys,Math.PI,0);out.push([dp+gc,yr+gc],[d1,yr+gc]);}
+  out.push([d1,P.y],[d0,P.y]);return out;
+}
 
 // ---------- the two frames: Rib (Fold, aluminum sheet) and Hoop (Forge, roll-formed steel) ----------
+// The hub hangs the same way in both (HUBD): two pins in the seam rail 1 ft in from the left, seen from the front.
+const HUB_SHORT='Hangs on two pins in the seam rail, spring plunger',HUB_SWAP='No tools: unplug, knob, lift, ease out';
+const HUB_TEXT='<b>Hangs like a panel.</b> The hub sits behind the middle of the block, where every 5&nbsp;V lead is short. Two stainless shoulder pins stand out from the seam rail beside it, and a stainless hook plate on the hub&#39;s leg has two grooves that run in level and turn up 1/2&nbsp;in, the same gravity lock the panels use. The hub goes in level, drops onto the pins and hangs there; a spring plunger snaps into a hole in the seam rail so it can&#39;t lift, and its orange knob sits on the face at the top of the leg, in reach once the panels are out. Nothing is fixed to an outer wall. The Cirrus IN and OUT stay on the hub with service loops and leave through the open back, so the frame has no cable holes.';
+// the hub swap, the same on both frames; n: the panels that come out first (2 on a 3 ft tall block, top down)
+const svcSteps=n=>[n>1?'Lift out the panel above the hub, then the hub&#39;s own panel: each goes up 1/2&nbsp;in and straight out.':'Lift the hub&#39;s panel 1/2&nbsp;in and pull it straight out.',
+  'Unplug the lead plug under the hub, pull the orange knob and lift the hub 1/2&nbsp;in.',
+  'Ease it forward off the pins and bring it out the front on its service loops. Unplug the Cirrus IN and OUT.',
+  'Plug in the new hub, set it on the pins until the knob snaps in, plug the leads back in and hang the panels.'];
 // tooling, piece: relative, Low / Medium / High; kg: 3 x 3 frame mass; seam: estimated error at a block seam (mm);
 // sc: tolerance, cost at launch, cost at volume, look, hub swap, weight (1 weak to 5 strong); holes: flange holes on a 3 x 3
 const CONCEPTS=[
- {k:'rib',fam:'Fold',n:'Rib',tag:'Folded aluminum walls; the hub hangs from the top flange',tooling:'Low',piece:'Medium',kg:FRAME_KG['3x3'].rib,seam:0.25,sc:[3,5,3,4,4,5],holes:68,
-  made:'Folded 1.6 mm 5052 aluminum, riveted',hubShort:'Hangs from the top flange, spring pin',swap:'No tools: pin, lift, ease out',
+ {k:'rib',fam:'Fold',n:'Rib',tag:'Folded aluminum walls, riveted at the corners',tooling:'Low',piece:'Medium',kg:FRAME_KG['3x3'].rib,seam:0.25,sc:[3,5,3,4,4,5],holes:68,
+  made:'Folded 1.6 mm 5052 aluminum, riveted',hubShort:HUB_SHORT,swap:HUB_SWAP,
   how:'Each wall is one blank of 1.6&nbsp;mm 5052 aluminum, laser cut flat with its vents, joint holes and flange holes, then folded on a press brake into a 6&nbsp;in channel with the U rail at the front and a 2&nbsp;in flange with a stiffening lip at the back. Two beads pressed into each side wall stiffen it. The M8 PEM nuts and the locating pins are pressed into the flat blanks before folding. The side walls&#39; tabs rivet inside the top and bottom walls and the corners rivet through the overlapping flanges, every rivet flush and none through a side wall&#39;s outer face. Seam rails are plain 2&nbsp;mm channels. The frame is powder coated matte black, then the logo strip is printed up both sides in gloss. Any sheet metal shop can build it from the drawings.',
   tol:'Grooves and flange holes are cut in the flat, so pocket heights and the hole grid hold about 0.05&nbsp;mm. Bending and bead pressing can move a rail by up to 0.2&nbsp;mm, so a simple fixture sets each rail leg before the corners are riveted. Estimated seam error &plusmn;0.25&nbsp;mm, inside the 0.4&nbsp;mm seam check Daktronics uses.',
   lock:'J grooves are cut into the folded near leg of each U rail, with the same 1/2&nbsp;in drop. Inside a block one seam channel carries both neighboring columns.',
   joint:'Every block drops onto a tapered pin in the middle of every foot of the block or base rail below, and an M8 in every foot bolts it down from inside. Side seams take the same M8: two at each side station, 18 and 30&nbsp;in up a 3&nbsp;ft side, one on the front line and one on the back, each through one block&#39;s wall into a PEM nut pressed into its neighbor&#39;s. No plates, and nothing in the logo strip. At the design wind the side walls see 11&nbsp;MPa, 7% of what the alloy takes.',
   mount:'Angle iron bolts straight to the 2&nbsp;in back flange through any hole line. For square tube, a galvanized steel clip bolts into any side flange hole.',
-  hub:'<b>Hangs from the top.</b> A small folded hanger is riveted inside the top back flange, behind the top right bay, so nothing is fixed to a side wall and nothing shows on a finished screen. A stainless hook on top of the hub&#39;s arm drops over the hanger&#39;s lip, right above the hub&#39;s center of gravity, so the hub hangs plumb. A spring pin on the hook snaps through the lip and locks it; its orange knob sits just above the hub, in reach once the panel is out. The Cirrus IN and OUT and the harness plug stay on the hub with service loops, and the leads leave through the open back, so the frame has no cable holes.',
-  steps:['Lift the top right panel 1/2&nbsp;in and pull it out.','Pull the orange pin and lift the hub 1/2&nbsp;in so its hook clears the hanger.','Ease it forward a little, lower it so the hook passes under the top wall, and bring it out the front on its service loops. Unplug the three twist locks.','Plug in the new hub, hook it over the lip until the pin snaps in, and hang the panel.'],
+  hub:HUB_TEXT+' On Rib the pins are staked through the 2&nbsp;mm aluminum seam rail.',
   look:'Crisp folds in matte black, two pressed lines running the full height of each side with round vents beside them, a gloss logo strip up the front edge and a drilled flange round the back. It reads like a well made electrical enclosure.',
   vents:'The same round holes as Hoop: one column between the beads and one behind them on each side, the same eight to every foot and clear of the joint stations, and four rows across the top and bottom. The patterns repeat every foot, so vents line up from block to block and both ends of a screen match.',
   logo:'Three gloss logos to every foot are printed up the front edge of both sides after powder coat, on every frame, so any block can sit at an end of a screen. Nothing is cut, pressed or riveted in the front 1&nbsp;1/4&nbsp;in of a side.',
-  pros:['Lowest cost to launch, and its cost barely changes with volume','Lightest frame: 12&nbsp;lb for a 3&nbsp;x&nbsp;3','Low tooling, and parts in days from any sheet metal shop','The hub hangs on one hook and one pin, with nothing on the side walls'],
-  cons:['Bend tolerance is the main risk','Service loops add cable inside every block','Costs more per frame than Hoop at high volume']},
- {k:'hoop',fam:'Forge',n:'Hoop',tag:'One roll-formed strip bends into the whole ring',tooling:'High',piece:'Low',kg:FRAME_KG['3x3'].hoop,seam:0.25,sc:[3,2,5,4,3,2],holes:64,
-  made:'Roll-formed 1.2 mm ZM steel, one weld',hubShort:'Tilts out on a hinge shelf, spring latch',swap:'No tools: latch, tilt, lift',
+  pros:['Lowest cost to launch, and its cost barely changes with volume','Lightest frame: 12&nbsp;lb for a 3&nbsp;x&nbsp;3','Low tooling, and parts in days from any sheet metal shop'],
+  cons:['Bend tolerance is the main risk','Costs more per frame than Hoop at high volume']},
+ {k:'hoop',fam:'Forge',n:'Hoop',tag:'One roll-formed strip bends into the whole ring',tooling:'High',piece:'Low',kg:FRAME_KG['3x3'].hoop,seam:0.25,sc:[3,2,5,4,4,2],holes:64,
+  made:'Roll-formed 1.2 mm ZM steel, one weld',hubShort:HUB_SHORT,swap:HUB_SWAP,
   how:'Zinc magnesium coated coil is punched in register (flange and joint holes, J grooves, vents and corner notches), then one roll former forms the 6&nbsp;in wall, the U rail and the 2&nbsp;in back flange with its lip. A bending cell folds the strip into a ring with 12&nbsp;mm radius corners, so the notches close into mitred flange corners, and one weld closes the ring across the bottom. The M8 weld nuts and the locating pins are projection welded from inside. Seam rails are plain 1.2&nbsp;mm channels, clinched in, so the frame has no rivets. After powder coat the logo strip is printed up both sides, the same as Rib.',
   tol:'In line punching holds the groove pitch and the flange hole grid to about 0.1&nbsp;mm. One weld instead of four leaves little to pull the ring out of square, and the pins and weld nuts go on after the ring is closed, in a fixture. Estimated seam error &plusmn;0.25&nbsp;mm.',
   lock:'The same J grooves, punched in steel. Steel pockets don&#39;t wear, and the powder coat covers the cut edges.',
   joint:'The same pins and M8s as Rib, at the same spots, with weld nuts where Rib has PEM nuts, so Rib and Hoop blocks join each other. Steel makes it strong for its weight: 15&nbsp;MPa in the side walls at the design wind, 5% of yield.',
   mount:'The same flange and hole grid as Rib, so the same angle iron and clips fit either frame. Its four corner holes fall on the mitre and are left out; every other hole matches.',
-  hub:'<b>Tilts out.</b> A hinge shelf clinched to the seam rail beside the hub carries two hinge pins in its ears, and two hooks at the foot of the hub&#39;s leg sit on them. At the top, a spring latch on a strap clinched to the top flange holds the hub&#39;s arm, so nothing is fixed to a side wall here either. Press the latch and the hub tilts forward 38 degrees on its pins, bringing the Cirrus IN and OUT on its back up into reach, then it lifts off the pins and comes out the front. The leads have service loops and leave through the open back, so the frame has no cable holes. Daktronics tilts the power box down in a similar way on its DVX-1200.',
-  steps:['Lift the top right panel 1/2&nbsp;in and pull it out.','Press the latch. The hub tilts forward on its hinge pins.','Lift it off the pins and out the front, then unplug the three twist locks.','Plug in the new hub, set its hooks on the pins, tilt it up until it latches, and hang the panel.'],
+  hub:HUB_TEXT+' On Hoop the same pins are staked through the 1.2&nbsp;mm steel seam rail before powder coat.',
   look:'Soft rolled corners all round, like a picture frame: one continuous matte black band with round vents, a gloss logo strip up each side and a mitred flange behind it.',
   vents:'Four rows of 11&nbsp;mm round holes on every wall, punched in line on a 22&nbsp;mm pitch, the same eight to every foot up the sides, clear of the logo strip and the joint stations.',
   logo:'The same gloss print as Rib, up both sides of every frame after powder coat, so every block is the same part. Nothing is debossed, so the punch line needs no logo tool.',
@@ -1118,21 +1176,12 @@ function sheetR1(id){
     mat:MAT_RIB,fin:FIN_AL,scale:'AS SHOWN',set:'FRAME: RIB'},id);
 }
 
-// ---------- the hub, for reference on the frame drawings (it is its own assembly) ----------
-// An L 250 wide and 228 tall, 41 thick: the arm 125 tall across the top, the leg 105 wide on the outer side (the right,
-// seen from the front). Its top sits 52 under the block's top on Rib and 30 on Hoop, its face 30 behind the panels.
-const HUBD={W:250,H:228,A:125,Lg:105,T:41,d0:30,r:22,ri:12,top:{rib:52,hoop:30},io:{x:-15,y:51.5,dx:30,r:15.5,len:45}};
-const hubC=(C,R,k)=>({x:C*GEO.P-GEO.P/2,y:R*GEO.P-HUBD.top[k||'rib']-HUBD.H/2});
-function hubL(C,R,k){const h=HUBD,c=hubC(C,R,k),x0=c.x-h.W/2,x1=c.x+h.W/2,y0=c.y-h.H/2,y1=c.y+h.H/2;
-  return DW.roundPoly([[x0,y1],[x0,y1-h.A],[x1-h.Lg,y1-h.A],[x1-h.Lg,y0],[x1,y0],[x1,y1]],[h.r,h.r,h.ri,h.r,h.r,h.r]);}
-// Rib's hanger, a shallow tray riveted to the top flange: 164 wide along the hub's arm (hub x -65 to 99). Depths (yin) are
-// below the block's top face: the tab climbs the flange's front face from the shelf (35 to 37) to 14, with three flush
-// rivets on the flange hole line at 25.4 between three clearance holes; the lip climbs to 19 at d 48 to 50 and takes the
-// hub's spring pin at 25; two side flanges stand 9 tall. Positions along the hanger are from its left end, seen from the front.
-const HANG={x0:-65,x1:99,riv:[14.2,65,115.8],holes:[39.6,90.4,141.2],pin:18,tab:[14,37],shelf:[35,37],lip:[19,37],side:[28,37],sideD:[56,143],pinY:25};
-
+// ---------- the hub, for reference on the frame drawings (it is its own assembly, HUBD) ----------
+// An L 250 wide and 228 tall, 41 thick: the arm 125 tall across the top, the leg 105 wide down the left seen from the
+// front, beside the seam rail it hangs on. Its center sits 457.2 in and 457.2 up on every block, its face 30 behind the panels.
+function hubL(){return DW.roundPoly(hubPts(),HUB_RADII());}
 // ================= RIB, assembly =================
-// R-0: a 3x3 block assembled: rear view with balloons, a horizontal section through the hub, the bill of materials
+// R-0: a 3x3 block assembled: rear view with balloons, a horizontal section through the hub and its upper pin, the bill of materials
 function sheetR0(id){
   const g=GEO,rb=g.rib,R=3,C=3,W=C*g.P,H=R*g.P,D=g.D,hc=hubC(C,R);
   DW.begin();const {TX,VT,NOTES,TBL,DAT,fm,mi}=DW;
@@ -1145,21 +1194,21 @@ function sheetR0(id){
   for(let k=1;k<C;k++){const x=k*g.P;
     for(const e of [-20,20]){v.L(x+e,g.FW,x+e,H-g.FW,'k');v.L(x+e,24,x+e,g.FW,'h');v.L(x+e,H-g.FW,x+e,H-24,'h');}
     v.L(x-20,24,x+20,24,'h');v.L(x-20,H-24,x+20,H-24,'h');}
-  // the hub (reference) with its Cirrus IN and OUT, the hanger behind the top flange and its three flush rivets
-  v.P(hubL(C,R),'ph',1);
+  // the hub (reference) in the middle with its Cirrus IN and OUT, and the heads of the two pins it hangs on (sheet R-5)
+  v.P(hubL(),'ph',1);
   const ioy=hc.y+HUBD.io.y;
   [['IN',-1],['OUT',1]].forEach(([n,sg])=>{const x=hc.x+HUBD.io.x+sg*HUBD.io.dx;v.C(x,ioy,HUBD.io.r,'ph');TX(v.X(x),v.Y(ioy)+0.7,n,{a:'middle',s:1.7});});
-  TX(v.X(hc.x+HUBD.W/2-HUBD.Lg/2),v.Y(hc.y-HUBD.H/2)+4.6,'HUB (REFERENCE)',{a:'middle',s:2.1});
-  const hx0=hc.x+HANG.x0;v.R(hx0,H-HANG.tab[1],hc.x+HANG.x1,H-HANG.tab[0],'h');
-  for(const r of HANG.riv)v.C(hx0+r,H-g.IN,3.2,'sol');
+  TX(v.X(hc.x-HUBD.W/2+HUBD.Lg/2),v.Y(hc.y-HUBD.H/2)+4.6,'HUB (REFERENCE)',{a:'middle',s:2.1});
+  const pn=HUBD.pin,xr=HUB_RAIL,[py1,py2]=hubPinY();
+  for(const y of [py1,py2])v.R(xr+pn.sh,y-pn.hr,xr+pn.sh+pn.ht,y+pn.hr,'k');
   for(const x of footX(C))v.P([[x-5,H],[x-5,H+7.5],[x-2.4,H+11.5],[x+2.4,H+11.5],[x+5,H+7.5],[x+5,H]],'k');
-  DW.CUT(v.X(-40),v.Y(790),v.X(W+40),v.Y(790),0,1,'A');
+  DW.CUT(v.X(-40),v.Y(py2),v.X(W+40),v.Y(py2),0,1,'A');
   VT(v.X(W/2),30,'REAR VIEW, 3x3 BLOCK','SCALE 1:6. Seen from behind: the right side wall is on the left');
   v.BAL(W-10,520,-14,0,1);v.BAL(10,420,14,0,3);v.BAL(W-80,H-12,-10,-6,5);v.BAL(W-80,12,-10,8,7);
-  v.BAL(2*g.P+20,330,14,6,9);v.BAL(hx0+HANG.riv[1],H-g.IN,-6,-12,11);v.BAL(footX(C)[0],H+11.5,10,-6,12);v.BAL(W-42,42,-12,4,14);
+  v.BAL(2*g.P+20,330,14,6,9);v.BAL(g.P-20,250,12,6,10);v.BAL(xr+pn.sh+pn.ht,py2,-9,-9,13);v.BAL(footX(C)[0],H+11.5,10,-6,14);v.BAL(W-42,42,-12,4,16);
   DAT(v.X(450),v.Y(0),0,1,'B');DAT(v.X(0),v.Y(250),1,0,'C');
 
-  // ---- section A-A, 1:5: looking down through the hub's arm, front edge down ----
+  // ---- section A-A, 1:5: looking down through the hub's arm and its upper pin, front edge down ----
   const s=DW.VW(214,100,0.2),sp=ribSideBeads();
   DW.SEC(s,sp.pts,sp.rad,sp.t);DW.SEC(s,sp.pts.map(([x,d])=>[W-x,d]),sp.rad,sp.t);
   for(let k=1;k<C;k++){const x=k*g.P;DW.SEC(s,PRO.ribSeam.pts.map(([a,d])=>[x+a,d]),PRO.ribSeam.rad,PRO.ribSeam.t);s.L(x,-27,x,D+3,'c');}
@@ -1170,18 +1219,21 @@ function sheetR0(id){
   s.R(hc.x-HUBD.W/2,HUBD.d0,hc.x+HUBD.W/2,HUBD.d0+HUBD.T,'ph');TX(s.X(hc.x),s.Y(HUBD.d0+HUBD.T/2)+0.8,'HUB (REF.)',{a:'middle',s:2});
   [['IN',-1],['OUT',1]].forEach(([n,sg])=>{const x=hc.x+HUBD.io.x+sg*HUBD.io.dx;s.R(x-15,HUBD.d0+HUBD.T,x+15,HUBD.d0+HUBD.T+HUBD.io.len,'ph');
     TX(s.X(x),s.Y(HUBD.d0+HUBD.T+22)+0.7,n,{a:'middle',s:1.7});});
-  VT(s.X(W/2),50,'SECTION A-A','SCALE 1:5. Looking down at 790 above the bottom face, front edge down');
+  // the upper pin, cut on its axis, and the hub's hook plate between the rail and the pin head
+  s.R(xr,pn.d-pn.r,xr+pn.sh,pn.d+pn.r,'sol');s.R(xr+pn.sh,pn.d-pn.hr,xr+pn.sh+pn.ht,pn.d+pn.hr,'sol');
+  s.R(xr+HUBD.plate.gap,HUBD.plate.d[0],xr+HUBD.plate.gap+HUBD.plate.t,HUBD.plate.d[1],'ph');
+  VT(s.X(W/2),50,'SECTION A-A','SCALE 1:5. Looking down at '+fm(py2)+' above the bottom face, through the upper hub pin; front edge down');
   for(let k=0;k<C;k++)s.H(k*g.P,(k+1)*g.P,D,6,'304.8 [12]');
   s.H(0,W,-22,-11,mi(W)+' +0/−0.3');
   s.V(0,D,0,-8,mi(D));s.V(-22,0,0,-8,'22');s.V(-22,D,0,-17,'174.4 [6 7/8]');
   DAT(s.X(W-19),s.Y(0),0,1,'A');
-  s.BAL(W-0.8,100,5,-8,1);s.BAL(25,D,-10,-8,3);s.BAL(g.P+20,66,9,-9,9);
+  s.BAL(W-0.8,100,5,-8,1);s.BAL(25,D,-10,-8,3);s.BAL(2*g.P+20,66,9,-9,9);s.BAL(g.P-20,66,-9,-9,10);s.BAL(xr+pn.sh+pn.ht,pn.d,7,9,13);
   NOTES(214,126,190,'ASSEMBLY NOTES',[
     'Assemble in a fixture located on datums A (front plane), B (bottom face) and C (left face, seen from the front). Outside size +0/−0.3 each way, diagonals equal within 0.5, back flange flat within 0.5.',
-    'Order: side wall tabs inside the end walls, corner rivets through the overlapping flanges, seam rails, then the hanger. Parts arrive powder coated with nuts and pins already pressed in.',
+    'Order: side wall tabs inside the end walls, corner rivets through the overlapping flanges, then the seam rails, item 10 or 12 in the seam 1 ft in from the left. Parts arrive powder coated with nuts and pins already fitted.',
     'Every rivet is flush on an outside face (top, bottom or back). The side walls’ outer faces carry no fastener heads: they carry the logo strip and the side joints.',
     'Joint pins, nuts and sockets: sheet C-2. Back flange holes: sheet C-4. Gravity lock grooves: sheet C-1.',
-    'The hub is its own assembly, shown for reference. It hangs on item 11 and locks with its own spring pin.',
+    'The hub is its own assembly, shown for reference. It hangs on the two item 13 pins in item 10 or 12 and locks with its own spring plunger (sheet R-5).',
     'Blocks are named height x width in feet: 3x3, 3x2 (3 high, 2 wide), 2x3 (2 high, 3 wide) and 2x2.'],{s:2.4});
 
   // ---- bill of materials for every block ----
@@ -1194,15 +1246,17 @@ function sheetR0(id){
     B(6,'FF-R03-2','Top wall, 2 ft wide, pins and PEM nuts pressed in','5052-H32, 1.6',[0,1,0,1]),
     B(7,'FF-R04-3','Bottom wall, 3 ft wide, pin sockets','5052-H32, 1.6',[1,0,1,0]),
     B(8,'FF-R04-2','Bottom wall, 2 ft wide, pin sockets','5052-H32, 1.6',[0,1,0,1]),
-    B(9,'FF-R05-3','Seam rail, channel, 3 ft','5052-H32, 2.0',[2,1,0,0]),
-    B(10,'FF-R05-2','Seam rail, channel, 2 ft','5052-H32, 2.0',[0,0,2,1]),
-    B(11,'FF-R06','Hub hanger','5052-H32, 2.0',[1,1,1,1]),
-    B(12,'FF-C01','Locating pin, press fit, in item 5 or 6 (sheet C-5)','303 stainless',[3,2,3,2]),
-    B(13,'CLS-M8-1','PEM self-clinching nut M8, in items 1, 2, 5, 6','303 stainless',[7,6,5,4]),
-    B(14,'RIV-32-CSK','Blind rivet Ø3.2, closed end, 100° countersunk','Al body, A2 mandrel',[35,31,35,31]),
-    B(15,'ISO 4162','Hex flange bolt M8 x 16, 8.8, ships loose for the joints (sheet C-2)','Steel, zinc flake',[7,6,5,4])];
+    B(9,'FF-R05-3','Seam rail, channel, 3 ft','5052-H32, 2.0',[1,0,0,0]),
+    B(10,'FF-R05-3H','Seam rail, channel, 3 ft, at the hub: item 13 riveted in (sheet R-5)','5052-H32, 2.0',[1,1,0,0]),
+    B(11,'FF-R05-2','Seam rail, channel, 2 ft','5052-H32, 2.0',[0,0,1,0]),
+    B(12,'FF-R05-2H','Seam rail, channel, 2 ft, at the hub: item 13 riveted in (sheet R-5)','5052-H32, 2.0',[0,0,1,1]),
+    B(13,'FF-C06','Hub pin, orbital riveted in item 10 or 12 (sheet C-5)','316 stainless',[2,2,2,2]),
+    B(14,'FF-C01','Locating pin, press fit, in item 5 or 6 (sheet C-5)','303 stainless',[3,2,3,2]),
+    B(15,'CLS-M8-1','PEM self-clinching nut M8, in items 1, 2, 5, 6','303 stainless',[7,6,5,4]),
+    B(16,'RIV-32-CSK','Blind rivet Ø3.2, closed end, 100° countersunk','Al body, A2 mandrel',[32,28,32,28]),
+    B(17,'ISO 4162','Hex flange bolt M8 x 16, 8.8, ships loose for the joints (sheet C-2)','Steel, zinc flake',[7,6,5,4])];
   TX(14,213.4,'BILL OF MATERIALS, PER BLOCK. QUANTITY FOR EACH BLOCK SIZE (HEIGHT x WIDTH, FT).',{s:2.4,b:1});
-  TBL(14,216,[[9,'ITEM','c'],[20,'PART NO.'],[100,'DESCRIPTION'],[38,'MATERIAL'],[11,'3x3','c'],[11,'3x2','c'],[11,'2x3','c'],[11,'2x2','c']],rows,{rh:4.05,s:2.35});
+  TBL(14,216,[[9,'ITEM','c'],[20,'PART NO.'],[100,'DESCRIPTION'],[38,'MATERIAL'],[11,'3x3','c'],[11,'3x2','c'],[11,'2x3','c'],[11,'2x2','c']],rows,{rh:3.65,hh:4.4,s:2.25});
   return DW.end({code:'R-0',title:'RIB FRAME ASSEMBLY',title2:'3x3 shown, every block size in the bill of materials',pn:'FF-R00-33 / -32 / -23 / -22',qty:'1',
     mat:'See bill of materials',fin:FIN_AL+', parts coated before riveting',scale:'AS SHOWN',set:'FRAME: RIB'},id);
 }
@@ -1306,9 +1360,9 @@ function sheetR2(id){
 // ================= RIB, top and bottom walls =================
 // R-3: the end walls seen from above, sections through a joint, the top wall flat pattern and the four variants
 function sheetR3(id){
-  const g=GEO,rb=g.rib,C=3,W=C*g.P,D=g.D,hc=hubC(C,3);
+  const g=GEO,rb=g.rib,C=3,W=C*g.P,D=g.D;
   DW.begin();const {TX,VT,NOTES,TBL,ORDX,ORDY,LDR,fm,mi}=DW;
-  const fx=footX(C),vx=ventEndX(C,false),seam=[],tabX=[rb.tabRx,W-rb.tabRx],hang=HANG.riv.map(r=>hc.x+HANG.x0+r);
+  const fx=footX(C),vx=ventEndX(C,false),seam=[],tabX=[rb.tabRx,W-rb.tabRx];
   for(let k=1;k<C;k++)seam.push(k*g.P-rb.seamRx,k*g.P+rb.seamRx);
   function plan(v,top){
     v.R(0.15,0,W-0.15,D,'k');
@@ -1342,7 +1396,6 @@ function sheetR3(id){
   for(const x of tabX)for(const d of rb.tabRiv)f.C(x,wW(d),1.65,'k');
   for(const x of flangeH(C))f.C(x,wF(g.IN),g.FH/2,'k');
   for(const [a,c] of rb.corner)for(const x of [a,W-a])f.C(x,wF(c),1.65,'k');
-  for(const x of hang)f.C(x,wF(g.IN),1.65,'k');
   const bl=[['B1 DOWN 90° R1.6',bd[0].w+bd[0].len/2,3.6,W-3.6],['B2 DOWN 90° R1.6',bd[1].w+bd[1].len/2,0.15,W-0.15],['B3 DOWN 90° R1.6',bd[2].w+bd[2].len/2,60,W-60]];
   bl.forEach(([n,w,x0,x1],i)=>{f.L(x0,w,x1,w,'bl');TX(f.X(230),f.Y(w)+(i===2?2.4:-0.7),n,{s:1.9,a:'middle'});});
   const ow=[0,wR,wW(g.LF),wW(rb.ends[0]),wW(rb.ends[1]),wW(rb.seamRd),wW(rb.ends[2]),wW(g.LB),wW(rb.ends[3]),wF(9),wF(g.IN),wF(42),wL,Wt];
@@ -1383,16 +1436,15 @@ function sheetR3(id){
 
   // ---- variants and notes ----
   const n3=ventEndX(3,false).length*4,n2=ventEndX(2,false).length*4;
-  TBL(14,205,[[20,'PART NO.'],[14,'WALL'],[16,'LENGTH','c'],[38,'FRONT LINE, d 38.1'],[38,'BACK LINE, d 111.1'],[13,'VENTS','c'],[18,'SEAM\nRIVET HOLES','c'],[18,'HANGER\nRIVET HOLES','c'],[24,'BLANK','c']],[
-    ['FF-R03-3','Top','914.1','3 pins FF-C01 in Ø10.0','3 PEM CLS-M8-1 in Ø10.5',String(n3),'4','3','914.1 x '+fm(Wt,1)],
-    ['FF-R03-2','Top','609.3','2 pins FF-C01 in Ø10.0','2 PEM CLS-M8-1 in Ø10.5',String(n2),'2','3','609.3 x '+fm(Wt,1)],
-    ['FF-R04-3','Bottom','914.1','3 sockets Ø10.2 +0.1/0','3 holes Ø9.0',String(n3),'4','','914.1 x '+fm(Wt,1)],
-    ['FF-R04-2','Bottom','609.3','2 sockets Ø10.2 +0.1/0','2 holes Ø9.0',String(n2),'2','','609.3 x '+fm(Wt,1)]],{rh:4.1,s:2.3,hh:6.4});
+  TBL(14,205,[[20,'PART NO.'],[14,'WALL'],[16,'LENGTH','c'],[38,'FRONT LINE, d 38.1'],[38,'BACK LINE, d 111.1'],[13,'VENTS','c'],[18,'SEAM\nRIVET HOLES','c'],[24,'BLANK','c']],[
+    ['FF-R03-3','Top','914.1','3 pins FF-C01 in Ø10.0','3 PEM CLS-M8-1 in Ø10.5',String(n3),'4','914.1 x '+fm(Wt,1)],
+    ['FF-R03-2','Top','609.3','2 pins FF-C01 in Ø10.0','2 PEM CLS-M8-1 in Ø10.5',String(n2),'2','609.3 x '+fm(Wt,1)],
+    ['FF-R04-3','Bottom','914.1','3 sockets Ø10.2 +0.1/0','3 holes Ø9.0',String(n3),'4','914.1 x '+fm(Wt,1)],
+    ['FF-R04-2','Bottom','609.3','2 sockets Ø10.2 +0.1/0','2 holes Ø9.0',String(n2),'2','609.3 x '+fm(Wt,1)]],{rh:4.1,s:2.3,hh:6.4});
   NOTES(14,237,222,'NOTES',[
     'Length = block width − 0.3 ±0.1 so an end wall is never proud of the side faces. Pins, sockets, nuts and holes at every foot center, x = 152.4 [6] + 304.8 [12] n.',
     'Vents Ø11 in four rows (d 52, 74, 96, 118) at 22 pitch, centered, clear of every foot center by 36 and every seam rail by 20 (hole edge to zone). 3 ft: x 61.2 to 105.2, 215.2 to 259.2, 347.2 to 413.2, 501.2 to 567.2, 655.2 to 699.2, 809.2 to 853.2.',
-    'Press the pins and nuts from the inside before forming; mask pin shanks, sockets and nut threads for powder coat. Pins and sockets ±0.05 to each other, ±0.1 to datum C.',
-    'Hanger rivet holes (top wall only) sit on the flange hole line midway between holes, 101.6, 152.4 and 203.2 from the right end.'],{s:2.2});
+    'Press the pins and nuts from the inside before forming; mask pin shanks, sockets and nut threads for powder coat. Pins and sockets ±0.05 to each other, ±0.1 to datum C.'],{s:2.2});
   return DW.end({code:'R-3',title:'RIB TOP AND BOTTOM WALLS',title2:'FF-R03-3, FF-R03-2 (top), FF-R04-3, FF-R04-2 (bottom)',pn:'FF-R03 / FF-R04',qty:'1 top, 1 bottom',
     mat:MAT_RIB,fin:FIN_AL,scale:'AS SHOWN',set:'FRAME: RIB'},id);
 }
@@ -1422,6 +1474,10 @@ function sheetR4(id){
   DW.CUT(v.X(300),v.Y(108),v.X(300),v.Y(-8),1,0,'E');
   v.LD(pk[2]+6,12,14,8,['J GROOVE AT EVERY POCKET, BOTH LEGS (SHEET C-1)'],{s:2.1});
   v.LD(H-2.6,100,-8,-5,['TAB, RIVETED TO THE END WALL, BOTH ENDS'],{s:2.1,dir:-1});
+  // the H rails only: two pin holes and the plunger hole in the right leg, where the hub hangs (sheet R-5)
+  const [hy1,hy2]=hubPinY(),hyq=HUBD.y+HUBD.plg.dy,hd=HUBD.pin.d,hq=HUBD.plg.d;
+  for(const y of [hy1,hy2])v.C(y,hd,2.55,'k');v.C(hyq,hq,3.25,'k');
+  v.LD(hyq,hq,-12,-16,['H RAILS ONLY: 3 HUB HOLES, RIGHT LEG (R-5)'],{s:2.1,dir:-1});
   // ---- flat, 1:4 ----
   const dv=develop(pr),Wt=dv.total,b=dv.segs.filter(x=>x.k==='b');
   const f=DW.VW(18,160,0.25),uL=24+U0,w0=b[0].w,w1=b[1].w+b[1].len,wc=Wt/2;
@@ -1440,78 +1496,26 @@ function sheetR4(id){
   const ow=[0,w0,wc-rb.seamRx,wc,wc+rb.seamRx,w1,Wt];
   ORDY(ow.map(f.Y),f.X(Lu)+1,f.X(Lu)+11,ow.map(x=>fm(x)),{s:2.1});
   f.LD(100-rb.seamRd,wc+rb.seamRx,10,-12,['Ø3.3 DIMPLED 100°, 2X EACH END'],{s:2.1});
+  for(const y of [hy1,hy2])f.C(y+U0,flatW(dv,2,[19,hd]),2.55,'k');f.C(hyq+U0,flatW(dv,2,[19,hq]),3.25,'k');
+  f.LD(hyq+U0,flatW(dv,2,[19,hq]),8,9,['H RAILS ONLY: HUB HOLES, RIGHT LEG'],{s:2.1});
   VT(f.X(Lu/2),104,'FLAT PATTERN, FF-R05-3','SCALE 1:4. Blank '+fm(Lu,1)+' x '+fm(Wt,1)+', seen from the inside; u along, w across');
-  TBL(14,188,[[20,'PART NO.'],[18,'BLOCK\nHEIGHT','c'],[22,'LEG LENGTH','c'],[22,'OVER TABS','c'],[24,'J GROOVES','c'],[30,'BLANK','c'],[30,'QTY PER\nBLOCK','c']],[
-    ['FF-R05-3','3 ft','866.4','911.2','12, 6 per leg',fm(3*g.P+2*U0,1)+' x '+fm(Wt,1),'1 per seam'],
-    ['FF-R05-2','2 ft','561.6','606.4','8, 4 per leg',fm(2*g.P+2*U0,1)+' x '+fm(Wt,1),'1 per seam']],{rh:4.1,s:2.3,hh:6.4});
-  NOTES(14,214,222,'NOTES',[
+  const b3=fm(3*g.P+2*U0,1)+' x '+fm(Wt,1),b2=fm(2*g.P+2*U0,1)+' x '+fm(Wt,1);
+  TBL(14,188,[[20,'PART NO.'],[14,'BLOCK\nHEIGHT','c'],[20,'LEG LENGTH','c'],[18,'OVER TABS','c'],[22,'J GROOVES','c'],[30,'HUB HOLES','c'],[26,'BLANK','c'],[30,'WHERE','c']],[
+    ['FF-R05-3','3 ft','866.4','911.2','12, 6 per leg','None',b3,'3x3, seam 2 ft in'],
+    ['FF-R05-3H','3 ft','866.4','911.2','12, 6 per leg','3, right leg',b3,'3x3 and 3x2, 1 ft in'],
+    ['FF-R05-2','2 ft','561.6','606.4','8, 4 per leg','None',b2,'2x3, seam 2 ft in'],
+    ['FF-R05-2H','2 ft','561.6','606.4','8, 4 per leg','3, right leg',b2,'2x3 and 2x2, 1 ft in']],{rh:4.1,s:2.3,hh:6.4});
+  NOTES(14,218,222,'NOTES',[
     'Plain channel, 2.0 thick. Its two legs are the near legs for the panels either side of the seam, so both carry the J grooves (±0.1 to the lower tab’s outer face, datum E).',
     'At both ends the crown runs on past the legs as a tongue and folds back 90° into a tab that lies on the end wall’s inner face, riveted with two flush rivets (sheet R-3).',
     'Relief 2 wide x 5.4 deep where the legs stop. Bend B1 and B2, then the tabs (B3).',
     'Second moment of area 153,800 mm⁴. At the design wind load it carries 19.8 MPa (12% of yield) and deflects 0.63 [0.025 in].',
-    'u = block y + 30.8: the pockets are at u '+pk.map(p=>fm(p+U0)).join(', ')+'.'],{s:2.2});
-  return DW.end({code:'R-4',title:'RIB SEAM RAIL',title2:'FF-R05-3 shown, FF-R05-2 per the table',pn:'FF-R05',qty:'1 per seam (2 on a 3 ft wide block)',
+    'u = block y + 30.8: the pockets are at u '+pk.map(p=>fm(p+U0)).join(', ')+'.',
+    'The H rails go in the seam 1 ft in from the left, seen from the front, and carry the hub: 2 x Ø5.1 at y '+fm(hy1)+' and '+fm(hy2)+', d '+fm(hd)+', and Ø6.5 at y '+fm(hyq)+', d '+fm(hq)+', in the right leg, with two FF-C06 pins riveted in before coating (sheet R-5).'],{s:2.2});
+  return DW.end({code:'R-4',title:'RIB SEAM RAIL',title2:'FF-R05-3 shown; FF-R05-2 and the H rails per the table',pn:'FF-R05',qty:'1 per seam (2 on a 3 ft wide block)',
     mat:'5052-H32 aluminum sheet, 2.0 [0.079]',fin:FIN_AL,scale:'AS SHOWN',set:'FRAME: RIB'},id);
 }
 
-// ================= RIB, hub hanger =================
-// R-5: the tray riveted inside the top flange that the hub's hook hangs on: side view at 2:1, front view, flat at 1:2
-function sheetR5(id){
-  const g=GEO,D=g.D,h=HANG,Wd=h.x1-h.x0,pinX=h.pin-h.x0;
-  const pr={t:2,pts:[[149.8,-h.tab[0]],[149.8,-36],[49,-36],[49,-h.lip[0]]],rad:[3,3]};
-  DW.begin();const {TX,VT,NOTES,TBL,LDR,fm,mi}=DW;
-  // ---- side view from the right, 2:1: d across (front of the block to the left), depth below the top face down ----
-  const s=DW.VW(-54,38,2);
-  DW.SEC(s,pr.pts,pr.rad,pr.t);s.R(h.sideD[0],-h.side[0],h.sideD[1],-36,'k');
-  s.P([[44,0],[D,0],[D,-50.8],[D-10,-50.8],[D-10,-49.2],[D-1.6,-49.2],[D-1.6,-1.6],[44,-1.6]],'ph',1);
-  s.P([[44.75,-58],[44.75,-17.5],[53.25,-17.5],[53.25,-24],[51.75,-24],[51.75,-19],[46.25,-19],[46.25,-58]],'ph',1);
-  s.R(41,-h.pinY-3,44.75,-h.pinY+3,'ph');s.R(46.25,-h.pinY-2.75,51.6,-h.pinY+2.75,'ph');
-  s.R(44,-52,71,-58,'ph');
-  s.L(39,-h.pinY,58,-h.pinY,'c');s.L(D+4,-g.IN,D-6,-g.IN,'c');
-  s.V(-h.tab[0],-h.tab[1],D,9,fm(h.tab[1]-h.tab[0]));s.V(0,-h.tab[0],D,9,fm(h.tab[0]));s.V(0,-g.IN,D,20,mi(g.IN));
-  s.V(-h.lip[0],-h.lip[1],48,-8,fm(h.lip[1]-h.lip[0]));s.V(0,-h.pinY,41,-8,fm(h.pinY));
-  s.V(-h.side[0],-h.side[1],h.sideD[1],7,'9',{out:1});
-  s.H(48,D-1.6,-h.tab[1],-8,mi(D-1.6-48));s.H(h.sideD[0],h.sideD[1],-h.side[0],6,fm(h.sideD[1]-h.sideD[0]));s.H(48,h.sideD[0],-h.side[0],6,'8',{out:-1});
-  s.LD(D-3.6,-g.IN,-22,-16,['3 FLUSH RIVETS ON THE FLANGE HOLE LINE'],{s:2.2,dir:-1});
-  s.LD(53.25,-21,16,-12,['HUB HOOK AND SPRING PIN (PHANTOM)'],{s:2.2});
-  s.LD(100,-1.6,6,-7,['TOP WALL (PHANTOM)'],{s:2.2});
-  s.LD(71,-55,10,6,['HUB TOP (PHANTOM)'],{s:2.2});
-  s.LD(100,-h.side[0],8,-14,['SIDE FLANGE, 2X'],{s:2.2});
-  VT(s.X(98),26,'SIDE VIEW','SCALE 2:1. From the right: front of the block to the left, depths below the block’s top face');
-  // ---- flat, 1:2, seen from the inside: the tab's top edge up ----
-  const dv=develop(pr),Wt=dv.total,bd=dv.segs.filter(x=>x.k==='b'),sh=dv.segs.filter(x=>x.k==='s')[1];
-  const wD=d=>sh.w+(sh.from[0]-d),w0=wD(h.sideD[1]),w1=wD(h.sideD[0]),fl=9-4+Math.PI/2*(2+0.8);
-  const p=DW.VW(310,46+Wt*0.5,0.5),P=(x,w)=>[x,Wt-w];
-  p.P([[0,0],[Wd,0],[Wd,w0-2],[Wd-5,w0-2],[Wd-5,w0],[Wd+fl-4,w0],[Wd+fl-4,w1],[Wd-5,w1],[Wd-5,w1+2],[Wd,w1+2],[Wd,Wt],[0,Wt],
-    [0,w1+2],[5,w1+2],[5,w1],[4-fl,w1],[4-fl,w0],[5,w0],[5,w0-2],[0,w0-2]].map(([x,w])=>P(x,w)),'k',1);
-  for(const b of bd){const w=b.w+b.len/2;p.L(0,Wt-w,Wd,Wt-w,'bl');}
-  for(const x of [4-BA2(),Wd-4+BA2()])p.L(x,Wt-w0,x,Wt-w1,'bl');
-  function BA2(){return Math.PI/2*(2+0.8)/2;}
-  for(const x of h.riv)p.C(x,Wt-(g.IN-h.tab[0]),1.65,'k');for(const x of h.holes)p.C(x,Wt-(g.IN-h.tab[0]),g.FH/2,'k');
-  p.C(pinX,h.pinY-h.lip[0],3.25,'k');
-  p.H(4-fl,Wd+fl-4,0,-7,fm(Wd+2*fl-8,1),{s:2.2});p.V(0,Wt,4-fl,-7,fm(Wt,1),{s:2.2});p.H(0,Wd,Wt,6,String(Wd),{s:2.2});
-  VT(p.X(Wd/2),30,'FLAT PATTERN','SCALE 1:2. Seen from the inside; every bend UP 90° R2');
-  // ---- front view, 1:1 ----
-  const f=DW.VW(240,150,1);
-  f.R(0,-h.lip[0],Wd,-h.lip[1],'k');f.R(0,-h.tab[0],Wd,-h.lip[0],'k');
-  for(const x of [0,Wd-2])f.R(x,-h.side[0],x+2,-h.side[1],'h');
-  f.C(pinX,-h.pinY,3.25,'k');f.CM(pinX,-h.pinY,3.25);
-  for(const x of h.riv)f.C(x,-g.IN,1.65,'h');for(const x of h.holes)f.C(x,-g.IN,g.FH/2,'h');
-  f.H(0,Wd,-h.lip[1],-7,String(Wd));f.H(0,pinX,-h.tab[0],7,fm(pinX),{s:2.3});
-  VT(f.X(Wd/2),205,'FRONT VIEW','SCALE 1:1. From the front of the block; rivets and holes behind the lip hidden');
-  // ---- holes and notes ----
-  TBL(14,176,[[34,'FEATURE'],[30,'SIZE'],[12,'QTY','c'],[50,'POSITION, x FROM THE LEFT END']],[
-    ['Rivet hole, tab','Ø3.3, dimpled 100°','3','14.2, 65, 115.8, at depth 25.4'],
-    ['Clearance hole, tab','Ø11.1 [7/16]','3','39.6, 90.4, 141.2, at depth 25.4'],
-    ['Spring pin hole, lip','Ø6.5','1',fm(pinX)+', at depth '+h.pinY]],{rh:4.1,s:2.2});
-  NOTES(14,200,222,'NOTES',[
-    'Depths are below the block’s top face. Riveted to the top flange of every block on the flange hole line (sheet R-3); its clearance holes keep those three flange holes free for mounting.',
-    'The hub’s hook drops over the lip and its spring pin snaps through the Ø6.5 hole. To remove it: pull the pin, lift the hub 12.7 [1/2] so the hook clears the lip, ease it forward 8, lower it 12.7 so the hook passes under the top wall’s front return, and bring it out the front.',
-    'Bend the tab and the lip, then the side flanges. Relief 2 x 5 at each end of the side flanges.',
-    'Blank '+fm(Wd+2*fl-8,1)+' x '+fm(Wt,1)+' over the side flanges.'],{s:2.2});
-  return DW.end({code:'R-5',title:'RIB HUB HANGER',title2:'One per block, every size',pn:'FF-R06',qty:'1',
-    mat:'5052-H32 aluminum sheet, 2.0 [0.079]',fin:FIN_AL,scale:'AS SHOWN',set:'FRAME: RIB'},id);
-}
 
 // ================= RIB, corner and tab details =================
 // R-6: the back flange corner (detail G), the joggle and the flush rivets in section (H-H), the side wall tab (K-K)
@@ -1611,15 +1615,15 @@ function sheetR6(id){
     ['H1',fm(g.IN),fm(g.IN),'Ø11.1, mounting grid (C-4)','both flanges'],
     ...rb.corner.map(([x,y],i)=>['R'+(i+1),fm(x),fm(y),dimp,'both flanges'])],{rh:4.2,s:2.2});
   TX(292,82,'RIVETS PER BLOCK, RIV-32-CSK',{s:3,b:1});
-  const rv=b=>[12,12,4*(b.C-1),3];
-  TBL(292,85,[[19,'BLOCK'],[15,'TABS','c'],[18,'CORNERS','c'],[22,'SEAM RAILS','c'],[17,'HANGER','c'],[20,'TOTAL','c']],
+  const rv=b=>[12,12,4*(b.C-1)];
+  TBL(292,85,[[19,'BLOCK'],[18,'TABS','c'],[21,'CORNERS','c'],[27,'SEAM RAILS','c'],[26,'TOTAL','c']],
     KIT.map(b=>{const r=rv(b);return [b.k,...r.map(String),{t:String(r.reduce((a,c)=>a+c,0)),b:1}];}),{rh:4.2,s:2.3});
   NOTES(292,120,112,'NOTES',[
     'Every rivet head sits flush on an outside face. Dimple each sheet with the same 100° punch and die before coating, so the dimples nest at assembly.',
     'Joggle the side flange '+fm(t)+' (one thickness) over '+fm(J1-J0)+' after bend B4 (sheet R-2). The end wall flange then lies on it and both back faces meet in one plane.',
     'The end walls stop 0.15 short of each side face, so they never stand proud of the side wall.',
     'Lips start '+fm(LP)+' from each corner, with a 1.6 x 1.6 relief, so the two flanges lap flat.',
-    'Assemble on a square fixture: tabs first (K-K), then the corners (G), then the seam rails and the hub hanger.',
+    'Assemble on a square fixture: tabs first (K-K), then the corners (G), then the seam rails.',
     'H1 belongs to the back flange hole grid (sheet C-4). Keep it clear of rivets, sealant and coating runs.'],{s:2.3});
   return DW.end({code:'R-6',title:'RIB CORNER AND TAB DETAILS',title2:'Back flange corner, joggle, flush rivets, side wall tab',pn:'FF-R01 TO FF-R04',qty:'4 corners, 4 tabs',
     mat:MAT_RIB,fin:FIN_AL+', parts coated before riveting',scale:'AS SHOWN',set:'FRAME: RIB'},id);
@@ -1843,10 +1847,9 @@ function sheetH2(id){
     ['5','Bend the four corners in a fixture: BR, TR, TL, BL','Medium','H-1'],
     ['6','Butt weld the ends; grind flush; prime the weld','Medium','H-1'],
     ['7','Projection weld the nuts and pins from inside','Low','H-0'],
-    ['8','Rivet the pins into the shelf; clinch in the rails, shelf and strap','Low','H-0, H-5'],
-    ['9','Mask pins and M3 threads; clean, pretreat, powder coat matte black','Low','H-0'],
-    ['10','Pad print the gloss logo strip up both sides','Low','C-6'],
-    ['11','Fit the spring latch with its two screws','Low','H-5']],{s:2.3,rh:4.15});
+    ['8','Rivet the hub pins into the H rail; clinch in the seam rails','Low','H-0, H-5'],
+    ['9','Mask pins, sockets and nut threads; clean, pretreat, powder coat','Low','H-0'],
+    ['10','Pad print the gloss logo strip up both sides','Low','C-6']],{s:2.3,rh:4.15});
   NOTES(14,234,222,'NOTES',[
     'Strip: '+fm(WE,2)+' +0.2/0 wide, slit from coil, ZM310 both sides, burr toward the inside face.',
     'Punch every feature in register before roll forming; the J grooves, joint holes and corner notches share one datum per block length. Cut to length after forming.',
@@ -1964,6 +1967,10 @@ function sheetH4(id){
   v.LD(pk[2]+6,12,14,8,['J GROOVE AT EVERY POCKET, BOTH LEGS (SHEET C-1)'],{s:2.1});
   v.LD(H-1.8,104,-8,-5,['TAB, CLINCHED TO THE WALL, BOTH ENDS (DETAIL J)'],{s:2.1,dir:-1});
   DW.DET(v.X(14),v.Y(c0+14),9,'J');
+  // the H rails only: two pin holes and the plunger hole in the right leg, where the hub hangs (sheet H-5)
+  const [hy1,hy2]=hubPinY(),hyq=HUBD.y+HUBD.plg.dy,hd=HUBD.pin.d,hq=HUBD.plg.d;
+  for(const y of [hy1,hy2])v.C(y,hd,2.55,'k');v.C(hyq,hq,3.25,'k');
+  v.LD(hyq,hq,-12,-18,['H RAILS ONLY: 3 HUB HOLES, RIGHT LEG (H-5)'],{s:2.1,dir:-1});
   // ---- flat, 1:4 ----
   const dv=develop(pr),Wt=dv.total,b=dv.segs.filter(x=>x.k==='b');
   const f=DW.VW(18,166,0.25),uL=S.leg0+U0,w0=b[0].w,w1=b[1].w+b[1].len,wc=Wt/2,rw=S.relW,rd=S.relD;
@@ -1983,6 +1990,8 @@ function sheetH4(id){
   const ow=[0,w0,wc-hp.seamRx,wc,wc+hp.seamRx,w1,Wt];
   ORDY(ow.map(f.Y),f.X(Lu)+1,f.X(Lu)+11,ow.map(x=>fm(x)),{s:2.1});
   f.LD(uJ,wc+hp.seamRx,10,-12,['CLINCH POINT Ø6, 2X EACH END (NO HOLE)'],{s:2.1});
+  for(const y of [hy1,hy2])f.C(y+U0,flatW(dv,2,[19.4,hd]),2.55,'k');f.C(hyq+U0,flatW(dv,2,[19.4,hq]),3.25,'k');
+  f.LD(hyq+U0,flatW(dv,2,[19.4,hq]),8,13,['H RAILS ONLY: HUB HOLES, RIGHT LEG'],{s:2.1});
   f.LD(Lu-uL+rw/2,w0+rd/2,-10,9,['RELIEF '+fm(rw)+' x '+fm(rd,1)+', 4X'],{s:2.1,dir:-1});
   VT(f.X(Lu/2),104,'FLAT PATTERN, FF-H02-3','SCALE 1:4. Blank '+fm(Lu,1)+' x '+fm(Wt,1)+', seen from the inside; u along, w across');
   // ---- detail J: the tab on the bottom wall, 2:1, looking along x ----
@@ -2001,157 +2010,26 @@ function sheetH4(id){
   j.LD(d0+5,0,-3,9,['BOTTOM WALL (HOOP WEB)'],{s:2.1,dir:-1});j.LD(c0-0.6,10,-6,-2,['CROWN'],{s:2.1,dir:-1});
   VT(j.X((d0+d1)/2),27,'DETAIL J, TAB ON THE WALL','SCALE 2:1. Looking along x; top end alike');
   // ---- parts ----
-  TBL(14,192,[[20,'PART NO.'],[16,'BLOCK\nHEIGHT','c'],[20,'LEG LENGTH','c'],[18,'OVER TABS','c'],[22,'J GROOVES','c'],[30,'BLANK','c'],[18,'QTY PER\nBLOCK','c']],[
-    ['FF-H02-3','3 ft',fm(H-2*S.leg0),fm(H-2*t),'12, 6 per leg',fm(3*g.P+2*U0,1)+' x '+fm(Wt,1),'1 per seam'],
-    ['FF-H02-2','2 ft',fm(2*g.P-2*S.leg0),fm(2*g.P-2*t),'8, 4 per leg',fm(2*g.P+2*U0,1)+' x '+fm(Wt,1),'1 per seam']],{rh:4.1,s:2.3,hh:6.4});
-  NOTES(14,216,222,'NOTES',[
+  const b3=fm(3*g.P+2*U0,1)+' x '+fm(Wt,1),b2=fm(2*g.P+2*U0,1)+' x '+fm(Wt,1),l3=fm(H-2*S.leg0),l2=fm(2*g.P-2*S.leg0),o3=fm(H-2*t),o2=fm(2*g.P-2*t);
+  TBL(14,190,[[20,'PART NO.'],[14,'BLOCK\nHEIGHT','c'],[20,'LEG LENGTH','c'],[18,'OVER TABS','c'],[22,'J GROOVES','c'],[30,'HUB HOLES','c'],[26,'BLANK','c'],[30,'WHERE','c']],[
+    ['FF-H02-3','3 ft',l3,o3,'12, 6 per leg','None',b3,'3x3, seam 2 ft in'],
+    ['FF-H02-3H','3 ft',l3,o3,'12, 6 per leg','3, right leg',b3,'3x3 and 3x2, 1 ft in'],
+    ['FF-H02-2','2 ft',l2,o2,'8, 4 per leg','None',b2,'2x3, seam 2 ft in'],
+    ['FF-H02-2H','2 ft',l2,o2,'8, 4 per leg','3, right leg',b2,'2x3 and 2x2, 1 ft in']],{rh:4.1,s:2.3,hh:6.4});
+  NOTES(14,220,222,'NOTES',[
     'Plain channel, 1.2 steel strip, same coil as the hoop (sheet H-1). Both legs are near legs for the panels either side of the seam, so both carry the J grooves (±0.1 to the lower tab’s outer face).',
     'At both ends the crown runs on past the legs as a tongue and folds back 90° into a tab on the wall’s inner face. Clinch before coating; the outer face keeps a shallow dish, nothing proud of the joint face.',
     'Second moment of area '+fm(138397,0).replace(/\B(?=(\d{3})+(?!\d))/g,',')+' mm⁴. At the design wind load it carries 25 MPa (9% of yield) and deflects 0.24 [0.009 in].',
-    'u = block y + '+fm(U0)+': the pockets are at u '+pk.map(p=>fm(p+U0)).join(', ')+'.'],{s:2.2});
-  return DW.end({code:'H-4',title:'HOOP SEAM RAIL',title2:'FF-H02-3 shown, FF-H02-2 per the table',pn:'FF-H02',qty:'1 per seam (2 on a 3 ft wide block)',
+    'u = block y + '+fm(U0)+': the pockets are at u '+pk.map(p=>fm(p+U0)).join(', ')+'.',
+    'The H rails go in the seam 1 ft in from the left, seen from the front, and carry the hub: 2 x Ø5.1 at y '+fm(hy1)+' and '+fm(hy2)+', d '+fm(hd)+', and Ø6.5 at y '+fm(hyq)+', d '+fm(hq)+', in the right leg, with two FF-C06 pins riveted in before the rail is clinched (sheet H-5).'],{s:2.2});
+  return DW.end({code:'H-4',title:'HOOP SEAM RAIL',title2:'FF-H02-3 shown; FF-H02-2 and the H rails per the table',pn:'FF-H02',qty:'1 per seam (2 on a 3 ft wide block)',
     mat:MAT_HOOP,fin:'Coated with the hoop after clinching (sheet H-0)',scale:'AS SHOWN',set:'FRAME: HOOP'},id);
 }
 
-// ================= HOOP, hub mount =================
-// The hub (its own assembly) hangs two hooks at the foot of its leg on two pins riveted into the ears of a shelf that is
-// clinched to the seam rail, so nothing touches an outer wall. A spring latch on a strap under the top wall holds its top.
-// Press the latch and the hub tilts forward 38° on the pins, then lifts off them. Positions: x from the foot of the leg
-// (hub x 72.5), y down from the block's top face (negative), d back from the front edge.
-const HH={foot:72.5,pinD:63,pinY:-266,pinR:4,pinIn:40,earIn:54,t:2,earD:[55,73],earTop:-252,
-  shelf:{y:-288,d0:50,d1:90,fl:25,tab:28,tabD:74},clinch:[[56,-304],[68,-304]],hookX:[43,46],x0:-204.9,
-  latch:{x:-60,w:30,y0:-29,y1:-15,d:[63,75],bolt:8,throw:6},strap:{w:40,q:10.2,cx:12,d0:75,d1:151.2,y1:-1.2,tab:-17.2,drop:-31},tilt:38,
-  BA:Math.PI/2*(2+0.4*2),SB:4};
-const hhX=C=>({foot:C*GEO.P-152.4+HH.foot,rail:(C-1)*GEO.P+20,latch:C*GEO.P-152.4+HH.latch.x});
-// FF-H03 flat. u runs along x from the tab's free edge: tab, shelf, right ear. v runs from the shelf's front edge: shelf,
-// back flange. Each leg is its outside dimension less the 4 setback at each bend, plus the bend allowance.
-function hhFlat(){const S=HH.SB,BA=HH.BA,sh=HH.shelf,x1=HH.earIn+HH.t,eh=HH.earTop-(sh.y-HH.t);
-  const u1=sh.tab-S,u2=u1+BA,u3=u2+(x1-HH.x0)-2*S,u4=u3+BA,u5=u4+eh-S,v1=sh.d1-sh.d0-S,v2=v1+BA,v3=v2+sh.fl-S;
-  const uL=u2+(-HH.earIn-S-(HH.x0+S)),uE=uL+BA,hp=HH.pinY-(sh.y-HH.t)-S;   // the lanced ear's outside face is its pin face
-  return {u1,u2,u3,u4,u5,v1,v2,v3,uL,uE,uLe:uE+eh-S,eh,pinU:[uE+hp,u4+hp],tabV:sh.tabD-sh.d0,
-    clU:HH.clinch.map(([d,y])=>[y-(sh.y-sh.tab),d-sh.d0])};}
-function sheetH5(id){
-  const g=GEO,C=3,R=3,P=g.P,H=R*P,W=C*P,D=g.D,X=hhX(C),fx=X.foot,sh=HH.shelf,t=HH.t,ys=H+sh.y,ap=HH.pinY+H,x0=HH.x0,x1=HH.earIn+t;
-  DW.begin();const {TX,VT,NOTES,TBL,LDR,fm,mi,L,PL}=DW;
-  const hubTop=H-30,hubBot=H-258,lt=HH.latch,st=HH.strap,hc=hubC(C,R,'hoop').x;
-  // ---- view A: the hub's bay from the front, panel out, 1:4 ----
-  const a=DW.VW(22-(X.rail-42)*0.25,44+H*0.25,0.25);
-  a.L(X.rail-42,H,W,H,'k');a.L(X.rail-42,H-1.2,W-1.2,H-1.2,'t');a.L(W,H,W,H-330,'k');a.L(W-1.2,H-1.2,W-1.2,H-330,'t');
-  a.L(X.rail-42,H-20,W-20,H-20,'k');a.L(W-20,H-20,W-20,H-330,'k');
-  for(const x of [X.rail-1.2,X.rail-40])a.R(x,H-24,x+1.2,H-330,'k');
-  a.P(hubL(C,R,'hoop'),'ph',1);
-  a.R(X.rail,ys-t,fx+x1,ys,'k');a.R(X.rail+t+2,ys-sh.fl,fx+HH.earIn-2,ys-t,'k');a.R(X.rail,ys-sh.tab,X.rail+t,ys-t,'k');
-  for(const sg of [-1,1]){const e0=fx+sg*HH.earIn,e1=fx+sg*x1;a.R(Math.min(e0,e1),ys,Math.max(e0,e1),H+HH.earTop,'k');
-    a.R(Math.min(fx+sg*HH.pinIn,e0),ap-HH.pinR,Math.max(fx+sg*HH.pinIn,e0),ap+HH.pinR,'k');
-    a.R(fx+sg*HH.hookX[0],ap-HH.pinR-3,fx+sg*HH.hookX[1],hubBot,'ph');}
-  a.P([[X.latch-st.w/2,H-20],[X.latch-st.w/2,H+st.drop],[X.latch+st.w/2,H+st.drop],[X.latch+st.w/2,H-20]],'k');
-  a.R(X.latch-lt.w/2,H+lt.y0,X.latch+lt.w/2,H-20,'k');a.R(X.latch-lt.bolt/2,H+lt.y0-lt.throw,X.latch+lt.bolt/2,H+lt.y0,'h');
-  a.L(fx,ys-sh.fl-6,fx,hubBot+10,'c');a.L(X.latch,H+4,X.latch,H+lt.y0-12,'c');
-  a.H(fx-HH.earIn,fx+HH.earIn,ys-sh.fl,-5,fm(2*HH.earIn));a.H(X.rail,fx+x1,ys-sh.tab,-11,fm(x1-x0,1));
-  a.V(ys,H,W,6,fm(-sh.y));a.V(ap,H,W,12,fm(-HH.pinY));
-  a.H(X.latch,W,H,6,fm(W-X.latch));
-  a.LD(X.rail-20,H-200,8,-14,['SEAM RAIL'],{s:2.1});a.LD(hc-60,H-120,6,6,['HUB (REFERENCE)'],{s:2.1});
-  VT(a.X((X.rail-42+W)/2),27,'VIEW A, THE HUB BAY','SCALE 1:4. From the front, top right panel out');
-  // ---- view C: from the right, side wall removed, 1:4; d to the right ----
-  const c=DW.VW(170,44+H*0.25,0.25),Q=([xi,d])=>[d,H-xi];
-  c.P(DW.stripOutline(DW.bendLine(PRO.hoop.pts.map(Q),PRO.hoop.rad),PRO.hoop.t),'k',1);
-  c.R(sh.d0,ys-t,sh.d1,ys,'k');c.R(sh.d1-t,ys-sh.fl,sh.d1,ys-t,'k');c.R(sh.d0,ys-sh.tab,sh.tabD,ys-t,'t');
-  c.P(DW.roundPoly([[HH.earD[0],ys],[HH.earD[0],H+HH.earTop],[HH.earD[1],H+HH.earTop],[HH.earD[1],ys]],[0,6,6,0]),'k',1);
-  c.C(HH.pinD,ap,3.5,'k');c.CM(HH.pinD,ap,3.5);
-  c.P([[st.d0,H+st.drop],[st.d0,H+st.y1],[st.d1,H+st.y1],[st.d1,H+st.tab],[st.d1-t,H+st.tab],[st.d1-t,H+st.y1-t],[st.d0+t,H+st.y1-t],[st.d0+t,H+st.drop]],'k',1);
-  c.R(lt.d[0],H+lt.y0,lt.d[1],H+lt.y1,'k');c.R(lt.d[0],H+lt.y0-lt.throw,lt.d[0]+lt.bolt,H+lt.y0,'k');
-  const hubRect=[[30,hubBot],[30,hubTop],[71,hubTop],[71,hubBot]];c.P(hubRect,'ph',1);
-  const rot=(p,ang)=>{const dx=p[0]-HH.pinD,dy=p[1]-ap,c0=Math.cos(ang),s0=Math.sin(ang);return [HH.pinD+dx*c0-dy*s0,ap+dx*s0+dy*c0];};
-  const A=HH.tilt*Math.PI/180;c.P(hubRect.map(p=>rot(p,A)),'ph',1);
-  c.P([[HH.pinD-6,hubBot],[HH.pinD-6,ap],[HH.pinD-4.6,ap+3.4],[HH.pinD,ap+5.6],[HH.pinD+4.6,ap+3.4],[HH.pinD+6,ap],[HH.pinD+6,ap-5],[HH.pinD+9,ap-5],[HH.pinD+9,hubBot]],'ph');
-  c.P([[50,hubBot-14],[50,H-280],[96,H-280],[96,H-330]],'ph');
-  const arcPts=[];for(let i=0;i<=12;i++)arcPts.push(rot([30,hubTop],A*i/12));c.P(arcPts,'t');
-  {const e=arcPts[12],b=arcPts[11],dx=c.X(e[0])-c.X(b[0]),dy=c.Y(e[1])-c.Y(b[1]),l=Math.hypot(dx,dy);DW.AR(c.X(e[0]),c.Y(e[1]),dx/l,dy/l);}
-  TX(c.X(arcPts[6][0])-1.5,c.Y(arcPts[6][1])-1.5,'38°',{s:2.4,a:'end'});
-  c.H(0,HH.pinD,ys-sh.tab,-6,fm(HH.pinD));c.H(0,30,hubTop,-5,'30',{out:-1});c.H(30,71,hubTop,-5,'41');
-  const lab=(d,y,yl,tx)=>LDR(c.X(d),c.Y(y),212,yl,[tx],{s:2.1,dir:1});
-  lab(130,H+st.y1-t,52,'STRAP FF-H05');lab(lt.d[1],H+lt.y0+3,60,'SPRING LATCH');
-  lab(HH.pinD+9,hubBot-2,92,'HUB HOOK (HUB ASSY)');lab(HH.earD[1],H+HH.earTop+6,100,'EAR AND PIN');
-  lab(sh.d1,ys-sh.fl+3,108,'SHELF FF-H03');lab(96,H-318,116,'HARNESS');
-  VT(c.X(20),27,'VIEW C, FROM THE RIGHT','SCALE 1:4. Side wall removed; hub upright and tilted');
-
-  // ---- FF-H03 shelf: top view and front view, 1:2, x from the foot of the hub's leg ----
-  const sx=320-(x0+x1)/2*0.5,TD=d=>-(sh.d1-(d-sh.d0));
-  const tv=DW.VW(sx,23,0.5);
-  tv.R(x0,TD(sh.d0),x1,TD(sh.d1),'k');tv.L(x0+t,TD(sh.d1-t),x1-t,TD(sh.d1-t),'t');tv.L(x0+t,TD(sh.d0),x0+t,TD(sh.tabD),'t');
-  for(const sg of [-1,1]){const e0=sg*HH.earIn,e1=sg*x1;tv.R(Math.min(e0,e1),TD(HH.earD[0]),Math.max(e0,e1),TD(HH.earD[1]),'k');
-    tv.R(Math.min(sg*HH.pinIn,e0),TD(HH.pinD-4),Math.max(sg*HH.pinIn,e0),TD(HH.pinD+4),'t');}
-  tv.R(-HH.earIn,TD(HH.earD[0]),-HH.earIn+38,TD(HH.earD[1]),'t');
-  tv.L(0,TD(sh.d0)-3,0,TD(sh.d1)+3,'c');
-  tv.H(x0,x1,TD(sh.d1),6,fm(x1-x0,1));tv.V(TD(sh.d0),TD(sh.d1),x1,6,fm(sh.d1-sh.d0));
-  tv.LD(-HH.earIn+30,TD(HH.earD[1])+1,4,10,['WINDOW LEFT BY THE LANCED EAR'],{s:2});
-  VT(tv.X((x0+x1)/2),31,'FF-H03 HINGE SHELF','SCALE 1:2. Top view and front view; x from the foot of the hub’s leg');
-  const fv=DW.VW(sx,104,0.5),Y=y=>y-sh.y;
-  fv.R(x0,-t,x1,0,'k');fv.R(x0+t+2,-sh.fl,x1-t-2,-t,'k');fv.R(x0,-sh.tab,x0+t,-t,'k');
-  for(const sg of [-1,1]){const e0=sg*HH.earIn,e1=sg*x1;fv.R(Math.min(e0,e1),0,Math.max(e0,e1),Y(HH.earTop),'k');
-    fv.R(Math.min(sg*HH.pinIn,e0),Y(HH.pinY)-4,Math.max(sg*HH.pinIn,e0),Y(HH.pinY)+4,'k');
-    fv.R(Math.min(e1,e1+sg*1.6),Y(HH.pinY)-3.5,Math.max(e1,e1+sg*1.6),Y(HH.pinY)+3.5,'k');}
-  fv.L(0,-sh.fl-4,0,Y(HH.earTop)+4,'c');
-  fv.V(Y(HH.pinY),-t,x1+3,6,fm(HH.pinY-sh.y+t));fv.V(Y(HH.earTop),-t,x1+3,13,fm(HH.earTop-sh.y+t));
-  fv.V(-sh.tab,0,x0,-6,fm(sh.tab));fv.V(-sh.fl,0,x0+40,-6,fm(sh.fl));
-  fv.H(-HH.earIn,HH.earIn,Y(HH.earTop),5,fm(2*HH.earIn)+' BETWEEN EARS');fv.H(HH.pinIn,HH.earIn,Y(HH.pinY)+4,5,'14',{out:1});
-  fv.LD(x0+t,Y(-304),6,8,['2 ROUND CLINCH Ø6 TO THE SEAM RAIL’S RIGHT LEG'],{s:2});
-  fv.LD(-HH.earIn-t-1,Y(HH.pinY),-12,-10,['PIN FF-H04, 2X, ORBITAL RIVETED'],{s:2,dir:-1});
-  // ---- FF-H05 strap, 1:2: from the right, and flat ----
-  const sv=DW.VW(252-st.d0*0.5,151,0.5);
-  sv.P([[st.d0,st.drop],[st.d0,st.y1],[st.d1,st.y1],[st.d1,st.tab],[st.d1-t,st.tab],[st.d1-t,st.y1-t],[st.d0+t,st.y1-t],[st.d0+t,st.drop]],'k',1);
-  sv.L(st.d1+3,-st.q,st.d1-t-4,-st.q,'c');sv.L(st.d0-4,-22,st.d0+t+4,-22,'c');
-  sv.H(st.d0,st.d1,st.y1,5,fm(st.d1-st.d0));sv.V(st.drop,st.y1,st.d0,-5,fm(st.y1-st.drop));sv.V(st.tab,st.y1,st.d1,5,fm(st.y1-st.tab));
-  sv.V(-st.q,st.y1,st.d1,12,fm(st.q-1.2));sv.V(-22,st.y1,st.d0,-12,fm(22-1.2));
-  VT(sv.X((st.d0+st.d1)/2),134,'FF-H05 LATCH STRAP','SCALE 1:2. From the right; 40 wide');
-  const sL=(st.y1-st.tab)+(st.d1-st.d0)+(st.y1-st.drop)-4*HH.SB+2*HH.BA,sf=DW.VW(252,192,0.5);
-  sf.R(0,0,sL,st.w,'k');
-  const sb1=(st.y1-st.tab)-HH.SB+HH.BA/2,sb2=sL-((st.y1-st.drop)-HH.SB)-HH.BA/2;
-  for(const u of [sb1,sb2])sf.L(u,0,u,st.w,'bl');
-  for(const e of [-st.cx,st.cx])sf.CM(-st.q-st.tab,st.w/2+e,1.5);
-  for(const e of [-10,10]){sf.C(sL-(st.drop+22)*-1,st.w/2+e,2.11,'k');sf.CM(sL-(st.drop+22)*-1,st.w/2+e,2.11);}
-  sf.H(0,sL,0,-6,fm(sL,1));sf.V(0,st.w,sL,6,'40');
-  TX(sf.X(sL/2),sf.Y(st.w)-2.4,'FLAT, BOTH BENDS DOWN 90° R2',{s:2.1,a:'middle'});
-  // ---- FF-H04 pin, 2:1 ----
-  const pv=DW.VW(352,162,2);
-  pv.P([[0,-4],[14,-4],[14,-2.5],[17.5,-2.5],[17.5,2.5],[14,2.5],[14,4],[0,4]],'k',1);pv.L(-2,0,19.5,0,'c');
-  pv.H(0,14,4,5,'14');pv.H(14,17.5,4,5,'3.5',{out:1});pv.V(-4,4,0,-5,'Ø8 h9');pv.V(-2.5,2.5,17.5,5,'Ø5');
-  VT(pv.X(9),134,'FF-H04 PIN','SCALE 2:1. 303 stainless');
-  // ---- FF-H03 flat, 1:2 ----
-  const F=hhFlat(),fl=DW.VW(26,212,0.5),e0=HH.earD[0]-sh.d0,e1=HH.earD[1]-sh.d0,V=v=>-v;
-  const outl=[[0,0],[F.u3-1,0],[F.u3-1,e0],[F.u5,e0],[F.u5,e1],[F.u3-1,e1],[F.u3-1,F.v3],[F.u2+1,F.v3],[F.u2+1,F.tabV],[0,F.tabV]];
-  fl.P(outl.map(([u,v])=>[u,V(v)]),'k',1);
-  fl.P([[F.uL,V(e0)],[F.uLe,V(e0)],[F.uLe,V(e1)],[F.uL,V(e1)]],'k');
-  for(const u of [(F.u1+F.u2)/2])fl.L(u,V(0),u,V(F.tabV),'bl');
-  for(const u of [(F.u3+F.u4)/2,(F.uL+F.uE)/2])fl.L(u,V(e0),u,V(e1),'bl');
-  fl.L(F.u2+1,V((F.v1+F.v2)/2),F.u3-1,V((F.v1+F.v2)/2),'bl');
-  for(const u of F.pinU){fl.C(u,V(HH.pinD-sh.d0),2.55,'k');fl.CM(u,V(HH.pinD-sh.d0),2.55);}
-  for(const [u,v] of F.clU)fl.CM(u,V(v),1.5);
-  const ov=[0,e0,HH.pinD-sh.d0,e1,F.tabV,(F.v1+F.v2)/2,F.v3];
-  DW.ORDY(ov.map(v=>fl.Y(V(v))),fl.X(F.u5)+1,fl.X(F.u5)+9,ov.map(v=>fm(v)),{s:2});
-  const ou=[0,(F.u1+F.u2)/2,(F.uL+F.uE)/2,F.pinU[0],F.uLe,(F.u3+F.u4)/2,F.pinU[1],F.u5];
-  DW.ORDX(ou.map(fl.X),fl.Y(V(F.v3)),fl.Y(V(F.v3))+7,ou.map(u=>fm(u)),{s:2});
-  VT(fl.X(F.u5/2),200,'FF-H03 FLAT PATTERN','SCALE 1:2. '+fm(F.u5,1)+' x '+fm(F.v3,1)+'. Tab and back flange DOWN, ears UP, all 90° R2; Ø5.1 pin holes');
-  // ---- parts and notes ----
-  TBL(14,140,[[20,'PART NO.'],[80,'DESCRIPTION'],[44,'MATERIAL'],[11,'QTY','c'],[17,'TOOLING','c']],[
-    ['FF-H03','Hinge shelf with a lanced ear, clinched to the seam rail','Steel DX51D+Z275, 2.0','1','Low'],
-    ['FF-H04','Hinge pin Ø8, orbital riveted into the ears','303 stainless','2','Low'],
-    ['FF-H05','Latch strap, clinched to the top flange','Steel DX51D+Z275, 2.0','1','Low'],
-    ['CLS-M3-1','PEM self clinching nut M3, in FF-H05','Stainless','2',''],
-    ['LATCH','Spring bolt latch, push to release, 30 x 14 x 12','Purchased','1',''],
-    ['ISO 7045','Pan screw M3 x 16, latch to strap','A2 stainless','2','']],{s:2.2,rh:4});
-  NOTES(14,177,222,null,[
-    'Same parts and positions on every block size: the shelf hangs off the seam rail nearest the hub, so its length never changes. Nothing touches an outer wall.',
-    'Latch: bolt 8 x 8 with a 45° lead in, 6 throw, 10 to 15 N spring. It drops into a catch slot in the hub’s top (hub assembly). The pins and hooks carry the hub; the latch only stops it tilting.',
-    'Rivet the pins into the shelf, then clinch the shelf and strap in before coating; mask the pins and the M3 threads. Hub swap: press the latch, tilt 38°, lift 12.7 off the pins, out the front.'],{s:2.2});
-  return DW.end({code:'H-5',title:'HOOP HUB MOUNT',title2:'Hinge shelf, pins, latch strap and latch; hub shown for reference',pn:'FF-H03 / FF-H04 / FF-H05',qty:'1 set',
-    mat:'See parts list',fin:'Shelf and strap coated with the frame; pins bare',scale:'AS SHOWN',set:'FRAME: HOOP'},id);
-}
-
 // ================= HOOP, assembly =================
-// H-0: a 3x3 block assembled: rear view with balloons, a horizontal section through the hub's arm, the bill of materials
+// H-0: a 3x3 block assembled: rear view with balloons, a horizontal section through the hub and its upper pin, the bill of materials
 function sheetH0(id){
-  const g=GEO,R=3,C=3,P=g.P,W=C*P,H=R*P,D=g.D,hc=hubC(C,R,'hoop'),X=hhX(C),ys=H+HH.shelf.y;
+  const g=GEO,R=3,C=3,P=g.P,W=C*P,H=R*P,D=g.D,hc=hubC(),pn=HUBD.pin,xr=HUB_RAIL,[py1,py2]=hubPinY();
   DW.begin();const {TX,VT,NOTES,TBL,DAT,fm,mi}=DW;
   // ---- rear view, 1:6: seen from behind, so block x runs right to left ----
   const v=DW.VW(186,198,1/6,true);
@@ -2163,26 +2041,20 @@ function sheetH0(id){
   for(let k=1;k<C;k++){const x=k*P;
     for(const e of [-20,20]){v.L(x+e,g.FW,x+e,H-g.FW,'k');v.L(x+e,24,x+e,g.FW,'h');v.L(x+e,H-g.FW,x+e,H-24,'h');}
     v.L(x-20,24,x+20,24,'h');v.L(x-20,H-24,x+20,H-24,'h');}
-  v.P(hubL(C,R,'hoop'),'ph',1);
+  v.P(hubL(),'ph',1);
   const ioy=hc.y+HUBD.io.y;
   [['IN',-1],['OUT',1]].forEach(([n,sg])=>{const x=hc.x+HUBD.io.x+sg*HUBD.io.dx;v.C(x,ioy,HUBD.io.r,'ph');TX(v.X(x),v.Y(ioy)+0.7,n,{a:'middle',s:1.7});});
-  const lx=(Math.max(hc.x+HUBD.W/2-HUBD.Lg,0)+W-g.FW)/2,ly=(hc.y-HUBD.H/2+hc.y+HUBD.H/2-HUBD.A)/2;
-  TX(v.X(lx),v.Y(ly)-0.6,'HUB',{a:'middle',s:2});TX(v.X(lx),v.Y(ly)+2.4,'(REFERENCE)',{a:'middle',s:2});
-  // hinge shelf (its back flange) and the two ears and pins; the outer end sits behind the side wall's back flange
-  const xin=W-g.FW,xe=X.foot+HH.earIn+HH.t;
-  v.R(X.rail,ys-HH.shelf.fl,xin,ys,'k');v.P([[xin,ys-HH.shelf.fl],[xe,ys-HH.shelf.fl],[xe,ys],[xin,ys]],'h');
-  for(const sg of [-1,1]){const c=sg>0?'h':'k';
-    v.R(X.foot+sg*HH.earIn,ys,X.foot+sg*(HH.earIn+HH.t),H+HH.earTop,c);
-    v.R(X.foot+sg*HH.pinIn,H+HH.pinY-HH.pinR,X.foot+sg*HH.earIn,H+HH.pinY+HH.pinR,c);}
-  v.R(X.latch-HH.strap.w/2,H+HH.strap.drop,X.latch+HH.strap.w/2,H-1.2,'h');
+  TX(v.X(hc.x-HUBD.W/2+HUBD.Lg/2),v.Y(hc.y-HUBD.H/2)+4.6,'HUB (REFERENCE)',{a:'middle',s:2.1});
+  // the heads of the two pins the hub hangs on (sheet H-5)
+  for(const y of [py1,py2])v.R(xr+pn.sh,y-pn.hr,xr+pn.sh+pn.ht,y+pn.hr,'k');
   for(const x of footX(C))v.P([[x-5,H],[x-5,H+7.5],[x-2.4,H+11.5],[x+2.4,H+11.5],[x+5,H+7.5],[x+5,H]],'k');
   v.L(g.hoop.weldX,0,g.hoop.weldX,g.FW,'k2');
-  DW.CUT(v.X(-24),v.Y(790),v.X(W+24),v.Y(790),0,1,'A');
+  DW.CUT(v.X(-24),v.Y(py2),v.X(W+24),v.Y(py2),0,1,'A');
   VT(v.X(W/2),30,'REAR VIEW, 3x3 BLOCK','SCALE 1:6. Seen from behind: the right side is on the left');
-  v.BAL(W-10,500,-14,0,1);v.BAL(2*P+20,330,14,6,5);v.BAL(X.foot-100,ys-12,10,12,7);v.BAL(X.foot-(HH.pinIn+HH.earIn)/2,H+HH.pinY,16,-2,8);
-  v.BAL(X.latch,H-20,-4,-12,9);v.BAL(footX(C)[0],H+11.5,10,-6,10);v.BAL(g.hoop.weldX,20,-12,10,16);
+  v.BAL(W-10,500,-14,0,1);v.BAL(2*P+20,330,14,6,5);v.BAL(P-20,250,12,6,6);v.BAL(xr+pn.sh+pn.ht,py2,-9,-9,9);
+  v.BAL(footX(C)[0],H+11.5,10,-6,10);v.BAL(g.hoop.weldX,20,-12,10,13);
   DAT(v.X(450),v.Y(0),0,1,'B');DAT(v.X(0),v.Y(250),1,0,'C');
-  // ---- section A-A, 1:5: looking down through the hub's arm, front edge down ----
+  // ---- section A-A, 1:5: looking down through the hub's arm and its upper pin, front edge down ----
   const s=DW.VW(214,100,0.2),hp=PRO.hoop;
   DW.SEC(s,hp.pts,hp.rad,hp.t);DW.SEC(s,hp.pts.map(([x,d])=>[W-x,d]),hp.rad,hp.t);
   for(let k=1;k<C;k++){const x=k*P;DW.SEC(s,PRO.hoopSeam.pts.map(([a,d])=>[x+a,d]),PRO.hoopSeam.rad,PRO.hoopSeam.t);s.L(x,-27,x,D+3,'c');
@@ -2194,54 +2066,50 @@ function sheetH0(id){
   for(const x of footX(C)){s.C(x,g.LF,5.1,'k');s.CM(x,g.LF,5.1);s.C(x,g.LB,4.5,'k');s.CM(x,g.LB,4.5);}
   // weld nuts on the right wall at the side stations below the cut
   for(const d of [g.LF,g.LB]){s.R(W-1.2-6.5,d-7,W-1.2,d+7,'k');s.L(W-1.2-6.5,d-3.5,W-1.2,d-3.5,'t');s.L(W-1.2-6.5,d+3.5,W-1.2,d+3.5,'t');}
-  // hinge shelf, ears and pins below the hub
-  const sh=HH.shelf;s.R(X.rail,sh.d0,X.foot+HH.earIn+HH.t,sh.d1,'k');s.L(X.rail,sh.d1-HH.t,X.foot+HH.earIn+HH.t,sh.d1-HH.t,'t');
-  for(const sg of [-1,1]){s.R(X.foot+sg*HH.earIn,HH.earD[0],X.foot+sg*(HH.earIn+HH.t),HH.earD[1],'k');
-    s.R(X.foot+sg*HH.pinIn,HH.pinD-HH.pinR,X.foot+sg*HH.earIn,HH.pinD+HH.pinR,'k');}
+  // the upper pin, cut on its axis, and the hub's hook plate between the rail and the pin head
+  s.R(xr,pn.d-pn.r,xr+pn.sh,pn.d+pn.r,'sol');s.R(xr+pn.sh,pn.d-pn.hr,xr+pn.sh+pn.ht,pn.d+pn.hr,'sol');
+  s.R(xr+HUBD.plate.gap,HUBD.plate.d[0],xr+HUBD.plate.gap+HUBD.plate.t,HUBD.plate.d[1],'ph');
   for(let c=0;c<C;c++)s.R(c*P+0.6,-22,(c+1)*P-0.6,0,'ph');
   TX(s.X(P/2),s.Y(-11)+0.8,'PANEL (REFERENCE)',{a:'middle',s:2});
-  s.R(hc.x-HUBD.W/2,HUBD.d0,hc.x+HUBD.W/2,HUBD.d0+HUBD.T,'ph');TX(s.X(hc.x-HUBD.W/2+40),s.Y(38)+0.8,'HUB (REF.)',{a:'middle',s:2});
+  s.R(hc.x-HUBD.W/2,HUBD.d0,hc.x+HUBD.W/2,HUBD.d0+HUBD.T,'ph');TX(s.X(hc.x),s.Y(HUBD.d0+HUBD.T/2)+0.8,'HUB (REF.)',{a:'middle',s:2});
   [['IN',-1],['OUT',1]].forEach(([n,sg])=>{const x=hc.x+HUBD.io.x+sg*HUBD.io.dx;s.R(x-15,HUBD.d0+HUBD.T,x+15,HUBD.d0+HUBD.T+HUBD.io.len,'ph');
     TX(s.X(x),s.Y(104)+0.7,n,{a:'middle',s:1.7});});
-  VT(s.X(W/2),50,'SECTION A-A','SCALE 1:5. Looking down at 790 above the bottom face, front edge down. Vents and flange holes not shown');
+  VT(s.X(W/2),50,'SECTION A-A','SCALE 1:5. Looking down at '+fm(py2)+' above the bottom face, through the upper hub pin; front edge down. Vents and flange holes not shown');
   for(let k=0;k<C;k++)s.H(k*P,(k+1)*P,D,6,'304.8 [12]');
   s.H(0,W,-22,-11,mi(W)+' +0/−0.3');
   s.V(0,D,0,-8,mi(D));s.V(-22,0,0,-8,'22');s.V(-22,D,0,-17,'174.4 [6 7/8]');
   DAT(s.X(W-19.4),s.Y(0),0,1,'A');
-  s.BAL(W-0.6,150,5,-8,1);s.BAL(P+20,66,9,-9,5);s.BAL(W-4.5,g.LF,7,2,11);s.BAL(X.foot+HH.earIn+HH.t,75,10.5,-9.5,7);
+  s.BAL(W-0.6,150,5,-8,1);s.BAL(2*P+20,66,9,-9,5);s.BAL(P-20,66,-9,-9,6);s.BAL(W-4.5,g.LF,7,2,11);s.BAL(xr+pn.sh+pn.ht,pn.d,7,9,9);
   NOTES(214,126,190,'ASSEMBLY NOTES',[
     'Fixture on datums A (front plane), B (bottom face) and C (left face, seen from the front). Outside size +0/−0.3 each way, diagonals equal within 1.0, back flange flat within 0.5.',
-    'Order: close the ring with its one weld (sheet H-1), projection weld the nuts and locating pins, rivet the hinge pins into the shelf, clinch in the seam rails, hinge shelf and latch strap, mask the hinge pins, locating pins, sockets and every nut thread, then clean, pretreat and powder coat the whole frame matte black. Pad print the gloss logo strip up both sides (sheet C-6). Fit the latch and its screws last.',
+    'Order: close the ring with its one weld (sheet H-1), projection weld the nuts and locating pins, clinch in the seam rails (item 6 or 8, its hub pins already riveted, in the seam 1 ft in from the left), mask the hub pins, locating pins, sockets and every nut thread, then clean, pretreat and powder coat the whole frame matte black. Pad print the gloss logo strip up both sides (sheet C-6).',
     'Nothing is fastened to a side wall’s outer face: it carries the logo strip and the side joints. Clinch dishes sit on the top, bottom and back faces only, never proud.',
     'Joint pins, nuts and sockets: sheet C-2. Back flange holes: sheet C-4 (no corner holes on Hoop). Gravity lock grooves: sheet C-1. Hub mount: sheet H-5.',
-    'The hub is its own assembly, shown for reference. Its two hooks hang on item 8 and item 13 latches its top.',
-    'Item 15 ships loose: one bolt for each clearance hole in the bottom wall and in the left side wall (seen from the front). Each bolts into the next block’s weld nut, or into the base rail under the bottom row (sheets C-2 and C-3).',
+    'The hub is its own assembly, shown for reference. It hangs on the two item 9 pins in item 6 or 8 and locks with its own spring plunger (sheet H-5).',
+    'Item 12 ships loose: one bolt for each clearance hole in the bottom wall and in the left side wall (seen from the front). Each bolts into the next block’s weld nut, or into the base rail under the bottom row (sheets C-2 and C-3).',
     'Blocks are named height x width in feet: 3x3, 3x2 (3 high, 2 wide), 2x3 (2 high, 3 wide) and 2x2.'],{s:2.4});
   // ---- outside size and mass for every block ----
-  const sk=hhFlat(),shm=sk.u5*sk.v3*HH.t*7.85e-6,rpm=develop(PRO.hoopSeam).total*PRO.hoopSeam.t*7.85e-6;
+  const rpm=develop(PRO.hoopSeam).total*PRO.hoopSeam.t*7.85e-6;
   const mrows=KIT.map(({k,R:Rr,C:Cc})=>{const f=hoopFlat(Cc,Rr),rl=rpm*(Rr*P+2*HSEAM.U0);
-    return [{t:k,b:1},'FF-H00-'+k.replace('x',''),fm(Cc*P)+' x '+fm(Rr*P)+' x '+fm(D),String(Cc-1),fm(f.kg,1),fm(f.kg+(Cc-1)*rl+shm+0.19,1)];});
+    return [{t:k,b:1},'FF-H00-'+k.replace('x',''),fm(Cc*P)+' x '+fm(Rr*P)+' x '+fm(D),String(Cc-1),fm(f.kg,1),fm(f.kg+(Cc-1)*rl+0.06,1)];});
   TX(214,170.4,'EACH BLOCK SIZE',{s:2.4,b:1});
   TBL(214,172,[[13,'BLOCK','c'],[22,'ASSEMBLY'],[42,'OUTSIDE W x H x D','c'],[20,'SEAM RAILS','c'],[22,'STRIP, kg','c'],[30,'FRAME, kg (APPROX.)','c']],mrows,{s:2.3,rh:4.1});
-  NOTES(214,196,190,null,['Frame mass includes the seam rails, shelf, strap, nuts, pins and latch, before powder coat; the panels and hub are not included.'],{s:2.2});
+  NOTES(214,196,190,null,['Frame mass includes the seam rails, nuts and pins, before powder coat; the panels and hub are not included.'],{s:2.2});
   // ---- bill of materials for every block ----
   const B=(i,pn,d,m,q)=>[String(i),pn,d,m].concat(q.map(x=>x?String(x):''));
   const rows=[B(1,'FF-H01-33','Hoop strip for a 3x3, punched, formed, bent and welded','S280GD+ZM310, 1.2',[1,0,0,0]),
     B(2,'FF-H01-32','Hoop strip for a 3x2','S280GD+ZM310, 1.2',[0,1,0,0]),
     B(3,'FF-H01-23','Hoop strip for a 2x3','S280GD+ZM310, 1.2',[0,0,1,0]),
     B(4,'FF-H01-22','Hoop strip for a 2x2','S280GD+ZM310, 1.2',[0,0,0,1]),
-    B(5,'FF-H02-3','Seam rail, channel, 3 ft, clinched (sheet H-4)','S280GD+ZM310, 1.2',[2,1,0,0]),
-    B(6,'FF-H02-2','Seam rail, channel, 2 ft, clinched','S280GD+ZM310, 1.2',[0,0,2,1]),
-    B(7,'FF-H03','Hinge shelf, clinched to the seam rail (sheet H-5)','DX51D+Z275, 2.0',[1,1,1,1]),
-    B(8,'FF-H04','Hinge pin Ø8, orbital riveted into item 7','303 stainless',[2,2,2,2]),
-    B(9,'FF-H05','Latch strap, clinched to the top flange','DX51D+Z275, 2.0',[1,1,1,1]),
+    B(5,'FF-H02-3','Seam rail, channel, 3 ft, clinched (sheet H-4)','S280GD+ZM310, 1.2',[1,0,0,0]),
+    B(6,'FF-H02-3H','Seam rail, channel, 3 ft, at the hub: item 9 riveted in (sheet H-5)','S280GD+ZM310, 1.2',[1,1,0,0]),
+    B(7,'FF-H02-2','Seam rail, channel, 2 ft, clinched','S280GD+ZM310, 1.2',[0,0,1,0]),
+    B(8,'FF-H02-2H','Seam rail, channel, 2 ft, at the hub: item 9 riveted in (sheet H-5)','S280GD+ZM310, 1.2',[0,0,1,1]),
+    B(9,'FF-C06','Hub pin, orbital riveted in item 6 or 8 (sheet C-5)','316 stainless',[2,2,2,2]),
     B(10,'FF-C02','Locating pin, projection welded in the top wall (sheet C-5)','Steel, zinc nickel',[3,2,3,2]),
     B(11,'DIN 929','Hex weld nut M8, top wall and right side wall','Steel, plain',[7,6,5,4]),
-    B(12,'CLS-M3-1','PEM self clinching nut M3, in item 9','Stainless',[2,2,2,2]),
-    B(13,'LATCH','Spring bolt latch, push to release (sheet H-5)','Purchased',[1,1,1,1]),
-    B(14,'ISO 7045','Pan screw M3 x 16, latch to strap','A2 stainless',[2,2,2,2]),
-    B(15,'ISO 4162','Hex flange bolt M8 x 16, 8.8, ships loose for the joints (sheet C-2)','Steel, zinc flake',[7,6,5,4]),
-    B(16,'WELD','Square butt, one per ring, x 254 on the bottom (sheet H-1)','',[1,1,1,1])];
+    B(12,'ISO 4162','Hex flange bolt M8 x 16, 8.8, ships loose for the joints (sheet C-2)','Steel, zinc flake',[7,6,5,4]),
+    B(13,'WELD','Square butt, one per ring, x 254 on the bottom (sheet H-1)','',[1,1,1,1])];
   TX(14,209.4,'BILL OF MATERIALS, PER BLOCK. QUANTITY FOR EACH BLOCK SIZE (HEIGHT x WIDTH, FT).',{s:2.4,b:1});
   TBL(14,212,[[9,'ITEM','c'],[20,'PART NO.'],[100,'DESCRIPTION'],[38,'MATERIAL'],[11,'3x3','c'],[11,'3x2','c'],[11,'2x3','c'],[11,'2x2','c']],rows,{rh:4.05,s:2.35});
   return DW.end({code:'H-0',title:'HOOP FRAME ASSEMBLY',title2:'3x3 shown, every block size in the bill of materials',pn:'FF-H00-33 / -32 / -23 / -22',qty:'1',
@@ -2626,7 +2494,7 @@ function sheetC4(id){
     mat:'Clips: L 4 x 4 x 3/8 in steel angle, A36',fin:'Clips hot dip galvanized, ASTM A123',scale:'AS SHOWN',set:'COMMON: RIB AND HOOP'},id);
 }
 
-// ---------- C-5: the locating pins and the hardware for both frames ----------
+// ---------- C-5: the frame pins and the hardware for both frames ----------
 function sheetC5(id){
   DW.begin();const {TX,VT,NOTES,TBL,fm}=DW;
   // ---- FF-C01, 4:1, shown in a 1.6 Rib top wall (phantom) ----
@@ -2655,7 +2523,20 @@ function sheetC5(id){
     'FF-C01 presses from inside into Ø10.0 +0.05/0 until the collar seats. Push out at least 1 kN, checked on first articles.',
     'FF-C02 projection welds from inside, through Ø10.2 +0.1/0, after the ring is closed. Weld before powder coat.',
     'Mask both pins, the sockets and every nut thread during powder coat.',
-    'FF-C04, the rail pin, is on sheet C-3.'],{s:2.3});
+    'FF-C04, the rail pin, is on sheet C-3.',
+    'FF-C06, the hub pin, is orbital riveted from inside the H seam rail before coating (sheets R-5, H-5): shoulder flat on the rail within 0.1, formed head Ø8 min. Its 3.5 shoulder leaves 1.5 of play for the hub’s 2.0 hook plate.'],{s:2.3});
+  // ---- FF-C06, 5:1, as supplied, in a Rib seam rail (phantom) with its formed head in phantom; axis up ----
+  const c6=DW.VW(330,129,5),t6=2;
+  c6.P(pin6(t6,false).map(([a,r])=>[r,a]),'k',1);
+  c6.L(-9,0,9,0,'ph');c6.L(-9,-t6,9,-t6,'ph');c6.L(0,-7.5,0,8,'c');
+  c6.P([[-4,-t6],[-4,-t6-PIN6.fh+0.6],[-3.3,-t6-PIN6.fh],[3.3,-t6-PIN6.fh],[4,-t6-PIN6.fh+0.6],[4,-t6]],'ph');
+  c6.H(-6.5,6.5,PIN6.sl+PIN6.ht,6,'Ø13');c6.H(-2.5,2.5,-PIN6.tl,-6,'Ø5 −0.05/−0.1');
+  c6.V(PIN6.sl,PIN6.sl+PIN6.ht,-6.5,-8,'2.5');c6.V(0,PIN6.sl,-4,-20.5,'3.5 ±0.05');c6.V(-PIN6.tl,0,-2.5,-9,'5.5');
+  c6.LD(4,PIN6.sl/2,10,-6,['SHOULDER Ø8 h9'],{s:2.1});
+  c6.LD(6.25,PIN6.sl+PIN6.ht-0.25,9,-5,['0.5 x 45°'],{s:2.1});
+  c6.LD(7,0,7,-6,['RIB RAIL 2.0 (REF.), HOOP 1.2'],{s:2.1});
+  c6.LD(3.3,-t6-PIN6.fh,9,8,['FORMED HEAD Ø8 MIN (PHANTOM)'],{s:2.1});
+  VT(330,76,'FF-C06 HUB PIN, ORBITAL RIVET','SCALE 5:1. Rib and Hoop. 316 stainless, passivated');
   // ---- hardware for one block of each size ----
   const H=(pn,d,spec,use,r,h)=>[{t:pn,b:1},d,spec,use].concat(r.map(String),h.map(String));
   const z=[0,0,0,0];
@@ -2666,10 +2547,8 @@ function sheetC5(id){
     H('DIN 929 M8','Hex weld nut M8','Steel, plain','Hoop top and right side walls',z,[7,6,5,4]),
     H('FF-C01','Locating pin, press fit','303 stainless','Rib top wall',[3,2,3,2],z),
     H('FF-C02','Locating pin, projection weld','Steel, zinc nickel','Hoop top wall',z,[3,2,3,2]),
-    H('RIV-32-CSK','Blind rivet Ø3.2, closed end, 100° head','Al body, A2 mandrel','Rib corners, tabs, rails, hanger',[35,31,35,31],z),
-    H('CLS-M3-1','PEM self clinching nut M3','Stainless','Hoop latch strap',z,[2,2,2,2]),
-    H('LATCH','Spring bolt latch, push to release','Purchased','Hoop hub lock (sheet H-5)',z,[1,1,1,1]),
-    H('ISO 7045','Pan head screw M3 x 16','A2 stainless','Hoop latch to strap',z,[2,2,2,2])].map(r=>r.map(c=>c==='0'?'':c));
+    H('FF-C06','Hub pin, orbital riveted','316 stainless','Seam rail at the hub (R-5, H-5)',[2,2,2,2],[2,2,2,2]),
+    H('RIV-32-CSK','Blind rivet Ø3.2, closed end, 100° head','Al body, A2 mandrel','Rib corners, tabs and seam rails',[32,28,32,28],z)].map(r=>r.map(c=>c==='0'?'':c));
   TBL(14,147,[[20,'PART'],[56,'DESCRIPTION'],[30,'MATERIAL'],[52,'WHERE'],[9,'3x3','c'],[9,'3x2','c'],[9,'2x3','c'],[9,'2x2','c'],[9,'3x3','c'],[9,'3x2','c'],[9,'2x3','c'],[9,'2x2','c']],rows,{s:2.2,rh:4.2,hh:5});
   TX(190,145.4,'RIB',{a:'middle',s:2.4,b:1});TX(226,145.4,'HOOP',{a:'middle',s:2.4,b:1});
   TX(14,196.4,'HARDWARE, PER WALL',{s:2.4,b:1});
@@ -2682,7 +2561,7 @@ function sheetC5(id){
     [{t:'CLIP BOLTS',b:1},'3/8-16 x 1 1/4 hex bolt, 2 washers, nylon lock nut','Zinc plated, grade 5','1 per Ø11.1 clip hole','C-4'],
     [{t:'TUBE BOLTS',b:1},'5/8-11 x 5 1/2 hex bolt, crush sleeve, washers, lock nut','Zinc plated, grade 5','1 per clip, or weld','C-4']],{s:2.2,rh:4.2,hh:5});
   NOTES(244,198,160,'WHAT SHIPS WITH WHAT',['Each block ships with its own joint bolts: one for every clearance hole in its bottom wall and its left side wall (seen from the front). The bolts go into the next block’s nuts, or into the base rail.','The base rail kit ships with its pins fitted, its M10 bolts and two end caps. Clips ship with their bolts. Angle iron and its bolts, the seats and the uprights are by others, or the optional angle kit.'],{s:2.3});
-  return DW.end({code:'C-5',title:'LOCATING PINS AND HARDWARE',title2:'The two frame pins and every purchased part, per block and per wall',pn:'FF-C01, FF-C02',qty:'Per the tables',
+  return DW.end({code:'C-5',title:'FRAME PINS AND HARDWARE',title2:'The three frame pins and every purchased part, per block and per wall',pn:'FF-C01, FF-C02, FF-C06',qty:'Per the tables',
     mat:'As listed',fin:'As listed',scale:'AS SHOWN',set:'COMMON: RIB AND HOOP'},id);
 }
 
@@ -2804,6 +2683,156 @@ function sheetC6(id){
     mat:'Per the frame sheets',fin:'Matte RAL 9005 powder; gloss print near RAL 7024',scale:'AS SHOWN',set:'COMMON: RIB AND HOOP'},id);
 }
 
+// ================= THE HUB MOUNT, R-5 (Rib) and H-5 (Hoop) =================
+// The hub hangs on two FF-C06 shoulder pins in the right leg of the seam rail 1 ft in from the left, seen from the front,
+// the same on every block size and on both frames, and a spring plunger in the hub locks it through a third hole in that
+// leg. The rails there are the H variants of FF-R05 and FF-H02. One function draws both sheets from the frame's rail.
+// Block mm: x right and y up from the block's left and bottom outer faces seen from the front, d back from the front plane.
+// the parts of a closed outline (sheet mm) that fall inside a window, as open runs, so a detail view draws only what it shows
+function clipRuns(pts,x0,y0,w,h){
+  const x1=x0+w,y1=y0+h,inside=([x,y])=>x>=x0&&x<=x1&&y>=y0&&y<=y1,k=pts.findIndex(p=>!inside(p));
+  if(k<0)return [pts.concat([pts[0]])];
+  const P=pts.slice(k).concat(pts.slice(0,k)),runs=[];let cur=null;
+  for(let i=0;i<P.length;i++){
+    const [ax,ay]=P[i],[bx,by]=P[(i+1)%P.length],dx=bx-ax,dy=by-ay;let t0=0,t1=1,ok=true;
+    for(const [p,q] of [[-dx,ax-x0],[dx,x1-ax],[-dy,ay-y0],[dy,y1-ay]]){
+      if(Math.abs(p)<1e-12){if(q<0){ok=false;break;}continue;}
+      const r=q/p;if(p<0){if(r>t1){ok=false;break;}if(r>t0)t0=r;}else{if(r<t0){ok=false;break;}if(r<t1)t1=r;}}
+    if(!ok||t1-t0<1e-9){cur=null;continue;}
+    const A=[ax+t0*dx,ay+t0*dy],B=[ax+t1*dx,ay+t1*dy];
+    if(cur&&t0<1e-9)cur.push(B);else{cur=[A,B];runs.push(cur);}
+    if(t1<1-1e-9)cur=null;}
+  return runs;}
+const HUBRAIL={
+  rib:{code:'R-5',title:'RIB HUB MOUNT',set:'FRAME: RIB',pn:'FF-R05',t:2,back:66,dep:62,asm:'R-0',rails:'R-4',
+    mat:'5052-H32 aluminum sheet, 2.0 [0.079]; pins 316 stainless',fin:()=>FIN_AL,sheet:'2.0 aluminum',
+    rivet:'before powder coat'},
+  hoop:{code:'H-5',title:'HOOP HUB MOUNT',set:'FRAME: HOOP',pn:'FF-H02',t:1.2,back:76,dep:74.2,asm:'H-0',rails:'H-4',
+    mat:'S280GD+ZM310 steel strip, 1.2 [0.047]; pins 316 stainless',fin:()=>FIN_HOOP,sheet:'1.2 steel',
+    rivet:'before the rail is clinched in'}};
+// FF-C06 (sheet C-5): head Ø13 x 2.5, shoulder Ø8 x 3.5 that sets the plate's room, tail Ø5 x 5.5 orbital riveted to Ø8
+const PIN6={hd:13,ht:2.5,sd:8,sl:3.5,td:5,tl:5.5,hole:5.1,fd:8,fh:1.5};
+// the pin's outline along its axis: a from the rail's outer face toward the hub, r radial. t: the rail's sheet; formed:
+// the tail riveted over inside the leg, else as supplied.
+function pin6(t,formed){const p=PIN6,half=[];
+  if(formed){const a0=-t-p.fh;half.push([a0,0],[a0,p.fd/2-1.1],[a0+0.7,p.fd/2],[-t,p.fd/2],[-t,p.td/2]);}
+  else{const a0=-p.tl;half.push([a0,0],[a0,p.td/2-0.4],[a0+0.4,p.td/2]);}
+  half.push([0,p.td/2],[0,p.sd/2],[p.sl,p.sd/2],[p.sl,p.hd/2],[p.sl+p.ht-0.5,p.hd/2],[p.sl+p.ht,p.hd/2-0.5],[p.sl+p.ht,0]);
+  return half.concat(half.slice(1,-1).reverse().map(([a,r])=>[a,-r]));}
+
+function sheetHubMount(k,id){
+  const g=GEO,F=HUBRAIL[k],t=F.t,h=HUBD,P=h.plate,pn=h.pin,xr=HUB_RAIL,[y1,y2]=hubPinY(),yq=h.y+h.plg.dy,dp=pn.d,dq=h.plg.d;
+  const xl=h.x-h.W/2,xp=xr+P.gap,pk=pocketY(3).filter(p=>p>340&&p<590);
+  DW.begin();const {TX,VT,NOTES,TBL,ORDX,ORDY,fm}=DW;
+
+  // ---- view A, the hub bay from the front with the panels out, 1:5 ----
+  const a=DW.VW(-22.8,154,0.2);
+  for(const x of [g.P-20,xr-t])a.R(x,330,x+t,600,'sol');
+  a.L(g.P,326,g.P,604,'c');
+  for(const y of [330,600])DW.BRK(a.X(g.P-26),a.Y(y),a.X(xr+6),a.Y(y));
+  a.P(hubL(),'ph',1);a.R(xp,h.y-P.y,xp+P.t,h.y+P.y,'ph');
+  for(const y of [y1,y2]){a.R(xr,y-pn.r,xr+pn.sh,y+pn.r,'k');a.R(xr+pn.sh,y-pn.hr,xr+pn.sh+pn.ht,y+pn.hr,'k');}
+  for(const e of [-3.25,3.25])a.L(xr-t,yq+e,xr,yq+e,'h');
+  a.L(264,h.y,h.x+24,h.y,'c');a.L(h.x,328,h.x,h.y+24,'c');
+  ORDY([y1,h.y,y2,yq].map(a.Y),a.X(264),a.X(264)-7,[fm(y1),fm(h.y)+' HUB',fm(y2),fm(yq)],{s:2.2});
+  ORDX([xr,h.x].map(a.X),a.Y(330)+1,a.Y(330)+7,[fm(xr),fm(h.x)],{s:2.2});
+  for(const y of [y1,y2,yq])a.L(264,y,xr-t-2,y,'t');
+  a.T(h.x+62,h.y+66,'HUB (REF.)',{a:'middle',s:2.1});
+  a.LD(xr+pn.sh+pn.ht,y2,9,7,['PIN FF-C06, 2X'],{s:2.1});
+  a.LD(xr-t,yq,10,-6,['PLUNGER HOLE'],{s:2.1});
+  a.LD(xr-t/2,345,3,22,[F.pn+'-3H OR -2H, RIGHT LEG'],{s:2.1});
+  VT(a.X(432),24,'VIEW A, THE HUB BAY','SCALE 1:5. From the front, panels out');
+
+  // ---- view C, the rail's right leg at the hub, 1:2: block y across, d up ----
+  const c=DW.VW(-52,84,0.5);
+  c.P(legOutline(340,590,F.dep,pk).slice(1,-1),'k');
+  for(const d of [F.dep,F.back-t,F.back])c.L(340,d,590,d,'k');
+  for(const y of [340,590])DW.BRK(c.X(y),c.Y(-2),c.X(y),c.Y(F.back+2));
+  for(const y of [y1,y2]){c.C(y,dp,PIN6.hole/2,'k');c.CM(y,dp,PIN6.hole/2);}
+  c.C(yq,dq,3.25,'k');c.CM(yq,dq,3.25);c.L(yq,dq+4.8,yq,dp+3,'t');
+  ORDX([y1,y2,yq].map(c.X),c.Y(dp)-3,c.Y(F.back)-7,[fm(y1),fm(y2),fm(yq)],{s:2.2});
+  c.V(0,dp,y1,5,fm(dp));c.V(0,dq,yq,5,fm(dq));
+  c.LD(y1,dp,14,15,['2X Ø5.1 +0.1/0 FOR FF-C06'],{s:2.1});
+  c.LD(yq,dq,7,19,['Ø6.5 +0.1/0, PLUNGER'],{s:2.1});
+  c.LD(pk[0]+3,8,-6,12,['J GROOVE (SHEET C-1)'],{s:2.1,dir:-1});
+  DW.CUT(c.X(y2),c.Y(-7),c.X(y2),c.Y(F.back+5),-1,0,'B');
+  DW.DAT(c.X(470),c.Y(0),0,1,'A');
+  VT(c.X(465),24,'VIEW C, THE RIGHT LEG AT THE HUB','SCALE 1:2. '+F.pn+'-3H, the -2H alike. From the hub side: block y across, front edge down');
+
+  // ---- section B-B through the upper pin, 4:1: x across, d up ----
+  const x0=xr-9,s=DW.VW(290-x0*4,108+43*4,4),hr=PIN6.hole/2,dB=43,dT=57;
+  for(const [u0,u1] of [[dB,dp-hr],[dp+hr,dT]]){s.R(xr-t,u0,xr,u1,'zone');s.L(xr-t,u0,xr-t,u1,'k');s.L(xr,u0,xr,u1,'k');}
+  for(const u of [dp-hr,dp+hr])s.L(xr-t,u,xr,u,'k');
+  for(const u of [dB,dT])DW.BRK(s.X(xr-t),s.Y(u),s.X(xr),s.Y(u));
+  HATCH(s,pin6(t,true).map(([q,r])=>[xr+q,dp+r]));
+  // the plate either side of its pocket, cut off at the view's edge
+  const gc=pn.r+0.5;
+  for(const [u0,u1] of [[dB,dp-gc],[dT,dp+gc]]){s.P([[xp,u0],[xp,u1],[xp+P.t,u1],[xp+P.t,u0]],'ph');DW.BRK(s.X(xp),s.Y(u0),s.X(xp+P.t),s.Y(u0));}
+  s.L(xl,dB,xl,dT,'ph');
+  s.L(xr-t-4,dp,xl+2.5,dp,'c');
+  s.H(xr,xr+pn.sh,dp+pn.hr,9,fm(pn.sh));s.H(xr+pn.sh,xr+pn.sh+pn.ht,dp+pn.hr,9,fm(pn.ht),{out:1});
+  s.V(dp-pn.hr,dp+pn.hr,xr+pn.sh+pn.ht,9,'Ø13');
+  s.H(xr,xp,dB,-7,fm(P.gap),{out:-1});s.H(xp,xp+P.t,dB,-7,fm(P.t),{out:1});
+  s.H(xr,xl,dB,-14,fm(xl-xr));
+  s.LD(xr+pn.sh+pn.ht/2,dp-pn.hr,12,14,['FF-C06, ORBITAL RIVETED'],{s:2.1});
+  s.LD(xr-t-PIN6.fh,dp+2,-7,-10,['FORMED Ø8 MIN'],{s:2.1,dir:-1});
+  s.LD(xr-t/2,dB+3,-7,8,['RIGHT LEG, '+F.sheet],{s:2.1,dir:-1});
+  s.LD(xp+P.t/2,dT-1.5,-12,-11,['HOOK PLATE (HUB, REF.)'],{s:2.1,dir:-1});
+  s.LD(xl,dB+5,7,6,['HUB LEG (REF.)'],{s:2.1});
+  VT(330,31,'SECTION B-B','SCALE 4:1. Through the upper pin, looking down; front edge down');
+
+  // ---- the hook plate, the hub's side of the interface, 1:2: seen from the rail, front to the right ----
+  const p=DW.VW(76,197,0.5,true),pl=plateOutline(12);
+  p.P(pl,'k',1);
+  p.C(dq,h.plg.dy,3.5,'k');p.CM(dq,h.plg.dy,3.5);
+  for(const y of [-pn.dy,pn.dy])p.C(dp,y,pn.r,'ph');
+  for(const [y,d] of [[100,62],[0,50],[-102,40]])p.C(d,y,4,'h');
+  const yb=-P.y,ys=[-P.y,-pn.dy,pn.dy,h.plg.dy,P.y];
+  ORDY(ys.map(p.Y),p.X(P.d[1])-1,p.X(P.d[1])-8,ys.map(y=>fm(y-yb)),{s:2.2});
+  const ds=[P.d[0],dq,dp,P.d[1]];
+  ORDX(ds.map(p.X),p.Y(-P.y)+1,p.Y(-P.y)+7,ds.map(d=>fm(d-P.d[0])),{s:2.2});
+  p.LD(dq,h.plg.dy,14,-8,['Ø7 PLUNGER'],{s:2.1});
+  p.LD(40,-102,10,8,['3 STANDOFFS TO THE LEG'],{s:2.1});
+  DW.DET(p.X(dp+6),p.Y(pn.dy-6),13,'D');
+  VT(p.X(50),128,'HOOK PLATE, HUB SIDE','SCALE 1:2. Part of the hub, seen from the rail');
+
+  // ---- detail D, the upper groove and pocket, 2:1 ----
+  const e=DW.VW(237,320,2,true),yr=pn.dy-g.drop;
+  for(const run of clipRuns(pl.map(([x,y])=>[e.X(x),e.Y(y)]),95,140,58,60))DW.PL(run,'k');
+  DW.RC(95,140,58,60,'t');
+  e.L(dp,pn.dy-8,dp,pn.dy+8,'c');e.L(dp-8,pn.dy,dp+8,pn.dy,'c');e.L(dp-7,yr,P.d[1]+1.5,yr,'c');
+  e.V(yr-gc,yr+gc,64,7,fm(2*gc));
+  e.V(yr,pn.dy,44.5,-6,fm(g.drop));
+  e.H(dp,P.d[1],pn.dy+6,5,fm(P.d[1]-dp));
+  e.LD(dp+gc*0.71,pn.dy+gc*0.71,8,-6,['R'+fm(gc)],{s:2.2});
+  e.LD(P.d[1],yr+gc,-6,9,['BREAK THE MOUTH 1 x 45°'],{s:2.1,dir:-1});
+  VT(124,133,'DETAIL D','SCALE 2:1. Both grooves alike');
+
+  // ---- holes, parts and notes ----
+  TX(166,154.4,'HOLES IN THE RIGHT LEG, H RAILS ONLY',{s:2.3,b:1});
+  TBL(166,156,[[16,'HOLE'],[22,'SIZE','c'],[22,'y','c'],[10,'d','c']],[
+    ['Pin, 2X','Ø5.1 +0.1/0',fm(y1)+', '+fm(y2),fm(dp)],
+    ['Plunger','Ø6.5 +0.1/0',fm(yq),fm(dq)]],{s:2.2,rh:4.1});
+  NOTES(166,176,70,null,['y up from the block’s bottom face (datum B), d back from the front edge (datum A). Every block size alike.'],{s:2.1,plain:1});
+  TX(244,128.4,'PARTS AT THE HUB, EVERY BLOCK',{s:2.4,b:1});
+  TBL(244,130,[[22,'PART NO.'],[96,'DESCRIPTION'],[14,'QTY','c'],[30,'SHEET','c']],[
+    [{t:F.pn+'-3H',b:1},'Seam rail, 3 ft, with the hub holes: 3x3 and 3x2','1',F.rails+', this sheet'],
+    [{t:F.pn+'-2H',b:1},'Seam rail, 2 ft, with the hub holes: 2x3 and 2x2','1',F.rails+', this sheet'],
+    [{t:'FF-C06',b:1},'Hub pin, 316 stainless, orbital riveted into the H rail','2','C-5'],
+    [{t:'HUB',b:1},'Hook plate, standoffs and spring plunger, with the hub','1','Reference']],{s:2.2,rh:4.1});
+  NOTES(244,156,162,'NOTES',[
+    'The hub hangs on two FF-C06 pins in the right leg of the seam rail 1 ft in from the left, seen from the front: the same place on all four blocks, the hub’s center 457.2 [18] in and 457.2 [18] up. A 3 ft wide block’s second seam takes the plain rail.',
+    'The H rails are '+F.pn+'-3 and -2 (sheet '+F.rails+') with three holes added to the right leg, cut in the flat with the other features and clear of the bend.',
+    'Orbital rivet the pins from inside the channel '+F.rivet+': shoulder flat on the leg within 0.1, formed head Ø8 min, no cracks. Mask the pins for powder coat.',
+    'The hook plate rides 0.5 off the leg, between it and the pin heads, so the hub can only lift and slide on the pins. Each pin carries under 50 N at twice the hub’s weight.',
+    'Hub swap, from the front once its panel and any panel above it are out: unplug the lead plug, pull the knob, lift 12.7 [1/2], ease 24 forward off the pins, bring it out. Refit in reverse; the plunger snaps into its hole as the hub drops.',
+    'Nothing that holds the hub is fixed to an outer wall. Assembly: sheet '+F.asm+'.'],{s:2.2});
+  return DW.end({code:F.code,title:F.title,title2:'Seam rail '+F.pn+'-3H and -2H with two FF-C06 pins; the hub’s hook plate for reference',pn:F.pn+'-3H / -2H, FF-C06',qty:'1 rail, 2 pins',
+    mat:F.mat,fin:F.fin(),scale:'AS SHOWN',set:F.set},id);
+}
+function sheetR5(id){return sheetHubMount('rib',id);}
+function sheetH5(id){return sheetHubMount('hoop',id);}
+
 // ================= the drawing set: its index sheet, the registry and the page viewer =================
 const SHEETS=[
   {code:'G-1',set:'Index',title:'Drawing set index and general notes',pn:'',fn:'sheetG1'},
@@ -2812,19 +2841,19 @@ const SHEETS=[
   {code:'R-2',set:'Rib',title:'Rib side wall, flat pattern',pn:'FF-R01, FF-R02',fn:'sheetR2'},
   {code:'R-3',set:'Rib',title:'Rib top and bottom walls',pn:'FF-R03, FF-R04',fn:'sheetR3'},
   {code:'R-4',set:'Rib',title:'Rib seam rail',pn:'FF-R05',fn:'sheetR4'},
-  {code:'R-5',set:'Rib',title:'Rib hub hanger',pn:'FF-R06',fn:'sheetR5'},
+  {code:'R-5',set:'Rib',title:'Rib hub mount',pn:'FF-R05-3H, -2H, FF-C06',fn:'sheetR5'},
   {code:'R-6',set:'Rib',title:'Rib corner and tab details',pn:'FF-R01 to FF-R04',fn:'sheetR6'},
   {code:'H-0',set:'Hoop',title:'Hoop frame assembly',pn:'FF-H00',fn:'sheetH0'},
   {code:'H-1',set:'Hoop',title:'Hoop strip: profile, corners and weld',pn:'FF-H01',fn:'sheetH1'},
   {code:'H-2',set:'Hoop',title:'Hoop strip, flat pattern',pn:'FF-H01',fn:'sheetH2'},
   {code:'H-3',set:'Hoop',title:'Hoop strip, punch details',pn:'FF-H01',fn:'sheetH3'},
   {code:'H-4',set:'Hoop',title:'Hoop seam rail',pn:'FF-H02',fn:'sheetH4'},
-  {code:'H-5',set:'Hoop',title:'Hoop hub mount',pn:'FF-H03, FF-H04, FF-H05',fn:'sheetH5'},
+  {code:'H-5',set:'Hoop',title:'Hoop hub mount',pn:'FF-H02-3H, -2H, FF-C06',fn:'sheetH5'},
   {code:'C-1',set:'Common',title:'Gravity lock, panel to frame',pn:'J groove',fn:'sheetC1'},
   {code:'C-2',set:'Common',title:'Block joints',pn:'Joint features',fn:'sheetC2'},
   {code:'C-3',set:'Common',title:'Base rail',pn:'FF-C03, FF-C04',fn:'sheetC3'},
   {code:'C-4',set:'Common',title:'Mounting: hole grid, angle and tube clips',pn:'FF-C05',fn:'sheetC4'},
-  {code:'C-5',set:'Common',title:'Locating pins and hardware',pn:'FF-C01, FF-C02',fn:'sheetC5'},
+  {code:'C-5',set:'Common',title:'Frame pins and hardware',pn:'FF-C01, FF-C02, FF-C06',fn:'sheetC5'},
   {code:'C-6',set:'Common',title:'Logo strip and finish',pn:'Side walls, all blocks',fn:'sheetC6'}];
 DW.setOrder(SHEETS.map(s=>s.code));
 const SHEET_FN={sheetG1,sheetR0,sheetR1,sheetR2,sheetR3,sheetR4,sheetR5,sheetR6,sheetH0,sheetH1,sheetH2,sheetH3,sheetH4,sheetH5,sheetC1,sheetC2,sheetC3,sheetC4,sheetC5,sheetC6};
@@ -2840,39 +2869,39 @@ function sheetG1(id){
   // the four blocks
   TX(14,152.6,'THE FOUR BLOCKS, NAMED HEIGHT x WIDTH IN FEET',{s:2.6,b:1});
   TBL(14,154,[[14,'BLOCK','c'],[46,'OUTSIDE W x H x D','c'],[16,'PANELS','c'],[22,'JOINT BOLTS','c'],[28,'RIB FRAME, kg','c'],[30,'HOOP FRAME, kg','c']],
-    KIT.map(({k,R,C},i)=>[{t:k,b:1},fm(C*P)+' x '+fm(R*P)+' x '+fm(g.D),String(R*C),String(jointCount(R,C)),fm(FRAME_KG[k].rib,1),fm(FRAME_KG[k].hoop,1)]),{s:2.3,rh:4.25,hh:5});
+    KIT.map(({k,R,C},i)=>[{t:k,b:1},fm(C*P)+' x '+fm(R*P)+' x '+fm(g.D),String(R*C),String(jointCount(R,C)),FRAME_KG[k].rib.toFixed(1),FRAME_KG[k].hoop.toFixed(1)]),{s:2.3,rh:4.25,hh:5});
   NOTES(14,180,156,null,['The 3x2 is 3 high and 2 wide, a part of its own, never a 2x3 turned on end. Every block hangs one way only.','Frame masses are approximate, bare frame before powder coat, without panels or hub.'],{s:2.2});
   // the outlines of the four blocks, from the front, 1:40
   let x0=24;
   KIT.forEach(({k,R,C})=>{const v=DW.VW(x0,236,0.025),W=C*P,H=R*P;v.R(0,0,W,H,'k');
     for(let c=1;c<C;c++)v.L(c*P,0,c*P,H,'t');for(let r=1;r<R;r++)v.L(0,r*P,W,r*P,'t');
-    v.R(W-P,H-P,W,H,'zone');
+    v.R(P,P,2*P,2*P,'zone');
     TX(v.X(W/2),241,k,{a:'middle',s:2.6,b:1});x0+=W*0.025+14;});
   TX(24,203.4,'FROM THE FRONT, 1:40. THE HUB SITS BEHIND THE SHADED PANEL.',{s:2.2});
   NOTES(194,58,210,'GENERAL NOTES',[
     'Dimensions in millimeters; inches in [ ] for reference. Third angle projection. Do not scale the drawings.',
     'Tolerances unless stated: laser and punched features ±0.1, formed features ±0.3, angles ±0.5°, bend radius equal to the sheet thickness (K 0.40). Break sharp edges 0.2 and remove burrs.',
-    'Rib: 5052-H32 aluminum, 1.6 walls and 2.0 rails and hanger, folded and riveted with flush blind rivets. Hoop: S280GD+ZM310 steel 1.2, punched, roll formed, bent and closed with one weld; 2.0 DX51D+Z275 for the hub mount parts.',
+    'Rib: 5052-H32 aluminum, 1.6 walls and 2.0 rails, folded and riveted with flush blind rivets. Hoop: S280GD+ZM310 steel 1.2, punched, roll formed, bent and closed with one weld. Both: two 316 stainless FF-C06 pins in the seam rail carry the hub.',
     'Finish: matte black polyester powder RAL 9005, 60 to 80 µm, over the pretreatment on each sheet. Mask pins, sockets and every nut thread.',
     'Logo strip: three Cirrus logos to every foot up both side walls of every block, centers 50.8 [2] up and then every 101.6 [4], 17 back from the front edge, printed in gloss over the matte coat (C-6). The front 32 of each side wall carries no hole, rivet, fastener, clinch, weld or tool mark.',
     'Every block joins every other: two lines on every wall, 38.1 and 111.1 back from the front edge, with a joint in the middle of every foot. Rib and Hoop blocks join each other and share the panels, hubs, base rail, mounting steel and hardware.',
-    'Front service: a panel lifts 12.7 and comes out the front, then the hub comes out through the same opening. Nothing that holds the hub is fixed to a side wall and no cable passes through a frame wall.',
+    'Front service: a panel lifts 12.7 and comes out the front. With its panel and any panel above it out, the hub lifts off its two pins and comes out through the same opening (R-5, H-5). Nothing that holds the hub is fixed to an outer wall and no cable passes through a frame wall.',
     'Part numbers: FF-R for Rib, FF-H for Hoop, FF-C for parts both frames use. A suffix of two digits gives the block, height then width (FF-R00-32 is the 3x2 Rib frame); one digit gives a length in feet.',
     'These sheets are preliminary, for quotation and engineering review. Quote each frame for each block size, with any tooling as its own line.'],{s:2.35});
   NOTES(194,118,104,'RIB, HOW IT IS MADE',[
-    'Laser cut or punch the flat blanks: walls, seam rails and hanger (R-2 to R-5).',
+    'Laser cut or punch the flat blanks: walls and seam rails (R-2 to R-5).',
     'Press the PEM nuts and FF-C01 pins into the flat blanks and dimple the rivet holes.',
-    'Form on a press brake: side walls with their beads, top and bottom walls, rails, hanger.',
+    'Form on a press brake: side walls with their beads, top and bottom walls, rails. Orbital rivet the two FF-C06 hub pins into the H rail.',
     'Conversion coat and powder coat every part matte black, masking pins, sockets and nut threads. Pad print the gloss logo strip on the side walls (C-6).',
-    'Rivet on a fixture: side wall tabs inside the top and bottom walls, the corners through the flanges, the seam rails, then the hanger. Every rivet flush.',
+    'Rivet on a fixture: side wall tabs inside the top and bottom walls, the corners through the flanges, then the seam rails. Every rivet flush.',
     'Check pin to socket positions and the diagonals.'],{s:2.2});
   NOTES(304,118,100,'HOOP, HOW IT IS MADE',[
     'Punch the coil in register: holes, J grooves, vents and corner notches (H-2, H-3).',
     'Roll form the profile (H-1) and cut to length.',
     'Bend the four R12 corners and close the ring with one butt weld.',
     'Projection weld the M8 nuts and FF-C02 pins from inside.',
-    'Clinch in the seam rails, the hinge shelf with its pins, and the latch strap.',
-    'Mask, clean, pretreat and powder coat matte black. Pad print the gloss logo strip (C-6), then fit the latch.'],{s:2.2});
+    'Orbital rivet the two FF-C06 hub pins into the H rail, then clinch in the seam rails.',
+    'Mask, clean, pretreat and powder coat matte black. Pad print the gloss logo strip (C-6).'],{s:2.2});
   return DW.end({code:'G-1',title:'DRAWING SET INDEX',title2:'Sheets, the four blocks and the general notes',pn:'FIREFLY FRAMES',qty:'',
     mat:'Per sheet',fin:'Per sheet',scale:'AS SHOWN',set:'RIB AND HOOP'},id);
 }
@@ -2946,8 +2975,8 @@ function renderDetail(){
     '<section><h3>Mounting</h3><p>'+c.mount+'</p></section>'+
     '<section><h3>Look</h3><p>'+c.look+'</p></section>'+
     '<section class="wide hubbox"><h3>L hub: how it mounts to the frame and connects</h3><p>'+c.hub+'</p>'+
-      '<h3 style="margin-top:10px">Front service</h3><ol>'+c.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>'+
-      '<p class="cap" style="margin-top:8px">In a taller wall, lift out the panels above it in that column first (top down, as decided for the panels). Switch off the block&#39;s circuit before unplugging anything.</p></section>'+
+      '<h3 style="margin-top:10px">Front service, on a 3&nbsp;ft tall block</h3><ol>'+svcSteps(2).map(s=>'<li>'+s+'</li>').join('')+'</ol>'+
+      '<p class="cap" style="margin-top:8px">On a 2&nbsp;ft tall block only the hub&#39;s own panel comes out. Lower in a taller wall, lift out the panels above it in that column first (top down, as decided for the panels). Switch off the block&#39;s circuit before unplugging anything.</p></section>'+
     '<section class="wide proscons"><div class="pro"><h3>Strengths</h3><ul>'+c.pros.map(s=>'<li>'+s+'</li>').join('')+'</ul></div>'+
       '<div class="con"><h3>Watch outs</h3><ul>'+c.cons.map(s=>'<li>'+s+'</li>').join('')+'</ul></div></section>'+
    '</div>';
@@ -2957,15 +2986,15 @@ function renderReadout(){
   const c=BY[state.k],k=state.k,m=state.mode,t=state.btype,[R,C]=blockDims(t),n=R*C,hl=s=>'<span class="hl">'+s+'</span>';
   let title,rows;
   if(m==='panel'){title='One panel, hung in '+c.n;
-    rows=[['Face','12 x 12 in'],['Depth','7/8 in (22 mm)'],['Sealing','Potted face, no gasket'],['Pins','4, 6 mm stainless'],['Hangs on','J grooves, 1/2 in drop'],['Tools','None'],['Power in the panel','48 V to 5 V converter'],['Connector','1, center of the back']];}
+    rows=[['Face','12 x 12 in'],['Depth','7/8 in (22 mm)'],['Sealing','Potted face, no gasket'],['Pins','4, 6 mm stainless'],['Hangs on','J grooves, 1/2 in drop'],['Tools','None'],['Power in','5 V from the hub, no converter'],['Connector','1, center of the back']];}
   else if(m==='block'){const conv=Math.ceil(n/2);title=c.n+', '+xby(t)+' block';
-    rows=[['Panels',String(n)],['Supply',(n===9?'750':'500')+' W, AC to 48 V'],['Control card','1, in the hub'],['Cables out of the hub','1, to '+n+' drop taps'],['Complete block',lb(blockKg(t,k))+' lb, '+perSqft(t,k)+' per sq ft'],['Screen depth','6 7/8 in'],['Conventional, 2 sq ft each',conv+' supplies, '+conv+' cards'],['Fewer supplies and cards',hl(fewer(1,conv))]];}
+    rows=[['Panels',String(n)],['Supply',(n===9?'750':'500')+' W, AC to 5 V'],['Control card','1, in the hub'],['5 V leads',n+', from one plug'],['Longest lead',hl(Math.round(leadMaxIn(C,R))+' in')],['Complete block',lb(blockKg(t,k))+' lb, '+perSqft(t,k)+' per sq ft'],['Screen depth','6 7/8 in'],['Conventional, 2 sq ft each',conv+' supplies, '+conv+' cards'],['Fewer supplies and cards',hl(fewer(1,conv))]];}
   else if(m==='frame'){title=c.n+', '+xby(t)+' frame';
     rows=[['Made from',c.made.replace(/, .*/,'')],['Tooling',hl(c.tooling)],['Piece cost',c.piece],['Frame weight',lb(FRAME_KG[t][k])+' lb'],['Back flange','2 in, '+flangeCount(R,C,k==='hoop')+' holes'],['Joint bolts',String(jointCount(R,C))],['Seam error (est.)','&plusmn;0.25 mm'],['Hub mount',c.hubShort]];}
   else if(m==='joint'){title='How blocks join, '+c.n;
     rows=[['Locating pin','1 per foot, on top'],['M8 down','1 per foot'],['M8 across','2 at each side station'],['Bolt','M8 x 16 flange, 8.8'],['Nut',k==='rib'?'PEM, pressed in':'Weld nut, DIN 929'],['Tool','13 mm socket, by hand'],['Seam error (est.)','&plusmn;0.25 mm'],['First row','On the leveled base rail']];}
   else if(m==='service'){title='Hub swap, '+c.n;
-    rows=[['Panels out','1, the top right'],['Tools','None'],['Hub mount',c.hubShort],['Moves',k==='rib'?'Pin, lift, ease out':'Latch, tilt 38&deg;, lift out'],['Opening','10.4 in square'],['L hub','9.8 x 9 x 1.6 in'],['Leads','IN, OUT, harness'],['Cable holes in the frame','None']];}
+    rows=[['Panels out',R>2?'2, the hub&#39;s column, top down':'1, the hub&#39;s'],['Tools','None'],['Hub mount','2 pins in the seam rail'],['Moves','Unplug, knob, lift, ease out'],['Opening','10.4 in wide'],['L hub','9.8 x 9 x 1.6 in'],['Unplug','Lead plug, IN, OUT'],['Cable holes in the frame','None']];}
   else{const H=state.H,W=state.W,plan=wallPlan(H,W),cnt={},area=H*W,conv=Math.ceil(area/2),ci=circuits(H,W);
     plan.forEach(q=>{const kk=q.R+'x'+q.C;cnt[kk]=(cnt[kk]||0)+1;});
     const kg=plan.reduce((s,q)=>s+blockKg(q.R+'x'+q.C,k),0);title='Wall, '+H+' x '+W+' ft';
@@ -2985,14 +3014,14 @@ function renderTables(){
   const head='<thead><tr><th>Frame</th><th>Family</th><th>Made from</th><th>Seam error</th><th>Tooling</th><th>Piece cost</th><th>Frame weight</th><th>Hub mount</th>'+SCORE_NAMES.map(n=>'<th>'+n+'</th>').join('')+'</tr></thead>';
   const body='<tbody>'+CONCEPTS.map(c=>'<tr><th scope="row">'+c.n+'</th><td class="fam">'+c.fam+'</td><td>'+c.made+'</td><td class="num">&plusmn;'+c.seam.toFixed(2)+' mm</td><td>'+c.tooling+'</td><td>'+c.piece+'</td><td class="num">'+lb(c.kg)+' lb</td><td>'+c.hubShort+'</td>'+c.sc.map(s=>'<td>'+dots(s)+'</td>').join('')+'</tr>').join('')+'</tbody>';
   $('#compare').innerHTML=head+body;
-  $('#recommend').innerHTML='<b>Pick: Rib to launch, Hoop at volume</b><p style="margin:6px 0 0">Rib needs little tooling and costs about the same per frame at any volume, it is the lightest frame, and any sheet metal shop can build it from the drawings. Its hub hangs from the top flange on one hook and one pin, with nothing on the side walls. Hoop takes over once volume pays for its roll forming line: one ring with one weld and no rivets, the lower piece cost of the two, and every hole punched in line as the strip runs. The two share every interface (pins, M8s and nuts, U rails, L hub, logo strip and finish, back flange and hole grid, base rail and clips), so their blocks join each other and the same install steps fit both.</p>';
+  $('#recommend').innerHTML='<b>Pick: Rib to launch, Hoop at volume</b><p style="margin:6px 0 0">Rib needs little tooling and costs about the same per frame at any volume, it is the lightest frame, and any sheet metal shop can build it from the drawings. Hoop takes over once volume pays for its roll forming line: one ring with one weld and no rivets, the lower piece cost of the two, and every hole punched in line as the strip runs. The two share every interface (pins, M8s and nuts, U rails, the L hub and its two pins in the seam rail, logo strip and finish, back flange and hole grid, base rail and clips), so their blocks join each other and the same install steps fit both.</p>';
 }
 // the four blocks, the planner walls and the circuit sizes
 function renderKitTables(){
   const SUP={'3x3':'750&nbsp;W'},kit=['3x3','3x2','2x3','2x2'],nm={'3x3':'3 high, 3 wide','3x2':'3 high, 2 wide','2x3':'2 high, 3 wide','2x2':'2 high, 2 wide'};
-  $('#kittable').innerHTML='<thead><tr><th>Block</th><th>Size</th><th>Panels</th><th>Supply</th><th>Harness</th><th>Joint bolts</th><th>Rib frame</th><th>Hoop frame</th><th>Complete, lb per sq ft</th></tr></thead><tbody>'+
+  $('#kittable').innerHTML='<thead><tr><th>Block</th><th>Size</th><th>Panels</th><th>Supply</th><th>5 V leads</th><th>Joint bolts</th><th>Rib frame</th><th>Hoop frame</th><th>Complete, lb per sq ft</th></tr></thead><tbody>'+
     kit.map(t=>{const [R,C]=blockDims(t),n=R*C;
-      return '<tr><th scope="row">'+t.replace('x',' x ')+'</th><td>'+nm[t]+'</td><td class="num">'+n+'</td><td class="num">'+(SUP[t]||'500&nbsp;W')+'</td><td>'+(R-1)+' T'+(R>2?'s':'')+' and a turn, '+n+' drop taps</td><td class="num">'+jointCount(R,C)+'</td><td class="num">'+lb(FRAME_KG[t].rib)+' lb</td><td class="num">'+lb(FRAME_KG[t].hoop)+' lb</td><td class="num">'+perSqft(t,'rib')+' Rib, '+perSqft(t,'hoop')+' Hoop</td></tr>';}).join('')+'</tbody>';
+      return '<tr><th scope="row">'+t.replace('x',' x ')+'</th><td>'+nm[t]+'</td><td class="num">'+n+'</td><td class="num">'+(SUP[t]||'500&nbsp;W')+'</td><td>'+n+' from one plug, longest '+Math.round(leadMaxIn(C,R))+' in</td><td class="num">'+jointCount(R,C)+'</td><td class="num">'+lb(FRAME_KG[t].rib)+' lb</td><td class="num">'+lb(FRAME_KG[t].hoop)+' lb</td><td class="num">'+perSqft(t,'rib')+' Rib, '+perSqft(t,'hoop')+' Hoop</td></tr>';}).join('')+'</tbody>';
   $('#walltable').innerHTML='<thead><tr><th>Wall, ft</th><th>Blocks</th><th>Mix</th><th>Panels</th><th>Supplies and cards</th><th>Conventional</th><th>Fewer</th><th>20 A circuits</th></tr></thead><tbody>'+
     WALLS.map(w=>{const [H,W]=w.split('x').map(Number),p=wallPlan(H,W),cnt={},area=H*W,conv=Math.ceil(area/2),ci=circuits(H,W);
       p.forEach(q=>{const k=q.R+'x'+q.C;cnt[k]=(cnt[k]||0)+1;});
@@ -3067,93 +3096,72 @@ function farrow(x1,y1,x2,y2,w){const a=Math.atan2(y2-y1,x2-x1),h=7,s=4;
 const flead=(tx,ty,x,y)=>'<path d="M'+f1(tx)+' '+f1(ty)+'L'+f1(x)+' '+f1(y)+'" stroke="var(--accent)" stroke-opacity=".6" fill="none"/><circle cx="'+f1(x)+'" cy="'+f1(y)+'" r="2.2" fill="var(--accent)"/>';
 const ftxt=(x,y,s,anchor,ink)=>'<text x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'"'+(ink?' style="fill:var(--ink)"':'')+'>'+s+'</text>';
 
-// Rib's hub hanger in side view, cut through the spring pin and seen from the outer side, front to the right, as on sheet
-// R-5. 1.5 px per mm; d runs back from the panel backs and dy down from the top of the block.
-function drawHangerFig(){
-  const el=$('#hangerfig');if(!el)return;
-  const k=1.5,XF=372,Y0=24,X=d=>XF-d*k,Y=dy=>Y0+dy*k,h=HANG,hb=HUBD,T=hb.top.rib,Dp=GEO.D,t=GEO.rib.t;
-  const R=(d0,d1,y0,y1,fill,ex)=>'<rect x="'+f1(X(d1))+'" y="'+f1(Y(y0))+'" width="'+f1((d1-d0)*k)+'" height="'+f1((y1-y0)*k)+'" fill="'+fill+'"'+(ex||'')+'/>';
-  const ioy=T+hb.H/2-hb.io.y,cg=T+91.8,DASH=' stroke="currentColor" stroke-dasharray="4 3"';
+// The hub mount, the same on both frames, seen at the hook plate from the seam rail with the rail cut away, front to the
+// right, as on sheets R-5 and H-5. 1.1 px per mm; d runs back from the panel backs and y up from the hub's center.
+function drawHubMountFig(){
+  const el=$('#hubmountfig');if(!el)return;
+  const k=1.1,XF=434,Y0=14,X=d=>XF-d*k,Y=y=>Y0+(160-y)*k,hb=HUBD,P=hb.plate,pn=hb.pin,Dp=GEO.D;
+  const R=(d0,d1,y0,y1,fill,ex)=>'<rect x="'+f1(X(d1))+'" y="'+f1(Y(y1))+'" width="'+f1((d1-d0)*k)+'" height="'+f1((y1-y0)*k)+'" fill="'+fill+'"'+(ex||'')+'/>';
+  const DASH=' stroke="currentColor" stroke-dasharray="4 3"',HID=' fill-opacity="0" stroke="var(--ink)" stroke-opacity=".55" stroke-dasharray="3 2"';
+  const io=hb.io.y,top=hb.H/2;
   let o='';
-  o+=R(-22,0,0,215,'none',DASH);                                                                     // the panel, out first
-  o+=R(0,Dp,0,t,'var(--frame)')+R(0,t,t,GEO.rib.ret,'var(--frame)');                                 // top wall and its front return
-  o+=R(Dp-t,Dp,0,GEO.FW,'var(--frame)')+R(Dp-GEO.FL,Dp-t,GEO.FW-t,GEO.FW,'var(--frame)');           // top back flange and its lip
-  o+=R(h.sideD[0],h.sideD[1],h.side[0],h.shelf[0],'none',' stroke="var(--hang)" stroke-dasharray="3 2"');   // side flange, beyond the cut
-  o+=R(Dp-1.6-2,Dp-1.6,h.tab[0],h.tab[1],'var(--hang)')+R(49,Dp-1.6-2.6,h.shelf[0],h.shelf[1],'var(--hang)')+R(48,50,h.lip[0],h.lip[1],'var(--hang)');   // hanger: tab, shelf, lip
-  o+=R(Dp-1.6-2,Dp,23.8,27,'var(--steel)');                                                          // a flush rivet on the flange hole line
-  o+='<rect x="'+f1(X(hb.d0+hb.T))+'" y="'+f1(Y(T))+'" width="'+f1(hb.T*k)+'" height="'+f1(hb.A*k)+'" rx="8" fill="var(--hub)"/>'+R(hb.d0+hb.T-5,hb.d0+hb.T,T+8,T+hb.A-8,'var(--hubfin)');   // the hub's arm, cut
-  o+=R(71,79,ioy-19,ioy+19,'var(--hubfin)')+R(79,87,ioy-15.5,ioy+15.5,IO_OUT)+R(87,116,ioy-15,ioy+15,'var(--hub)');   // the OUT plug
-  o+=R(44.75,46.25,17.5,T+6,'var(--steel)')+R(44.75,53.25,17.5,19,'var(--steel)')+R(51.75,53.25,19,24,'var(--steel)');   // the hook
-  o+=R(41,44.75,22,28,'var(--steel)')+R(40,51.6,22.25,27.75,'var(--steel)')+'<rect x="'+f1(X(40))+'" y="'+f1(Y(18))+'" width="'+f1(6*k)+'" height="'+f1(14*k)+'" rx="3" fill="var(--accent)"/>';   // spring pin and knob
-  o+='<path d="M'+f1(X(49))+' '+f1(Y(19))+'V'+f1(Y(cg))+'" stroke="#fff" stroke-opacity=".7" stroke-dasharray="3 3" fill="none"/>';
-  o+='<circle cx="'+f1(X(49))+'" cy="'+f1(Y(cg))+'" r="6" fill="none" stroke="#fff"/><path d="M'+f1(X(49)-6)+' '+f1(Y(cg))+'h12M'+f1(X(49))+' '+f1(Y(cg)-6)+'v12" stroke="#fff"/>';
-  // the moves: 1 pull the pin, 2 lift, 3 ease forward and lower, 4 out the front
-  o+=farrow(X(33),Y(25),X(12),Y(25));
-  o+=farrow(X(16),Y(T+72),X(16),Y(T+50));
-  o+='<path d="M'+f1(X(16))+' '+f1(Y(T+92))+'H'+f1(X(4))+'" stroke="var(--accent)" stroke-width="2" fill="none"/>'+farrow(X(4),Y(T+92),X(4),Y(T+114));
-  o+=farrow(X(26),Y(T+136),X(-52),Y(T+136));
-  const RX=X(-22)+44,LX=X(Dp)-12;
-  o+=ftxt(RX,Y(25)+4,'1 Pull the pin',0,1)+flead(RX-4,Y(25),X(12)+4,Y(25));
-  o+=ftxt(RX,Y(T+60)+4,'2 Lift 1/2 in',0,1)+flead(RX-4,Y(T+60),X(16)+3,Y(T+60));
-  o+=ftxt(RX,Y(T+100)+4,'3 Ease forward, lower',0,1)+flead(RX-4,Y(T+100),X(4)+3,Y(T+100));
-  o+=ftxt(RX,Y(T+136)+4,'4 Out the front',0,1);
-  o+=ftxt(RX,Y(5)+4,'Front lip of the top wall')+flead(RX-4,Y(5),X(0.8),Y(5));
-  o+=ftxt(RX,Y(200)+4,'Panel, out first')+flead(RX-4,Y(200),X(-11),Y(200));
-  o+=ftxt(LX,Y(8)+4,'Top back flange','end')+flead(LX+4,Y(8),X(Dp),Y(8));
-  o+=ftxt(LX,Y(36)+4,'Hanger, riveted','end')+flead(LX+4,Y(36),X(110),Y(36));
-  o+=ftxt(LX,Y(56)+4,'Hook over','end')+ftxt(LX,Y(56)+18,'the hanger lip','end')+flead(LX+4,Y(56),X(52.5),Y(21));
-  o+=ftxt(LX,Y(ioy)+4,'IN and OUT','end')+ftxt(LX,Y(ioy)+18,'stay plugged in','end')+flead(LX+4,Y(ioy),X(116),Y(ioy));
-  o+=ftxt(LX,Y(T+112)+4,'L hub, arm cut','end')+flead(LX+4,Y(T+112),X(hb.d0+hb.T),Y(T+112));
-  o+=ftxt(X(49)+10,Y(cg)+4,'CG').replace('<text','<text style="fill:#fff"');
-  el.innerHTML='<svg class="fig" viewBox="0 0 640 372" role="img" aria-label="Side view through the top of a Rib block at the hub&#39;s spring pin. A small hanger riveted inside the top back flange has a lip. A stainless hook on top of the L hub hangs on the lip, right above the hub&#39;s center of gravity, and a spring pin through the hook and the lip locks it. To remove the hub: pull the pin, lift the hub half an inch, ease it forward and lower it so the hook passes under the top wall&#39;s front lip, then bring it out the front.">'+
+  o+=R(-22,0,-152.4,152.4,'none',DASH);                                                               // the hub's panel, out first
+  o+=R(0,66,-152.4,152.4,'none',' stroke="var(--hang)" stroke-dasharray="6 3"');                       // the seam rail leg, cut away
+  o+='<rect x="'+f1(X(hb.d0+hb.T))+'" y="'+f1(Y(top))+'" width="'+f1(hb.T*k)+'" height="'+f1(hb.H*k)+'" rx="6" fill="var(--hub)"/>'+R(hb.d0+hb.T-5,hb.d0+hb.T,-top+8,top-8,'var(--hubfin)');
+  o+=R(71,79,io-19,io+19,'var(--hubfin)')+R(79,87,io-15.5,io+15.5,IO_OUT)+R(87,116,io-15,io+15,'var(--hub)');   // the OUT plug
+  const sp=hb.spider,sy0=sp.y-sp.h/2,sy1=sp.y+sp.h/2,ya=hb.H/2-hb.A;
+  // the hook plate with its two grooves and the plunger hole, the pins cut at the rail face with their heads beyond
+  o+='<path d="M'+plateOutline().map(([d,y])=>f1(X(d))+' '+f1(Y(y))).join('L')+'Z" fill="var(--steel)" stroke="var(--ink)" stroke-width=".6"/>';
+  o+='<circle cx="'+f1(X(hb.plg.d))+'" cy="'+f1(Y(hb.plg.dy))+'" r="'+f1(3.5*k)+'" fill="var(--surface)" stroke="var(--ink)" stroke-width=".6"/>';
+  for(const y of [-pn.dy,pn.dy])o+='<circle cx="'+f1(X(pn.d))+'" cy="'+f1(Y(y))+'" r="'+f1(pn.hr*k)+'"'+HID+'/><circle cx="'+f1(X(pn.d))+'" cy="'+f1(Y(y))+'" r="'+f1(pn.r*k)+'" fill="var(--loc)"/>';
+  o+='<circle cx="'+f1(X(hb.plg.d))+'" cy="'+f1(Y(hb.plg.dy))+'" r="'+f1(3*k)+'" fill="var(--accent)"/>';
+  o+=R(23,30,hb.plg.dy-10,hb.plg.dy+2,'var(--accent)').replace('/>',' rx="3"/>');                      // the orange knob on the face
+  // the lead plug in the notch beyond the leg, hidden, and its neck up into the socket under the arm
+  o+=R(sp.d[0],sp.d[1],sy0,sy1,'none',HID).replace('/>',' rx="4"/>')+R(42,58,sy1,ya,'none',HID);
+  // the moves: 1 unplug the lead plug, 2 pull the knob, 3 lift, 4 ease forward and out the front
+  o+=farrow(X(36),Y(sy0-4),X(36),Y(sy0-28));
+  o+=farrow(X(12),Y(-34),X(12),Y(-6));
+  o+=farrow(X(60),Y(top+16),X(-18),Y(top+16));
+  const RX=X(-22)+14,LX=X(Dp)-10;
+  o+=ftxt(RX,Y(top+16)+4,'4 Ease forward, out',0,1)+flead(RX-4,Y(top+16),X(-18)+5,Y(top+16));
+  o+=ftxt(RX,Y(hb.plg.dy-4)+4,'2 Pull the knob',0,1)+flead(RX-4,Y(hb.plg.dy-4),X(23)+2,Y(hb.plg.dy-4));
+  o+=ftxt(RX,Y(-20)+4,'3 Lift 1/2 in',0,1)+flead(RX-4,Y(-20),X(12)+4,Y(-20));
+  o+=ftxt(RX,Y(sy0-16)+4,'1 Unplug the',0,1)+ftxt(RX,Y(sy0-16)+18,'lead plug',0,1)+flead(RX-4,Y(sy0-16),X(36)+4,Y(sy0-16));
+  o+=ftxt(RX,Y(-140)+4,'Panels out first')+flead(RX-4,Y(-140),X(-11),Y(-140));
+  o+=ftxt(LX,Y(150)+4,'Seam rail, cut away','end')+flead(LX+4,Y(150),X(66),Y(150));
+  o+=ftxt(LX,Y(io)+4,'IN and OUT stay','end')+ftxt(LX,Y(io)+18,'plugged in','end')+flead(LX+4,Y(io),X(116),Y(io));
+  o+=ftxt(LX,Y(hb.plg.dy)+4,'Spring plunger','end')+flead(LX+4,Y(hb.plg.dy),X(hb.plg.d)-4,Y(hb.plg.dy));
+  o+=ftxt(LX,Y(20)+4,'Hook plate on','end')+ftxt(LX,Y(20)+18,'the hub&#39;s leg','end')+flead(LX+4,Y(20),X(P.d[1]),Y(20));
+  o+=ftxt(LX,Y(-pn.dy)+4,'Pin in the rail','end')+flead(LX+4,Y(-pn.dy),X(pn.d)-6,Y(-pn.dy));
+  o+=ftxt(LX,Y(-128)+4,'L hub, leg','end')+flead(LX+4,Y(-128),X(hb.d0+hb.T)+2,Y(-108));
+  el.innerHTML='<svg class="fig" viewBox="0 0 640 372" role="img" aria-label="Side view of the hub at its hook plate, seen from the seam rail with the rail cut away, front to the right. A stainless plate on the hub&#39;s leg has two grooves that run in from its back edge and turn up half an inch into a pocket, and two stainless pins in the seam rail sit in the pockets. A spring plunger reaches through the plate into the seam rail, with its orange knob on the face of the hub. To remove the hub: unplug the lead plug under it, pull the knob, lift the hub half an inch, ease it forward off the pins and bring it out the front.">'+
     '<g font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" style="color:var(--muted)">'+o+'</g></svg>';
 }
-// Hoop's hub mount in side view from the outer side, the side wall left off, front to the right, as on sheet H-5: the
-// hinge shelf and its pins under the foot of the leg, the latch strap under the top flange, and the hub tilted 38 degrees.
-function drawHoopHubFig(){
-  const el=$('#hoophubfig');if(!el)return;
-  const k=1.15,XF=338,Y0=18,X=d=>XF-d*k,Y=dy=>Y0+dy*k,hb=HUBD,T=hb.top.hoop,Dp=GEO.D,t=GEO.hoop.t,S=HH.shelf,L=HH.latch,st=HH.strap;
-  const R=(d0,d1,y0,y1,fill,ex)=>'<rect x="'+f1(X(d1))+'" y="'+f1(Y(y0))+'" width="'+f1((d1-d0)*k)+'" height="'+f1((y1-y0)*k)+'" fill="'+fill+'"'+(ex||'')+'/>';
-  const P=[HH.pinD,-HH.pinY],px=X(P[0]),py=Y(P[1]),ioy=T+hb.H/2-hb.io.y,bot=T+hb.H;
-  // the hook plate on the hub: an open notch over the pin, a tooth behind it
-  const hook=()=>{const zp=P[0],p=P[1];return '<path d="M'+f1(X(zp-6))+' '+f1(Y(bot))+'V'+f1(Y(p))+'A'+f1(6*k)+' '+f1(6*k)+' 0 0 0 '+f1(X(zp+6))+' '+f1(Y(p))+
-    'V'+f1(Y(p+5))+'H'+f1(X(zp+9))+'V'+f1(Y(bot))+'Z" fill="var(--steel)" stroke="var(--ink)" stroke-width=".5"/>';};
-  const hubBody=(fill,ex)=>'<rect x="'+f1(X(hb.d0+hb.T))+'" y="'+f1(Y(T))+'" width="'+f1(hb.T*k)+'" height="'+f1(hb.H*k)+'" rx="6" fill="'+fill+'"'+(ex||'')+'/>';
-  const plug=(ex)=>R(71,79,ioy-19,ioy+19,'var(--hubfin)',ex)+R(79,87,ioy-15.5,ioy+15.5,IO_OUT,ex)+R(87,116,ioy-15,ioy+15,'var(--hub)',ex);
+// Why the hub sits in the middle: a 3x3 seen from the back with the hub behind a corner panel and in the middle, each with
+// its leads drawn to scale (leadPath) and the longest one picked out.
+function drawLeadFig(){
+  const el=$('#leadfig');if(!el)return;
+  const C=3,R=3,W=C*GEO.P,s=0.27,bw=W*s,gap=56,ox0=(640-2*bw-gap)/2,oy=30;
   let o='';
-  o+=R(-22,0,0,305,'none',' stroke="currentColor" stroke-dasharray="4 3"');                                 // the panel, out first
-  o+=R(0,Dp,0,t,'var(--frame)')+R(0,25,18.8,20,'var(--frame)')+R(23.8,25,t,20,'var(--frame)');           // top wall and its U
-  o+=R(Dp-t,Dp,0,GEO.FW,'var(--frame)')+R(Dp-GEO.FL,Dp-t,GEO.FW-t,GEO.FW,'var(--frame)');               // top back flange, lip
-  o+=R(st.d0,Dp-t,t,t+2,'var(--hang)')+R(Dp-t-2,Dp-t,t,-st.tab,'var(--hang)')+R(st.d0,st.d0+2,t,-st.drop,'var(--hang)');   // latch strap
-  o+='<circle cx="'+f1(X(Dp))+'" cy="'+f1(Y(st.q))+'" r="3" fill="var(--steel)"/>';                        // a clinch on the flange back
-  o+=R(L.d[0],L.d[1],-L.y1,-L.y0,'var(--hubfin)').replace('/>',' rx="2"/>')+R(L.d[0],L.d[0]+L.bolt,-L.y0,-L.y0+6,'var(--steel)');   // latch body, bolt in the hub
-  o+=R(L.d[0]-2,L.d[0],-L.y1+2,-L.y0-2,'var(--accent)');                                                   // its push face
-  o+=R(HH.earD[0],HH.earD[1],-HH.earTop,-S.y,'var(--fl)',' stroke="var(--muted)" stroke-width=".6"');        // an ear, beside the hook
-  o+=R(S.d0,S.tabD,-S.y+2,-S.y+28,'none',' stroke="var(--hang)" stroke-dasharray="3 2"');                   // the shelf's tab on the seam rail, beyond
-  for(const [d,y] of HH.clinch)o+='<circle cx="'+f1(X(d))+'" cy="'+f1(Y(-y))+'" r="2.6" fill="none" stroke="var(--hang)"/>';
-  o+=R(S.d0,S.d1,-S.y,-S.y+2,'var(--hang)')+R(S.d1-2,S.d1,-S.y+2,-S.y+S.fl,'var(--hang)');                // shelf and its back flange
-  o+=hubBody('var(--hub)')+R(hb.d0+hb.T-5,hb.d0+hb.T,T+8,bot-8,'var(--hubfin)')+plug('')+hook();
-  o+='<circle cx="'+f1(px)+'" cy="'+f1(py)+'" r="'+f1(HH.pinR*k)+'" fill="var(--loc)"/>';
-  // the hub tilted forward 38 degrees about the pin, dashed
-  const PH=' fill-opacity="0" stroke="var(--accent)" stroke-dasharray="5 3" stroke-width="1.2"';
-  o+='<g transform="rotate('+HH.tilt+' '+f1(px)+' '+f1(py)+')">'+hubBody('none',' stroke="var(--accent)" stroke-dasharray="5 3" stroke-width="1.2"')+plug(PH)+'</g>';
-  // the moves: 1 press the latch, 2 tilt, 3 lift off the pins and out the front
-  o+=farrow(X(69),Y(48),X(69),Y(33));
-  const rr=Math.hypot(X(hb.d0)-px,Y(T)-py)+14,a0=Math.atan2(X(hb.d0)-px,py-Y(T)),arc=a=>[px+rr*Math.sin(a),py-rr*Math.cos(a)];
-  const [ax0,ay0]=arc(a0+0.04),[ax1,ay1]=arc(a0+HH.tilt*Math.PI/180-0.06),[ax2,ay2]=arc(a0+HH.tilt*Math.PI/180);
-  o+='<path d="M'+f1(ax0)+' '+f1(ay0)+'A'+f1(rr)+' '+f1(rr)+' 0 0 1 '+f1(ax1)+' '+f1(ay1)+'" stroke="var(--accent)" stroke-width="2" fill="none"/>'+farrow(ax1-0.5,ay1-0.5,ax2,ay2,0.1);
-  o+='<path d="M'+f1(px+16)+' '+f1(py+2)+'V'+f1(py-16)+'" stroke="var(--accent)" stroke-width="2" fill="none"/>'+farrow(px+16,py-16,px+92,py-16);
-  const RX=548,LX=X(Dp)-12;
-  o+=ftxt(RX,Y(40)+4,'1 Press the latch',0,1)+flead(RX-4,Y(40),X(69)+4,Y(40));
-  o+=ftxt(RX,ay2+4,'2 Tilt it forward 38&deg;',0,1)+flead(RX-4,ay2,ax2+6,ay2);
-  o+=ftxt(RX,py-12,'3 Lift 1/2 in, out',0,1)+ftxt(RX,py+2,'the front',0,1)+flead(RX-4,py-16,px+96,py-16);
-  o+=ftxt(RX,Y(296)+4,'Panel, out first')+flead(RX-4,Y(296),X(-11),Y(296));
-  o+=ftxt(LX,Y(6)+4,'Latch strap, clinched','end')+ftxt(LX,Y(6)+18,'to the top flange','end')+flead(LX+4,Y(6),X(118),Y(t+1));
-  o+=ftxt(LX,Y(ioy)+4,'IN and OUT come','end')+ftxt(LX,Y(ioy)+18,'up into reach','end')+flead(LX+4,Y(ioy),X(116),Y(ioy));
-  o+=ftxt(LX,Y(232)+4,'Hooks on the foot','end')+ftxt(LX,Y(232)+18,'of the hub&#39;s leg','end')+flead(LX+4,Y(232),X(70),Y(bot+3));
-  o+=ftxt(LX,Y(268)+4,'Hinge pins in its ears','end')+flead(LX+4,Y(268),px-5,py);
-  o+=ftxt(LX,Y(306)+4,'Hinge shelf, clinched','end')+ftxt(LX,Y(306)+18,'to the seam rail','end')+flead(LX+4,Y(306),X(S.d1-1),Y(306));
-  el.innerHTML='<svg class="fig" viewBox="0 0 700 400" role="img" aria-label="Side view of a Hoop block&#39;s hub bay from the outer side, front to the right. Two hooks at the foot of the hub&#39;s leg sit on hinge pins in the ears of a hinge shelf clinched to the seam rail. At the top, a spring latch on a strap clinched to the top flange holds the hub. To remove the hub: press the latch, tilt the hub forward 38 degrees on the pins, which brings its Cirrus IN and OUT up into reach, then lift it half an inch off the pins and bring it out the front.">'+
+  [[true,'Hub in a corner'],[false,'Hub in the middle']].forEach(([corner,title],i)=>{
+    const ox=ox0+i*(bw+gap),X=x=>ox+(W-x)*s,Y=y=>oy+(W-y)*s,hc=corner?C-1:1,hr=corner?R-1:1,st=leadStats(C,R,corner);
+    const dx=(hc-1)*GEO.P,dy=(hr-1)*GEO.P,pth=pts=>'M'+pts.map(([x,y])=>f1(X(x))+' '+f1(Y(y))).join('L');
+    o+='<rect x="'+f1(ox)+'" y="'+oy+'" width="'+f1(bw)+'" height="'+f1(bw)+'" fill="var(--fl)" fill-opacity=".45" stroke="var(--muted)" stroke-width=".8"/>';
+    for(let j=1;j<C;j++)o+='<path d="M'+f1(X(j*GEO.P))+' '+oy+'V'+f1(oy+bw)+'M'+f1(ox)+' '+f1(Y(j*GEO.P))+'H'+f1(ox+bw)+'" stroke="var(--muted)" stroke-width=".6" stroke-dasharray="3 3"/>';
+    o+='<path d="'+pth(hubPts().map(([x,y])=>[x+dx,y+dy]))+'Z" fill="var(--hub)" fill-opacity=".85"/>';
+    let far=null,fl=0;
+    for(let c=0;c<C;c++)for(let r=0;r<R;r++){const q=leadPath(c,r,hc,hr),l=pathLen(q);if(l>fl){fl=l;far=q;}
+      o+='<path d="'+pth(q)+'" fill="none" stroke="var(--cable)" stroke-width="1.6" stroke-linejoin="round"/>';
+      o+='<rect x="'+f1(X((c+0.5)*GEO.P+28))+'" y="'+f1(Y((r+0.5)*GEO.P+17))+'" width="'+f1(56*s)+'" height="'+f1(34*s)+'" fill="var(--hubfin)"/>';}
+    o+='<path d="'+pth(far)+'" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linejoin="round"/>';
+    const sx=(hc+0.5)*GEO.P+HUBD.spider.x,sy=(hr+0.5)*GEO.P+HUBD.spider.y;
+    o+='<rect x="'+f1(X(sx+22))+'" y="'+f1(Y(sy+20))+'" width="'+f1(44*s)+'" height="'+f1(40*s)+'" rx="2" fill="var(--cable)"/>';
+    o+='<text x="'+f1(ox+bw/2)+'" y="'+(oy-10)+'" text-anchor="middle" style="fill:var(--ink)" font-weight="500">'+title+'</text>';
+    o+='<text x="'+f1(ox+bw/2)+'" y="'+f1(oy+bw+20)+'" text-anchor="middle">Longest lead <tspan style="fill:var(--ink)" font-weight="500">'+Math.round(st.max)+' in</tspan></text>';
+    o+='<text x="'+f1(ox+bw/2)+'" y="'+f1(oy+bw+36)+'" text-anchor="middle">All nine '+Math.round(st.total)+' in</text>';
+  });
+  const a=leadStats(C,R,true),b=leadStats(C,R);
+  el.innerHTML='<svg class="fig" viewBox="0 0 640 '+f1(oy+bw+46)+'" role="img" aria-label="Two 3 by 3 blocks seen from the back, each with a lead from the hub&#39;s plug to every panel. With the hub behind a corner panel the longest lead is '+Math.round(a.max)+' inches and all nine add up to '+Math.round(a.total)+' inches. With the hub in the middle the longest is '+Math.round(b.max)+' inches and all nine add up to '+Math.round(b.total)+' inches.">'+
     '<g font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" style="color:var(--muted)">'+o+'</g></svg>';
 }
 
@@ -3163,15 +3171,13 @@ function drawChainFig(){
   const el=$('#chainfig');if(!el)return;
   const H=state.H,W=state.W,k=state.k,ci=circuits(H,W),nc=ci[ci.length-1].circ+1;
   const VW=640,M=22,Tm=12,sc=Math.min((VW-2*M)/(W*12),300/(H*12)),ww=W*12*sc,hh=H*12*sc,ox=(VW-ww)/2,VH=Tm+hh+14;
-  const X=xi=>ox+(W*12-xi)*sc,Y=yi=>Tm+(H*12-yi)*sc,I=25.4,top=HUBD.top[k]/I;
-  const ax=HUBD.W/2/I,ah=HUBD.A/I,lw=HUBD.Lg/I,lh=HUBD.H/I,ioy=(HUBD.top[k]+HUBD.H/2-HUBD.io.y)/I,iox=HUBD.io.x/I,iod=HUBD.io.dx/I,cr=Math.max(2.6,HUBD.io.r/I*sc);
+  const X=xi=>ox+(W*12-xi)*sc,Y=yi=>Tm+(H*12-yi)*sc,I=25.4,cr=Math.max(2.6,HUBD.io.r/I*sc);
   let o='',cab='',io='';const pts=[];
   ci.forEach((q,i)=>{const x0=q.x*12,y0=q.y*12,w=q.C*12,h=q.R*12;
     o+='<rect x="'+f1(X(x0+w))+'" y="'+f1(Y(y0+h))+'" width="'+f1(w*sc)+'" height="'+f1(h*sc)+'" fill="'+(q.circ%2?'var(--loc)':'var(--fl)')+'" fill-opacity="'+(q.circ%2?0.16:0.5)+'" stroke="var(--muted)" stroke-width=".8"/>';
-    const cx=x0+w-6,yt=y0+h-top,Lp=[[cx-ax,yt],[cx+ax,yt],[cx+ax,yt-lh],[cx+ax-lw,yt-lh],[cx+ax-lw,yt-ah],[cx-ax,yt-ah]];
-    o+='<path d="M'+Lp.map(([a,b])=>f1(X(a))+' '+f1(Y(b))).join('L')+'Z" fill="var(--hub)" fill-opacity=".85"/>';
-    const yi=y0+h-ioy,inP=[X(cx+iox-iod),Y(yi)],outP=[X(cx+iox+iod),Y(yi)];pts.push({inP,outP,q});
-    const tx=X(x0+w/2),ty=Y(y0+h*0.42),fs=Math.min(13,Math.max(9,sc*2.6));
+    o+='<path d="M'+hubPts().map(([a,b])=>f1(X(x0+a/I))+' '+f1(Y(y0+b/I))).join('L')+'Z" fill="var(--hub)" fill-opacity=".85"/>';
+    const io=HUBD.io,yi=y0+(HUBD.y+io.y)/I,inP=[X(x0+(HUBD.x+io.x-io.dx)/I),Y(yi)],outP=[X(x0+(HUBD.x+io.x+io.dx)/I),Y(yi)];pts.push({inP,outP,q});
+    const tx=X(x0+w/2),ty=Y(y0+h*0.3),fs=Math.min(13,Math.max(9,sc*2.6));   // under the hub, which sits in the middle
     o+='<text x="'+f1(tx)+'" y="'+f1(ty)+'" text-anchor="middle" font-size="'+f1(fs+2)+'" style="fill:var(--ink)" font-weight="500">'+(i+1)+'</text>'+
       '<text x="'+f1(tx)+'" y="'+f1(ty+fs+3)+'" text-anchor="middle" font-size="'+f1(fs-1)+'">'+q.R+' x '+q.C+'</text>';
   });
@@ -3182,7 +3188,7 @@ function drawChainFig(){
   const p0=pts[0].inP;cab+='<path d="M'+f1(VW-4)+' '+f1(p0[1]+14)+'H'+f1(p0[0]+10)+'C'+f1(p0[0]+3)+' '+f1(p0[1]+14)+' '+f1(p0[0])+' '+f1(p0[1]+8)+' '+f1(p0[0])+' '+f1(p0[1])+'"/>';
   pts.forEach((p,i)=>{if(i&&p.q.circ===pts[i-1].q.circ)return;const s=13,x=i?(pts[i-1].outP[0]+p.inP[0])/2:p0[0]+18,y=i?Math.max(pts[i-1].outP[1],p.inP[1])+(Math.abs(pts[i-1].outP[0]-p.inP[0])>1?Math.max(10,Math.min(26,0.18*Math.abs(pts[i-1].outP[0]-p.inP[0])))*0.75:12):p0[1]+14;
     io+='<rect x="'+f1(x-s/2)+'" y="'+f1(y-s/2)+'" width="'+s+'" height="'+s+'" rx="2" fill="var(--accent)"/><text x="'+f1(x)+'" y="'+f1(y+3.6)+'" text-anchor="middle" font-size="10" style="fill:var(--accent-ink)" font-weight="500">'+(p.q.circ+1)+'</text>';});
-  el.innerHTML='<svg class="fig wide" viewBox="0 0 '+VW+' '+f1(VH)+'" role="img" aria-label="Back view of a '+H+' by '+W+' foot wall of '+ci.length+' blocks. Each block&#39;s L hub sits in its top corner with the Cirrus IN and OUT on its back. One standard Cirrus panel cable runs from each hub&#39;s OUT to the next hub&#39;s IN, row by row from the bottom. The controller lead and the first circuit enter the first block; '+(nc>1?'a power injector starts each of the other '+(nc-1)+' circuits.':'one 20 amp circuit covers the whole wall.')+'">'+
+  el.innerHTML='<svg class="fig wide" viewBox="0 0 '+VW+' '+f1(VH)+'" role="img" aria-label="Back view of a '+H+' by '+W+' foot wall of '+ci.length+' blocks. Each block&#39;s L hub sits in its middle with the Cirrus IN and OUT on its back. One standard Cirrus panel cable runs from each hub&#39;s OUT to the next hub&#39;s IN, row by row from the bottom. The controller lead and the first circuit enter the first block; '+(nc>1?'a power injector starts each of the other '+(nc-1)+' circuits.':'one 20 amp circuit covers the whole wall.')+'">'+
     '<g font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" style="color:var(--muted)">'+o+
     '<g fill="none" stroke="var(--cable)" stroke-width="1.8" stroke-linecap="round">'+cab+'</g>'+io+'</g></svg>';
   $('#chaincap').innerHTML=H+'&nbsp;x&nbsp;'+W+'&nbsp;ft, '+ci.length+' blocks in one chain, '+nc+' circuit'+(nc>1?'s':'')+' at 120&nbsp;V for 6&nbsp;mm pitch (up to 45&nbsp;sq&nbsp;ft each). Seen from the back. The numbers give the chain order; pick another wall under the viewer or under Mounting.';
@@ -3362,7 +3368,7 @@ function drawJointFigs(){
     o+=depthDims();
     svg('#jfig3','Section through a side seam at a joint station, seen from above with the front to the right. The side walls of the two blocks touch. Two M8 by 16 flange bolts go in from inside the right block, one 1 and 1/2 inches and one 4 and 3/8 inches back from the front edge, through both walls into '+nutA+'s '+nutB+' in the wall of the left block. The U rails run along both walls in front of them.',o);}
 }
-renderPicker();renderDetail();renderReadout();renderResearch();renderTables();renderKitTables();drawLogoFig();drawHangerFig();drawHoopHubFig();
+renderPicker();renderDetail();renderReadout();renderResearch();renderTables();renderKitTables();drawLogoFig();drawHubMountFig();drawLeadFig();
 drawJointFigs();renderMountTable();renderWallPickers();drawMountFig();drawChainFig();
 
 // ---------- 3D ----------
@@ -3400,18 +3406,16 @@ const PIN_YS=[0.5-70*MM,-0.5+60*MM];
 const RIB_X=0.5-UW-4*MM,BOSS_T=6*MM,BOSS_H=16*MM;
 // joints: every wall carries the same two lines. The front line, 1 1/2 in back from the front edge just behind the U rails,
 // takes a tapered pin in every top and bottom foot and an M8 in every side foot; the back line, 4 3/8 in back, an M8 in both.
-const LOC_Z=-38.1*MM,BOLT_Z=-111.1*MM,HARN_Z=-96*MM;
+const LOC_Z=-38.1*MM,BOLT_Z=-111.1*MM;
 // logo strip: three Cirrus logos to every foot up the outside of both side walls, 17 mm back from the front edge
 const LOGO_L=GEO.logo.L*MM,LOGO_H=GEO.logo.H*MM,LOGO_ZC=-GEO.logo.dc*MM;
-// the L hub, as in the block model: arm across the top, leg down the outer side (the right, seen from the front).
-// The arm is 9.8 in instead of 12 in so the hub passes the 10.4 in opening; it is a little taller and the leg a little wider.
-const LW=250*MM,LH=228*MM,LA=125*MM,LL=105*MM,LT=41*MM,LHZ=-30*MM;
-// how far the hub's top sits below the block's top: Rib hangs it under a hanger on the top flange, Hoop latches it near the top
-const HUBTOP={rib:52*MM,hoop:30*MM},ltop=()=>HUBTOP[state.k]||30*MM;
+// the L hub, as in the block model, now behind the middle of the block (HUBD): arm across the top, leg down the left seen
+// from the front. The arm is 9.8 in instead of 12 in so the hub passes the 10.4 in opening; it is a little taller and the
+// leg a little wider. Its face sits 30 mm behind the panels.
+const LW=HUBD.W*MM,LH=HUBD.H*MM,LA=HUBD.A*MM,LL=HUBD.Lg*MM,LT=HUBD.T*MM,LHZ=-HUBD.d0*MM;
 // the back flange: 2 in on all four edges with a 10 mm lip, 7/16 in holes every 2 in, 1 in in from every block edge
 const FW=50.8*MM,FLIP=10*MM,FHR=5.5*MM,IN=25.4*MM;
-const LIO={x:-15*MM,y:LH/2-LA/2,dx:30*MM};   // Cirrus IN and OUT mid arm on the back, 60 mm centers
-const LFOOT={x:LW/2-LL/2,y:-LH/2};          // the one cable leaves the foot of the leg
+const LIO={x:HUBD.io.x*MM,y:HUBD.io.y*MM,dx:HUBD.io.dx*MM};   // Cirrus IN and OUT on the back of the arm, 70 mm centers
 
 // ---------- materials ----------
 const std=(c,m,r,x)=>new THREE.MeshStandardMaterial(Object.assign({color:c,metalness:m,roughness:r},x||{}));
@@ -3757,70 +3761,91 @@ function baseRail(parent,x0,x1,seats){
 }
 
 // ---------- the L hub (Shroud style): rounded L body, fins on the back under a perforated cover ----------
-function lPts(m){const x0=-LW/2+m,x1=LW/2-m,y0=-LH/2+m,y1=LH/2-m,xl=LW/2-LL+m,ya=LH/2-LA+m;
-  return [[x0,y1],[x0,ya],[xl,ya],[xl,y0],[x1,y0],[x1,y1]];}
+// Seen from the front its leg runs down the left, beside the seam rail it hangs on, and its arm across the top (HUBD).
+function lPts(m){const x0=-LW/2+m,x1=LW/2-m,y0=-LH/2+m,y1=LH/2-m,xl=-LW/2+LL-m,ya=LH/2-LA+m;
+  return [[x0,y1],[x0,y0],[xl,y0],[xl,ya],[x1,ya],[x1,y1]];}
 function lSlab(m,d,r,rIn,mat){
   const k='ls'+[m,d,r,rIn].map(v=>v.toFixed(5)).join('_');let g=gcache[k];
   if(!g){const b=Math.min(2.5*MM,d/3);
-    g=new THREE.ExtrudeGeometry(roundedPoly(new THREE.Shape(),lPts(m+b),[r-b,r-b,rIn+b,r-b,r-b,r-b]),{depth:d-2*b,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:3,curveSegments:10});
+    g=new THREE.ExtrudeGeometry(roundedPoly(new THREE.Shape(),lPts(m+b),[r-b,r-b,r-b,rIn+b,r-b,r-b]),{depth:d-2*b,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:3,curveSegments:10});
     g.translate(0,0,-(d-2*b)/2);gcache[k]=g;}
   return new THREE.Mesh(g,mat);
 }
 function lPerf(){let g=gcache.lperf;
-  if(!g){g=new THREE.ShapeGeometry(roundedPoly(new THREE.Shape(),lPts(9*MM),[13*MM,13*MM,4*MM,13*MM,13*MM,13*MM]),10);gcache.lperf=g;}
+  if(!g){g=new THREE.ShapeGeometry(roundedPoly(new THREE.Shape(),lPts(9*MM),[13*MM,13*MM,13*MM,4*MM,13*MM,13*MM]),10);gcache.lperf=g;}
   return new THREE.Mesh(g,MAT.perf);}
-// The Cirrus IN and OUT stay on the back of the arm and a twist lock at the foot of the leg, as on the block model.
+// The hook plate on the leg (part of the hub): two grooves open at its back edge, run forward to the pin line and turn up
+// into a round pocket 1/2 in higher, so the hub goes in level, drops 1/2 in and hangs on the seam rail's two pins, as a
+// panel hangs on its U rails. A hole takes the spring plunger. Drawn in its own plane (hub z across, hub y up, mm) and
+// extruded across x.
+function plateGeo(){return fgeo('hplate',()=>{
+  const h=HUBD,P=h.plate,zf=-(P.d[0]-h.d0),zb=-(P.d[1]-h.d0),zp=-(h.pin.d-h.d0),gc=h.pin.r+0.5,s=new THREE.Shape();
+  s.moveTo(zf,-P.y);s.lineTo(zb,-P.y);
+  for(const ys of [-h.pin.dy,h.pin.dy]){const yr=ys-GEO.drop;
+    s.lineTo(zb,yr-gc);s.lineTo(zp,yr-gc);s.absarc(zp,yr,gc,-Math.PI/2,0,false);s.lineTo(zp+gc,ys);
+    s.absarc(zp,ys,gc,0,Math.PI,false);s.lineTo(zp-gc,yr+gc);s.lineTo(zb,yr+gc);}
+  s.lineTo(zb,P.y);s.lineTo(zf,P.y);s.lineTo(zf,-P.y);
+  const hole=new THREE.Path();hole.absarc(-(h.plg.d-h.d0),h.plg.dy,3.5,0,Math.PI*2,true);s.holes.push(hole);
+  const g=new THREE.ExtrudeGeometry(s,{depth:P.t,bevelEnabled:false,curveSegments:10});g.rotateY(-Math.PI/2);g.scale(MM,MM,MM);return g;});}
+// Hub x of the plate's inner face, the hub side: the plate rides 0.5 off the seam rail's right leg
+const PLATE_X=(HUB_RAIL+HUBD.plate.gap+HUBD.plate.t-HUBD.x)*MM;
 function lHub(){
-  const g=new THREE.Group(),R=22*MM,RI=12*MM;
+  const g=new THREE.Group(),R=22*MM,RI=12*MM,h=HUBD;
   const body=lSlab(0,25*MM,R,RI,MAT.hub);body.position.z=-12.5*MM;g.add(body);
-  const face=new THREE.Mesh(gcache.lface||(gcache.lface=new THREE.ShapeGeometry(roundedPoly(new THREE.Shape(),lPts(6*MM),[16*MM,16*MM,6*MM,16*MM,16*MM,16*MM]),10)),MAT.hubFace);
+  const face=new THREE.Mesh(gcache.lface||(gcache.lface=new THREE.ShapeGeometry(roundedPoly(new THREE.Shape(),lPts(6*MM),[16*MM,16*MM,16*MM,6*MM,16*MM,16*MM]),10)),MAT.hubFace);
   face.position.z=0.35*MM;g.add(face);
   // vertical fins at 6 mm pitch: full height in the leg, arm height elsewhere, trimmed at the rounded corners
-  const x0=-LW/2,x1=LW/2,xl=LW/2-LL,yT=LH/2,yA=LH/2-LA,yB=-LH/2,gp=5*MM,ci=d=>d<R?R-Math.sqrt(R*R-(R-d)*(R-d)):0;
+  const x0=-LW/2,x1=LW/2,xl=-LW/2+LL,yT=LH/2,yA=LH/2-LA,yB=-LH/2,gp=5*MM,ci=d=>d<R?R-Math.sqrt(R*R-(R-d)*(R-d)):0;
   const n=Math.round((x1-x0-10*MM)/(6*MM))+1;
-  for(let i=0;i<n;i++){const x=x0+5*MM+i*(x1-x0-10*MM)/(n-1),leg=x>xl+1*MM;
-    const top=yT-gp-ci(Math.min(x-x0,x1-x)),bot=leg?yB+gp+ci(Math.min(x-xl,x1-x)):yA+gp+ci(x-x0);
+  for(let i=0;i<n;i++){const x=x0+5*MM+i*(x1-x0-10*MM)/(n-1),leg=x<xl-1*MM;
+    const top=yT-gp-ci(Math.min(x-x0,x1-x)),bot=leg?yB+gp+ci(Math.min(x-x0,xl-x)):yA+gp+ci(x1-x);
     g.add(box(1.6*MM,top-bot,11*MM,MAT.fin,x,(top+bot)/2,-30.5*MM));}
   const cover=lSlab(0,5*MM,R,RI,MAT.hub);cover.position.z=-LT+2.5*MM;g.add(cover);
   const pf=lPerf();pf.position.z=-LT-0.3*MM;g.add(pf);
-  g.add(cyl(4*MM,1*MM,MAT.glow,LFOOT.x,yB+18*MM,0.9*MM,'z',16));   // status light on the face, seen once the panel is out
+  g.add(cyl(4*MM,1*MM,MAT.glow,x0+LL/2,yB+18*MM,0.9*MM,'z',16));   // status light on the face, seen once the panel is out
   const parts={};
-  g.add(box(118*MM,60*MM,3*MM,MAT.bezel,LIO.x,LIO.y,-LT-1.5*MM));
+  // the Cirrus IN and OUT on the back of the arm, and the lead plug's socket under it
+  g.add(box(130*MM,60*MM,3*MM,MAT.bezel,LIO.x,LIO.y,-LT-1.5*MM));
   parts.plugs=[[-1,MAT.conIn],[1,MAT.conOut]].map(([s,mat])=>{const x=LIO.x+s*LIO.dx;
     g.add(cyl(19*MM,4*MM,MAT.endcap,x,LIO.y,-LT-5*MM,'z',24),cyl(15.5*MM,8*MM,mat,x,LIO.y,-LT-11*MM,'z',24),cyl(15*MM,30*MM,MAT.bezel,x,LIO.y,-LT-30*MM,'z',20));
     return V(x,LIO.y,-LT-45*MM);});
-  g.add(cyl(11*MM,14*MM,MAT.bezel,LFOOT.x,yB-7*MM,-20*MM,'y',18),cyl(12*MM,4*MM,MAT.endcap,LFOOT.x,yB-2*MM,-20*MM,'y',18));
-  parts.foot=V(LFOOT.x,yB-14*MM,-20*MM);
-  // Inside, seen with the Inside hub toggle: the supply is split round the corner. Its 48 V output stage and the harness
-  // eFuse board sit in the arm, the PFC front end and its bulk capacitors at the top of the leg, joined to the output stage
-  // by a short copper link round the inside corner, and the receiving card below them, above the cable gland at the foot.
-  // Boards face the panels; the power parts sit on their backs against the finned wall.
+  g.add(box(32*MM,5*MM,20*MM,MAT.bezel,h.port.x*MM,yA-2.5*MM,-(h.port.d-h.d0)*MM));
+  // the hook plate on three standoffs on the leg's left face, and the spring plunger: its pin reaches through the plate into
+  // the seam rail, and its orange knob sits on the face at the top of the leg
+  const pl=new THREE.Mesh(plateGeo(),MAT.steel);pl.position.x=PLATE_X;g.add(pl);
+  for(const [y,d] of [[100,62],[0,50],[-102,40]])g.add(cyl(4*MM,-PLATE_X-LW/2,MAT.steel,(PLATE_X-LW/2)/2,y*MM,-(d-h.d0)*MM,'x',10));
+  const plunger=new THREE.Group(),py=h.plg.dy*MM,pz=-(h.plg.d-h.d0)*MM;
+  plunger.add(cyl(3*MM,11*MM,MAT.steel,-LW/2-5.5*MM,py,pz,'x',12),cyl(6*MM,7*MM,MAT.latch,-102*MM,py-4*MM,3.5*MM,'z',18));
+  g.add(plunger);parts.plunger=plunger;
+  // Inside, seen with the Inside hub toggle: the supply is split round the corner. Its 5 V output stage sits across the
+  // arm with the lead fuses below it beside the socket, the PFC front end and its bulk capacitors at the top of the leg,
+  // joined to the output stage by a short copper link round the inside corner, and the receiving card at the foot of the
+  // leg. Boards face the panels; the power parts sit on their backs against the finned wall.
   const ins=new THREE.Group();ins.visible=false;g.add(ins);parts.inside=ins;
-  const at=(w,h,d,mat,x,y,z)=>ins.add(box(w*MM,h*MM,d*MM,mat,x*MM,y*MM,z*MM));
-  for(const [w,h,x,y] of [[200,56,-19,80],[24,56,100,80],[70,60,72,-10],[70,45,72,-80.5]])at(w,h,1.6,MAT.pcb,x,y,-20);
-  at(36,30,9,MAT.psu,-72,80,-14.7);at(24,24,9,MAT.psu,-20,80,-14.7);                                   // transformer, output choke
-  for(let i=0;i<6;i++)at(10,8,2.4,MAT.chip,-112+i*14,66,-22);                                            // FETs on the back
-  for(let i=0;i<3;i++)at(8,6,2,MAT.chip,100,62+i*14,-18.2);                                               // eFuse
-  for(const x of [52,92])ins.add(cyl(8*MM,40*MM,MAT.psu,x*MM,-4*MM,-10.2*MM,'y',16));                     // bulk capacitors
-  at(14,14,2,MAT.chip,72,-80.5,-18.2);at(26,5,4,MAT.knob,72,-63,-17.2);at(26,5,4,MAT.knob,72,-98,-17.2); // card: FPGA and its headers
-  for(const x of [42,48])at(3,32,1.5,MAT.copper,x,36,-14);                                               // the link round the corner
-  ins.add(cyl(2.5*MM,170*MM,MAT.cable,112*MM,-27*MM,-12*MM,'y',10));                                     // harness feed down the leg
+  const at=(w,hh,d,mat,x,y,z)=>ins.add(box(w*MM,hh*MM,d*MM,mat,x*MM,y*MM,z*MM));
+  for(const [w,hh,x,y] of [[200,56,19,80],[96,34,67,14],[70,60,-72,-10],[70,45,-72,-80.5]])at(w,hh,1.6,MAT.pcb,x,y,-20);
+  at(36,30,9,MAT.psu,72,80,-14.7);at(24,24,9,MAT.psu,20,80,-14.7);                                     // transformer, output choke
+  for(let i=0;i<6;i++)at(10,8,2.4,MAT.chip,112-i*14,66,-22);                                             // FETs on the back
+  for(let i=0;i<9;i++)at(6,9,2,MAT.chip,27+i*10,14,-18.2);                                               // a fuse for every lead
+  for(const x of [-52,-92])ins.add(cyl(8*MM,40*MM,MAT.psu,x*MM,-4*MM,-10.2*MM,'y',16));                  // bulk capacitors
+  at(14,14,2,MAT.chip,-72,-80.5,-18.2);at(26,5,4,MAT.knob,-72,-63,-17.2);at(26,5,4,MAT.knob,-72,-98,-17.2); // card: FPGA and its headers
+  for(const x of [-42,-48])at(3,32,1.5,MAT.copper,x,36,-14);                                             // the link round the corner
+  for(const x of [56,64])at(4,21,1.5,MAT.copper,x,41.5,-14);                                             // 5 V bus down to the fuses
   return {g,parts};
 }
-const SEATL=(C,R)=>V(C-0.5,R-ltop()-LH/2,LHZ);
+const SEATL=()=>V(HUBD.x*MM,HUBD.y*MM,LHZ);
 function rigL(C,R){const root=new THREE.Group(),pivot=new THREE.Group(),cart=new THREE.Group();root.position.copy(SEATL(C,R));root.add(pivot);pivot.add(cart);
   return {root,pivot,cart,home:root.position.clone(),parts:{}};}
-// ---------- harness: one cable from the hub down the right side (front view), a T into every row but the bottom ----------
-const HARN_A=(C,R)=>V(C-0.5+LFOOT.x,R-ltop()-LH-22*MM,HARN_Z);   // the tee just below the foot of the hub's leg
+// ---------- the leads: a star from the lead plug under the hub, one 5 V lead to every panel (leadPath) ----------
+// The plug hangs in the hub's notch on its leads, plugged up into the socket under the arm; the hub swap unplugs it first.
 function harness(g,C,R){
-  const pts=(a)=>a.map(p=>V(...p)),out=new THREE.Group();g.add(out);
-  const A=HARN_A(C,R),xT=A.x,yA=A.y,rowY=r=>r+0.5-101.6*MM;
-  out.add(tube(pts([[xT,yA,HARN_Z],[xT,rowY(0),HARN_Z]]),5*MM,MAT.cable,0));
-  for(let r=0;r<R;r++){const y=rowY(r);
-    if(y>yA-1e-6)out.add(tube(pts([[xT,yA,HARN_Z],[xT-18*MM,yA,HARN_Z],[xT-42*MM,y,HARN_Z],[0.5,y,HARN_Z]]),5*MM,MAT.cable,9*MM));   // the top row sits just above the tee
-    else out.add(tube(pts([[xT,y,HARN_Z],[0.5,y,HARN_Z]]),5*MM,MAT.cable,0));
-    for(let c=0;c<C;c++){const x=c+0.5;out.add(tube(pts([[x,y,HARN_Z],[x,y,-24*MM],[x,r+0.5-17*MM,-24*MM]]),3.2*MM,MAT.cable,10*MM));}
-  }
+  const out=new THREE.Group();g.add(out);
+  const P=p=>V(p[0]*MM,p[1]*MM,-p[2]*MM),h=HUBD,sp=h.spider;
+  for(let c=0;c<C;c++)for(let r=0;r<R;r++)out.add(tube(leadPath(c,r).map(P),4.2*MM,MAT.cable,12*MM));
+  const plug=new THREE.Group(),sx=(h.x+sp.x)*MM,sy=(h.y+sp.y)*MM,sz=-(sp.d[0]+sp.d[1])/2*MM,top=sy+sp.h/2*MM,sock=(h.y+h.H/2-h.A-5)*MM;
+  const body=roundedSlab(sp.w*MM,sp.h*MM,(sp.d[1]-sp.d[0])*MM,6*MM,MAT.conn);body.position.set(sx,sy,sz);
+  plug.add(body,box(26*MM,sock-top,16*MM,MAT.conn,sx,(top+sock)/2,sz));
+  out.add(plug);out.userData.plug=plug;
   return out;
 }
 // A cable whose far end rides on the hub. It is rebuilt whenever the hub moves; the slack hangs as a loop at rest and
@@ -3839,21 +3864,16 @@ function liveCable(g,rg,a,dirA,endL,dirL,len,side,mat){
     mesh.geometry.dispose();mesh.geometry=new THREE.TubeGeometry(new THREE.CubicBezierCurve3(a,P1,P2,P3.clone()),28,5*MM,8,false);
   }};
 }
-// The three service loops on a hub that keeps its own connectors: IN, OUT and the harness. The IN and OUT leads are
-// clipped under the top flange's lip (ay: clip height, az: clip depth) and leave through the open back to the next block,
-// so no cable passes through the frame. They only show while the hub swap plays: at rest the hub shows its connectors and
-// the harness runs straight into the foot of its leg.
-function hubLoops(g,rg,hub,C,R,ay,az){
+// The service loops on the hub's Cirrus IN and OUT: the hub keeps its own connectors and comes out on them. Each lead comes
+// in through the open back from the block beside it, so no cable passes through the frame. They only show while the hub
+// swap plays; at rest the hub shows its connectors.
+function hubLoops(g,rg,hub,C,R){
   const s=SEATL(C,R),cables=[],parts=[];
-  hub.parts.plugs.forEach((p,i)=>{const a=V(s.x+p.x,ay,az);
-    parts.push(box(16*MM,14*MM,10*MM,MAT.rec,a.x,a.y,a.z-1*MM),                               // loop clip
-               tube([a,V(a.x,a.y,-D-22*MM),V(a.x,a.y-0.22,-D-22*MM)],6*MM,MAT.chain,14*MM));  // on to the next block
-    cables.push(liveCable(g,rg,a,V(0,-0.75,0.66).normalize(),p,V(0,0,-1),300*MM,V(i?12*MM:-12*MM,0,0)));});
-  cables.push(liveCable(g,rg,HARN_A(C,R),V(0,1,0),hub.parts.foot,V(0,-1,0),300*MM,V(-30*MM,0,0),MAT.cable));
-  const A=HARN_A(C,R),F=hub.parts.foot.clone().add(s);
-  const stub=tube([A,V(A.x,A.y,F.z),F],5*MM,MAT.cable,6*MM);
-  parts.forEach(m=>g.add(m));g.add(stub);
-  const set=on=>{parts.forEach(m=>m.visible=on);cables.forEach(c=>c.mesh.visible=on);stub.visible=!on;};
+  hub.parts.plugs.forEach((p,i)=>{const a=V(s.x+p.x,s.y+p.y+50*MM,-D-12*MM),sd=i?1:-1;
+    parts.push(tube([a,V(a.x,a.y,-D-30*MM),V(a.x+sd*0.2,a.y,-D-30*MM)],6*MM,MAT.chain,14*MM));   // on to the next block
+    cables.push(liveCable(g,rg,a,V(0,-0.6,0.8).normalize(),p,V(0,0,-1),300*MM,V(sd*12*MM,0,0)));});
+  parts.forEach(m=>g.add(m));
+  const set=on=>{parts.forEach(m=>m.visible=on);cables.forEach(c=>c.mesh.visible=on);};
   set(false);
   return {cables,set};
 }
@@ -3871,11 +3891,12 @@ function tube(raw,rad,mat,r){const c=polyCurve(raw,r==null?16*MM:r);const n=Math
 
 // ---------- the two frames, Rib (folded aluminum sheet) and Hoop (roll-formed steel), built to the fabrication drawings ----------
 // Every block: x from 0 (left seen from the front) to C, y from 0 to R, panel backs at z = 0, frame back at z = -D.
-// The L hub sits in the top right bay seen from the front (the upper left from the back) with its leg down the outer side.
+// The L hub hangs behind the middle of the block (HUBD) on two pins in the seam rail 1 ft in from the left, seen from the
+// front, the same on both frames, so nothing that holds it touches an outer wall.
 // Side walls carry the gloss logo strip along the front edge; round vents repeat the same way in every foot, clear of the
 // joint stations. A 2 in flange
 // drilled every 2 in runs round the back of both frames, and no cable passes through either one: the hub's leads leave
-// through the open back. Sizes in mm come from GEO and the sheets (HANG, HH, HUBD).
+// through the open back. Sizes in mm come from GEO and HUBD.
 const MK={groove:std(srgb(0x0b0c0e),.1,.8)};
 // a quarter of a bent corner: an annulus sector in x-y, run back to front
 function arcShell(ro,ri,a0,len){const k='as'+[ro,ri,a0,len].map(v=>v.toFixed(5)).join('_');if(gcache[k])return gcache[k];
@@ -3892,12 +3913,23 @@ function sideU(g,xe,dir,y0,y1,rows,t,mat){
   out.forEach(o=>g.add(o));return out;
 }
 const LOGO_PT=(C,R)=>V(C,logoY(R)[Math.floor(1.8*R)]*MM,LOGO_ZC);   // a point on a logo of the right strip, for callouts
-const LEAD_Y=R=>R-FW-8*MM;                            // the IN and OUT loops clip under the top flange's lip (hub swap only)
 const IO_PT=(C,R)=>{const s=SEATL(C,R);return V(s.x+LIO.x,s.y+LIO.y,s.z-LT-45*MM);};   // between the Cirrus IN and OUT plugs
+// The hub mount (sheets R-5 and H-5), the same on both frames: two FF-C06 stainless shoulder pins staked through the right
+// leg of the seam rail 1 ft in, at the hub's height, and the hub on them (lHub carries its hook plate and spring plunger).
+// t: the rail's sheet thickness. Returns the hub's rig and its loops.
+function hubMount(g,C,R,t){
+  const h=HUBD,pn=h.pin,x=HUB_RAIL*MM,z=-pn.d*MM;
+  for(const y of hubPinY().map(v=>v*MM))g.add(cyl(pn.r*MM,pn.sh*MM,MAT.steel,x+pn.sh/2*MM,y,z,'x',16),
+    cyl(pn.hr*MM,pn.ht*MM,MAT.steel,x+(pn.sh+pn.ht/2)*MM,y,z,'x',18),cyl(4*MM,1.5*MM,MAT.steel,x-t-0.75*MM,y,z,'x',12));
+  const rg=rigL(C,R);g.add(rg.root);const hub=lHub();rg.cart.add(hub.g);rg.parts=hub.parts;
+  return {rg,hub,loops:hubLoops(g,rg,hub,C,R)};
+}
+const PINS_PT=()=>V(HUB_RAIL*MM+4*MM,hubPinY()[1]*MM,-HUBD.pin.d*MM);
+const KNOB_PT=()=>V((HUBD.x-102)*MM,(HUBD.y+HUBD.plg.dy-4)*MM,-(HUBD.d0-7)*MM);
 
-// ===== Rib (sheets R-0 to R-6): folded 1.6 mm 5052, riveted; the hub hangs from the top flange on one hook and a spring pin =====
+// ===== Rib (sheets R-0 to R-6): folded 1.6 mm 5052, riveted; the hub hangs on two pins in the seam rail =====
 function buildRib(C,R){
-  const g=new THREE.Group(),m=FM.rib,rb=GEO.rib,t=rb.t*MM,rows=rowsOf(R),L=[],s=SEATL(C,R),riv=[],edge={skin:[]};
+  const g=new THREE.Group(),m=FM.rib,rb=GEO.rib,t=rb.t*MM,rows=rowsOf(R),L=[],riv=[],edge={skin:[]};
   // the side walls: web with two columns of vents (one between the beads, one behind them) and the joint holes, the U on
   // the front edge, two beads rolled in nearly full length, and a tab at each end riveted inside the top or bottom wall
   for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1,part=[];
@@ -3921,42 +3953,17 @@ function buildRib(C,R){
   for(let k=1;k<C;k++)seamChannel(g,k,R,rows,m.rail,{t:2*MM,dep:66*MM,leg0:24*MM,wt:t,tab:[68*MM,rb.seamTab[1]*MM],rx:rb.seamRx*MM,rd:rb.seamRd*MM},riv);
   dotsOn(g,riv,'y',m.rivet);
   const kit=edgeKit(g,C,R,{inY:t});
-  // The hanger FF-R06 (sheet R-5) is riveted inside the top back flange on its hole line, behind the hub's arm: a tab up
-  // the flange, a shelf, a lip, and a small side flange at each end. Depths below the block's top, d back from the front.
-  const H=HANG,dy=dep=>R-dep*MM,dd=d=>-d*MM,ha=s.x+H.x0*MM,hb=s.x+H.x1*MM,hw=hb-ha,hc=(ha+hb)/2;
-  g.add(box(hw,(H.tab[1]-H.tab[0])*MM,2*MM,m.rail,hc,dy((H.tab[0]+H.tab[1])/2),dd(149.8)),
-        box(hw,2*MM,100.8*MM,m.rail,hc,dy(36),dd(99.4)),
-        box(hw,(H.lip[1]-H.lip[0])*MM,2*MM,m.rail,hc,dy((H.lip[0]+H.lip[1])/2),dd(49)));
-  for(const x of [ha+1*MM,hb-1*MM])g.add(box(2*MM,(H.side[1]-H.side[0])*MM,(H.sideD[1]-H.sideD[0])*MM,m.rail,x,dy((H.side[0]+H.side[1])/2),dd((H.sideD[0]+H.sideD[1])/2)));
-  dotsOn(g,H.riv.map(r=>[ha+r*MM,R-IN,-D-0.3*MM]),'z',m.rivet);
-  // the hub's stainless hook drops over the lip; its spring pin goes through the lip. In the hub's own frame: up() turns a
-  // depth below the block's top into height above the hub's center, hz() a depth behind the panels into hub z.
-  const rg=rigL(C,R);g.add(rg.root);const hub=lHub();rg.cart.add(hub.g);
-  const up=dep=>LH/2+(HUBD.top.rib-dep)*MM,hz=d=>-(d-HUBD.d0)*MM,ST=MAT.steel,kx=(H.x0+H.x1)/2*MM,kw=(H.x1-H.x0-10)*MM;
-  rg.cart.add(box(kw,40.5*MM,1.5*MM,ST,kx,(up(58)+up(17.5))/2,hz(45.5)),   // front leg, up from inside the hub's top
-              box(kw,1.5*MM,8.5*MM,ST,kx,up(18.25),hz(49)),                  // crown, resting on the lip
-              box(kw,5*MM,1.5*MM,ST,kx,up(21.5),hz(52.5)),                   // rear leg, behind the lip
-              cyl(3*MM,3.75*MM,ST,H.pin*MM,up(H.pinY),hz(42.9),'z',14));     // spring pin body on the front leg
-  const pin=new THREE.Group();
-  pin.add(cyl(7*MM,6*MM,MAT.latch,H.pin*MM,up(H.pinY),hz(37),'z',18),cyl(2.75*MM,10.6*MM,ST,H.pin*MM,up(H.pinY),hz(46.3),'z',10));
-  rg.cart.add(pin);rg.parts.pin=pin;
-  const loops=hubLoops(g,rg,hub,C,R,LEAD_Y(R),-D+6*MM);
+  const {rg,hub,loops}=hubMount(g,C,R,2*MM);
   L.push(['Folded 1.6 mm aluminum',V(C,R-0.25,-D*0.3)],['Beads rolled into the side',V(C,R*0.36,-93*MM)],
     ['Gloss logo strip, 3 per foot',LOGO_PT(C,R)],['Back flange, 2 in hole grid',V(C-14*MM,R*0.45,-D)],
-    ['Seam rail, a plain channel',V(1,R*0.3,-66*MM)],['Hub hangs on the top flange',V(hc,dy(36),-110*MM)],
+    ['Seam rail, a plain channel',V(1,R*0.3,-66*MM)],['Hub hangs on two pins',PINS_PT()],
     ['Locating pin, every foot',V(0.5,R+PIN_H,LOC_Z)],['Side PEM nuts, two lines',V(C,R-0.5,BOLT_Z)],['Cirrus IN and OUT on the hub',IO_PT(C,R)]);
-  return {g,rig:rg,hub,kit,edge,labels:L,logos:logos(g,C,R),cables:loops.cables,loops,
-    svcLabel:['Pull the pin, lift it off',V(s.x+H.pin*MM,dy(H.pinY),-37*MM)],hangerPt:V(ha+10*MM,dy(36),-120*MM)};
+  return {g,rig:rg,hub,kit,edge,labels:L,logos:logos(g,C,R),cables:loops.cables,loops,svcLabel:['Pull the knob, lift it off its pins',KNOB_PT()]};
 }
 
-// ===== Hoop (sheets H-0 to H-5): one roll-formed 1.2 mm ZM strip, one weld; the hub tilts forward on a hinge shelf =====
-// a hook on the foot of the hub's leg (hub assembly), notched over its hinge pin: drawn in its own plane (hub z across,
-// hub y up, mm) and extruded 3 mm across x
-function hookGeo(){return fgeo('hhook',()=>{const p=(HH.pinY+HUBD.top.hoop)+HUBD.H/2,zp=-(HH.pinD-HUBD.d0),b=-HUBD.H/2,s=new THREE.Shape();
-  s.moveTo(zp+6,b);s.lineTo(zp+6,p);s.absarc(zp,p,6,0,Math.PI,false);s.lineTo(zp-6,p-5);s.lineTo(zp-9,p-5);s.lineTo(zp-9,b);s.lineTo(zp+6,b);
-  const g2=new THREE.ExtrudeGeometry(s,{depth:3,bevelEnabled:false,curveSegments:12});g2.rotateY(-Math.PI/2);g2.scale(MM,MM,MM);return g2;});}
+// ===== Hoop (sheets H-0 to H-5): one roll-formed 1.2 mm ZM strip, one weld; the hub hangs on two pins in the seam rail =====
 function buildHoop(C,R){
-  const g=new THREE.Group(),m=FM.hoop,hp=GEO.hoop,t=hp.t*MM,rc=hp.rc*MM,uc=hp.uCut*MM,rows=rowsOf(R),L=[],s=SEATL(C,R),wx=hp.weldX*MM,cl=[],edge={skin:[]};
+  const g=new THREE.Group(),m=FM.hoop,hp=GEO.hoop,t=hp.t*MM,rc=hp.rc*MM,uc=hp.uCut*MM,rows=rowsOf(R),L=[],wx=hp.weldX*MM,cl=[],edge={skin:[]};
   const cols=GEO.rib.ends;   // four columns of vents on every wall
   for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1;
     const web=sideWeb(ventWeb(R-2*rc,t,ventsAt(cols,ventSideY(R).map(y=>y-hp.rc),sideHoles(R,rc))),m.main,xe,dir,t,rc);g.add(web);
@@ -3974,62 +3981,30 @@ function buildHoop(C,R){
   backFlange(g,C,R,m.main,{t,rc,mitre:MK.groove});   // V notched in line, so the flange closes into mitred corners
   // seam rails (sheet H-4): plain 1.2 mm channels, clinched at each end to the top and bottom walls
   for(let k=1;k<C;k++)seamChannel(g,k,R,rows,m.rail,{t,dep:76*MM,leg0:24*MM,wt:t,tab:[hp.seamTab[0]*MM,hp.seamTab[1]*MM],rx:hp.seamRx*MM,rd:hp.seamRd*MM},cl);
+  dotsOn(g,cl,'y',m.rivet,3*MM);
   const kit=edgeKit(g,C,R,{inY:t});
-  // The hub (sheet H-5): two hooks on the foot of its leg sit on Ø8 pins in the ears of a hinge shelf clinched to the seam
-  // rail beside it, and a spring latch on a strap clinched to the top flange holds its top. Nothing touches an outer wall.
-  const rg=rigL(C,R);g.add(rg.root);const hub=lHub();
-  const PV=V(0,(HH.pinY+HUBD.top.hoop)*MM+LH/2,-(HH.pinD-HUBD.d0)*MM);   // the pin axis, from the hub's center
-  rg.pivot.position.copy(PV);rg.cart.position.copy(PV).negate();rg.cart.add(hub.g);
-  for(const sg of [-1,1]){const k=new THREE.Mesh(hookGeo(),MAT.steel);k.position.x=LFOOT.x+sg*(sg>0?HH.hookX[1]:HH.hookX[0])*MM;rg.cart.add(k);}
-  const fx=s.x+LFOOT.x,xr=C-1+UW,ys=R+HH.shelf.y*MM,sh=HH.shelf,dd=d=>-d*MM,dz=(a,b)=>dd((a+b)/2),R2=m.rail;
-  // FF-H03: the shelf (with the window its lanced ear leaves), its back flange, the tab clinched to the seam rail, two ears
-  const xa=xr,xb=fx+(HH.earIn+HH.t)*MM,w0=fx-HH.earIn*MM,w1=w0+38*MM,ed=HH.earD;
-  const shelf=(x0,x1,d0,d1)=>g.add(box(x1-x0,HH.t*MM,(d1-d0)*MM,R2,(x0+x1)/2,ys-HH.t*MM/2,dz(d0,d1)));
-  shelf(xa,w0,sh.d0,sh.d1);shelf(w1,xb,sh.d0,sh.d1);shelf(w0,w1,sh.d0,ed[0]);shelf(w0,w1,ed[1],sh.d1);
-  g.add(box(xb-xa-8*MM,(sh.fl-HH.t)*MM,HH.t*MM,R2,(xa+xb)/2,ys-(sh.fl+HH.t)/2*MM,dz(sh.d1-HH.t,sh.d1)),
-        box(HH.t*MM,(sh.tab-HH.t)*MM,(sh.tabD-sh.d0)*MM,R2,xa+HH.t*MM/2,ys-(sh.tab+HH.t)/2*MM,dz(sh.d0,sh.tabD)));
-  const pinY=R+HH.pinY*MM;
-  for(const sg of [-1,1]){
-    g.add(box(HH.t*MM,(HH.earTop-HH.shelf.y)*MM,(ed[1]-ed[0])*MM,R2,fx+sg*(HH.earIn+HH.t/2)*MM,ys+(HH.earTop-HH.shelf.y)/2*MM,dz(ed[0],ed[1])));
-    g.add(cyl(HH.pinR*MM,(HH.earIn-HH.pinIn)*MM,MAT.steel,fx+sg*(HH.pinIn+HH.earIn)/2*MM,pinY,dd(HH.pinD),'x',16),   // FF-H04, orbital riveted
-          cyl(3.5*MM,1.6*MM,MAT.steel,fx+sg*(HH.earIn+HH.t+0.8)*MM,pinY,dd(HH.pinD),'x',14));
-  }
-  dotsOn(g,HH.clinch.map(([d,y])=>[xa+HH.t*MM+0.3*MM,R+y*MM,dd(d)]),'x',m.rivet,3*MM);
-  // FF-H05: the strap under the top wall, its tab clinched to the top flange and its drop plate carrying the spring latch
-  const st=HH.strap,lt=HH.latch,lx=s.x+lt.x*MM,sw=st.w*MM;
-  g.add(box(sw,HH.t*MM,(st.d1-st.d0)*MM,R2,lx,R+(st.y1-HH.t/2)*MM,dz(st.d0,st.d1)),
-        box(sw,(st.y1-st.tab)*MM,HH.t*MM,R2,lx,R+(st.y1+st.tab)/2*MM,dz(st.d1-HH.t,st.d1)),
-        box(sw,(st.y1-st.drop)*MM,HH.t*MM,R2,lx,R+(st.y1+st.drop)/2*MM,dz(st.d0,st.d0+HH.t)));
-  dotsOn(g,cl,'y',m.rivet,3*MM);dotsOn(g,[-1,1].map(sg=>[lx+sg*st.cx*MM,R-st.q*MM,-D-0.3*MM]),'z',m.rivet,3*MM);
-  const latch=box(lt.w*MM,(lt.y1-lt.y0)*MM,(lt.d[1]-lt.d[0])*MM,MAT.latch,lx,R+(lt.y0+lt.y1)/2*MM,dz(lt.d[0],lt.d[1]));
-  latch.add(box(lt.bolt*MM,lt.throw*MM,lt.bolt*MM,MAT.steel,0,-((lt.y1-lt.y0)/2+lt.throw/2)*MM,((lt.d[1]-lt.d[0])/2-lt.bolt/2)*MM));
-  latch.userData.y0=latch.position.y;g.add(latch);rg.parts.latch=latch;
-  const loops=hubLoops(g,rg,hub,C,R,LEAD_Y(R),-D+6*MM);
+  const {rg,hub,loops}=hubMount(g,C,R,t);
   L.push(['One roll-formed steel strip',V(C,R-0.3,-D*0.3)],['Mitred flange corner',V(C-FW*0.42,R-FW*0.42,-D)],
     ['Gloss logo strip, 3 per foot',LOGO_PT(C,R)],['The one weld',V(wx,0,-D*0.62)],
-    ['Back flange, 2 in hole grid',V(C-14*MM,R*0.45,-D)],['Hub tilts on a hinge shelf',V(fx-40*MM,ys,dd(70))],
+    ['Back flange, 2 in hole grid',V(C-14*MM,R*0.45,-D)],['Hub hangs on two pins',PINS_PT()],
     ['Seam rail, a plain channel',V(1,R*0.3,-76*MM)],
     ['Locating pin, every foot',V(0.5,R+PIN_H,LOC_Z)],['Side weld nuts, two lines',V(C,R-0.5,BOLT_Z)],['Cirrus IN and OUT on the hub',IO_PT(C,R)]);
-  return {g,rig:rg,hub,kit,edge,labels:L,logos:logos(g,C,R),cables:loops.cables,loops,svcLabel:['Press the latch, tilt it out',V(lx,R-22*MM,dd(63))]};
+  return {g,rig:rg,hub,kit,edge,labels:L,logos:logos(g,C,R),cables:loops.cables,loops,svcLabel:['Pull the knob, lift it off its pins',KNOB_PT()]};
 }
 
 const BUILD={rib:buildRib,hoop:buildHoop};
 
-// service motions, from rel (0 locked, 1 free) and pull (0 seated, 1 clear of the face)
+// the hub swap, the same on both frames, from rel (0 locked, 1 free) and pull (0 seated, 1 clear of the face): unplug the
+// lead plug, pull the knob so the plunger leaves the seam rail, lift the hub 1/2 in so its plate's grooves clear the
+// pins, ease it 24 mm forward off them, then bring it out the front
 const sm=t=>t<=0?0:t>=1?1:t*t*(3-2*t);
 const seg=(p,a,b)=>sm((p-a)/(b-a));
 const OUT=0.62;
-const SVC={
-  // Rib: pull the pin, lift 1/2 in off the lip, ease forward past it, lower so the hook passes under the top wall's front
-  // lip, then out the front
-  rib(rg,rel,pull){rg.parts.pin.position.z=seg(rel,0,0.3)*6*MM;
-    rg.root.position.y=rg.home.y+DROP*seg(rel,0.35,0.7)*(1-seg(pull,0,0.3));
-    rg.root.position.z=rg.home.z+8*MM*seg(rel,0.72,1)+OUT*seg(pull,0.3,1);},
-  // Hoop: press the latch, tilt 38 degrees forward on the pins, lift 1/2 in off them, then out the front
-  hoop(rg,rel,pull){rg.parts.latch.position.y=rg.parts.latch.userData.y0+seg(rel,0,0.2)*HH.latch.throw*MM;
-    rg.pivot.rotation.x=seg(rel,0.2,0.85)*HH.tilt*Math.PI/180;
-    rg.root.position.y=rg.home.y+seg(pull,0,0.2)*DROP;rg.root.position.z=rg.home.z+seg(pull,0.2,1)*OUT;}
-};
+function svcHub(b,rel,pull){const rg=b.rig,pl=b.harness&&b.harness.userData.plug;
+  if(pl)pl.position.y=-14*MM*seg(rel,0,0.25);
+  rg.parts.plunger.position.x=8*MM*seg(rel,0.25,0.45);
+  rg.root.position.y=rg.home.y+DROP*seg(rel,0.5,0.8);
+  rg.root.position.z=rg.home.z+24*MM*seg(rel,0.82,1)+OUT*seg(pull,0,1);}
 
 // ---------- scene state ----------
 let root=null,labels=[],blocks=[],anim=null,current=null,boxDirty=true,joint=null,single=null;
@@ -4101,10 +4076,10 @@ function buildPanelMode(){
   // the seam rail: both legs grooved, its crown 66 (Rib) or 76 (Hoop) back
   for(const s of [-1,1]){const l=new THREE.Mesh(grooveLeg(y0,y1,[0],dep,ts),m.rail);l.position.x=s<0?0.5-UW+ts:0.5+UW;fr.add(l);}
   fr.add(box(2*UW,y1-y0,ts,m.rail,0.5,0,-dep+ts/2));
-  // the row cable 4 in below the panel's center and the drop tap's tail up into the center connector
-  const hg=new THREE.Group(),ry=-101.6*MM;root.add(hg);
-  hg.add(tube([V(-0.45,ry,HARN_Z),V(0.62,ry,HARN_Z)],5*MM,MAT.cable,0),box(22*MM,22*MM,16*MM,MAT.conn,0,ry,HARN_Z),
-         tube([V(0,ry,HARN_Z),V(0,ry,-24*MM),V(0,-17*MM,-24*MM)],3.2*MM,MAT.cable,10*MM));
+  // the panel's 5 V lead, as on the block's diagonal panels: in from the hub at d 84, forward, across and up into the
+  // bottom of the center connector
+  const hg=new THREE.Group(),sp=HUBD.spider,ld=HUBD.lead,F=V(sp.x*MM,sp.y*MM,-ld.d*MM),u=V(1,1,0).normalize();root.add(hg);
+  hg.add(tube([F.clone().addScaledVector(u,0.62),F,V(F.x,F.y,-ld.tail*MM),V(0,F.y,-ld.tail*MM),V(0,-ld.conn*MM,-ld.tail*MM)],4.2*MM,MAT.cable,12*MM));
   single={panel:{g:p,base:V(0,0,0)},skin,harness:hg};
   addLabel('1 x 1 ft panel, 7/8 in deep',p,V(-0.49,-0.3,8*MM));
   addLabel('Rounded boss, one per pin',p,V(RIB_X-BOSS_T/2,PIN_YS[1],PIN_Z+3*MM));
@@ -4112,7 +4087,7 @@ function buildPanelMode(){
   addLabel('Groove and pocket, in cutaway',fr,V(x+UW-t,PIN_YS[0]+DROP,-UD+2*MM));
   addLabel('Side wall with its '+(k==='hoop'?'rolled':'folded')+' U',fr,V(x,-0.35,-D/2));
   addLabel('Seam rail, both legs grooved',fr,V(0.5,-0.4,-dep));
-  addLabel('Drop tap to the center connector',hg,V(0.3,ry,HARN_Z));
+  addLabel('5 V lead from the hub',hg,F.clone().addScaledVector(u,0.3));
   current={center:V(0,0,-0.18),size:1.6,isoDir:[-0.95,0.42,-0.7],hang:{center:V(-0.42,0,0),size:1.15,isoDir:[-1,0.62,-0.72]}};
 }
 
@@ -4120,16 +4095,16 @@ function buildPanelMode(){
 function buildBlockMode(){
   const [R,C]=blockDims(state.btype),wall=wallGroup(C,R),b=makeBlock(R,C,0,0,face(C,R),C,R,wall),n=R*C;
   b.logos.forEach(l=>l.visible=true);
-  const A=HARN_A(C,R),cart=b.rig.cart,inside=()=>state.inside;
-  addLabel('L hub, '+(n===9?'750':'500')+' W supply and card',cart,V(-80*MM,LH/2-LA/2,-LT));
+  const cart=b.rig.cart,inside=()=>state.inside,mid=(c,r)=>{const q=leadPath(c,r),a=q[1],z=q[2];return V((a[0]+z[0])/2*MM,(a[1]+z[1])/2*MM,-z[2]*MM);};
+  addLabel('L hub, '+(n===9?'750':'500')+' W, AC to 5 V',cart,V(-LW/2+LL/2,-40*MM,-LT));
   addLabel('Cirrus IN and OUT',b.g,IO_PT(C,R));
-  addLabel('One cable out of the foot',b.g,V(A.x,(A.y+0.5-101.6*MM)/2,HARN_Z));
-  if(R>2)addLabel('T into each upper row',b.g,V(A.x-42*MM,R-1.5-101.6*MM+1,HARN_Z));
-  addLabel('Drop tap to every panel',b.g,V(0.5,0.5-60*MM,-24*MM));
-  addLabel('48 V output stage',cart,V(-72*MM,80*MM,-12*MM),inside);
-  addLabel('Harness eFuse',cart,V(100*MM,96*MM,-18*MM),inside);
-  addLabel('PFC and bulk capacitors',cart,V(92*MM,-4*MM,-4*MM),inside);
-  addLabel('Receiving card',cart,V(72*MM,-80*MM,-17*MM),inside);
+  addLabel('One plug for all the leads',b.g,V((HUBD.x+HUBD.spider.x)*MM,(HUBD.y+HUBD.spider.y-20)*MM,-HUBD.spider.d[1]*MM));
+  addLabel('A 5 V lead to every panel',b.g,mid(1,0));
+  addLabel('Longest lead '+Math.round(leadMaxIn(C,R))+' in',b.g,mid(0,0));   // a diagonal one, on every block
+  addLabel('5 V output stage',cart,V(72*MM,80*MM,-12*MM),inside);
+  addLabel('A fuse for every lead',cart,V(67*MM,14*MM,-18*MM),inside);
+  addLabel('PFC and bulk capacitors',cart,V(-92*MM,-4*MM,-4*MM),inside);
+  addLabel('Receiving card',cart,V(-72*MM,-80*MM,-17*MM),inside);
   current={center:V(0,0,-D/2),size:Math.max(R,C)+0.6,isoDir:[0.8,0.45,-0.9],
     hang:()=>({center:b.g.localToWorld(V(0.08,R-0.5,0)),size:1.4,isoDir:[-1,0.62,-0.72]})};
 }
@@ -4230,37 +4205,41 @@ function playJoint(){
     done:()=>{blocks.forEach(b=>{b.harness.visible=state.harness;b.panels.forEach(p=>p.g.position.copy(p.base));});applyPanels();}};
 }
 
-// ---------- service: lift out one panel, swap the hub from the front ----------
+// ---------- service: lift out the hub's panels, swap the hub from the front ----------
+// The hub sits behind the second panel of the second column. On a 3 ft tall block the panel above it comes out first, top
+// down, so the hub's panel has room to lift off its pockets.
+const HUB_W=(C,R)=>V(HUBD.x*MM-C/2,HUBD.y*MM-R/2,0);
 function buildServiceMode(){
   const [R,C]=blockDims(state.btype),wall=wallGroup(C,R),b=makeBlock(R,C,0,0,face(C,R),C,R,wall);
   b.logos.forEach(l=>l.visible=true);
-  const p=b.panels.find(q=>q.c===C-1&&q.r===R-1);p.removed=true;b.svcPanel=p;   // at rest the top right panel is out
+  const ps=b.panels.filter(q=>q.c===1&&q.r>=1).sort((p,q)=>q.r-p.r);ps.forEach(p=>p.removed=true);b.svcPanels=ps;   // at rest they are out
   addLabel(b.svcLabel[0],b.g,b.svcLabel[1]);
-  addLabel('L hub: supply and card',b.rig.cart,V(-80*MM,LH/2-LA/2,0.5*MM));
-  if(state.k==='rib')addLabel('Hanger on the top flange',b.g,b.hangerPt);
-  else addLabel('Hinge pins on the seam rail',b.g,V(C-0.5+LFOOT.x-47*MM,R+HH.pinY*MM,-HH.pinD*MM));
-  addLabel('10.4 in clear opening',b.g,V(C-1+UW,R-0.86,-UD/2));
-  current={center:V(C/2-0.6,R/2-0.7,0.1),size:2.7,fitW:3.4,isoDir:[-0.55,0.32,1],
-    close:{center:V(C/2-0.72,R/2-0.58,-0.03),size:1.45,fitW:2.0,isoDir:[-0.4,-0.1,1]}};   // the swap plays close on the hub bay, then the callouts come back out at rest
+  addLabel('L hub: supply and card',b.rig.cart,V(40*MM,60*MM,0.5*MM));
+  addLabel('Two pins on the seam rail',b.g,V(HUB_RAIL*MM+4*MM,hubPinY()[0]*MM,-HUBD.pin.d*MM));
+  addLabel('10.4 in clear opening',b.g,V(1+UW,R-0.2,-UD/2));
+  const h=HUB_W(C,R);
+  current={center:V(h.x*0.5,h.y*0.5,0.1),size:2.7,fitW:3.4,isoDir:[0.5,0.32,1],
+    close:{center:V(h.x-0.02,h.y+0.05,-0.03),size:1.45,fitW:2.0,isoDir:[0.42,0.12,1]}};   // the swap plays close on the hub bay, then the callouts come back out at rest
 }
-function svcPose(b,p,mats,t){
-  const rg=b.rig,q=seg(t,0.2,1.9);
-  // the panel lifts 1/2 in off its pockets, comes straight out along the grooves, then moves aside
-  p.g.position.set(p.base.x+0.9*seg(q,0.55,1),p.base.y+DROP*seg(q,0,0.2),p.base.z+0.5*seg(q,0.2,0.55));
-  const a=1-seg(q,0.62,1);mats.forEach(m=>m.opacity=a);p.g.visible=a>0.01;
+function svcPose(b,mats,t){
+  // the panels lift 1/2 in off their pockets, come straight out along the grooves, then move aside, top one first
+  const n=b.svcPanels.length;
+  b.svcPanels.forEach((p,i)=>{const q=seg(t,0.2+i*1.7/n,0.2+(i+1)*1.7/n);
+    p.g.position.set(p.base.x+0.9*seg(q,0.55,1),p.base.y+DROP*seg(q,0,0.2),p.base.z+0.5*seg(q,0.2,0.55));
+    const a=1-seg(q,0.62,1);p.mats.forEach(m=>m.opacity=a);p.g.visible=a>0.01;});
   const rel=seg(t,2.1,3.6)*(1-seg(t,7.6,8.8)),pull=seg(t,3.8,5.0)*(1-seg(t,6.2,7.4));
-  SVC[state.k](rg,rel,pull);
+  svcHub(b,rel,pull);
   (b.cables||[]).forEach(c=>c.update());
 }
 function playService(){
-  const b=blocks[0],p=b.svcPanel,mats=[];
-  p.removed=false;p.moving=true;p.g.position.copy(p.base);
-  p.g.traverse(o=>{if(o.isMesh){o.userData.m0=o.material;o.material=o.material.clone();o.material.transparent=true;mats.push(o.material);}});
+  const b=blocks[0],mats=[];
+  b.svcPanels.forEach(p=>{p.removed=false;p.moving=true;p.g.position.copy(p.base);p.mats=[];
+    p.g.traverse(o=>{if(o.isMesh){o.userData.m0=o.material;o.material=o.material.clone();o.material.transparent=true;mats.push(o.material);p.mats.push(o.material);}});});
   applyPanels();b.loops.set(true);   // the cable loops show only while the hub comes out
-  const cleanup=()=>{p.g.traverse(o=>{if(o.isMesh&&o.userData.m0){o.material=o.userData.m0;delete o.userData.m0;}});mats.forEach(m=>m.dispose());mats.length=0;b.loops.set(false);};
+  const cleanup=()=>{b.svcPanels.forEach(p=>p.g.traverse(o=>{if(o.isMesh&&o.userData.m0){o.material=o.userData.m0;delete o.userData.m0;}}));mats.forEach(m=>m.dispose());mats.length=0;b.loops.set(false);};
   const at=[0,2.0,3.7,6.0];
-  anim={t:reduceMotion?9.6:0,dur:9.6,step:-2,steps:BY[state.k].steps.map((s,i)=>[at[i],s]),pose:t=>svcPose(b,p,mats,t),cleanup,
-    done:()=>{cleanup();p.moving=false;p.removed=true;p.g.position.copy(p.base);applyPanels();
+  anim={t:reduceMotion?9.6:0,dur:9.6,step:-2,steps:svcSteps(b.svcPanels.length).map((s,i)=>[at[i],s]),pose:t=>svcPose(b,mats,t),cleanup,
+    done:()=>{cleanup();b.svcPanels.forEach(p=>{p.moving=false;p.removed=true;p.g.position.copy(p.base);});applyPanels();
       if(!anim0.userCam)setCam('iso');}};   // back out for the callouts unless the user moved the view
   const anim0=anim;
   if(!reduceMotion)setCam('iso',false,current.close);
@@ -4362,10 +4341,10 @@ controls.addEventListener('start',()=>{camTween=null;if(anim)anim.userCam=true;}
 const nm=s=>s.replace('x','&nbsp;x&nbsp;');
 const CAPS={
   panel:()=>'One 1&nbsp;x&nbsp;1&nbsp;ft panel hung in '+BY[state.k].n+', between a side wall and a seam rail, seen from behind. The side wall is cut away at the upper pin so the pin shows in its pocket.',
-  block:()=>'A complete '+nm(state.btype)+' block from the back: one L hub with the supply and card, one cable to every panel. Turn on Inside hub to see the boards.',
+  block:()=>'A complete '+nm(state.btype)+' block from the back: one L hub in the middle with the supply and card, and a short 5&nbsp;V lead from it to every panel. Turn on Inside hub to see the boards.',
   frame:()=>'The '+BY[state.k].n+' frame from the back with its hub in place. A 2&nbsp;in flange drilled every 2&nbsp;in runs round the back; a strip of gloss Cirrus logos runs up the front edge of each side.',
   joint:()=>'Four blocks going up the way an installer hangs them, frames first: drop onto the pins, bolt down, bolt across. Panels go in last.',
-  service:()=>'Front service with the top right panel out: '+(state.k==='rib'?'pull the pin, lift the L hub off its hanger and bring it out the front.':'press the latch, tilt the L hub forward and bring it out the front.'),
+  service:()=>'Front service with the hub\'s '+(blockDims(state.btype)[0]>2?'two panels':'panel')+' out: unplug the leads, pull the knob, lift the L hub 1/2&nbsp;in off its pins and bring it out the front.',
   wall:()=>{const H=state.H,W=state.W;return 'A '+H+'&nbsp;x&nbsp;'+W+'&nbsp;ft wall of '+wallPlan(H,W).length+' blocks, laid out as the planner does, seen from the back. '+
     ({angle:'Angles bolt straight to the flange on every row line, never more than 3&nbsp;ft apart.',tube:'Tubes run at mid row on clips bolted into the side flange holes.',none:'The base rail starts the first row; the steel is up to the sign company.'})[state.steel];}
 };
