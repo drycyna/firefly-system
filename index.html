@@ -241,6 +241,81 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
 .dwindex button{font-family:var(--font-mono);font-size:12px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);cursor:pointer}
 .dwindex button:hover{border-color:var(--accent)}
 .dwindex button[aria-current="true"]{border-color:var(--accent);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+
+/* page tabs: the base design, and the Cabling and Wire Harnesses tab, a suggested section kept apart from it */
+.tabs{display:flex;flex-wrap:wrap;gap:2px 8px;border-bottom:1px solid var(--line)}
+.tab{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:.01em;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;padding:6px 10px 7px;cursor:pointer}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px 4px 0 0}
+.tab .tag{font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:1px 7px;border:1px dashed var(--muted);border-radius:99px;color:var(--muted)}
+.pane{display:grid;gap:18px;min-width:0}
+.pane[hidden]{display:none}
+.pane{scroll-margin-top:64px}   /* opened from #cabling: the tabs stay in view above it */
+@media (max-width:600px){   /* a phone keeps both tabs on one line: the tag sits above the name */
+  .tabs{align-items:flex-end;gap:2px 4px}
+  .tab{font-size:17px;padding:5px 8px 6px;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+  .tab .tag{order:-1;font-size:9.5px}
+}
+.card.suggest{border-style:dashed;border-color:var(--muted)}
+.suggest .eyebrow{margin-bottom:4px}
+.suggest .toc{margin-top:4px}
+#cabling .chip{white-space:normal}   /* its long chips wrap on a narrow phone */
+/* Cabling and Wire Harnesses tab: the VP of Engineering's block wiring proposal, as he styled it (chain colours, power
+   and the wiring figures). It only styles that tab; nothing in the base design uses it. */
+:root{--ch1:#2f7de1;--ch2:#2f8a57;--ch3:#a8572a;--pw:#8a4fd0;--ret:#b7791f;--i2c:#138a8a;--ctl:#3f78a8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ch1:#5a9cf0;--ch2:#5cc08a;--ch3:#e09a62;--pw:#b48cf0;--ret:#e0a84a;--i2c:#4cc3c3;--ctl:#7fb2e0}}
+:root[data-theme="dark"]{--ch1:#5a9cf0;--ch2:#5cc08a;--ch3:#e09a62;--pw:#b48cf0;--ret:#e0a84a;--i2c:#4cc3c3;--ctl:#7fb2e0}
+.note{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:10px 14px;background:var(--chip);font-size:14px;margin:0 0 14px;max-width:none}
+.note b{font-weight:600}
+.wfig{margin:6px 0 14px;min-width:0}
+.wfig figcaption{font-size:13px;color:var(--muted);margin-top:6px;max-width:90ch}
+.wscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+svg.wz{display:block;width:100%;height:auto;font-family:var(--font-mono)}
+.wscroll svg.wz{min-width:640px}
+svg.wz text{fill:var(--ink);font-size:10px}
+svg.wz text.m{fill:var(--muted)}
+svg.wz text.s{font-size:8.5px}
+svg.wz text.b{font-family:var(--font-display);font-weight:700;font-size:15px}
+svg.wz text.w{fill:#fff;font-weight:500}
+svg.wz .frm{fill:none;stroke:var(--frame);stroke-width:4}
+svg.wz .pn{fill:var(--scene);stroke:var(--muted);stroke-width:.8}
+svg.wz .box{fill:var(--surface);stroke:var(--muted);stroke-width:.9}
+svg.wz .boxs{fill:var(--chip);stroke:var(--muted);stroke-width:.8}
+svg.wz .hub{fill:var(--hub);fill-opacity:.85;stroke:var(--ink);stroke-width:.8}
+svg.wz .cin{fill:#2f9e5a;stroke:var(--ink);stroke-width:.6}
+svg.wz .cout{fill:#e0662a;stroke:var(--ink);stroke-width:.6}
+svg.wz .cpw{fill:var(--pw);stroke:var(--ink);stroke-width:.6}
+svg.wz .cap{fill:var(--ink)}
+svg.wz .cab{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+svg.wz .k1{stroke:var(--ch1)} svg.wz .k2{stroke:var(--ch2)} svg.wz .k3{stroke:var(--ch3)} svg.wz .ka{stroke:var(--accent)}
+svg.wz .f1{fill:var(--ch1)} svg.wz .f2{fill:var(--ch2)} svg.wz .f3{fill:var(--ch3)} svg.wz .fa{fill:var(--accent)}
+svg.wz .lead{fill:none;stroke:var(--pw);stroke-width:2.2;stroke-linecap:round}
+svg.wz .psu{fill:var(--pw);fill-opacity:.18;stroke:var(--pw);stroke-width:1}
+svg.wz .ac{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:5 3}
+svg.wz .bd{fill:none;stroke:var(--ch1);stroke-width:3.2}
+svg.wz .bc{fill:none;stroke:var(--ctl);stroke-width:3.2}
+svg.wz .br{fill:none;stroke:var(--ret);stroke-width:1.8;stroke-dasharray:6 3}
+svg.wz .bi{fill:none;stroke:var(--i2c);stroke-width:1.6}
+svg.wz .bp{fill:none;stroke:var(--pw);stroke-width:3.2}
+svg.wz .arw{fill:var(--muted)}
+svg.wz .pin{stroke:var(--surface);stroke-width:1.2}
+svg.wz .g-data{fill:var(--ch1)} svg.wz .g-dout{fill:#e0662a} svg.wz .g-addr{fill:var(--ch2)} svg.wz .g-ctl{fill:var(--ctl)}
+svg.wz .g-gnd{fill:#59626c} svg.wz .g-v38{fill:var(--pw)} svg.wz .g-v28{fill:var(--pw);fill-opacity:.6}
+svg.wz .g-aux{fill:var(--ret)} svg.wz .g-i2c{fill:var(--i2c)} svg.wz .g-drop{fill:var(--line)} svg.wz .g-nc{fill:var(--line)}
+svg.wz .drop text{fill:var(--muted)}
+.nopwr svg.wz .pwr{display:none}
+.card .wkey{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px}
+.card .wkey li{display:flex;align-items:center;gap:7px;max-width:none}
+.wkey i{display:inline-block;width:14px;height:10px;border-radius:2px;flex:none}
+.wkey i.ln{height:3px;border-radius:2px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px 26px;margin:6px 0 10px}
+.opts>section{min-width:0}
+.opts h4{font-family:var(--font-display);font-size:20px;font-weight:700;margin:0 0 2px;letter-spacing:.01em}
+table.pins{min-width:640px}
+table.pins td:first-child{font-family:var(--font-mono);font-size:13px;white-space:nowrap}
+table.mid{min-width:640px}
+svg.wz .psub{fill:var(--surface)}
 </style>
 </head>
 <body>
@@ -259,6 +334,12 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
     </div>
   </header>
 
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button class="tab" type="button" role="tab" id="tab-system" aria-controls="system" aria-selected="true">Base design</button>
+    <button class="tab" type="button" role="tab" id="tab-cabling" aria-controls="cabling" aria-selected="false" tabindex="-1">Cabling and Wire Harnesses<span class="tag">Suggested</span></button>
+  </div>
+
+  <div class="pane" id="system" role="tabpanel" aria-labelledby="tab-system">
   <nav class="toc" aria-label="On this page">
     <a href="#glance">At a glance</a><a href="#blocks">Blocks and walls</a><a href="#panel">Panel</a><a href="#hub">L hub</a><a href="#power">Wiring and power</a>
     <a href="#frames">Frames</a><a href="#joints">Joints</a><a href="#mounting">Mounting</a><a href="#strength">Strength</a><a href="#drawings">Fabrication drawings</a><a href="#open">Open items</a>
@@ -609,6 +690,266 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
       <li><b>Finish.</b> Matte black polyester powder, RAL 9005, with the logo strip printed over it in gloss dark gray. The 3D model shows this finish.</li>
     </ul>
   </section>
+  </div>
+
+  <!-- Cabling and Wire Harnesses: the VP of Engineering's block wiring proposal, a suggested section kept on its own tab.
+       It is not part of the base design; the base design's own wiring is the "Wiring and power" card on the first tab. -->
+  <div class="pane" id="cabling" role="tabpanel" aria-labelledby="tab-cabling" hidden>
+  <section class="card suggest" id="cabling-intro">
+    <div class="eyebrow">Suggested section &middot; optional</div>
+    <h2>Cabling and Wire Harnesses</h2>
+    <p class="sub">A bundle of ideas from Cirrus&#39;s VP of Engineering on cabling and powering the panels inside a block. It is kept on its own tab because it is a suggestion: it is not part of the base design, and nothing on the Base design tab depends on it.</p>
+    <nav class="toc" aria-label="In this section">
+      <a href="#blockwiring">Block wiring</a><a href="#hub75">How HUB75 works</a><a href="#connector">Our 62-pin connector</a><a href="#newconnector">20-pin proposal</a><a href="#wiring3x3">3 x 3 wiring</a><a href="#blockpower">Power inside a block</a><a href="#wiringopen">Open items</a>
+    </nav>
+  </section>
+
+  <section class="card" id="blockwiring">
+    <h2>Wiring inside a block: a HUB75-style data chain</h2>
+    <p class="sub">The panels inside a block are chained the way HUB75 panels are: a 20-pin data cable from panel to panel, and power on its own cable. Worked out for a 9&nbsp;mm 3&nbsp;x&nbsp;3 block.</p>
+    <p class="note"><b>This proposal would replace part of the base design.</b> The original concept had a 48&nbsp;V harness with drop taps and a 48&nbsp;V to 5&nbsp;V converter in every panel. This proposal keeps today's power instead: one GoldPower GPAD151M5-1CB (150&nbsp;W, 3.8&nbsp;V and 2.8&nbsp;V) per two panels, fed from an AC rail in the block. The panels carry no MCU. The card in the hub drives them directly over a daisy-chained data cable, as a HUB75 controller does. Content is static, so less than 1 frame per second is enough.</p>
+    <div class="chips" aria-label="Key numbers" style="margin:0 0 14px">
+      <span class="chip"><b>62 &rarr; 20</b> pins on the data connector</span>
+      <span class="chip"><b>2 + 1</b> data IN/OUT and power sockets per panel</span>
+      <span class="chip"><b>3 chains of 3</b> recommended for a 3&nbsp;x&nbsp;3</span>
+      <span class="chip"><b>5</b> GPAD151M5 per 3&nbsp;x&nbsp;3</span>
+      <span class="chip"><b>&lt; 40 ms</b> to load a frame, either option</span>
+    </div>
+    <div class="dgrid">
+      <section><h3>What goes where</h3><p>Each panel gets three sealed sockets just below and to the right of its center: <b>DATA IN</b> and <b>DATA OUT</b> (20 pins each) and <b>POWER</b> (4 poles). That spot keeps them clear of the L hub in the hub bay. Short jumpers link one panel's DATA OUT to the next panel's DATA IN. The last panel in a chain gets a loop-back cap on its DATA OUT.</p></section>
+      <section><h3>Who drives the chain</h3><p>The card in the hub takes over from today's local board (STM32H750 and RTL8363NB). It stays the Nucleus node on the 3+9 chain between blocks. On the panel side it now drives one to three chains of panels instead of two panels.</p></section>
+      <section><h3>Power</h3><p>The hub's 20&nbsp;A AC bus feeds an AC rail (L, N, PE) inside the block to five GPAD151M5-1CB supplies on the seam rails. Each supply feeds two panels over 4-pole leads carrying 3.8&nbsp;V, 2.8&nbsp;V and two grounds. None of the 38 power pins of today's connector stay on the data cable.</p></section>
+    </div>
+  </section>
+
+  <section class="card" id="hub75">
+    <h2>How HUB75 works and how it daisy chains</h2>
+    <p class="sub">HUB75 is the de facto interface of low-cost LED panels. It is not a formal standard; it grew out of Chinese LED panel manufacturing.</p>
+    <div class="dgrid">
+      <section><h3>The panel is a long shift register</h3><p>A HUB75 panel has no processor and no frame buffer. Its column drivers are shift registers. Six data lines feed them: R1, G1 and B1 for the top half of the panel, R2, G2 and B2 for the bottom half. Each <b>CLK</b> edge shifts one bit in, <b>LAT</b> copies the shifted row into the outputs, and <b>OE</b> blanks the outputs while the row changes. The address lines <b>A to E</b> pick the scan line that a decoder and row switches power up.</p></section>
+      <section><h3>IN and OUT headers</h3><p>Every panel has two identical 16-pin, 2&nbsp;x&nbsp;8, 2.54&nbsp;mm IDC headers. On <b>IN</b> the six data lines enter the first driver of each chain. The serial output of the last driver goes to the same six pins on <b>OUT</b>. The panel also buffers A to E, CLK, LAT and OE and drives them out again on OUT.</p></section>
+      <section><h3>Daisy chaining</h3><p>A short ribbon runs from one panel's OUT to the next panel's IN. To the controller the chain looks like one long panel: it shifts <i>chain length x panel width</i> bits per line, and every panel shares the same LAT, CLK and OE timing. Power is separate, a 5&nbsp;V lead to each panel. A missing or failed panel breaks the chain for every panel after it.</p></section>
+    </div>
+    <figure class="wfig wscroll"><div id="fig-hub75chain"></div>
+      <figcaption>Two HUB75 panels in a chain. Data runs through the drivers' shift registers and leaves on the same pins of OUT. Address, clock, latch and OE are re-driven by a buffer on each panel. The 5&nbsp;V supply has its own leads.</figcaption></figure>
+    <h3>The 16-pin HUB75 pinout</h3>
+    <figure class="wfig" style="max-width:520px"><div id="fig-hub75pins"></div>
+      <figcaption>Odd pins in the top row, even pins in the bottom row. Pin 8 is ground on 1/16-scan panels and the E address on 1/32-scan panels. 13 signals and 3 grounds.</figcaption></figure>
+  </section>
+
+  <section class="card" id="connector">
+    <h2>Our 62-pin connector against HUB75</h2>
+    <p class="sub">Each Outdoor 9&nbsp;mm v3.7.3 panel has two identical 2&nbsp;x&nbsp;31-pin, 2.0&nbsp;mm board-to-board headers (J1, J2), wired in parallel except pin 17. The local board's CN3 (left panel) and CN4 (right panel) plug straight into them.</p>
+    <figure class="wfig wscroll"><div id="fig-62map"></div>
+      <figcaption>The 62 pins of J1/J2, coloured by where each one goes in the proposal. 24 are signals and 38 are power and ground.</figcaption></figure>
+    <ul class="wkey" aria-label="Key" style="margin-bottom:14px">
+      <li><i style="background:var(--ch1)"></i>to DATA IN</li>
+      <li><i style="background:#e0662a"></i>to DATA OUT (same pins as IN)</li>
+      <li><i style="background:var(--ch2)"></i>address, to both</li>
+      <li><i style="background:var(--ctl)"></i>clock and latch, to both</li>
+      <li><i style="background:var(--i2c)"></i>becomes the I&sup2;C pair</li>
+      <li><i style="background:#59626c"></i>ground: 4 stay</li>
+      <li><i style="background:var(--pw)"></i>3.8&nbsp;V and 2.8&nbsp;V: to the power socket</li>
+      <li><i style="background:var(--line)"></i>dropped</li>
+    </ul>
+    <div class="tablewrap"><table class="mid">
+      <thead><tr><th></th><th>HUB75 (16 pins)</th><th>Our J1/J2 (2&nbsp;x&nbsp;31)</th></tr></thead>
+      <tbody>
+        <tr><th>Connectors</th><td>IN and OUT per panel, ribbon from panel to panel</td><td>Two identical headers that plug into the local board, no cable between panels</td></tr>
+        <tr><th>Colour data</th><td>6 in on IN, 6 out on OUT</td><td>6 in (DR1 to DB2, pins 5 to 10) <b>and</b> 6 out (IR1-IN to IB2-IN, pins 19 to 24) on the same header</td></tr>
+        <tr><th>Row address</th><td>A to D (E on 1/32 scan)</td><td>A, B (the 9&nbsp;mm panel is 1/4 scan); pin 13, where C would be, is not connected on the panel. The local board carries ADD0 to ADD2.</td></tr>
+        <tr><th>CLK, LAT, OE</th><td>Re-driven from IN to OUT on every panel</td><td>In only. OE carries the MBI5251 grayscale clock (GCLK, 20&nbsp;MHz, continuous). The panel does not pass any of them on.</td></tr>
+        <tr><th>Extras</th><td>None</td><td>SPI to the panel's 4&nbsp;Mbit flash (pins 1 to 4), replaced by I&sup2;C on local board v1.8.1 to support the REF panel; automapping TXD/RXD (pins 17, 18)</td></tr>
+        <tr><th>Power</th><td>Separate 5&nbsp;V lead</td><td>On the connector: 12 x 3.8&nbsp;V, 8 x 2.8&nbsp;V, 18 x GND, about 16.5&nbsp;A per panel at full white</td></tr>
+        <tr><th>Driver ICs</th><td>Usually plain shift registers, refreshed by the controller all the time</td><td>MBI5251 with on-chip SRAM and its own PWM: the frame is loaded once, then only GCLK and A, B keep running</td></tr>
+      </tbody></table></div>
+    <h3 style="margin-top:16px">Why ours cannot be daisy chained as it is</h3>
+    <ul>
+      <li><b>Power rides on the connector.</b> 38 of the 62 pins carry up to 10&nbsp;A at 3.8&nbsp;V and 6.4&nbsp;A at 2.8&nbsp;V. That cannot go over a thin multi-pin data cable.</li>
+      <li><b>Data out comes back on the same connector.</b> The chaining happens on the local board, between its CN3 and CN4. A panel has no OUT header to plug the next panel into.</li>
+      <li><b>Clock, latch and address are not passed on.</b> The panel's 74HC245s fan them out to its own drivers only, so the next panel has no copy to receive.</li>
+      <li><b>Per-panel extras.</b> The SPI flash has a single chip select and the automapping lines are point to point. Neither works when nine panels share one cable.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="newconnector">
+    <h2>Proposal: a 20-pin chain connector and a separate power socket</h2>
+    <p class="sub">Pins 1 to 16 are the HUB75 pinout exactly, so a HUB75 controller or tester connects with a straight-through adapter. Pins 17 to 20 add a chain return, I&sup2;C and a fourth ground.</p>
+    <div>
+      <figure class="wfig" style="max-width:560px"><div id="fig-c20pins"></div>
+        <figcaption>The 20-pin chain connector, 2&nbsp;x&nbsp;10. DATA IN and DATA OUT use the same pinout. On OUT, pins 1 to 3 and 5 to 7 carry the panel's data outputs.</figcaption></figure>
+      <div class="tablewrap"><table class="pins">
+        <thead><tr><th>Pin</th><th>Signal</th><th>On the panel</th></tr></thead>
+        <tbody>
+          <tr><td>1 to 3, 5 to 7</td><td>R1 G1 B1, R2 G2 B2</td><td>IN: to the first MBI5251 of each of the six chains. OUT: from the last MBI5251 (SDO), buffered.</td></tr>
+          <tr><td>9 to 12</td><td>A B C D</td><td>Scan line address. The 9&nbsp;mm panel uses A, B; C and D cover 1/8 and 1/16 scan at other pitches. Re-driven to OUT.</td></tr>
+          <tr><td>13</td><td>CLK</td><td>MBI5251 DCLK, 2 to 5&nbsp;MHz in bursts. Re-driven to OUT.</td></tr>
+          <tr><td>14</td><td>LAT</td><td>MBI5251 LE: latch, VSYNC and register commands. Re-driven to OUT.</td></tr>
+          <tr><td>15</td><td>GCLK (OE)</td><td>MBI5251 grayscale clock, continuous. Re-driven to OUT.</td></tr>
+          <tr><td>17</td><td>RET</td><td>Chain return. A plain track from IN to OUT. The loop-back cap on the last panel ties OUT pin 1 to pin 17, so the R1 chain comes back to the hub.</td></tr>
+          <tr><td>18, 19</td><td>SDA, SCL</td><td>I&sup2;C bussed through every panel. The REF panel taps it for its light sensor, as on local board v1.8.1.</td></tr>
+          <tr><td>4, 8, 16, 20</td><td>GND</td><td>Signal return only. Load current returns over the power socket.</td></tr>
+        </tbody></table></div>
+    </div>
+    <h3 style="margin-top:14px">Pin budget, 62 to 20</h3>
+    <div class="tablewrap"><table class="mid">
+      <thead><tr><th>Group</th><th>J1/J2 today</th><th>20-pin chain connector</th><th>What changes</th></tr></thead>
+      <tbody>
+        <tr><th>Data in</th><td class="num">6</td><td class="num">6</td><td>Unchanged, on DATA IN</td></tr>
+        <tr><th>Data out</th><td class="num">6</td><td class="num">(6)</td><td>Move to DATA OUT, on the same pin numbers as data in</td></tr>
+        <tr><th>Address</th><td class="num">2 + 1 NC</td><td class="num">4</td><td>A to D, so one connector fits every pitch up to 1/16 scan</td></tr>
+        <tr><th>CLK, LAT, GCLK</th><td class="num">3</td><td class="num">3</td><td>Also re-driven to DATA OUT</td></tr>
+        <tr><th>Flash, I&sup2;C</th><td class="num">4</td><td class="num">2</td><td>SPI and its per-panel chip select dropped; I&sup2;C kept for the REF panel</td></tr>
+        <tr><th>Automapping</th><td class="num">2</td><td class="num">0</td><td>Dropped: a panel's place follows from its place in the chain</td></tr>
+        <tr><th>Chain return</th><td class="num">0</td><td class="num">1</td><td>New: RET, for chain checks and register read-back</td></tr>
+        <tr><th>Ground</th><td class="num">18</td><td class="num">4</td><td>Signal return only</td></tr>
+        <tr><th>3.8&nbsp;V, 2.8&nbsp;V</th><td class="num">20</td><td class="num">0</td><td>To a 4-pole power socket: 3.8&nbsp;V, 2.8&nbsp;V, GND, GND</td></tr>
+        <tr class="recrow"><th>Total</th><td class="num">62</td><td class="num">20</td><td>16 signals and 4 grounds; 16 if RET and I&sup2;C are left out (pure HUB75)</td></tr>
+      </tbody></table></div>
+    <div class="opts" style="margin-top:16px">
+      <section><h3>Changes on the panel</h3>
+        <ol>
+          <li>Replace J1/J2 with three sealed panel-mount sockets: DATA IN, DATA OUT (20 pins) and POWER (4 poles, at least 10&nbsp;A per pole).</li>
+          <li>Feed the 3.8&nbsp;V and 2.8&nbsp;V copper from the power socket instead of 20 header pins. The rails and the LED side do not change.</li>
+          <li>Add an output buffer (one 74HC245-class part) that drives the six SDO lines to DATA OUT pins 1 to 3 and 5 to 7.</li>
+          <li>Add a second buffer that re-drives A to D, CLK, LAT and GCLK to DATA OUT. Put GCLK and A, B in the same package, so every hop delays them equally and the line change stays inside the MBI5251's 2-GCLK dead time.</li>
+          <li>Run RET (pin 17) and SDA, SCL (18, 19) straight from IN to OUT. Only the REF panel taps the I&sup2;C pair.</li>
+          <li>Route pin 11 (C) to the 74HC138's C input, which is grounded today, so panels with more scan lines need no new connector.</li>
+          <li>Leave out the automapping receivers (2 x LM393, one 74HC245) and the SPI flash, unless the flash turns out to hold calibration data (open items).</li>
+          <li>Keep the 33&nbsp;pF and ferrite filters on the inputs, and add 33&nbsp;&Omega; series resistors on the outputs that drive the cable.</li>
+        </ol></section>
+      <section><h3>Changes on the hub card</h3>
+        <ol>
+          <li>One to three 20-pin chain ports in place of today's two 62-pin sockets, each with its own buffered copy of CLK, LAT, GCLK and A to D, and 33&nbsp;&Omega; series resistors.</li>
+          <li>A TVS array on every port pin. The cables run through the vented cavity of an outdoor frame.</li>
+          <li>A Schmitt input per RET line. When the hub shifts a test pattern through the R1 chain and counts the bits until it returns, it learns how many panels answer, and so the block's width.</li>
+          <li>An I&sup2;C bus buffer for the long bus to the REF panel.</li>
+          <li>Firmware: the same MBI5251 driving as today, with the chain length set by the block size (3 panels per chain, or 9 for the single chain).</li>
+        </ol>
+        <h3 style="margin-top:14px">Connector and cable</h3>
+        <p>The cavity behind the panels is vented, so the data plugs have to be sealed and latched. Two families cover 16 to 20 ways. Circular M16 or M23-class connectors are robust, but their piece cost is high. Sealed automotive rectangular housings have a low piece cost in volume. Use a jacketed round cable with GCLK, CLK and LAT each twisted with a ground. A plain IDC ribbon, as HUB75 uses, only works inside a sealed enclosure, and Firefly's cavity is open.</p></section>
+    </div>
+    <figure class="wfig wscroll" style="margin-top:10px"><div id="fig-chainsig"></div>
+      <figcaption>Signal flow along one chain of three panels: a 3&nbsp;x&nbsp;3 row in option 1, or the first three panels of option 2. Data passes through each panel's 48 MBI5251. Address, clock, latch and GCLK are re-driven on every panel. RET and I&sup2;C pass straight through, and the cap on the last panel sends the R1 chain back to the hub.</figcaption></figure>
+    <p class="note" style="margin-top:4px"><b>Why not 3 wires of RS-485?</b> The evaluation of this concept recommends a small MCU per panel on RS-485 (3 to 4 pins, cheap sealed connectors, long cables). That needs firmware and extra parts in every panel. The 20-pin chain keeps the panels as they are today, with no software, and moves all the logic into the hub card. The price is a bigger connector, and a continuous GCLK on every cable.</p>
+  </section>
+
+  <section class="card" id="wiring3x3">
+    <h2>9 mm, 3 x 3 block: two ways to wire the panels</h2>
+    <p class="sub">Nine 32&nbsp;x&nbsp;32-pixel panels, 96&nbsp;x&nbsp;96 pixels in all, 1/4 scan, 48 MBI5251 per panel. Seen from the back: the L hub sits in the top left bay, behind the top right panel as seen from the front.</p>
+    <div class="row between" style="margin:0 0 10px">
+      <ul class="wkey" aria-label="Key">
+        <li><i style="background:#2f9e5a"></i>DATA IN</li>
+        <li><i style="background:#e0662a"></i>DATA OUT</li>
+        <li><i style="background:var(--ink)"></i>loop-back cap</li>
+        <li><i style="background:var(--pw)"></i>POWER socket, supply and leads</li>
+        <li><i class="ln" style="background:var(--muted)"></i>AC rail</li>
+      </ul>
+      <label class="tog"><input type="checkbox" id="pwrtog" checked><span></span>Show power</label>
+    </div>
+    <div class="opts" id="blockfigs">
+      <section>
+        <h4>Option 1: three chains, one per row</h4>
+        <figure class="wfig" style="margin:0 0 10px"><div id="fig-opt1"></div>
+          <figcaption>Hub ports A, B and C each drive one row of three panels. Rows 2 and 3 get their lead down the outer side, from the gland at the foot of the hub's leg. Three caps.</figcaption></figure>
+        <div class="proscons">
+          <ul class="pro">
+            <li>A fault (panel, jumper or plug) blanks at most the rest of its row: 2 panels.</li>
+            <li>GCLK and the address pass at most 3 panel buffers, so 16-bit at 20&nbsp;MHz stays safe.</li>
+            <li>Fastest load: 24,576 DCLK per data line, 12&nbsp;ms at 2&nbsp;MHz.</li>
+            <li>Three RET lines: the hub sees which row is broken, and how wide the block is.</li>
+            <li>One port per row of panels fits every block size; a 2-row block leaves port C empty.</li>
+          </ul>
+          <ul class="con">
+            <li>Three ports on the hub: 3 sockets, about 25 outputs and 3 RET inputs, 3 ESD arrays.</li>
+            <li>Three hub leads of different lengths (about 0.3, 0.6 and 0.9&nbsp;m), or one long lead with slack.</li>
+            <li>Three leads bundled down the outer side next to the hub.</li>
+            <li>Three caps, and about 4.5&nbsp;m of data cable per block.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h4>Option 2: one long serpentine chain</h4>
+        <figure class="wfig" style="margin:0 0 10px"><div id="fig-opt2"></div>
+          <figcaption>One port drives all nine panels: row 1 left to right, row 2 back, row 3 left to right. The middle row runs right to left; the hub's pixel map handles that, so the panels hang the same way everywhere. One cap.</figcaption></figure>
+        <div class="proscons">
+          <ul class="pro">
+            <li>One port: the smallest hub card, 13 outputs and 1 RET input.</li>
+            <li>All eight links are the same 1&nbsp;ft jumper: one cable part in the block.</li>
+            <li>Least cable, about 3.9&nbsp;m per block, and one cap.</li>
+            <li>The same port and cable set for every block size; only the chain length setting changes.</li>
+          </ul>
+          <ul class="con">
+            <li>One fault blanks everything after it: a bad plug on panel 1 darkens 8 sq ft.</li>
+            <li>GCLK and the address pass 9 buffers. Duty cycle and skew errors add up, so plan GCLK at 10&nbsp;MHz in 14-bit mode (same 4.9&nbsp;kHz refresh) and measure it.</li>
+            <li>Three times the load: 73,728 DCLK, 37&nbsp;ms at 2&nbsp;MHz. Harmless at under 1 fps.</li>
+            <li>A single RET only tells the hub how many panels answer, not which row failed.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <h3 style="margin-top:8px">Side by side</h3>
+    <div class="tablewrap"><table class="mid">
+      <thead><tr><th></th><th>Option 1: 3 chains of 3</th><th>Option 2: 1 chain of 9</th></tr></thead>
+      <tbody>
+        <tr><th>Hub ports</th><td>3</td><td>1</td></tr>
+        <tr><th>Hub output pins</th><td>18 data + 4 address + 3 clock and latch = 25, plus 3 RET</td><td>6 + 4 + 3 = 13, plus 1 RET</td></tr>
+        <tr><th>Data cables</th><td>3 hub leads + 6 jumpers, 3 caps</td><td>1 hub lead + 8 jumpers, 1 cap</td></tr>
+        <tr><th>Cable parts</th><td>Jumper + up to 3 lead lengths</td><td>Jumper + 1 lead</td></tr>
+        <tr><th>MBI5251 per data line</th><td>24</td><td>72</td></tr>
+        <tr><th>Frame load per data line</th><td>24,576 DCLK: 12&nbsp;ms at 2&nbsp;MHz, 5&nbsp;ms at 5&nbsp;MHz</td><td>73,728 DCLK: 37&nbsp;ms at 2&nbsp;MHz, 15&nbsp;ms at 5&nbsp;MHz</td></tr>
+        <tr><th>GCLK buffer hops</th><td>3</td><td>9</td></tr>
+        <tr><th>Worst single fault</th><td>2 panels dark</td><td>8 panels dark</td></tr>
+        <tr><th>Fault finding</th><td>Per row</td><td>Per block</td></tr>
+        <tr><th>Visible refresh</th><td colspan="2">Identical: set by GCLK and the MBI5251's own PWM, not by the chain (4.9&nbsp;kHz at 16-bit, 20&nbsp;MHz)</td></tr>
+        <tr><th>Power</th><td colspan="2">Identical: 5 GPAD151M5-1CB, 9 power leads, AC rail from the hub</td></tr>
+      </tbody></table></div>
+    <div class="rec" style="margin-top:14px"><b>Pick: option 1, three chains of three</b>
+      <p style="margin:6px 0 0">It confines a fault to one row and keeps the continuous GCLK to three hops, the two risks that grow with chain length. Its costs are two extra ports on the hub card and three lead lengths. Option 2 is acceptable if a prototype shows a clean GCLK after nine hops and hub cost matters more than fault isolation. Either way, the panel, its connector and the jumper are the same, so the choice can be made late and changed in the hub alone.</p></div>
+    <h3 style="margin-top:16px">Other block sizes</h3>
+    <div class="tablewrap"><table class="small">
+      <thead><tr><th>Block</th><th>Option 1</th><th>Option 2</th><th>Supplies</th></tr></thead>
+      <tbody>
+        <tr><th>3 x 3</th><td>3 chains of 3</td><td>1 chain of 9</td><td class="num">5</td></tr>
+        <tr><th>3 x 2</th><td>3 chains of 2</td><td>1 chain of 6</td><td class="num">3</td></tr>
+        <tr><th>2 x 3</th><td>2 chains of 3</td><td>1 chain of 6</td><td class="num">3</td></tr>
+        <tr><th>2 x 2</th><td>2 chains of 2</td><td>1 chain of 4</td><td class="num">2</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section class="card" id="blockpower">
+    <h2>Power inside a block</h2>
+    <p class="sub">The same supply as today, one per two panels, mounted on the seam rails and fed from an AC rail out of the hub.</p>
+    <div class="dgrid">
+      <section><h3>Pairing in a 3 x 3</h3><p>Nine panels make four pairs and one single panel. Seen from the back: PS1 to PS3 sit on the right seam rail and feed the two right-hand panels of each row. PS4 sits on the left seam rail and feeds the left panels of rows 2 and 3. PS5 feeds the hub-bay panel alone. Cap the MBI5251 current gain at 0.85 on every panel, so the pairs stay within the supply and all panels match in brightness.</p></section>
+      <section><h3>Loads at full white, gain 0.85</h3>
+        <dl class="kv">
+          <dt>Per panel</dt><dd>8.8&nbsp;A at 3.8&nbsp;V, 5.4&nbsp;A at 2.8&nbsp;V, 14.2&nbsp;A return</dd>
+          <dt>Per supply (pair)</dt><dd>17.6&nbsp;A on V1 (88&nbsp;%), 10.8&nbsp;A on V2 (54&nbsp;%), 97&nbsp;W</dd>
+          <dt>Per 3 x 3 block</dt><dd>about 500&nbsp;W from the mains, about 4.4&nbsp;A at 120&nbsp;V</dd>
+          <dt>Heat</dt><dd>about 14.5&nbsp;W per supply, on its base plate</dd>
+        </dl></section>
+      <section><h3>Leads and sockets</h3><p>A Y-lead from each supply runs to the POWER sockets of its two panels: 4 poles (3.8&nbsp;V, 2.8&nbsp;V, GND, GND), 2.5&nbsp;mm&sup2; (14&nbsp;AWG) and 0.6&nbsp;m at most. The ground is split over two poles because it carries the sum of both rails. Trim V1 to about 3.9&nbsp;V at the panel socket under full white, since the green and blue LEDs have only about 0.5&nbsp;V of headroom.</p></section>
+    </div>
+  </section>
+
+  <section class="card" id="wiringopen">
+    <h2>Wiring: assumptions and open items</h2>
+    <ul>
+      <li><b>Panel redesign.</b> The LED side of the v3.7.3 board stays as it is. The connector area changes: J1/J2 out, three sealed sockets and two buffers in, automapping and flash parts out. The Firefly potted panel back must take the three sockets.</li>
+      <li><b>Flash contents.</b> Find out what the factory writes into each panel's 4&nbsp;Mbit SPI flash. If it holds per-panel calibration, the data has to reach the hub some other way, for example read at the factory and stored against the panel's serial number.</li>
+      <li><b>Automapping between blocks.</b> The per-panel automapping circuit goes. Nucleus then gets block positions from the planner, or the hub card needs its own neighbour detection at the block edges.</li>
+      <li><b>Software.</b> The hub card is one Nucleus node that drives 9 panels (96&nbsp;x&nbsp;96 pixels at 9&nbsp;mm) instead of 2 (64&nbsp;x&nbsp;32). Enumeration, mapping and diagnostics all assume identical 2&nbsp;ft&nbsp;x&nbsp;1&nbsp;ft modules today, and four block sizes break that, as the evaluation notes.</li>
+      <li><b>GCLK over cable.</b> Measure GCLK duty cycle and the A, B timing against GCLK at the last panel of a 3-panel and a 9-panel chain, at 20 and 10&nbsp;MHz, before choosing between the options.</li>
+      <li><b>Logic levels.</b> The panel's 74HC245s run from 3.8&nbsp;V and switch at about 2.7&nbsp;V, so a 3.3&nbsp;V hub output has only about 0.6&nbsp;V of margin. Consider a 3.8&nbsp;V output buffer on the hub ports.</li>
+      <li><b>Connectors.</b> Pick and quote the sealed 20-way data plug, the 4-pole power plug and the loop-back cap. The cap should also seal the unused DATA OUT socket.</li>
+      <li><b>Jumper length.</b> 450&nbsp;mm (18&nbsp;in) is assumed, so a panel can be held just in front of its bay while its three plugs are connected, and the slack lies in the 6&nbsp;in cavity.</li>
+      <li><b>Supplies on the seam rails.</b> Confirm room and a heat path for five 146&nbsp;x&nbsp;55&nbsp;x&nbsp;25&nbsp;mm GPAD151M5-1CB units per 3&nbsp;x&nbsp;3 on the seam rails, and their weight against the 5.5&nbsp;lb hub assumed in the base design.</li>
+      <li><b>Other pitches.</b> 4, 6 and 12&nbsp;mm panels have other pixel counts and scan ratios. The connector covers up to 1/16 scan. The frame load grows with the pixel count, about 6 times for a 4&nbsp;mm panel, which is still well under a second.</li>
+    </ul>
+    <p class="src" style="margin-top:12px">Sources: Outdoor 9mm LED v3.7.3 schematics, as extracted in the HUB75 3&nbsp;x&nbsp;3 display study (Rev. I); OUTDOOR Local Board v1.8.1 schematic (panel connectors CN3/CN4, change history: I&sup2;C on the 62-pin connector for the REF panel); GoldPower GPAD151M5-1CB datasheet VA.0; Macroblock MBI5251 preliminary datasheet V1.01.</p>
+  </section>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -4246,7 +4587,8 @@ function rebuild(keepCam){
 
 // ---------- labels: callouts in the free space around the model ----------
 const stageEl=host.parentElement,bar=$('.stagebar');let barH=44,lblDirty=true;
-function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;   // hidden with its tab: keep the last size
+  renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
   stageEl.classList.toggle('narrow',w<700);labelHost.style.setProperty('--lw',Math.round(Math.min(200,Math.max(112,w*.2)))+'px');barH=bar.offsetHeight;lblDirty=true;}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{lblDirty=true;});
 // Each label takes the free side nearest its part (keeping its last side unless another is clearly closer), labels never
@@ -4344,7 +4686,7 @@ function tick(){
     if(anim.t>=anim.dur){const a=anim;anim=null;if(a.done)a.done();boxDirty=true;lblDirty=true;
       const tok=++stepTok;setTimeout(()=>{if(!anim&&tok===stepTok)stepShow(null);},3000);}
   }
-  if(onScreen){controls.update();renderer.render(scene,camera);if(state.labels)layoutLabels();}
+  if(onScreen&&host.clientWidth){controls.update();renderer.render(scene,camera);if(state.labels)layoutLabels();}   // not while its tab is closed
   requestAnimationFrame(tick);
 }
 
@@ -4364,6 +4706,220 @@ window.__wall=()=>{if(state.mode==='wall'){rebuild(true);setCam('iso');}};
 rebuild();
 tick();
 
+})();
+</script>
+<script>
+/* Cabling and Wire Harnesses tab: the VP of Engineering's block wiring figures (pinouts, signal flow and the two 3 x 3
+   layouts), drawn as inline SVG so they follow the theme. They draw into that tab only. */
+(function(){
+  function put(id,w,h,body,label){
+    var el=document.getElementById(id); if(!el) return;
+    el.innerHTML='<svg class="wz" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+label+'">'+body+'</svg>';
+  }
+  function t(x,y,s,cls,anchor){return '<text x="'+x+'" y="'+y+'"'+(cls?' class="'+cls+'"':'')+(anchor?' text-anchor="'+anchor+'"':'')+'>'+s+'</text>';}
+  function r(x,y,w,h,cls,rx){return '<rect class="'+cls+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"'+(rx?' rx="'+rx+'"':'')+'/>';}
+  function p(d,cls){return '<path class="'+cls+'" d="'+d+'"/>';}
+
+  /* pin grids: odd pins on top, even pins below */
+  function pinGrid(pins,cw,ch){
+    var cols=Math.ceil(pins.length/2), x0=8, y0=16, s='';
+    pins.forEach(function(q){
+      var i=q[0]-1, col=Math.floor(i/2), row=i%2, x=x0+col*cw, y=y0+row*(ch+4);
+      var light=(q[2]==='drop'||q[2]==='nc');
+      s+=r(x,y,cw-2,ch,'pin g-'+q[2],2);
+      s+=t(x+(cw-2)/2,y+12,q[0],'s '+(light?'m':'w'),'middle');
+      s+=t(x+(cw-2)/2,y+ch-7,q[1],'s '+(light?'m':'w'),'middle');
+    });
+    s+=t(x0,10,'pin 1','s m');
+    return {w:x0*2+cols*cw,h:y0+2*(ch+4)+4,s:s};
+  }
+  var hub75=[[1,'R1','data'],[2,'G1','data'],[3,'B1','data'],[4,'GND','gnd'],[5,'R2','data'],[6,'G2','data'],[7,'B2','data'],[8,'GND/E','gnd'],
+             [9,'A','addr'],[10,'B','addr'],[11,'C','addr'],[12,'D','addr'],[13,'CLK','ctl'],[14,'LAT','ctl'],[15,'OE','ctl'],[16,'GND','gnd']];
+  var g=pinGrid(hub75,56,36); put('fig-hub75pins',g.w,g.h,g.s,'HUB75 16-pin pinout');
+
+  var c20=hub75.slice(0,16).map(function(q){return q.slice();});
+  c20[7]=[8,'GND','gnd']; c20[14]=[15,'GCLK','ctl'];
+  c20.push([17,'RET','aux'],[18,'SDA','i2c'],[19,'SCL','i2c'],[20,'GND','gnd']);
+  g=pinGrid(c20,50,36); put('fig-c20pins',g.w,g.h,g.s,'Proposed 20-pin chain connector pinout');
+
+  var n62=['MISO','CS','MOSI','SCLK','DR1','DR2','DG1','DG2','DB1','DB2','A','B','NC','LAT','CLK','OE','RXD','TXD','IR1','IR2','IG1','IG2','IB1','IB2'];
+  var gr62=['i2c','i2c','i2c','i2c','data','data','data','data','data','data','addr','addr','addr','ctl','ctl','ctl','drop','drop','dout','dout','dout','dout','dout','dout'];
+  var pins62=[];
+  for(var k=1;k<=62;k++){
+    if(k<=24) pins62.push([k,n62[k-1],gr62[k-1]]);
+    else if(k<=42) pins62.push([k,'GND','gnd']);
+    else if(k<=54) pins62.push([k,'3V8','v38']);
+    else pins62.push([k,'2V8','v28']);
+  }
+  g=pinGrid(pins62,26,34); put('fig-62map',g.w,g.h,g.s,'J1/J2 62-pin connector, coloured by destination');
+
+  /* HUB75 daisy chain */
+  (function(){
+    var s='';
+    s+=r(10,55,110,130,'box',4)+t(65,118,'Controller','b','middle')+t(65,136,'HUB75 output','s m','middle');
+    function panel(X,name){
+      var q='';
+      q+=r(X,30,300,200,'pn',4)+t(X+150,22,name,'','middle');
+      q+=r(X,60,14,130,'cin',2)+r(X+286,60,14,130,'cout',2);
+      q+=t(X+7,210,'IN','s','middle')+t(X+293,210,'OUT','s','middle');
+      ['R1 G1 B1','R2 G2 B2'].forEach(function(lbl,j){
+        var y=58+j*36;
+        q+=t(X+40,y-4,lbl+' shift registers','s m');
+        q+=p('M'+(X+14)+' '+(y+11)+'H'+(X+286),'bd');
+        for(var i=0;i<4;i++) q+=r(X+40+i*58,y,44,22,'box',2)+t(X+62+i*58,y+15,'driver','s','middle');
+      });
+      q+=p('M'+(X+14)+' 165H'+(X+286),'bc');
+      q+=r(X+40,152,80,26,'boxs',2)+t(X+80,169,'buffer','s','middle');
+      q+=r(X+150,186,110,30,'boxs',2)+t(X+205,205,'row decoder, switches','s','middle');
+      q+=p('M'+(X+205)+' 165V186','bc')+p('M'+(X+135)+' 165V116','bc');
+      q+=t(X+40,196,'A-E CLK LAT OE','s m');
+      return q;
+    }
+    s+=panel(170,'Panel 1')+panel(560,'Panel 2');
+    s+=p('M120 69H170M120 105H170M470 69H560M470 105H560','bd')+p('M120 165H170M470 165H560','bc');
+    s+=t(515,92,'ribbon','s m','middle')+t(145,92,'ribbon','s m','middle');
+    s+='<g>'+r(395,262,150,30,'psu',3)+t(470,282,'5 V supply','s','middle')+p('M420 262V250H320V230M520 262V250H710V230','lead')+'</g>';
+    put('fig-hub75chain',880,300,s,'Two HUB75 panels daisy chained');
+  })();
+
+  /* signal flow along one chain of three */
+  (function(){
+    var s='', Y={d:75,c:160,ret:228,i2c:252};
+    s+='<defs><marker id="wzah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" class="arw"/></marker></defs>';
+    s+=r(10,40,122,240,'box',4)+t(71,30,'Hub card, port A','','middle');
+    s+=t(124,Y.d-6,'R1 to B2 (6)','s','end')+t(124,Y.c-6,'A-D CLK LAT GCLK (7)','s','end');
+    s+=t(124,Y.ret-6,'RET in','s','end')+t(124,Y.i2c-6,'SDA SCL','s','end');
+    function panel(k,last){
+      var X=170+k*270, q='';
+      q+=r(X,40,230,240,'pn',4)+t(X+115,30,'Panel '+(k+1)+(last?' (last)':''),'','middle');
+      q+=r(X,50,12,220,'cin',2)+r(X+218,50,12,220,'cout',2);
+      q+=r(X+28,50,50,140,'boxs',2)+t(X+53,120,'Rx','s','middle')+t(X+53,132,'buffer','s m','middle');
+      q+=r(X+92,50,76,62,'box',2)+t(X+130,74,'48 x MBI5251','s','middle')+t(X+130,88,'6 chains of 8','s m','middle');
+      q+=r(X+92,128,76,48,'box',2)+t(X+130,148,'74HC138 +','s','middle')+t(X+130,161,'32 x MBI5926','s m','middle');
+      q+=r(X+182,50,28,140,'boxs',2)+t(X+196,120,'Tx','s','middle');
+      q+=p('M'+(X+12)+' '+Y.d+'H'+(X+28)+'M'+(X+78)+' '+Y.d+'H'+(X+92)+'M'+(X+168)+' '+Y.d+'H'+(X+182)+'M'+(X+210)+' '+Y.d+'H'+(X+218),'bd');
+      q+=p('M'+(X+12)+' '+Y.c+'H'+(X+28)+'M'+(X+78)+' '+Y.c+'H'+(X+85)+'V100H'+(X+92)+'M'+(X+85)+' 152H'+(X+92)+'M'+(X+85)+' '+Y.c+'V184H'+(X+182)+'M'+(X+210)+' '+Y.c+'H'+(X+218),'bc');
+      q+=t(X+170,102,'SDO','s m')+t(X+120,198,'re-driven to OUT','s m');
+      q+=p('M'+(X+12)+' '+Y.ret+'H'+(X+218),'br')+p('M'+(X+12)+' '+Y.i2c+'H'+(X+218),'bi');
+      q+=t(X+115,Y.ret-5,'RET, pass-through','s m','middle');
+      q+=t(X+115,Y.i2c-5,k===0?'I&#178;C (the REF panel taps it)':'I&#178;C, pass-through','s m','middle');
+      if(k<2){
+        q+=p('M'+(X+230)+' '+Y.d+'H'+(X+270),'bd')+p('M'+(X+230)+' '+Y.c+'H'+(X+270),'bc');
+        q+=p('M'+(X+230)+' '+Y.ret+'H'+(X+270),'br')+p('M'+(X+230)+' '+Y.i2c+'H'+(X+270),'bi');
+        q+=t(X+250,292,'jumper','s m','middle');
+      } else {
+        q+=r(X+232,60,22,200,'cap',3)+t(X+243,292,'cap','s m','middle');
+        q+='<path d="M'+(X+236)+' '+Y.d+'H'+(X+248)+'V'+Y.ret+'H'+(X+236)+'" fill="none" stroke="var(--ret)" stroke-width="2"/>';
+      }
+      return q;
+    }
+    s+=panel(0)+panel(1)+panel(2,true);
+    s+=p('M132 '+Y.d+'H170','bd')+p('M132 '+Y.c+'H170','bc')+p('M132 '+Y.i2c+'H170','bi');
+    s+='<path class="br" d="M170 '+Y.ret+'H134" marker-end="url(#wzah)"/>';
+    put('fig-chainsig',990,300,s,'Signal flow along a chain of three panels');
+  })();
+
+  /* 3 x 3 block, seen from the back */
+  function block(opt){
+    var P=150,O=40,s='';
+    function cx(c){return 115+150*c;} function cy(rw){return 115+150*rw;}
+    function IN(rw,c){return [cx(c)-6,cy(rw)+8];} function OUT(rw,c){return [cx(c)+19,cy(rw)+8];} function PW(rw,c){return [cx(c)+6,cy(rw)+25];}
+    function jump(a,b,cls,sag){ // a -> b with a sag below
+      var d=(b[0]>a[0])?'M'+a[0]+' '+a[1]+'C'+(a[0]+30)+' '+(a[1]+sag)+','+(b[0]-30)+' '+(b[1]+sag)+','+b[0]+' '+b[1]
+                        :'M'+a[0]+' '+a[1]+'C'+a[0]+' '+(a[1]+sag)+','+b[0]+' '+(b[1]+sag)+','+b[0]+' '+b[1];
+      return p(d,'cab '+cls);
+    }
+    s+=r(O-6,O-6,3*P+12,3*P+12,'frm',4);
+    for(var rw=0;rw<3;rw++) for(var c=0;c<3;c++){
+      s+=r(O+c*P+4,O+rw*P+4,142,142,'pn',2);
+      s+=t(O+c*P+138,O+rw*P+138,'R'+(rw+1)+' C'+(c+1),'s m','end');
+    }
+    /* L hub in the top left bay */
+    var bx=O+4,by=O+4;
+    s+='<path class="hub" d="M'+(bx+3)+' '+(by+3)+'H'+(bx+125)+'V'+(by+64)+'H'+(bx+54)+'V'+(by+118)+'H'+(bx+3)+'Z"/>';
+    s+=t(bx+64,by+30,'L hub','w','middle')+t(bx+64,by+44,'card + AC bus','s w','middle');
+    /* power layer */
+    var pw='<g class="pwr">';
+    pw+=p('M110 47V36H340M190 36V372M340 36V352','ac')+t(232,31,'AC rail (L, N, PE)','s m','middle');
+    var ps=[['PS1',327,52,26,66],['PS2',327,202,26,66],['PS3',327,352,26,66],['PS4',177,372,26,66],['PS5',177,52,26,66]];
+    var feeds=[[[0,1],[0,2]],[[1,1],[1,2]],[[2,1],[2,2]],[[1,0],[2,0]],[[0,0]]];
+    ps.forEach(function(q,i){
+      var mx=q[1]+q[3]/2, my=q[2]+q[4]/2;
+      feeds[i].forEach(function(f){var e=PW(f[0],f[1]); pw+=p('M'+mx+' '+my+'L'+e[0]+' '+e[1],'lead');});
+    });
+    ps.forEach(function(q){pw+=r(q[1],q[2],q[3],q[4],'psub',3)+r(q[1],q[2],q[3],q[4],'psu',3)+t(q[1]+q[3]/2,q[2]+q[4]/2+3,q[0],'s','middle');});
+    pw+='</g>';
+    s+=pw;
+    /* data cables */
+    var cab='';
+    var lead1='M80 162C86 150,94 136,'+IN(0,0)[0]+' '+IN(0,0)[1];
+    if(opt===1){
+      cab+=p(lead1,'cab k1');
+      cab+=p('M70 162L66 176V258Q66 '+IN(1,0)[1]+' 80 '+IN(1,0)[1]+'H'+IN(1,0)[0],'cab k2');
+      cab+=p('M62 162L56 178V408Q56 '+IN(2,0)[1]+' 70 '+IN(2,0)[1]+'H'+IN(2,0)[0],'cab k3');
+      for(rw=0;rw<3;rw++) for(c=0;c<2;c++) cab+=jump(OUT(rw,c),IN(rw,c+1),'k'+(rw+1),30);
+    } else {
+      cab+=p(lead1,'cab ka');
+      cab+=jump(OUT(0,0),IN(0,1),'ka',30)+jump(OUT(0,1),IN(0,2),'ka',30);
+      cab+=p('M'+OUT(0,2)[0]+' '+OUT(0,2)[1]+'C470 140,470 250,'+IN(1,2)[0]+' '+IN(1,2)[1],'cab ka');
+      cab+=jump(OUT(1,2),IN(1,1),'ka',46)+jump(OUT(1,1),IN(1,0),'ka',46);
+      cab+=p('M'+OUT(1,0)[0]+' '+OUT(1,0)[1]+'C160 330,80 370,'+IN(2,0)[0]+' '+IN(2,0)[1],'cab ka');
+      cab+=jump(OUT(2,0),IN(2,1),'ka',30)+jump(OUT(2,1),IN(2,2),'ka',30);
+    }
+    s+=cab;
+    /* sockets on top of the cables */
+    for(rw=0;rw<3;rw++) for(c=0;c<3;c++){
+      var a=IN(rw,c),b=OUT(rw,c),e=PW(rw,c);
+      s+=r(a[0]-7,a[1]-4.5,14,9,'cin',1.5)+r(b[0]-7,b[1]-4.5,14,9,'cout',1.5)+r(e[0]-6,e[1]-4,12,8,'cpw',1.5);
+    }
+    /* caps and chain order */
+    var caps=opt===1?[[0,2],[1,2],[2,2]]:[[2,2]];
+    caps.forEach(function(q){var b=OUT(q[0],q[1]); s+=r(b[0]+7,b[1]-6,7,12,'cap',1.5)+t(b[0]+17,b[1]+16,'cap','s m');});
+    var order=opt===1?[['A1','A2','A3'],['B1','B2','B3'],['C1','C2','C3']]:[['1','2','3'],['6','5','4'],['7','8','9']];
+    for(rw=0;rw<3;rw++) for(c=0;c<3;c++){
+      var fx=O+c*P+130, fy=O+rw*P+(rw===0&&c===0?132:18);
+      if(rw===0&&c===0) fx=O+c*P+70;
+      var fc=opt===1?'f'+(rw+1):'fa';
+      s+='<circle class="'+fc+'" cx="'+fx+'" cy="'+fy+'" r="10"/>'+t(fx,fy+3.5,order[rw][c],'s w','middle');
+    }
+    if(opt===1){ s+=t(20,170,'A','s','middle')+t(20,282,'B','s','middle')+t(20,432,'C','s','middle'); }
+    s+=t(265,512,'Seen from the back. Hub ports '+(opt===1?'A, B, C':'A')+' at the foot of the hub leg.','s m','middle');
+    return s;
+  }
+  put('fig-opt1',530,522,block(1),'3 x 3 block wired as three chains of three panels');
+  put('fig-opt2',530,522,block(2),'3 x 3 block wired as one serpentine chain of nine panels');
+
+  var tog=document.getElementById('pwrtog'), figs=document.getElementById('blockfigs');
+  if(tog&&figs){ tog.addEventListener('change',function(){figs.classList.toggle('nopwr',!tog.checked);}); }
+})();
+</script>
+<script>
+// Page tabs: the base design, and Cabling and Wire Harnesses, a suggested section kept apart from it. The address
+// #cabling, or the id of anything on that tab, opens it, and a link into the closed tab opens that tab first. The base
+// pane only hides, so the 3D stage keeps its state and picks its size back up when it shows again.
+(function(){
+  const tabs=[...document.querySelectorAll('.tabs [role=tab]')];if(!tabs.length)return;
+  const bar=tabs[0].parentElement,paneOf=t=>document.getElementById(t.getAttribute('aria-controls'));
+  function show(tab,focus){
+    tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;paneOf(t).hidden=!on;});
+    if(focus)tab.focus();
+  }
+  // the tab holding an element, when that tab is not the open one
+  function closedTabFor(el){const t=el&&tabs.find(t=>paneOf(t).contains(el));return t&&t.getAttribute('aria-selected')!=='true'?t:null;}
+  function byHash(h){try{return h&&h.length>1?document.getElementById(decodeURIComponent(h.slice(1))):null;}catch(e){return null;}}
+  function setHash(t){try{history.replaceState(null,'',t===tabs[0]?location.pathname+location.search:'#'+paneOf(t).id);}catch(e){}}
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>{if(t.getAttribute('aria-selected')==='true')return;show(t);setHash(t);
+      if(bar.getBoundingClientRect().top<0)bar.scrollIntoView();});   // opened from further down: start at the top of the tab
+    t.addEventListener('keydown',e=>{   // arrow keys, Home and End move along the tabs
+      const k={ArrowRight:1,ArrowLeft:-1,Home:'first',End:'last'}[e.key];if(k===undefined)return;e.preventDefault();
+      const j=k==='first'?0:k==='last'?tabs.length-1:(i+k+tabs.length)%tabs.length;show(tabs[j],true);setHash(tabs[j]);});
+  });
+  // a link to something on the closed tab opens that tab, then the browser scrolls to it as usual
+  document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+    const t=closedTabFor(byHash(a.getAttribute('href')));if(t)show(t);});
+  function fromHash(){const el=byHash(location.hash),t=closedTabFor(el);if(!t)return;show(t);if(el!==paneOf(t))el.scrollIntoView();}
+  window.addEventListener('hashchange',fromHash);fromHash();
 })();
 </script>
 </body>
