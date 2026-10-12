@@ -4859,7 +4859,7 @@ const hwb=y=>{const a=hw(-58*MM)+1.5*MM,k=Math.min(1,(-58*MM-y)/(24*MM));   // i
   return y>=-58*MM?hw(y)+1.5*MM:a+(57.8*MM-a)*k*k*(3-2*k);};                // 115.6 mm wide round the IN and OUT
 const RIBS=[-.657,-.528,-.382,-.235,0,.235,.382,.528,.657];   // the nine fins, as fractions of the half width
 const AM={side:std(srgb(0x4b4e53),.45,.5),hs:std(srgb(0x2a2d31),.5,.42),fin:std(srgb(0x5d6167),.7,.3),dark:std(srgb(0x141618),.2,.55),
-  copper:std(srgb(0xb47552),.75,.32),knob:std(srgb(0x1f2124),.15,.48),knobTop:std(srgb(0x686b70),.5,.42),barSide:std(srgb(0x2b2d31),.4,.5),
+  copper:std(srgb(0xb47552),.75,.32),knob:std(srgb(0x1f2124),.15,.48),knobTop:std(srgb(0x4a4d52),.5,.42),barSide:std(srgb(0x2b2d31),.4,.5),
   bezel:std(0x1b1d21,.25,.55),cable:std(srgb(0x2c3137),.1,.5)};
 let ENV2=null;const ptex={},pmat={},bodyMats={};
 
@@ -4895,7 +4895,8 @@ function plateTex(Cw){
     g.save();g.strokeStyle='rgba(0,0,0,.35)';g.lineWidth=2.2*K;rr(bx-20.4,-131.4,bx+20.4,131.4,6.4);g.stroke();g.restore();   // its shadow on the plate
     g.fillStyle='rgba(255,255,255,.08)';rr(bx-19.5,-130.5,bx+19.5,130.5,5.5);g.fill();
     cut(()=>rr(bx-17.2,-128.2,bx+17.2,128.2,3.2),.55);
-    g.save();rr(bx-17.2,-128.2,bx+17.2,128.2,3.2);g.clip();cut(()=>{g.beginPath();g.arc(X(bx),Y(0),25*K,0,7);},.55);g.restore();
+    g.save();rr(bx-17.2,-128.2,bx+17.2,128.2,3.2);g.clip();cut(()=>{g.beginPath();g.arc(X(bx),Y(0),25*K,0,7);},.8);
+    g.fillStyle='rgba(0,0,0,.16)';g.beginPath();g.arc(X(bx),Y(0),23.5*K,0,7);g.fill();g.restore();   // the knob's well, a shade darker
     for(const [ya,yb] of [[48.2,102],[-100.8,-47.1]]){cut(()=>poly([[lx,ya],[lx,yb]]),.75);
       cut(()=>poly([[tx,yb],[bx,yb+6.1]]),.75);cut(()=>poly([[tx,ya],[bx,ya-6.1]]),.75);}
     [[-14,119.5],[14,119.5],[14,60.8],[-14,-58.3],[-14,-119.5],[14,-119.5]].forEach(([x,y])=>screw(bx+x,y,2.2));}
@@ -4962,7 +4963,7 @@ function barsGeo(Cw){return fgeo('altBars'+Cw,()=>{
 // tips round and a little fuller than their necks, tilted 8 degrees; its top in the bars' finish (material 0), its sides
 // dark. The outline is the zero line of the shape's distance, walked round in 0.9 mm steps (in mm until the end).
 const knobGeo=()=>fgeo('altKnob',()=>{
-  const R0=20.8,rt=4.8,L=R0-rt,c=20.3,rc=10.7,tilt=8*Math.PI/180,b=1.2,k=1,st=0.9;
+  const R0=20.8,rt=4.8,L=R0-rt,c=20.3,rc=10.7,tilt=8*Math.PI/180,b=1.6,k=1,st=0.9;
   const sdf=(x,y)=>{let hol=1e9,tip=1e9;
     for(let i=0;i<4;i++){const a=tilt+i*Math.PI/2,d=a+Math.PI/4;
       hol=Math.min(hol,Math.hypot(x-c*Math.cos(d),y-c*Math.sin(d))-rc);tip=Math.min(tip,Math.hypot(x-L*Math.cos(a),y-L*Math.sin(a))-rt);}
