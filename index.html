@@ -972,7 +972,7 @@ svg.wz .psub{fill:var(--surface)}
     <div>
       <div class="eyebrow">Alternate design &middot; Cirrus modules in Firefly blocks</div>
       <h2>The same four blocks, built from Cirrus modules</h2>
-      <p class="sub">The four Firefly blocks and their frames, filled with Cirrus outdoor modules instead of 1&nbsp;ft panels and an L hub: the 1&nbsp;x&nbsp;2&nbsp;ft module Cirrus builds today and one new part, a 1&nbsp;x&nbsp;3&nbsp;ft module made the same way. Each module brings its own supply, card and rear heatsink, chains IN to OUT with the Cirrus connectors, and locks into the frame with its two locking arms. The frames keep the base design&#39;s outside; inside, the L hub, its mount and the seam rails come out.</p>
+      <p class="sub">The four Firefly blocks and their frames, filled with Cirrus outdoor modules instead of 1&nbsp;ft panels and an L hub: the 1&nbsp;x&nbsp;2&nbsp;ft module Cirrus builds today and one new part, a 1&nbsp;x&nbsp;3&nbsp;ft module with the same back and 6&nbsp;in more at each end. Each module brings its own supply and card in the heatsink in the middle of its back, chains IN to OUT with the Cirrus connectors, and locks onto the frame with the two locking bars on its back. The frames keep the base design&#39;s outside and sit behind the modules; inside, the L hub, its mount and the U rails come out, and a rail crosses each module joint for the locking arms to hook behind.</p>
     </div>
     <div class="chips" aria-label="Modules in each block">
       <span class="chip"><b>3&nbsp;x&nbsp;3</b> three 1&nbsp;x&nbsp;3 modules</span>
@@ -1062,7 +1062,7 @@ svg.wz .psub{fill:var(--surface)}
       <div class="group">
         <div class="gtitle" id="alt-ro-title">Rib, 3 x 3 block</div>
         <dl class="readout" id="alt-readout"></dl>
-        <p class="cap">The module&#39;s heatsink, knobs and locking arms follow the Cirrus manual&#39;s description and are drawn approximately.</p>
+        <p class="cap">The modules are drawn from a photo of the back of a Cirrus 1&nbsp;x&nbsp;2; their depths and the arms inside the locking bars are estimated.</p>
       </div>
     </aside>
   </div>
@@ -4826,13 +4826,14 @@ tick();
 // ---------- Alternate design: Cirrus outdoor modules in the Firefly block frames ----------
 // David's alternate (2026-10-12). The four blocks and their frames stay, but each block holds one stack of Cirrus outdoor
 // modules the full width of the block in place of 1 ft panels and an L hub: the 1 x 2 Cirrus builds today in the 2 ft wide
-// blocks and a new 1 x 3, the same module 3 ft wide, in the 3 ft wide ones. Every module carries its own supply and card in
-// its rear heatsink, its Cirrus IN and OUT at the bottom of its back, and a locking arm at each end, turned by a knob on the
-// back or a 2.5 mm hex key through the face, that swings out behind the frame's side U. The frames keep the base design's
-// outside (sizes, vents, M8 joints, back flange, logo strip); inside, the hub, its mount and the seam rails come out and the
-// side U loses its grooves. This tab has its own renderer, scene and labels, made the first time it opens, and shares the
-// base design's geometry helpers and materials. The fins, knobs and arms follow the Cirrus manual's description; its photos
-// could not be checked, so their shapes are approximate.
+// blocks and a new 1 x 3 in the 3 ft wide ones. The modules follow David's photo of the back of a 1 x 2: a flat back plate
+// with a hex pattern, the heatsink in the middle with the Cirrus IN and OUT and a vent under its fins, and a locking bar on
+// each side whose star knob slides two arms out of the bar's ends, one up and one down. The 1 x 3 is the same back with 6 in
+// more plate at each end; its heatsink and bars are the same parts in the same places. The modules sit on the front of the
+// frame, which lies on their back plates, and their arms hook behind its top and bottom lips and a rail across every module
+// joint. The frames keep the base design's outside (sizes, vents, M8 joints, back flange, logo strip); inside, the hub, its
+// mount and the U rails come out. This tab has its own renderer, scene and labels, made the first time it opens, and shares
+// the base design's geometry helpers and materials.
 (function(){
 const host=$('#alt-view');if(!host)return;
 const stageEl=host.parentElement,labelHost=$('#alt-labels'),leaders=$('#alt-leaders'),bar=stageEl.querySelector('.stagebar');
@@ -4840,64 +4841,180 @@ const AS={k:'rib',mode:'block',mtype:'1x3',btype:'3x3',H:5,W:10,steel:'angle',mo
 const dims=t=>t.split('x').map(Number);   // rows (height) first, then width
 const cap1=s=>s.charAt(0).toUpperCase()+s.slice(1);
 
-// ---------- the module: origin at the middle of the face's back, as a base design panel; the face is 7/8 in thick ----------
-const MOD_D=104.775*MM;                  // 4 1/8 in, face to the back of the fins
-const HX=64*MM,HY=24*MM,BZ=48*MM;        // the heatsink stops 64 mm short of each end (room for the locks) and 24 mm short of
-                                          // the top and bottom (clear of the frames' top and bottom walls); its body is 48 mm deep
-const FZ0=-BZ,FZ1=PT-MOD_D;              // fins from the body's back to 4 1/8 in behind the face
-const LKX=40*MM,LKY=60*MM,ARM_Z=-27*MM,ARM_L=34*MM;   // each lock 40 mm in from its end and 60 mm above the middle, clear of
-                                                      // the joint bolts; its arm turns just behind the side U's back
-const IOY=-0.5+HY+30*MM,IODX=40*MM,PLUG_Z=-BZ-41*MM;  // IN and OUT 80 mm apart in a band at the bottom of the back
-const AM={hs:std(srgb(0x3a4047),.55,.42),fin:std(srgb(0x4a5159),.6,.38),post:std(srgb(0x2b3036),.4,.5),
-  conIn:std(0x2f9e5b,.2,.5),conOut:std(0xe0662a,.2,.5),bezel:std(0x1b1d21,.25,.55),cap:std(0x17191c,.6,.35),cable:std(srgb(0x2c3137),.1,.5)};
-// vertical fins at 12 mm pitch over the heatsink's back, clear of the IN and OUT band, one merged mesh per module width
-const finGeo=Cw=>fgeo('altFins'+Cw,()=>{const x0=-Cw/2+HX+6*MM,x1=Cw/2-HX-6*MM,n=Math.round((x1-x0)/(12*MM))+1,
-  y0=-0.5+HY+62*MM,y1=0.5-HY-6*MM,fg=bgeo(2.4*MM,y1-y0,FZ0-FZ1);
-  return mergeGeo(Array.from({length:n},(_,i)=>[fg,x0+i*(x1-x0)/(n-1),(y0+y1)/2,(FZ0+FZ1)/2]));});
-// the locking arm: a flat bar with round ends, 12 mm wide and 3 mm thick, from its shaft out past the module's end
-const armGeo=()=>fgeo('altArm',()=>{const g=new THREE.ExtrudeGeometry(rrect(new THREE.Shape(),-7*MM,-6*MM,ARM_L,6*MM,5.9*MM),{depth:3*MM,bevelEnabled:false,curveSegments:8});
-  g.translate(0,0,-1.5*MM);return g;});
+// ---------- the module, from David's photo of the back of a 1 x 2 (2026-10-12) ----------
+// Origin at the middle of the face's back, as a base design panel; the face is 7/8 in thick. The back's sizes are scaled
+// from the photo (its 24 in width is 2,894 pixels); the depths are estimates inside the module's 4 1/8 in. x runs left to
+// right seen from the front, so right to left seen from the back, as in the photo.
+const MOD_D=104.775*MM;                             // 4 1/8 in, face to the backs of the fins
+const BP=-40*MM,ZB=BP-D;                            // the back plate, 62 mm behind the face, where the frame's front sits,
+                                                    // and the frame's back
+const HB=5*MM,HP=27*MM,ZP=BP-HB-HP,FZ1=PT-MOD_D;    // heatsink: a 5 mm base, a 27 mm body, fins out to 4 1/8 in
+const BAR={x:235.2*MM,w:39*MM,h:261*MM,d:5*MM,r:5.5*MM};   // a locking bar 235 mm each side of the middle, on both modules
+const ARM={w:12*MM,t:2*MM,L:30*MM,z:BP-3.5*MM,run:18*MM};  // two arms in each bar, each sliding 18 mm out of an end
+const KZ=BP-BAR.d,KD=9*MM;                          // the star knob, on its bar
+const IO={dx:24.7*MM,y:-86*MM},SOCK_Z=BP-HB-16*MM,PLUG_Z=SOCK_Z-30*MM,VENT_Y=-98.2*MM;   // IN and OUT 49.4 mm apart under
+                                                    // the fins, the vent below them
+const hw=y=>52.1*MM+0.00058/MM*y*y;                 // the heatsink's half width: 52 mm at its waist, 57 mm at its ends
+const hwb=y=>{const a=hw(-58*MM)+1.5*MM,k=Math.min(1,(-58*MM-y)/(24*MM));   // its base: 1.5 mm proud of the body, then
+  return y>=-58*MM?hw(y)+1.5*MM:a+(57.8*MM-a)*k*k*(3-2*k);};                // 115.6 mm wide round the IN and OUT
+const RIBS=[-.657,-.528,-.382,-.235,0,.235,.382,.528,.657];   // the nine fins, as fractions of the half width
+const AM={side:std(srgb(0x4b4e53),.45,.5),hs:std(srgb(0x2a2d31),.5,.42),fin:std(srgb(0x5d6167),.7,.3),dark:std(srgb(0x141618),.2,.55),
+  copper:std(srgb(0xb47552),.75,.32),knob:std(srgb(0x1f2124),.15,.48),knobTop:std(srgb(0x686b70),.5,.42),barSide:std(srgb(0x2b2d31),.4,.5),
+  bezel:std(0x1b1d21,.25,.55),cable:std(srgb(0x2c3137),.1,.5)};
+let ENV2=null;const ptex={},pmat={},bodyMats={};
+
+// The back plate as the photo shows it, seen from the back: brushed, a hex pattern between the bars inside a fine border, a
+// slot top and bottom, a screw near each corner and an up arrow beside each knob; on each bar its border, the ring its knob
+// sits in, two arrows and six screws. Drawn once for each module width, in millimeters from the middle of the photo, 2.5
+// pixels to the millimeter; the bars take their tops from it.
+function plateTex(Cw){
+  if(ptex[Cw])return ptex[Cw];
+  const K=2.5,wm=Cw/MM,W=Math.round(wm*K),H=Math.round(304.8*K),c=document.createElement('canvas');c.width=W;c.height=H;
+  const g=c.getContext('2d'),X=x=>W/2+x*K,Y=y=>H/2-y*K;
+  g.fillStyle='#525559';g.fillRect(0,0,W,H);
+  let sd=11;const rnd=()=>(sd=sd*16807%2147483647)/2147483647;   // brushed: fine streaks along the module
+  for(let i=0;i<H*6;i++){const l=30+rnd()*W*0.4,a=(0.025+rnd()*0.05).toFixed(3);
+    g.fillStyle=rnd()<0.5?'rgba(255,255,255,'+a+')':'rgba(0,0,0,'+a+')';g.fillRect(rnd()*W-l/2,rnd()*H,l,0.5+rnd()*1.2);}
+  g.fillStyle='rgba(255,255,255,.12)';g.fillRect(0,0,W,2.5*K);g.fillStyle='rgba(0,0,0,.25)';g.fillRect(0,H-2*K,W,2*K);
+  const rr=(x0,y0,x1,y1,r)=>{const a=X(x0),b=Y(y1),e=X(x1),f=Y(y0),q=r*K;g.beginPath();g.moveTo(a+q,b);g.arcTo(e,b,e,f,q);g.arcTo(e,f,a,f,q);g.arcTo(a,f,a,b,q);g.arcTo(a,b,e,b,q);g.closePath();};
+  const poly=(pts,close)=>{g.beginPath();pts.forEach(([x,y],i)=>i?g.lineTo(X(x),Y(y)):g.moveTo(X(x),Y(y)));if(close)g.closePath();};
+  // a cut line: dark, with a light edge below and right of it where the cut catches the light
+  const cut=(path,a)=>{g.save();g.translate(0.9,0.9);path();g.strokeStyle='rgba(255,255,255,.14)';g.lineWidth=0.9;g.stroke();g.restore();
+    path();g.strokeStyle='rgba(6,7,9,'+a+')';g.lineWidth=1.1;g.stroke();};
+  const screw=(x,y,r)=>{const gr=g.createRadialGradient(X(x)-r*K*.35,Y(y)-r*K*.35,0,X(x),Y(y),r*K);
+    gr.addColorStop(0,'#7a7e84');gr.addColorStop(.45,'#232528');gr.addColorStop(1,'#0b0c0e');g.fillStyle=gr;g.beginPath();g.arc(X(x),Y(y),r*K,0,7);g.fill();};
+  cut(()=>rr(-252,-143.7,252,143.7,1),.35);
+  g.save();rr(-210,-126.4,210,126.4,9);g.clip();   // pointy topped cells 16.4 mm across
+  for(let j=-10;j<=10;j++)for(let i=-14;i<=14;i++){const cx=3.7+i*16.4+(j&1?8.2:0),cy=j*14.2;
+    cut(()=>poly(Array.from({length:6},(_,k)=>{const a=Math.PI/6+k*Math.PI/3;return [cx+9.47*Math.cos(a),cy+9.47*Math.sin(a)];}),true),.5);}
+  g.restore();cut(()=>rr(-210,-126.4,210,126.4,9),.65);
+  g.fillStyle='rgba(8,9,11,.9)';for(const s of [1,-1]){rr(-1.35,s*139-6,1.35,s*139+6,1.3);g.fill();}
+  const xe=wm/2-21.8;[[-xe,82],[-xe,-70],[xe,82],[xe,-81]].forEach(([x,y])=>screw(x,y,2.5));
+  for(const m of [-1,1]){const x0=272.5*m;cut(()=>poly([[x0,-10.7],[x0,4.5],[x0+2.1*m,5.1],[x0-3.4*m,10.8]]),.7);}
+  for(const m of [-1,1]){const bx=235.2*m,lx=bx+3.2*m,tx=bx+5.8*m;
+    g.save();g.strokeStyle='rgba(0,0,0,.35)';g.lineWidth=2.2*K;rr(bx-20.4,-131.4,bx+20.4,131.4,6.4);g.stroke();g.restore();   // its shadow on the plate
+    g.fillStyle='rgba(255,255,255,.08)';rr(bx-19.5,-130.5,bx+19.5,130.5,5.5);g.fill();
+    cut(()=>rr(bx-17.2,-128.2,bx+17.2,128.2,3.2),.55);
+    g.save();rr(bx-17.2,-128.2,bx+17.2,128.2,3.2);g.clip();cut(()=>{g.beginPath();g.arc(X(bx),Y(0),25*K,0,7);},.55);g.restore();
+    for(const [ya,yb] of [[48.2,102],[-100.8,-47.1]]){cut(()=>poly([[lx,ya],[lx,yb]]),.75);
+      cut(()=>poly([[tx,yb],[bx,yb+6.1]]),.75);cut(()=>poly([[tx,ya],[bx,ya-6.1]]),.75);}
+    [[-14,119.5],[14,119.5],[14,60.8],[-14,-58.3],[-14,-119.5],[14,-119.5]].forEach(([x,y])=>screw(bx+x,y,2.2));}
+  const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return ptex[Cw]=t;
+}
+const plateMat=Cw=>pmat[Cw]||(pmat[Cw]=new THREE.MeshStandardMaterial({map:plateTex(Cw),metalness:.45,roughness:.48,envMap:ENV2,envMapIntensity:.55}));
+
+// an outline narrowing to a waist (half width wf at height y) with rounded corners: the heatsink's base, body and fins
+function waistShape(top,bot,wf,rT,rB,n){
+  const s=new THREE.Shape(),side=[];
+  for(let i=0;i<=n;i++){const y=top-rT-(top-rT-bot-rB)*i/n;side.push([wf(y),y]);}
+  const xt=side[0][0],xb=side[n][0];
+  s.moveTo(0,top);s.lineTo(xt-rT,top);s.quadraticCurveTo(xt,top,xt,top-rT);
+  for(let i=1;i<=n;i++)s.lineTo(side[i][0],side[i][1]);
+  s.quadraticCurveTo(xb,bot,xb-rB,bot);s.lineTo(rB-xb,bot);s.quadraticCurveTo(-xb,bot,-xb,bot+rB);
+  for(let i=n-1;i>=0;i--)s.lineTo(-side[i][0],side[i][1]);
+  s.quadraticCurveTo(-xt,top,rT-xt,top);
+  return s;}
+// a shape extruded d back from z, its back edge rounded by b in n steps (its front bevel hides in what it sits on)
+function backExtrude(s,z,d,b,n){
+  const g=new THREE.ExtrudeGeometry(s,b?{depth:d-b,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:n||3,curveSegments:6}:{depth:d,bevelEnabled:false,curveSegments:6});
+  g.rotateY(Math.PI);g.translate(0,0,z);return g;}
+// the heatsink: its base, the body narrowing to a waist with its edges rounded, and nine fins that follow the waist
+const hsGeo=()=>fgeo('altHS',()=>{
+  const b=6*MM,parts=[backExtrude(waistShape(116.7*MM,-111.9*MM,hwb,16*MM,10*MM,24),BP,HB,0),
+    backExtrude(waistShape(115.2*MM-b,-63.8*MM+b,y=>hw(y)-b,10*MM,9*MM,16),BP-HB,HP,b)];
+  const m=mergeGeo(parts.map(p=>[p,0,0,0]));parts.forEach(p=>p.dispose());return m;});
+const finGeo=()=>fgeo('altFins',()=>{const parts=[];
+  for(const f of RIBS){const y0=-58*MM,y1=(f?109:101)*MM,n=12,L=[],s=new THREE.Shape();
+    for(let i=0;i<=n;i++){const y=y0+(y1-y0)*i/n;L.push([f*hw(y),y]);}
+    L.forEach(([x,y],i)=>i?s.lineTo(x-1.2*MM,y):s.moveTo(x-1.2*MM,y));for(let i=n;i>=0;i--)s.lineTo(L[i][0]+1.2*MM,L[i][1]);
+    parts.push(backExtrude(s,ZP+0.5*MM,ZP-FZ1+0.5*MM,0));}
+  const m=mergeGeo(parts.map(p=>[p,0,0,0]));parts.forEach(p=>p.dispose());return m;});
+// a hex nut with its points to the sides, as both connectors' nuts sit in the photo
+const hex6=r=>fgeo('altHex6_'+r.toFixed(5),()=>cgeo(r,4*MM,'z',6).clone().rotateZ(Math.PI/6));
+// IN on the right seen from the back (bronze nut, three pins), OUT on the left (black nut, three sockets), the vent between
+// and below them; the screw holes in the heatsink and the connectors' faces are dark spots
+const hsDark=()=>fgeo('altHSd',()=>mergeGeo([[hex6(17*MM),IO.dx,IO.y,BP-HB-2*MM],
+  [cgeo(12.5*MM,12*MM,'z',28),IO.dx,IO.y,BP-HB-10*MM],[cgeo(12.5*MM,12*MM,'z',28),-IO.dx,IO.y,BP-HB-10*MM],
+  [cgeo(9.75*MM,6*MM,'z',14),0,VENT_Y,BP-HB-3*MM],[cgeo(8.4*MM,1.4*MM,'z',14),0,VENT_Y,BP-HB-6.7*MM]]));
+const hsCopper=()=>fgeo('altHSc',()=>mergeGeo([[hex6(17*MM),-IO.dx,IO.y,BP-HB-2*MM]]));
+const hsPins=()=>fgeo('altHSp',()=>mergeGeo([[2.1,5.3],[5.5,-0.3],[1.9,-5.6]].map(([x,y])=>[cgeo(1*MM,2*MM,'z',8),-IO.dx+x*MM,IO.y+y*MM,SOCK_Z-0.4*MM])));
+const hsHoles=()=>fgeo('altHSh',()=>{const o=[],d=(r,x,y,z)=>o.push([cgeo(r*MM,0.4*MM,'z',12),x,y,z]);
+  [[-1.05,5.6],[-5.5,0.3],[-1.05,-5.6]].forEach(([x,y])=>d(2.4,IO.dx+x*MM,IO.y+y*MM,SOCK_Z-0.25*MM));
+  for(const [cx,a0] of [[IO.dx,-60],[-IO.dx,120]])for(let i=0;i<6;i++){const a=(a0+24*i)*Math.PI/180;d(0.9,cx+8*MM*Math.cos(a),IO.y+8*MM*Math.sin(a),SOCK_Z-0.25*MM);}
+  [[25.5,95.2],[-25.5,95.2],[24.3,-48.7],[-24.3,-48.7]].forEach(([x,y])=>d(2.5,x*MM,y*MM,ZP-0.25*MM));
+  [48.1,-48.1].forEach(x=>d(1.6,x*MM,VENT_Y,BP-HB-0.25*MM));
+  return mergeGeo(o);});
+// both locking bars, their edges rounded; their tops map onto the plate's picture so each shows its border, ring and arrows,
+// and their sides take a darker finish (material 1)
+function barsGeo(Cw){return fgeo('altBars'+Cw,()=>{
+  const b=0.8*MM,s=rrect(new THREE.Shape(),-BAR.w/2+b,-BAR.h/2+b,BAR.w/2-b,BAR.h/2-b,BAR.r-b),P=[],N=[],U=[],G=[];let n=0;
+  for(const sx of [-1,1]){const g=new THREE.ExtrudeGeometry(s,{depth:BAR.d-b,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:2,curveSegments:6});
+    g.rotateY(Math.PI);g.translate(sx*BAR.x,0,BP);
+    const p=g.attributes.position.array,uv=new Float32Array(p.length/3*2);
+    for(let i=0;i<p.length/3;i++){uv[2*i]=(Cw/2-p[3*i])/Cw;uv[2*i+1]=p[3*i+1]+0.5;}
+    g.groups.forEach(q=>G.push([q.start+n,q.count,q.materialIndex]));n+=p.length/3;
+    P.push(p);N.push(g.attributes.normal.array);U.push(uv);g.dispose();}
+  const cat=a=>{const o=new Float32Array(a.reduce((n,x)=>n+x.length,0));let k=0;a.forEach(x=>{o.set(x,k);k+=x.length;});return o;};
+  const m=new THREE.BufferGeometry();m.setAttribute('position',new THREE.BufferAttribute(cat(P),3));
+  m.setAttribute('normal',new THREE.BufferAttribute(cat(N),3));m.setAttribute('uv',new THREE.BufferAttribute(cat(U),2));
+  G.forEach(q=>m.addGroup(...q));return m;});}
+// the star knob, as in the photo: four lobes 41.6 mm across, their sides hollowed by a circle between each pair, their
+// tips round and a little fuller than their necks, tilted 8 degrees; its top in the bars' finish (material 0), its sides
+// dark. The outline is the zero line of the shape's distance, walked round in 0.9 mm steps (in mm until the end).
+const knobGeo=()=>fgeo('altKnob',()=>{
+  const R0=20.8,rt=4.8,L=R0-rt,c=20.3,rc=10.7,tilt=8*Math.PI/180,b=1.2,k=1,st=0.9;
+  const sdf=(x,y)=>{let hol=1e9,tip=1e9;
+    for(let i=0;i<4;i++){const a=tilt+i*Math.PI/2,d=a+Math.PI/4;
+      hol=Math.min(hol,Math.hypot(x-c*Math.cos(d),y-c*Math.sin(d))-rc);tip=Math.min(tip,Math.hypot(x-L*Math.cos(a),y-L*Math.sin(a))-rt);}
+    const core=Math.max(Math.hypot(x,y)-L,-hol),h=Math.max(k-Math.abs(core-tip),0)/k;return Math.min(core,tip)-h*h*k/4+b;};
+  const grad=(x,y)=>{const e=1e-3;return [(sdf(x+e,y)-sdf(x-e,y))/(2*e),(sdf(x,y+e)-sdf(x,y-e))/(2*e)];};
+  const onto=(x,y)=>{for(let j=0;j<5;j++){const v=sdf(x,y),[gx,gy]=grad(x,y),g2=gx*gx+gy*gy||1;x-=v*gx/g2;y-=v*gy/g2;}return [x,y];};
+  let [x,y]=onto(R0*Math.cos(tilt),R0*Math.sin(tilt));const x0=x,y0=y,s=new THREE.Shape();s.moveTo(x*MM,y*MM);
+  for(let i=0;i<3000;i++){const [gx,gy]=grad(x,y),gl=Math.hypot(gx,gy)||1;[x,y]=onto(x-gy/gl*st,y+gx/gl*st);
+    if(i>20&&Math.hypot(x-x0,y-y0)<st*1.01)break;s.lineTo(x*MM,y*MM);}
+  return backExtrude(s,KZ,KD,b*MM,2);});
 const hexGeo=()=>fgeo('altHex',()=>new THREE.CircleGeometry(2.8*MM,6));   // the hex socket seen through the face
-// Cw: module width in feet (2 or 3); the face shows its part of the picture (u0, v0, du, dv). m.lock(u) turns both arms and
-// their knobs: 0 locked (out past the ends), 1 turned in.
+const ringGeo=()=>fgeo('altKnobRing',()=>new THREE.RingGeometry(5*MM,5.9*MM,28));   // the groove round the knob's boss
+// Cw: module width in feet (2 or 3); the face shows its part of the picture (u0, v0, du, dv). m.lock(u) turns both knobs and
+// slides their arms: 0 locked (out of the bars' ends), 1 unlocked (in, as in the photo).
 function altModule(Cw,faceMat,u0,v0,du,dv){
   const g=new THREE.Group(),w=Cw-0.5*MM,h=1-0.5*MM;
   g.add(box(w,h,16*MM,MAT.shell,0,0,8*MM),box(w,h,6*MM,MAT.slab,0,0,19*MM));
   const pg=new THREE.PlaneGeometry(w,h),uv=pg.attributes.uv;
   for(let i=0;i<uv.count;i++)uv.setXY(i,u0+uv.getX(i)*du,v0+uv.getY(i)*dv);
   const fc=new THREE.Mesh(pg,faceMat);fc.position.z=PT+0.3*MM;g.add(fc);
-  const hs=roundedSlab(Cw-2*HX,1-2*HY,BZ,10*MM,AM.hs);hs.position.z=-BZ/2;g.add(hs);
-  g.add(new THREE.Mesh(finGeo(Cw),AM.fin));
-  // IN and OUT on a plate at the bottom of the back: IN (green) on the right seen from the back, OUT (orange) on the left
-  g.add(box(150*MM,46*MM,3*MM,AM.bezel,0,IOY,-BZ-1.5*MM));
-  for(const [s,mat] of [[-1,AM.conIn],[1,AM.conOut]]){const x=s*IODX;
-    g.add(cyl(19*MM,4*MM,AM.cap,x,IOY,-BZ-5*MM,'z',24),cyl(15.5*MM,8*MM,mat,x,IOY,-BZ-11*MM,'z',24),cyl(15*MM,26*MM,AM.bezel,x,IOY,-BZ-28*MM,'z',20));}
-  // a lock at each end: a post off the face's back, the arm on it, a knob with a grip bar at the back, and the hex socket in
-  // the face; rot turns the arm and the knob together
+  const body=new THREE.Mesh(bgeo(w,h,-BP),bodyMats[Cw]||(bodyMats[Cw]=[AM.side,AM.side,AM.side,AM.side,AM.side,plateMat(Cw)]));
+  body.position.z=BP/2;g.add(body);
+  g.add(new THREE.Mesh(barsGeo(Cw),[plateMat(Cw),AM.barSide]),new THREE.Mesh(hsGeo(),AM.hs),new THREE.Mesh(finGeo(),AM.fin),new THREE.Mesh(hsDark(),AM.dark),
+    new THREE.Mesh(hsCopper(),AM.copper),new THREE.Mesh(hsPins(),MAT.steel),new THREE.Mesh(hsHoles(),MAT.slot));
   const locks=[];
-  for(const sx of [-1,1]){const x=sx*(Cw/2-LKX);
-    g.add(cyl(9*MM,62*MM,AM.post,x,LKY,-31*MM,'z',20));
-    const rot=new THREE.Group();rot.position.set(x,LKY,0);g.add(rot);
-    const arm=new THREE.Mesh(armGeo(),MAT.steel);arm.position.z=ARM_Z;if(sx<0)arm.rotation.z=Math.PI;rot.add(arm);
-    rot.add(cyl(13*MM,12*MM,MAT.knob,0,0,-68*MM,'z',24),box(28*MM,7*MM,8*MM,MAT.knob,0,0,-78*MM));
-    const hx=new THREE.Mesh(hexGeo(),MAT.slot);hx.position.set(x,LKY,PT+0.6*MM);g.add(hx);
-    locks.push({sx,rot,arm});}
-  return {g,locks,Cw,lock:u=>locks.forEach(l=>{l.rot.rotation.z=l.sx*Math.PI/2*u;})};
+  for(const sx of [-1,1]){const x=sx*BAR.x,kn=new THREE.Mesh(knobGeo(),[AM.knobTop,AM.knob]);kn.position.x=x;g.add(kn);
+    const boss=new THREE.Mesh(cgeo(5*MM,1.6*MM,'z',20),AM.knobTop),dot=new THREE.Mesh(cgeo(1.7*MM,0.4*MM,'z',10),MAT.slot),ring=new THREE.Mesh(ringGeo(),MAT.slot);
+    boss.position.z=KZ-KD-0.6*MM;dot.position.z=KZ-KD-1.6*MM;ring.position.z=KZ-KD-0.3*MM;kn.add(boss,dot,ring);
+    const arms=[-1,1].map(sy=>{const a=new THREE.Mesh(bgeo(ARM.w,ARM.L,ARM.t),MAT.steel);a.position.set(x,0,ARM.z);a.userData.sy=sy;g.add(a);return a;});
+    const hx=new THREE.Mesh(hexGeo(),MAT.slot);hx.position.set(x,0,PT+0.6*MM);g.add(hx);
+    locks.push({sx,kn,arms});}
+  const m={g,locks,Cw,lock:u=>locks.forEach(l=>{l.kn.rotation.z=-Math.PI/2*(1-u);
+    l.arms.forEach(a=>{a.position.y=a.userData.sy*(BAR.h/2-ARM.L/2-1*MM+(1-u)*(ARM.run+1*MM));});})};
+  m.lock(0);return m;
 }
-// light an arm orange while it turns, as the joint bolts are while they run in
-const armLit=(m,on)=>m.locks.forEach(l=>{l.arm.material=on?MAT.hot:MAT.steel;});
+// light the arms orange while they slide, as the joint bolts are while they run in
+const armLit=(m,on)=>m.locks.forEach(l=>l.arms.forEach(a=>{a.material=on?MAT.hot:MAT.steel;}));
 
-// ---------- the frames: the base design's outside, with no hub, no hub mount and no seam rails ----------
-// The side U as on the base frames, but plain: nothing hangs on pins, so its near leg has no grooves. Each module's arms
-// turn out behind its back, 25 mm behind the front edge, and hold the module to the frame.
-function plainU(g,xe,dir,y0,y1,t,mat){const yc=(y0+y1)/2,L=y1-y0;
-  g.add(box(t,L,UD,mat,xe+dir*1.5*t,yc,-UD/2),box(UW-3*t,L,t,mat,xe+dir*(UW+t)/2,yc,-UD+t/2),box(t,L,UD,mat,xe+dir*(UW-t/2),yc,-UD/2));}
+// ---------- the frames: the base design's outside, behind the modules ----------
+// The frame's front lies on the modules' back plates. Its top and bottom walls keep a 9.6 mm lip along the front, as on the
+// base Rib, and a T rail crosses every module joint, its 40 mm flange on the modules' backs and its web riveted to both side
+// walls; the arms slide out behind the lips and the flanges and hold the modules to the frame. No hub, hub mount or U rails.
+const RET=GEO.rib.ret*MM;
+function lockRails(g,C,R,t,mat,rivet){const riv=[];
+  for(let j=1;j<R;j++){g.add(box(C-2*t,40*MM,2*MM,mat,C/2,j,-1*MM),box(C-2*t,3*MM,48*MM,mat,C/2,j,-26*MM));
+    for(const z of [-36*MM,-46*MM])riv.push([-0.3*MM,j,z],[C+0.3*MM,j,z]);}
+  dotsOn(g,riv,'x',rivet);}
 const AFRAME={
-  // Rib: folded 1.6 mm aluminum, the same walls, beads, tabs, rivets, vents, joint holes and flange as the base design
+  // Rib: folded 1.6 mm aluminum, the same walls, beads, tabs, rivets, vents, joint holes, lips and flange as the base design
   rib(C,R){const g=new THREE.Group(),m=FM.rib,rb=GEO.rib,t=rb.t*MM,riv=[];
     for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1;
       g.add(sideWeb(ventWeb(R,t,ventsAt(rb.side,ventSideY(R),sideHoles(R,0))),m.main,xe,dir,t));
-      plainU(g,xe,dir,rb.uEnd*MM,R-rb.uEnd*MM,t,m.main);
       const y0=24*MM,y1=R-24*MM;
       for(const z of rb.beads.map(d=>-d*MM)){bead(g,xe+dir*(t+1.2*MM),y0,y1,z,m.main);g.add(box(0.4*MM,y1-y0,7*MM,MK.groove,xe-dir*0.2*MM,(y0+y1)/2,z));}
       const tw=rb.tabW*MM-t,td=(rb.tab[1]-rb.tab[0])*MM,tz=-(rb.tab[0]+rb.tab[1])/2*MM;
@@ -4906,20 +5023,21 @@ const AFRAME={
     }
     for(const q of [0,1]){const ye=q?R:0,dir=q?-1:1;
       g.add(endWeb(ventWeb(C-2*t,t,ventsAt(rb.ends,ventEndX(C,false).map(x=>x-rb.t),q?[]:jointHoles(C,t))),m.main,ye,dir,t,t));
-      g.add(box(C-2*t,rb.ret*MM-t,t,m.main,C/2,ye+dir*(t+(rb.ret*MM-t)/2),-t/2));}
+      g.add(box(C-2*t,RET-t,t,m.main,C/2,ye+dir*(t+(RET-t)/2),-t/2));}
+    lockRails(g,C,R,t,m.rail,m.rivet);
     backFlange(g,C,R,m.main,{t,rivet:m.rivet});dotsOn(g,riv,'y',m.rivet);
     return {g,kit:edgeKit(g,C,R,{inY:t}),logos:logos(g,C,R)};},
-  // Hoop: one roll-formed 1.2 mm steel strip with its rolled corners, front tray, one weld and mitred flange
+  // Hoop: one roll-formed 1.2 mm steel strip with its rolled corners, a front lip top and bottom, one weld and mitred flange
   hoop(C,R){const g=new THREE.Group(),m=FM.hoop,hp=GEO.hoop,t=hp.t*MM,rc=hp.rc*MM,uc=hp.uCut*MM,cols=GEO.rib.ends;
     for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1;
-      g.add(sideWeb(ventWeb(R-2*rc,t,ventsAt(cols,ventSideY(R).map(y=>y-hp.rc),sideHoles(R,rc))),m.main,xe,dir,t,rc));
-      plainU(g,xe,dir,uc,R-uc,t,m.main);}
-    for(const q of [0,1]){const ye=q?R:0,dir=q?-1:1,yy=v=>ye+dir*v,Lu=C-2*uc;
+      g.add(sideWeb(ventWeb(R-2*rc,t,ventsAt(cols,ventSideY(R).map(y=>y-hp.rc),sideHoles(R,rc))),m.main,xe,dir,t,rc));}
+    for(const q of [0,1]){const ye=q?R:0,dir=q?-1:1,yy=v=>ye+dir*v;
       g.add(endWeb(ventWeb(C-2*rc,t,ventsAt(cols,ventEndX(C,!q).map(x=>x-hp.rc),q?[]:jointHoles(C,rc))),m.main,ye,dir,t,rc));
-      g.add(box(Lu,t,UD,m.main,C/2,yy(1.5*t),-UD/2),box(Lu,UW-3*t,t,m.main,C/2,yy((UW+t)/2),-UD+t/2),box(Lu,t,UD,m.main,C/2,yy(UW-t/2),-UD/2));}
+      g.add(box(C-2*uc,RET-t,t,m.main,C/2,yy(t+(RET-t)/2),-t/2));}
     for(const [cx,cy,a0] of [[rc,rc,Math.PI],[C-rc,rc,1.5*Math.PI],[C-rc,R-rc,0],[rc,R-rc,0.5*Math.PI]]){
       const sh=new THREE.Mesh(arcShell(rc,rc-t,a0,D),m.main);sh.position.set(cx,cy,-D);g.add(sh);}
     g.add(box(5*MM,0.6*MM,D,m.weld,hp.weldX*MM,-0.2*MM,-D/2));
+    lockRails(g,C,R,t,m.rail,m.rivet);
     backFlange(g,C,R,m.main,{t,rc,mitre:MK.groove});
     return {g,kit:edgeKit(g,C,R,{inY:t}),logos:logos(g,C,R)};}
 };
@@ -4942,60 +5060,69 @@ function clearScene(){
   alabels.forEach(l=>{l.el.remove();l.path.remove();l.dot.remove();});alabels=[];ablocks=[];amod=null;
   aroot=new THREE.Group();scene2.add(aroot);boxDirty=true;
 }
-// one block: its frame and its stack of modules, each the block's width; x0, y0 place it in a W x H wall
+// one block: its stack of modules, each the block's width, and behind them its frame (f.fr), with its front on their back
+// plates; x0, y0 place it in a W x H wall
 function altBlock(R,C,x0,y0,fm,W,H,parent){
-  const f=AFRAME[AS.k](C,R);f.R=R;f.C=C;f.home=V(x0,y0,0);f.spread=V(x0+C/2-W/2,y0+R/2-H/2,0);f.g.position.copy(f.home);parent.add(f.g);
+  const f=AFRAME[AS.k](C,R);f.fr=f.g;f.fr.position.z=BP;f.g=new THREE.Group();f.g.add(f.fr);
+  f.R=R;f.C=C;f.home=V(x0,y0,0);f.spread=V(x0+C/2-W/2,y0+R/2-H/2,0);f.g.position.copy(f.home);parent.add(f.g);
   f.logos.forEach(l=>{l.material=LOGO2;l.visible=false;});   // the gloss print reflects this renderer's own studio
   f.mods=[];
   for(let r=0;r<R;r++){const m=altModule(C,fm,x0/W,(y0+r)/H,C/W,1/H);m.g.position.set(C/2,r+0.5,0);m.r=r;m.base=m.g.position.clone();f.g.add(m.g);f.mods.push(m);}
   ablocks.push(f);return f;
 }
-// the jumpers inside a block, each module's OUT to the IN of the one above, and the block's own IN and OUT leads, which
-// leave through the open back as on the base design
+// the plugs, the jumpers inside a block, each module's OUT to the IN of the one above behind its fins, and the block's own
+// IN and OUT leads, which leave through the open back as on the base design
 function blockCables(f){
-  const g=new THREE.Group(),xc=f.C/2,zb=PLUG_Z-26*MM,zo=-D-24*MM;f.g.add(g);
-  for(let r=0;r<f.R-1;r++){const a=V(xc+IODX,r+0.5+IOY,PLUG_Z),b=V(xc-IODX,r+1.5+IOY,PLUG_Z);
+  const g=new THREE.Group(),xc=f.C/2,zb=PLUG_Z-22*MM,zo=ZB-24*MM;f.g.add(g);
+  for(let r=0;r<f.R;r++)for(const s of [-1,1])g.add(cyl(13*MM,30*MM,AM.bezel,xc+s*IO.dx,r+0.5+IO.y,(SOCK_Z+PLUG_Z)/2,'z',20));
+  for(let r=0;r<f.R-1;r++){const a=V(xc+IO.dx,r+0.5+IO.y,PLUG_Z),b=V(xc-IO.dx,r+1.5+IO.y,PLUG_Z);
     g.add(tube([a,V(a.x,a.y,zb),V(b.x,b.y,zb),b],5.5*MM,AM.cable,18*MM));}
-  const i0=V(xc-IODX,0.5+IOY,PLUG_Z),o1=V(xc+IODX,f.R-0.5+IOY,PLUG_Z),lift=26*MM;
+  const i0=V(xc-IO.dx,0.5+IO.y,PLUG_Z),o1=V(xc+IO.dx,f.R-0.5+IO.y,PLUG_Z),lift=26*MM;
   g.add(tube([i0,V(i0.x,i0.y+lift,i0.z-30*MM),V(i0.x,i0.y+lift,zo),V(i0.x,i0.y+lift-0.3,zo)],5.5*MM,AM.cable,16*MM),
         tube([o1,V(o1.x,o1.y+lift,o1.z-30*MM),V(o1.x,o1.y+lift,zo),V(o1.x,o1.y+lift+0.3,zo)],5.5*MM,AM.cable,16*MM));
   return g;
 }
 const cablesOn=()=>AS.mods&&AS.cables&&AS.ex<4;   // the cables stay in the frame, so they hide while the modules are pulled out
 const onMods=()=>AS.mods,onCables=cablesOn;
-const fromFront=()=>cam.position.z>ctl.target.z+0.05;   // a callout on the face shows only while the face is in view
+const fromFront=()=>cam.position.z>ctl.target.z+0.05;   // a callout on the face shows only while the face is in view,
+const fromBack=()=>cam.position.z<ctl.target.z-0.05;    // and one on the back only while the back is
 const nmod=C=>C===3?'1 x 3':'1 x 2';
 
-// ---------- module: one module alone, seen from the back ----------
+// ---------- module: one module alone, seen from the back, its arms in as in the photo ----------
 function buildModuleMode(){
-  const Cw=dims(AS.mtype)[1],m=altModule(Cw,face(Cw,1),0,0,1,1);aroot.add(m.g);amod=m;
-  addLabel((Cw===3?'New 1 x 3 module':'Cirrus 1 x 2 module')+', 12 x '+Cw*12+' in',m.g,V(-Cw/2+0.02,-0.32,PT));
-  addLabel('Rear heatsink: supply and card inside',m.g,V(-0.25,0.12,FZ1));
-  addLabel('Knob turns the locking arm',m.g,V(-(Cw/2-LKX),LKY,-82*MM));
-  addLabel('Locking arm, one at each end',m.g,V(Cw/2-6*MM,LKY,ARM_Z));
-  addLabel('Cirrus IN and OUT',m.g,V(0,IOY,PLUG_Z));
-  addLabel('2.5 mm hex key works the lock from the front',m.g,V(Cw/2-LKX,LKY,PT),fromFront);
-  acur={center:V(0,0,-30*MM),size:Math.max(1.2,Cw*0.55),fitW:Cw+0.5,isoDir:[0.72,0.5,-0.95]};
+  const Cw=dims(AS.mtype)[1],m=altModule(Cw,face(Cw,1),0,0,1,1);m.lock(1);aroot.add(m.g);amod=m;
+  addLabel((Cw===3?'New 1 x 3 module':'Cirrus 1 x 2 module')+', 12 x '+Cw*12+' in',m.g,V(Cw/2,-0.3,BP/2));   // on its end, seen from either side
+  addLabel('Heatsink: supply and card inside',m.g,V(0.03,0.1,FZ1),fromBack);
+  addLabel('Knob drives the two arms in its bar',m.g,V(-BAR.x,0.02,KZ-KD),fromBack);
+  addLabel('Locking bar, one each side',m.g,V(BAR.x,-0.25,KZ),fromBack);
+  addLabel('Cirrus IN and OUT',m.g,V(0,IO.y,BP-HB),fromBack);
+  if(Cw===3)addLabel('6 in more plate at each end',m.g,V(Cw/2-0.25,0.3,BP),fromBack);
+  addLabel('2.5 mm Allen key works the lock from the front',m.g,V(BAR.x,0,PT),fromFront);
+  acur={center:V(0,0,(PT+FZ1)/2),size:Math.max(1.2,Cw*0.55),fitW:Cw+0.5,isoDir:[0.72,0.5,-0.95]};
 }
 
 // ---------- block: one block with its modules, seen from the back ----------
 function buildBlockMode(){
-  const [R,C]=dims(AS.btype),wall=wallGroup(C,R),f=altBlock(R,C,0,0,face(C,R),C,R,wall),top=f.mods[R-1],mid=f.mods[Math.floor((R-1)/2)];
+  const [R,C]=dims(AS.btype),wall=wallGroup(C,R),f=altBlock(R,C,0,0,face(C,R),C,R,wall),mid=f.mods[Math.floor((R-1)/2)];
   f.logos.forEach(l=>l.visible=true);f.cab=blockCables(f);
-  addLabel(cap1(NUMW[R])+' '+(C===3?'new 1 x 3':'Cirrus 1 x 2')+' modules, each with its own supply and card',mid.g,V(C*0.18,0.1,FZ1),onMods);
-  addLabel('Locking arm behind the side U',top.g,V(-(C/2-6*MM),LKY,ARM_Z),onMods);
-  addLabel('Knob turns the arm',f.mods[0].g,V(-(C/2-LKX),LKY,-82*MM),onMods);
-  addLabel('Cirrus IN and OUT on every module',f.mods[0].g,V(0,IOY,PLUG_Z),onMods);
-  addLabel('Jumper to the module above',f.g,V(C/2,1+IOY,PLUG_Z-26*MM),onCables);
-  addLabel(BY[AS.k].n+' frame, the same outside',f.g,V(C,R-0.25,-D*0.3));
-  addLabel('Back flange, 2 in hole grid',f.g,V(C-14*MM,R*0.45,-D));
-  acur={center:V(0,0,-D/2),size:Math.max(R,C)+0.6,isoDir:[0.8,0.45,-0.9]};
+  addLabel(cap1(NUMW[R])+' '+(C===3?'new 1 x 3':'Cirrus 1 x 2')+' modules, each with its own supply and card',mid.g,V(0.03,0.1,FZ1),onMods);
+  const modsBack=()=>onMods()&&fromBack();
+  addLabel('Arms hook behind the rail at each joint',f.mods[0].g,V(BAR.x,BAR.h/2+ARM.run*0.6,ARM.z),modsBack);
+  addLabel('Knob drives both arms of its bar',f.mods[0].g,V(-BAR.x,0,KZ-KD),modsBack);
+  addLabel('Cirrus IN and OUT on every module',f.mods[0].g,V(0,IO.y,BP-HB),modsBack);
+  addLabel('Jumper to the module above',f.g,V(C/2,1+IO.y,PLUG_Z-22*MM),()=>onCables()&&fromBack());
+  addLabel('Rail across each module joint',f.fr,V(C*0.2,1,-26*MM),fromBack);
+  addLabel(BY[AS.k].n+' frame behind the modules, the same outside',f.fr,V(C,R-0.25,-D*0.3));
+  addLabel('Back flange, 2 in hole grid',f.fr,V(C-14*MM,R*0.45,-D),fromBack);
+  acur={center:V(0,0,(PT+ZB)/2),size:Math.max(R,C)+0.6,isoDir:[0.8,0.45,-0.9]};
 }
 
 // ---------- wall: any wall from 2 ft up, laid out as the planner does, with the base design's steel ----------
 function buildWallMode(){
   const H=AS.H,W=AS.W,fm=face(W,H),wall=wallGroup(W,H),steel=AS.steel,plan=wallPlan(H,W),sl=steelLines(H,W);
   plan.forEach(q=>altBlock(q.R,q.C,q.x,q.y,fm,W,H,wall));
+  // the steel goes on the frames' backs as on the base design, so it sits in a group as far back as the frames
+  const st=new THREE.Group();st.position.z=BP;wall.add(st);
   // the same joint rule as the base design: a side M8 wherever the block on the left has a nut at that height, a down M8
   // wherever the block below has one under it; the bottom row hangs on the steel alone
   const nutAt=(x,y)=>ablocks.some(n=>n.home.x+n.C===x&&sideY(n.R).some(s=>Math.abs(n.home.y+s-y)<1e-6));
@@ -5009,27 +5136,27 @@ function buildWallMode(){
   const ups=uprights(W);let zUp=null;
   if(steel==='angle'){
     sl.ang.forEach(yi=>{const y=yi*IN;
-      wall.add(box(W+0.5,AL,AT,MAT.stringer,W/2,y,-D-AT/2),box(W+0.5,AT,AL,MAT.stringer,W/2,y-AL/2+AT/2,-D-AL/2));
-      for(let xi=3;xi<W*12;xi+=6)wall.add(cyl(8*MM,6*MM,MAT.bolt,xi*IN,y,-D-AT-3*MM,'z',6));});
+      st.add(box(W+0.5,AL,AT,MAT.stringer,W/2,y,-D-AT/2),box(W+0.5,AT,AL,MAT.stringer,W/2,y-AL/2+AT/2,-D-AL/2));
+      for(let xi=3;xi<W*12;xi+=6)st.add(cyl(8*MM,6*MM,MAT.bolt,xi*IN,y,-D-AT-3*MM,'z',6));});
     zUp=-D-AL-S4/2;
-    addLabel('Angle on every row line',wall,V(W*0.3,sl.ang[Math.min(1,sl.ang.length-1)]*IN-AL/2,-D-AL));
+    addLabel('Angle on every row line',st,V(W*0.3,sl.ang[Math.min(1,sl.ang.length-1)]*IN-AL/2,-D-AL));
   }else if(steel==='tube'){
     sl.tube.forEach(yi=>{const y=yi*IN;
-      wall.add(box(W+0.8,S4,S4,MAT.stringer,W/2,y-CLIP.hole*MM-S4/2,-D-CT-S4/2));
-      clip(wall,IN,y,false);clip(wall,W-IN,y,false);seams.forEach(x=>clip(wall,x,y,true));});
+      st.add(box(W+0.8,S4,S4,MAT.stringer,W/2,y-CLIP.hole*MM-S4/2,-D-CT-S4/2));
+      clip(st,IN,y,false);clip(st,W-IN,y,false);seams.forEach(x=>clip(st,x,y,true));});
     zUp=-D-CT-S4-S4/2;
-    addLabel('4 in tube at mid row',wall,V(W+0.4,sl.tube[sl.tube.length-1]*IN-CLIP.hole*MM-S4/2,-D-CT-S4));
+    addLabel('4 in tube at mid row',st,V(W+0.4,sl.tube[sl.tube.length-1]*IN-CLIP.hole*MM-S4/2,-D-CT-S4));
   }
-  if(zUp!==null){ups.forEach(x=>wall.add(box(S4,H+1.2,S4,MAT.upright,x,H/2,zUp)));
-    addLabel('Uprights, by others',wall,V(ups[ups.length-1],H+0.45,zUp));}
+  if(zUp!==null){ups.forEach(x=>st.add(box(S4,H+1.2,S4,MAT.upright,x,H/2,zUp)));
+    addLabel('Uprights, by others',st,V(ups[ups.length-1],H+0.45,zUp));}
   const b0=ablocks.find(b=>b.home.x===0&&b.home.y===0);
-  addLabel('Holes on one 2 in grid',wall,V(IN,b0.R*0.5+IN,-D));
-  if(seams.length)addLabel('Four M8s on every side',wall,V(seams[0]+0.02,b0.R-0.5,LOC_Z));
-  addLabel('Logo strip up both ends',wall,V(W,(2+4*Math.round((H*8.4-2)/4))*IN,LOGO_ZC));
+  addLabel('Holes on one 2 in grid',st,V(IN,b0.R*0.5+IN,-D));
+  if(seams.length)addLabel('Four M8s on every side',st,V(seams[0]+0.02,b0.R-0.5,LOC_Z));
+  addLabel('Logo strip up both ends',st,V(W,(2+4*Math.round((H*8.4-2)/4))*IN,LOGO_ZC));
   // one callout for each module size on the wall, on a module near the top of a column of that width
   for(const C of [3,2]){const b=ablocks.filter(q=>q.C===C).sort((a,c)=>c.home.y-a.home.y||a.home.x-c.home.x)[0];if(!b)continue;
-    addLabel((C===3?'New 1 x 3 modules':'Cirrus 1 x 2 modules')+' in the '+C+' ft columns',b.mods[b.R-1].g,V(C*0.2,0.12,FZ1),onMods);}
-  acur={center:V(0,0,-D-(zUp!==null?0.15:0)),size:Math.max(H,W*0.62)+0.3,fitW:W+1.6,isoDir:[0.9,0.3,-1]};
+    addLabel((C===3?'New 1 x 3 modules':'Cirrus 1 x 2 modules')+' in the '+C+' ft columns',b.mods[b.R-1].g,V(0.03,0.1,FZ1),onMods);}
+  acur={center:V(0,0,ZB-(zUp!==null?0.15:0)),size:Math.max(H,W*0.62)+0.3,fitW:W+1.6,isoDir:[0.9,0.3,-1]};
 }
 
 // ---------- toggles, explode and plays ----------
@@ -5039,29 +5166,29 @@ function applyToggles(){
   if(amod)amod.g.visible=true;
   lblDirty=true;boxDirty=true;
 }
-// Block view pulls the modules straight out of the front; Wall view spreads the blocks apart
+// Block view pulls the modules straight off the front, their arms in; Wall view spreads the blocks apart
 function applyExplode(){
   const e=AS.ex/100;boxDirty=true;
-  if(AS.mode==='block'&&ablocks[0]){const f=ablocks[0];f.mods.forEach(m=>m.g.position.set(m.base.x,m.base.y,e*0.9));if(f.cab)f.cab.visible=cablesOn();}
+  if(AS.mode==='block'&&ablocks[0]){const f=ablocks[0];f.mods.forEach(m=>{m.g.position.set(m.base.x,m.base.y,e*0.9);m.lock(e>0.02?1:0);});if(f.cab)f.cab.visible=cablesOn();}
   else if(AS.mode==='wall')ablocks.forEach(b=>{b.g.position.copy(b.home).addScaledVector(b.spread,e*0.35);
     b.kit.bolts.forEach(o=>o.visible=e<0.04&&!!o.userData.paired);b.kit.sbolts.forEach(o=>o.visible=e<0.04&&!!o.userData.paired);});
 }
 function resetExplode(){AS.ex=0;$('#alt-ex').value=0;$('#alt-ex-val').textContent='0%';applyExplode();}
-// Module: turn the locks in and back out
+// Module: turn the knobs, so the arms slide out of the bars' ends and back in
 function playModule(){
-  const m=amod,steps=[[0,'Turn the knob, or a 2.5&nbsp;mm hex key through the face, and the arm swings in so the module can come out the front.'],
-    [1.7,'Turn it back and the arm swings out past the end of the module, behind the side U of the frame, and locks it in.']];
-  const pose=t=>{const a=seg(t,0.25,1.0),b=seg(t,1.8,2.55);m.lock(a*(1-b));armLit(m,(a>0&&a<1)||(b>0&&b<1));};
-  aanim={t:reduceMotion?3.6:0,dur:3.6,step:-2,steps,pose,done:()=>{m.lock(0);armLit(m,false);}};
+  const m=amod,steps=[[0,'Turning a knob slides the two locking arms inside its bar out of both ends, one up and one down. On the frame they hook behind its lips and rails.'],
+    [1.7,'Turned back, the arms slide in and the module comes off the front of the frame. From the front, a 2.5&nbsp;mm Allen key turns each lock through a small hole opposite its knob.']];
+  const pose=t=>{const a=seg(t,0.25,1.0),b=seg(t,1.8,2.55);m.lock(1-a*(1-b));armLit(m,(a>0&&a<1)||(b>0&&b<1));};
+  aanim={t:reduceMotion?3.6:0,dur:3.6,step:-2,steps,pose,done:()=>{m.lock(1);armLit(m,false);}};
 }
-// Block: the modules go in from the front, the bottom one first, then their arms turn out; the camera moves in on the far
-// lock of the bottom module while it turns, then back out
+// Block: the modules go onto the front of the frame, the bottom one first, then their arms slide out; the camera moves in,
+// from below, on the bottom module's upper arm while it slides behind the rail, then back out
 function playBlock(){
   resetExplode();const f=ablocks[0],T=r=>0.3+r*1.9,dur=T(f.R-1)+2.6,rest=acur;
-  const close={center:V(LKX-f.C/2+0.04,0.5+LKY-f.R/2,-50*MM),size:0.6,fitW:0.95,isoDir:[0.6,0.35,-1]};
-  const steps=[[0,'Plug the bottom module&#39;s leads in behind it and push it in from the front with its arms turned in.',rest],
-    [T(0)+0.75,'Turning the knobs swings both arms out behind the side U and locks the module in. From the front, a 2.5&nbsp;mm hex key turns them through two small holes in the face.',close],
-    [T(1),'The next module goes in above it the same way, its IN on a short jumper from the OUT of the module below.',rest]];
+  const close={center:V(BAR.x,0.5+BAR.h/2+ARM.run*0.5-f.R/2,ARM.z),size:0.55,fitW:0.9,isoDir:[0.55,-0.35,-1]};   // from below, under the rail
+  const steps=[[0,'The bottom module goes onto the front of the frame with its arms in, the right way up with its IN and OUT at the bottom.',rest],
+    [T(0)+0.75,'Its two knobs slide the arms out of both bars, behind the frame&#39;s bottom lip and the rail above, and hold it tight to the frame. From the front, a 2.5&nbsp;mm Allen key turns each lock through a small hole opposite its knob.',close],
+    [T(1),'Its leads plug in from behind and the next module goes on above it the same way, its IN on a short jumper from the OUT of the module below.',rest]];
   if(f.cab)f.cab.visible=false;
   const pose=t=>f.mods.forEach(m=>{const t0=T(m.r),u=1-seg(t,t0+0.95,t0+1.45);
     m.g.visible=AS.mods&&t>=t0;m.g.position.set(m.base.x,m.base.y,0.6*(1-seg(t,t0,t0+0.8)));m.lock(u);armLit(m,u>0.001&&u<0.999);});
@@ -5069,7 +5196,7 @@ function playBlock(){
   aanim={t:reduceMotion?dur:0,dur,step:-2,steps,pose,cleanup:end,done:()=>{end();if(!a0.userCam)setCam('iso');}};
   const a0=aanim;
 }
-// Wall: the frames go up row by row, bottom first, then the modules go in, row by row, and lock
+// Wall: the frames go up row by row, bottom first, then the modules go on, row by row, and lock
 function playWall(){
   resetExplode();
   const fr=ablocks.slice().sort((a,b)=>a.home.y-b.home.y||a.home.x-b.home.x),df=Math.min(0.45,5/fr.length);
@@ -5077,8 +5204,8 @@ function playWall(){
   const tm=fr[fr.length-1].t0+1.1,dm=Math.min(0.5,4/AS.H),tl=tm+(AS.H-1)*dm+0.95,dur=tl+3.2;
   const n=ablocks.reduce((s,b)=>s+b.R,0);
   const steps=[[0,'The frames go up first, the bottom row first. Each hangs on the steel through its back flange and bolts to the blocks below and beside it with four M8s a side.'],
-    [tm,'Then the modules go in from the front, the bottom row first: 1&nbsp;x&nbsp;3s in the 3&nbsp;ft columns and 1&nbsp;x&nbsp;2s in the 2&nbsp;ft columns.'],
-    [tl,'Each module locks to its frame with its two arms. With one supply and card in every module, this wall has '+n+' of each.']];
+    [tm,'Then the modules go onto the front of the frames, the bottom row first: 1&nbsp;x&nbsp;3s on the 3&nbsp;ft columns and 1&nbsp;x&nbsp;2s on the 2&nbsp;ft columns.'],
+    [tl,'Each module locks to its frame with the arms of its two locking bars. With one supply and card in every module, this wall has '+n+' of each.']];
   const pose=t=>ablocks.forEach(b=>{const k=seg(t,b.t0,b.t0+0.6);
     b.g.visible=t>=b.t0;b.g.position.set(b.home.x,b.home.y+0.6*(1-k),0);
     b.kit.bolts.concat(b.kit.sbolts).forEach(o=>o.visible=!!o.userData.paired&&k>=1);
@@ -5117,21 +5244,23 @@ const nm=s=>s.replace('x','&nbsp;x&nbsp;');
 const PLAYS={module:'Turn the locks',block:'Put the modules in',wall:'Play the assembly'};
 const EXPL={block:'Pull the modules out',wall:'Separate the blocks'};
 const CAPS={
-  module:()=>dims(AS.mtype)[1]===3?'The new 1&nbsp;x&nbsp;3: the Cirrus 1&nbsp;x&nbsp;2 made 3&nbsp;ft wide, with the same rear heatsink, locking arms and IN and OUT. Seen from the back.':
-    'The Cirrus 1&nbsp;x&nbsp;2 outdoor module as built today: its own supply and card in the rear heatsink, IN and OUT at the bottom and a locking arm at each end. Seen from the back.',
-  block:()=>{const [R,C]=dims(AS.btype);return 'A '+nm(AS.btype)+' block from the back: '+NUMW[R]+' '+(C===3?'new 1&nbsp;x&nbsp;3':'Cirrus 1&nbsp;x&nbsp;2')+' modules in the '+BY[AS.k].n+
-    ' frame, each locked to the side walls by its two arms and chained IN to OUT with short jumpers. Turn off Modules to see the bare frame.';},
+  module:()=>dims(AS.mtype)[1]===3?'The new 1&nbsp;x&nbsp;3: the Cirrus 1&nbsp;x&nbsp;2 with 6&nbsp;in more on each end. The heatsink with its IN and OUT and the two locking bars are the same parts in the same places. Seen from the back.':
+    'The Cirrus 1&nbsp;x&nbsp;2 outdoor module as built today, seen from the back: the heatsink with its supply, card, IN and OUT in the middle and a locking bar on each side, its knob sliding two arms out of the bar&#39;s ends.',
+  block:()=>{const [R,C]=dims(AS.btype);return 'A '+nm(AS.btype)+' block from the back: '+NUMW[R]+' '+(C===3?'new 1&nbsp;x&nbsp;3':'Cirrus 1&nbsp;x&nbsp;2')+' modules on the front of the '+BY[AS.k].n+
+    ' frame, the arms of their locking bars behind its top and bottom lips and the rail across each joint, and the modules chained IN to OUT with short jumpers. Turn off Modules to see the bare frame.';},
   wall:()=>{const H=AS.H,W=AS.W,p=wallPlan(H,W);return 'A '+H+'&nbsp;x&nbsp;'+W+'&nbsp;ft wall of '+p.length+' blocks and '+p.reduce((s,q)=>s+q.R,0)+' modules, laid out as the planner does, seen from the back. '+
     ({angle:'Angles bolt straight to the flange on every row line, never more than 3&nbsp;ft apart.',tube:'Tubes run at mid row on clips bolted into the side flange holes.',none:'The steel is up to the sign company; every row bolts to it through the back flange.'})[AS.steel];}
 };
 function readout(){
   const c=BY[AS.k],m=AS.mode,hl=s=>'<span class="hl">'+s+'</span>';let title,rows;
   if(m==='module'){const Cw=dims(AS.mtype)[1],nw=Cw===3;title=nw?'New 1 x 3 module':'Cirrus 1 x 2 module, built today';
-    rows=[['Face','12 x '+Cw*12+' in'],['Depth','4 1/8 in'],['Pixel pitch','4, 6, 9 or 12 mm'],['Supply and card','1 each, in the heatsink'],['Cooling','Passive rear heatsink'],
-      ['IN and OUT','Bottom of the back'],['Locks','2 arms, a knob at each end'],['From the front','2.5 mm hex key'],['Part',nw?hl('New'):'In production']];}
+    rows=[['Face','12 x '+Cw*12+' in'],['Depth','4 1/8 in'],['Pixel pitch','6, 9 or 12 mm'],['Supply and card','1 each, in the heatsink'],['Cooling','Passive rear heatsink'],
+      ['IN and OUT','Under the fins, IN on the right from the back'],['Locks','2 bars, a knob on each'],['Locking arms','2 a bar, out of its ends'],
+      ['From the front','2.5 mm Allen key'],['Part',nw?hl('New'):'In production']];}
   else if(m==='block'){const [R,C]=dims(AS.btype);title=c.n+', '+nm(AS.btype)+' block';
-    rows=[['Modules',R+', each '+nmod(C)],['Supplies and cards',R+', one per module'],['Base design, same block','1, in the L hub'],['Locking arms',String(2*R)],
-      ['Jumpers inside the block',String(R-1)],['Joint bolts','8: 4 down, 4 across'],['Screen depth','6 7/8 in'],['Frame outside','Same as the base design']];}
+    rows=[['Modules',R+', each '+nmod(C)],['Supplies and cards',R+', one per module'],['Base design, same block','1, in the L hub'],['Knobs and locking bars',String(2*R)],
+      ['Locking arms',String(4*R)],['Rails across the joints',String(R-1)],['Jumpers inside the block',String(R-1)],['Joint bolts','8: 4 down, 4 across'],
+      ['Frame','Behind the modules, the same outside']];}
   else{const H=AS.H,W=AS.W,plan=wallPlan(H,W),cnt={},conv=Math.ceil(H*W/2);let n3=0,n2=0;
     plan.forEach(q=>{const k=q.R+'x'+q.C;cnt[k]=(cnt[k]||0)+1;if(q.C===3)n3+=q.R;else n2+=q.R;});
     title='Wall, '+H+' x '+W+' ft';
@@ -5284,6 +5413,7 @@ function init(){
   g.fillStyle=sky;g.fillRect(0,0,512,256);g.fillStyle='#ffffff';g.fillRect(56,46,96,54);g.fillRect(318,58,120,46);
   const t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;t.encoding=THREE.sRGBEncoding;
   const pm=new THREE.PMREMGenerator(R2);LOGO2=MAT.logo.clone();LOGO2.envMap=pm.fromEquirectangular(t).texture;pm.dispose();t.dispose();
+  ENV2=LOGO2.envMap;[AM.side,AM.hs,AM.fin,AM.copper,AM.knob,AM.knobTop,AM.barSide].forEach(m=>{m.envMap=ENV2;m.envMapIntensity=.5;m.needsUpdate=true;});   // the metal parts catch the same studio
   if('IntersectionObserver' in window)new IntersectionObserver(e=>{onScreen=e[e.length-1].isIntersecting;}).observe(host);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{lblDirty=true;});
   resize();rebuild();requestAnimationFrame(tick);
