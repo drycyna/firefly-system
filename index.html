@@ -242,7 +242,7 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
 .dwindex button:hover{border-color:var(--accent)}
 .dwindex button[aria-current="true"]{border-color:var(--accent);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 
-/* page tabs: the base design, and the Cabling and Wire Harnesses tab, a suggested section kept apart from it */
+/* page tabs: the base design, the Cabling and Wire Harnesses tab (a suggested section kept apart from it) and the Alternate design */
 .tabs{display:flex;flex-wrap:wrap;gap:2px 8px;border-bottom:1px solid var(--line)}
 .tab{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:.01em;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;padding:6px 10px 7px;cursor:pointer}
 .tab:hover{color:var(--ink)}
@@ -252,15 +252,29 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
 .pane{display:grid;gap:18px;min-width:0}
 .pane[hidden]{display:none}
 .pane{scroll-margin-top:64px}   /* opened from #cabling: the tabs stay in view above it */
-@media (max-width:600px){   /* a phone keeps both tabs on one line: the tag sits above the name */
-  .tabs{align-items:flex-end;gap:2px 4px}
-  .tab{font-size:17px;padding:5px 8px 6px;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+@media (max-width:600px){   /* a phone keeps all three tabs on one line: the tag sits above the name, and a long name wraps */
+  .tabs{display:grid;grid-template-columns:auto minmax(0,1.3fr) minmax(0,1fr);align-items:end;gap:2px 4px}
+  .tab{font-size:16px;line-height:1.1;padding:5px 4px 6px;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;min-width:0}
   .tab .tag{order:-1;font-size:9.5px}
 }
 .card.suggest{border-style:dashed;border-color:var(--muted)}
 .suggest .eyebrow{margin-bottom:4px}
 .suggest .toc{margin-top:4px}
 #cabling .chip{white-space:normal}   /* its long chips wrap on a narrow phone */
+/* the Alternate design tab: Cirrus modules in the Firefly blocks, on its own 3D stage styled as the base design's */
+#alt-view{position:absolute;inset:0}
+#alt-view canvas{display:block;width:100%;height:100%;touch-action:none}
+#alt-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;--lw:200px}
+#alt-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#alt-leaders path{fill:none;stroke:var(--accent);stroke-width:1;stroke-opacity:.55}
+#alt-leaders circle{fill:var(--accent);stroke:var(--scene);stroke-width:1.5}
+#alt-step{position:absolute;left:12px;top:12px;max-width:min(440px,calc(100% - 24px));background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:8px 12px;font-size:14px;line-height:1.35;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+#alt-step b{display:block;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+#alt-err{display:none;position:absolute;inset:0;place-items:center;padding:24px;text-align:center;color:var(--muted)}
+#alternate .chip{white-space:normal}
+.altintro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:12px 32px;align-items:center}
+.altintro .sub{margin-bottom:0!important;max-width:none}
+@media (max-width:900px){.altintro{grid-template-columns:minmax(0,1fr)}}
 /* Cabling and Wire Harnesses tab: the VP of Engineering's block wiring proposal, as he styled it (chain colours, power
    and the wiring figures). It only styles that tab; nothing in the base design uses it. */
 :root{--ch1:#2f7de1;--ch2:#2f8a57;--ch3:#a8572a;--pw:#8a4fd0;--ret:#b7791f;--i2c:#138a8a;--ctl:#3f78a8}
@@ -337,6 +351,7 @@ svg.wz .psub{fill:var(--surface)}
   <div class="tabs" role="tablist" aria-label="Page sections">
     <button class="tab" type="button" role="tab" id="tab-system" aria-controls="system" aria-selected="true">Base design</button>
     <button class="tab" type="button" role="tab" id="tab-cabling" aria-controls="cabling" aria-selected="false" tabindex="-1">Cabling and Wire Harnesses<span class="tag">Suggested</span></button>
+    <button class="tab" type="button" role="tab" id="tab-alternate" aria-controls="alternate" aria-selected="false" tabindex="-1">Alternate design</button>
   </div>
 
   <div class="pane" id="system" role="tabpanel" aria-labelledby="tab-system">
@@ -949,6 +964,108 @@ svg.wz .psub{fill:var(--surface)}
     </ul>
     <p class="src" style="margin-top:12px">Sources: Outdoor 9mm LED v3.7.3 schematics, as extracted in the HUB75 3&nbsp;x&nbsp;3 display study (Rev. I); OUTDOOR Local Board v1.8.1 schematic (panel connectors CN3/CN4, change history: I&sup2;C on the 62-pin connector for the REF panel); GoldPower GPAD151M5-1CB datasheet VA.0; Macroblock MBI5251 preliminary datasheet V1.01.</p>
   </section>
+  </div>
+  <!-- Alternate design (David, 2026-10-12): the four blocks and their frames filled with Cirrus outdoor modules, the 1 x 2
+       built today and a new 1 x 3, in place of 1 ft panels and an L hub. The 3D only; a2-alt.js drives it. -->
+  <div class="pane" id="alternate" role="tabpanel" aria-labelledby="tab-alternate" hidden>
+  <section class="card altintro" id="alt-intro">
+    <div>
+      <div class="eyebrow">Alternate design &middot; Cirrus modules in Firefly blocks</div>
+      <h2>The same four blocks, built from Cirrus modules</h2>
+      <p class="sub">The four Firefly blocks and their frames, filled with Cirrus outdoor modules instead of 1&nbsp;ft panels and an L hub: the 1&nbsp;x&nbsp;2&nbsp;ft module Cirrus builds today and one new part, a 1&nbsp;x&nbsp;3&nbsp;ft module made the same way. Each module brings its own supply, card and rear heatsink, chains IN to OUT with the Cirrus connectors, and locks into the frame with its two locking arms. The frames keep the base design&#39;s outside; inside, the L hub, its mount and the seam rails come out.</p>
+    </div>
+    <div class="chips" aria-label="Modules in each block">
+      <span class="chip"><b>3&nbsp;x&nbsp;3</b> three 1&nbsp;x&nbsp;3 modules</span>
+      <span class="chip"><b>2&nbsp;x&nbsp;3</b> two 1&nbsp;x&nbsp;3</span>
+      <span class="chip"><b>3&nbsp;x&nbsp;2</b> three 1&nbsp;x&nbsp;2</span>
+      <span class="chip"><b>2&nbsp;x&nbsp;2</b> two 1&nbsp;x&nbsp;2</span>
+      <span class="chip"><b>1</b> new part, the 1&nbsp;x&nbsp;3 module</span>
+      <span class="chip"><b>1</b> supply and card per module</span>
+    </div>
+  </section>
+
+  <nav class="picker" id="alt-picker" role="tablist" aria-label="Frames for the alternate design"></nav>
+
+  <div class="layout">
+    <div class="stage" id="alt-stage">
+      <div id="alt-view" role="img" aria-label="3D view of the alternate design: Cirrus modules in the Firefly blocks"></div>
+      <div id="alt-labels"><svg id="alt-leaders" aria-hidden="true"></svg></div>
+      <div id="alt-step" hidden role="status" aria-live="polite"><b id="alt-step-n"></b><span id="alt-step-t"></span></div>
+      <div class="stagebar">
+        <div class="viewbar" aria-label="Camera views">
+          <button class="btn" type="button" data-acam="iso">Iso</button>
+          <button class="btn" type="button" data-acam="rear">Back</button>
+          <button class="btn" type="button" data-acam="front">Front</button>
+          <button class="btn" type="button" data-acam="side">Side</button>
+        </div>
+        <span class="hint">drag to orbit &middot; scroll to zoom</span>
+      </div>
+      <div id="alt-err">This view needs WebGL, which this browser has turned off.</div>
+    </div>
+
+    <aside aria-label="Alternate design viewer controls">
+      <div class="group">
+        <div class="gtitle">Show</div>
+        <div class="seg seg3" role="radiogroup" aria-label="What to show">
+          <label><input type="radio" name="altmode" value="module"><span>Module</span></label>
+          <label><input type="radio" name="altmode" value="block" checked><span>Block</span></label>
+          <label><input type="radio" name="altmode" value="wall"><span>Wall</span></label>
+        </div>
+        <p class="cap" id="alt-modecap"></p>
+      </div>
+      <div class="group" id="alt-g-mod" hidden>
+        <div class="gtitle">Module, height x width</div>
+        <div class="seg" role="radiogroup" aria-label="Module">
+          <label><input type="radio" name="altmtype" value="1x2"><span>1 x 2, today</span></label>
+          <label><input type="radio" name="altmtype" value="1x3" checked><span>1 x 3, new</span></label>
+        </div>
+      </div>
+      <div class="group" id="alt-g-block">
+        <div class="gtitle">Block, height x width</div>
+        <div class="seg" role="radiogroup" aria-label="Block">
+          <label><input type="radio" name="altbtype" value="3x3" checked><span>3 x 3</span></label>
+          <label><input type="radio" name="altbtype" value="2x3"><span>2 x 3</span></label>
+          <label><input type="radio" name="altbtype" value="3x2"><span>3 x 2</span></label>
+          <label><input type="radio" name="altbtype" value="2x2"><span>2 x 2</span></label>
+        </div>
+        <p class="cap">Each block holds one stack of modules the full width of the block: 1&nbsp;x&nbsp;3s in the 3&nbsp;ft wide blocks, 1&nbsp;x&nbsp;2s in the 2&nbsp;ft wide ones.</p>
+      </div>
+      <div class="group" id="alt-g-wall" hidden>
+        <div class="gtitle">Wall, height x width</div>
+        <div class="presets" id="alt-wallpre" aria-label="Planner walls"></div>
+        <div class="row">
+          <label for="alt-wh">Height</label><select id="alt-wh"></select>
+          <label for="alt-ww">Width</label><select id="alt-ww"></select>
+        </div>
+        <div class="gtitle" style="margin-top:4px">Mounting steel</div>
+        <div class="seg" role="radiogroup" aria-label="Mounting steel">
+          <label><input type="radio" name="altsteel" value="none"><span>None</span></label>
+          <label><input type="radio" name="altsteel" value="angle" checked><span>Angle</span></label>
+          <label><input type="radio" name="altsteel" value="tube"><span>Tube</span></label>
+        </div>
+        <p class="cap">Laid out as the block planner does, 3&nbsp;ft rows on top, so 3&nbsp;ft columns take 1&nbsp;x&nbsp;3 modules and 2&nbsp;ft columns take 1&nbsp;x&nbsp;2s.</p>
+      </div>
+      <div class="group" id="alt-g-play">
+        <button class="btn primary" id="alt-play" type="button">Play</button>
+      </div>
+      <div class="group" id="alt-g-ex" hidden>
+        <div class="row between"><label class="gtitle" for="alt-ex" id="alt-ex-label">Explode</label><span class="mono" id="alt-ex-val">0%</span></div>
+        <input type="range" id="alt-ex" min="0" max="100" value="0">
+      </div>
+      <div class="group">
+        <div class="togs">
+          <label class="tog"><input type="checkbox" id="alt-t-mods" checked><span></span>Modules</label>
+          <label class="tog"><input type="checkbox" id="alt-t-labels" checked><span></span>Labels</label>
+          <label class="tog"><input type="checkbox" id="alt-t-cables" checked><span></span>Cables</label>
+        </div>
+      </div>
+      <div class="group">
+        <div class="gtitle" id="alt-ro-title">Rib, 3 x 3 block</div>
+        <dl class="readout" id="alt-readout"></dl>
+        <p class="cap">The module&#39;s heatsink, knobs and locking arms follow the Cirrus manual&#39;s description and are drawn approximately.</p>
+      </div>
+    </aside>
+  </div>
   </div>
 </div>
 
@@ -3500,7 +3617,7 @@ function setWall(H,W){state.H=H;state.W=W;syncWall();drawMountFig();drawChainFig
 function setSteel(v){state.steel=v;if(v!=='none')state.steel2=v;syncWall();drawMountFig();if(state.mode==='wall'&&window.__wall)window.__wall();}
 function selectConcept(k){
   state.k=k;
-  document.querySelectorAll('.pick').forEach(b=>b.setAttribute('aria-selected',b.dataset.k===k?'true':'false'));
+  document.querySelectorAll('#picker .pick').forEach(b=>b.setAttribute('aria-selected',b.dataset.k===k?'true':'false'));
   renderDetail();renderReadout();drawMountFig();drawChainFig();drawLogoFig();drawJointFigs();
   if(window.__rebuild)window.__rebuild(true);
 }
@@ -3597,7 +3714,7 @@ const MM=1/304.8;
 const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 const host=$('#view');
 let renderer;
-try{renderer=new THREE.WebGLRenderer({antialias:true});if(!renderer.getContext())throw 0;}catch(e){$('#err').style.display='grid';return;}
+try{renderer=new THREE.WebGLRenderer({antialias:true});if(!renderer.getContext())throw 0;}catch(e){$('#err').style.display='grid';const a=$('#alt-err');if(a)a.style.display='grid';return;}
 renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
 renderer.outputEncoding=THREE.sRGBEncoding;
 host.appendChild(renderer.domElement);
@@ -4706,6 +4823,493 @@ window.__wall=()=>{if(state.mode==='wall'){rebuild(true);setCam('iso');}};
 rebuild();
 tick();
 
+// ---------- Alternate design: Cirrus outdoor modules in the Firefly block frames ----------
+// David's alternate (2026-10-12). The four blocks and their frames stay, but each block holds one stack of Cirrus outdoor
+// modules the full width of the block in place of 1 ft panels and an L hub: the 1 x 2 Cirrus builds today in the 2 ft wide
+// blocks and a new 1 x 3, the same module 3 ft wide, in the 3 ft wide ones. Every module carries its own supply and card in
+// its rear heatsink, its Cirrus IN and OUT at the bottom of its back, and a locking arm at each end, turned by a knob on the
+// back or a 2.5 mm hex key through the face, that swings out behind the frame's side U. The frames keep the base design's
+// outside (sizes, vents, M8 joints, back flange, logo strip); inside, the hub, its mount and the seam rails come out and the
+// side U loses its grooves. This tab has its own renderer, scene and labels, made the first time it opens, and shares the
+// base design's geometry helpers and materials. The fins, knobs and arms follow the Cirrus manual's description; its photos
+// could not be checked, so their shapes are approximate.
+(function(){
+const host=$('#alt-view');if(!host)return;
+const stageEl=host.parentElement,labelHost=$('#alt-labels'),leaders=$('#alt-leaders'),bar=stageEl.querySelector('.stagebar');
+const AS={k:'rib',mode:'block',mtype:'1x3',btype:'3x3',H:5,W:10,steel:'angle',mods:true,labels:true,cables:true,ex:0};
+const dims=t=>t.split('x').map(Number);   // rows (height) first, then width
+const cap1=s=>s.charAt(0).toUpperCase()+s.slice(1);
+
+// ---------- the module: origin at the middle of the face's back, as a base design panel; the face is 7/8 in thick ----------
+const MOD_D=104.775*MM;                  // 4 1/8 in, face to the back of the fins
+const HX=64*MM,HY=24*MM,BZ=48*MM;        // the heatsink stops 64 mm short of each end (room for the locks) and 24 mm short of
+                                          // the top and bottom (clear of the frames' top and bottom walls); its body is 48 mm deep
+const FZ0=-BZ,FZ1=PT-MOD_D;              // fins from the body's back to 4 1/8 in behind the face
+const LKX=40*MM,LKY=60*MM,ARM_Z=-27*MM,ARM_L=34*MM;   // each lock 40 mm in from its end and 60 mm above the middle, clear of
+                                                      // the joint bolts; its arm turns just behind the side U's back
+const IOY=-0.5+HY+30*MM,IODX=40*MM,PLUG_Z=-BZ-41*MM;  // IN and OUT 80 mm apart in a band at the bottom of the back
+const AM={hs:std(srgb(0x3a4047),.55,.42),fin:std(srgb(0x4a5159),.6,.38),post:std(srgb(0x2b3036),.4,.5),
+  conIn:std(0x2f9e5b,.2,.5),conOut:std(0xe0662a,.2,.5),bezel:std(0x1b1d21,.25,.55),cap:std(0x17191c,.6,.35),cable:std(srgb(0x2c3137),.1,.5)};
+// vertical fins at 12 mm pitch over the heatsink's back, clear of the IN and OUT band, one merged mesh per module width
+const finGeo=Cw=>fgeo('altFins'+Cw,()=>{const x0=-Cw/2+HX+6*MM,x1=Cw/2-HX-6*MM,n=Math.round((x1-x0)/(12*MM))+1,
+  y0=-0.5+HY+62*MM,y1=0.5-HY-6*MM,fg=bgeo(2.4*MM,y1-y0,FZ0-FZ1);
+  return mergeGeo(Array.from({length:n},(_,i)=>[fg,x0+i*(x1-x0)/(n-1),(y0+y1)/2,(FZ0+FZ1)/2]));});
+// the locking arm: a flat bar with round ends, 12 mm wide and 3 mm thick, from its shaft out past the module's end
+const armGeo=()=>fgeo('altArm',()=>{const g=new THREE.ExtrudeGeometry(rrect(new THREE.Shape(),-7*MM,-6*MM,ARM_L,6*MM,5.9*MM),{depth:3*MM,bevelEnabled:false,curveSegments:8});
+  g.translate(0,0,-1.5*MM);return g;});
+const hexGeo=()=>fgeo('altHex',()=>new THREE.CircleGeometry(2.8*MM,6));   // the hex socket seen through the face
+// Cw: module width in feet (2 or 3); the face shows its part of the picture (u0, v0, du, dv). m.lock(u) turns both arms and
+// their knobs: 0 locked (out past the ends), 1 turned in.
+function altModule(Cw,faceMat,u0,v0,du,dv){
+  const g=new THREE.Group(),w=Cw-0.5*MM,h=1-0.5*MM;
+  g.add(box(w,h,16*MM,MAT.shell,0,0,8*MM),box(w,h,6*MM,MAT.slab,0,0,19*MM));
+  const pg=new THREE.PlaneGeometry(w,h),uv=pg.attributes.uv;
+  for(let i=0;i<uv.count;i++)uv.setXY(i,u0+uv.getX(i)*du,v0+uv.getY(i)*dv);
+  const fc=new THREE.Mesh(pg,faceMat);fc.position.z=PT+0.3*MM;g.add(fc);
+  const hs=roundedSlab(Cw-2*HX,1-2*HY,BZ,10*MM,AM.hs);hs.position.z=-BZ/2;g.add(hs);
+  g.add(new THREE.Mesh(finGeo(Cw),AM.fin));
+  // IN and OUT on a plate at the bottom of the back: IN (green) on the right seen from the back, OUT (orange) on the left
+  g.add(box(150*MM,46*MM,3*MM,AM.bezel,0,IOY,-BZ-1.5*MM));
+  for(const [s,mat] of [[-1,AM.conIn],[1,AM.conOut]]){const x=s*IODX;
+    g.add(cyl(19*MM,4*MM,AM.cap,x,IOY,-BZ-5*MM,'z',24),cyl(15.5*MM,8*MM,mat,x,IOY,-BZ-11*MM,'z',24),cyl(15*MM,26*MM,AM.bezel,x,IOY,-BZ-28*MM,'z',20));}
+  // a lock at each end: a post off the face's back, the arm on it, a knob with a grip bar at the back, and the hex socket in
+  // the face; rot turns the arm and the knob together
+  const locks=[];
+  for(const sx of [-1,1]){const x=sx*(Cw/2-LKX);
+    g.add(cyl(9*MM,62*MM,AM.post,x,LKY,-31*MM,'z',20));
+    const rot=new THREE.Group();rot.position.set(x,LKY,0);g.add(rot);
+    const arm=new THREE.Mesh(armGeo(),MAT.steel);arm.position.z=ARM_Z;if(sx<0)arm.rotation.z=Math.PI;rot.add(arm);
+    rot.add(cyl(13*MM,12*MM,MAT.knob,0,0,-68*MM,'z',24),box(28*MM,7*MM,8*MM,MAT.knob,0,0,-78*MM));
+    const hx=new THREE.Mesh(hexGeo(),MAT.slot);hx.position.set(x,LKY,PT+0.6*MM);g.add(hx);
+    locks.push({sx,rot,arm});}
+  return {g,locks,Cw,lock:u=>locks.forEach(l=>{l.rot.rotation.z=l.sx*Math.PI/2*u;})};
+}
+// light an arm orange while it turns, as the joint bolts are while they run in
+const armLit=(m,on)=>m.locks.forEach(l=>{l.arm.material=on?MAT.hot:MAT.steel;});
+
+// ---------- the frames: the base design's outside, with no hub, no hub mount and no seam rails ----------
+// The side U as on the base frames, but plain: nothing hangs on pins, so its near leg has no grooves. Each module's arms
+// turn out behind its back, 25 mm behind the front edge, and hold the module to the frame.
+function plainU(g,xe,dir,y0,y1,t,mat){const yc=(y0+y1)/2,L=y1-y0;
+  g.add(box(t,L,UD,mat,xe+dir*1.5*t,yc,-UD/2),box(UW-3*t,L,t,mat,xe+dir*(UW+t)/2,yc,-UD+t/2),box(t,L,UD,mat,xe+dir*(UW-t/2),yc,-UD/2));}
+const AFRAME={
+  // Rib: folded 1.6 mm aluminum, the same walls, beads, tabs, rivets, vents, joint holes and flange as the base design
+  rib(C,R){const g=new THREE.Group(),m=FM.rib,rb=GEO.rib,t=rb.t*MM,riv=[];
+    for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1;
+      g.add(sideWeb(ventWeb(R,t,ventsAt(rb.side,ventSideY(R),sideHoles(R,0))),m.main,xe,dir,t));
+      plainU(g,xe,dir,rb.uEnd*MM,R-rb.uEnd*MM,t,m.main);
+      const y0=24*MM,y1=R-24*MM;
+      for(const z of rb.beads.map(d=>-d*MM)){bead(g,xe+dir*(t+1.2*MM),y0,y1,z,m.main);g.add(box(0.4*MM,y1-y0,7*MM,MK.groove,xe-dir*0.2*MM,(y0+y1)/2,z));}
+      const tw=rb.tabW*MM-t,td=(rb.tab[1]-rb.tab[0])*MM,tz=-(rb.tab[0]+rb.tab[1])/2*MM;
+      for(const [y,sg] of [[t,1],[R-t,-1]]){g.add(box(tw,t,td,m.main,xe+dir*(t+tw/2),y+sg*t/2,tz));
+        for(const d of rb.tabRiv)riv.push([xe+dir*rb.tabRx*MM,sg>0?-0.3*MM:R+0.3*MM,-d*MM]);}
+    }
+    for(const q of [0,1]){const ye=q?R:0,dir=q?-1:1;
+      g.add(endWeb(ventWeb(C-2*t,t,ventsAt(rb.ends,ventEndX(C,false).map(x=>x-rb.t),q?[]:jointHoles(C,t))),m.main,ye,dir,t,t));
+      g.add(box(C-2*t,rb.ret*MM-t,t,m.main,C/2,ye+dir*(t+(rb.ret*MM-t)/2),-t/2));}
+    backFlange(g,C,R,m.main,{t,rivet:m.rivet});dotsOn(g,riv,'y',m.rivet);
+    return {g,kit:edgeKit(g,C,R,{inY:t}),logos:logos(g,C,R)};},
+  // Hoop: one roll-formed 1.2 mm steel strip with its rolled corners, front tray, one weld and mitred flange
+  hoop(C,R){const g=new THREE.Group(),m=FM.hoop,hp=GEO.hoop,t=hp.t*MM,rc=hp.rc*MM,uc=hp.uCut*MM,cols=GEO.rib.ends;
+    for(const q of [0,1]){const xe=q?C:0,dir=q?-1:1;
+      g.add(sideWeb(ventWeb(R-2*rc,t,ventsAt(cols,ventSideY(R).map(y=>y-hp.rc),sideHoles(R,rc))),m.main,xe,dir,t,rc));
+      plainU(g,xe,dir,uc,R-uc,t,m.main);}
+    for(const q of [0,1]){const ye=q?R:0,dir=q?-1:1,yy=v=>ye+dir*v,Lu=C-2*uc;
+      g.add(endWeb(ventWeb(C-2*rc,t,ventsAt(cols,ventEndX(C,!q).map(x=>x-hp.rc),q?[]:jointHoles(C,rc))),m.main,ye,dir,t,rc));
+      g.add(box(Lu,t,UD,m.main,C/2,yy(1.5*t),-UD/2),box(Lu,UW-3*t,t,m.main,C/2,yy((UW+t)/2),-UD+t/2),box(Lu,t,UD,m.main,C/2,yy(UW-t/2),-UD/2));}
+    for(const [cx,cy,a0] of [[rc,rc,Math.PI],[C-rc,rc,1.5*Math.PI],[C-rc,R-rc,0],[rc,R-rc,0.5*Math.PI]]){
+      const sh=new THREE.Mesh(arcShell(rc,rc-t,a0,D),m.main);sh.position.set(cx,cy,-D);g.add(sh);}
+    g.add(box(5*MM,0.6*MM,D,m.weld,hp.weldX*MM,-0.2*MM,-D/2));
+    backFlange(g,C,R,m.main,{t,rc,mitre:MK.groove});
+    return {g,kit:edgeKit(g,C,R,{inY:t}),logos:logos(g,C,R)};}
+};
+
+// ---------- scene state ----------
+let R2=null,scene2=null,cam=null,ctl=null,aroot=null,acur=null,aanim=null,camTween=null,LOGO2=null,tried=false;
+let ablocks=[],amod=null,alabels=[],lblDirty=true,boxDirty=true,barH=44,onScreen=true;
+const faceMats=[];
+const face=(w,h)=>{const m=faceMaterial(w,h);faceMats.push(m);return m;};
+const wallGroup=(W,H)=>{const g=new THREE.Group();g.position.set(-W/2,-H/2,0);aroot.add(g);return g;};
+function addLabel(text,obj,local,when){
+  const el=document.createElement('div');el.className='lbl';el.textContent=text;labelHost.appendChild(el);
+  const l={el,obj,local:local.clone(),when};
+  l.path=document.createElementNS(SVGNS,'path');l.dot=document.createElementNS(SVGNS,'circle');l.dot.setAttribute('r','2.6');leaders.append(l.path,l.dot);
+  alabels.push(l);return l;}
+function clearScene(){
+  if(aanim&&aanim.cleanup)aanim.cleanup();aanim=null;stepShow(null);
+  if(aroot){scene2.remove(aroot);const cached=new Set(Object.values(gcache));aroot.traverse(o=>{if(o.geometry&&!cached.has(o.geometry))o.geometry.dispose();});}
+  faceMats.forEach(m=>{m.map.dispose();m.dispose();});faceMats.length=0;
+  alabels.forEach(l=>{l.el.remove();l.path.remove();l.dot.remove();});alabels=[];ablocks=[];amod=null;
+  aroot=new THREE.Group();scene2.add(aroot);boxDirty=true;
+}
+// one block: its frame and its stack of modules, each the block's width; x0, y0 place it in a W x H wall
+function altBlock(R,C,x0,y0,fm,W,H,parent){
+  const f=AFRAME[AS.k](C,R);f.R=R;f.C=C;f.home=V(x0,y0,0);f.spread=V(x0+C/2-W/2,y0+R/2-H/2,0);f.g.position.copy(f.home);parent.add(f.g);
+  f.logos.forEach(l=>{l.material=LOGO2;l.visible=false;});   // the gloss print reflects this renderer's own studio
+  f.mods=[];
+  for(let r=0;r<R;r++){const m=altModule(C,fm,x0/W,(y0+r)/H,C/W,1/H);m.g.position.set(C/2,r+0.5,0);m.r=r;m.base=m.g.position.clone();f.g.add(m.g);f.mods.push(m);}
+  ablocks.push(f);return f;
+}
+// the jumpers inside a block, each module's OUT to the IN of the one above, and the block's own IN and OUT leads, which
+// leave through the open back as on the base design
+function blockCables(f){
+  const g=new THREE.Group(),xc=f.C/2,zb=PLUG_Z-26*MM,zo=-D-24*MM;f.g.add(g);
+  for(let r=0;r<f.R-1;r++){const a=V(xc+IODX,r+0.5+IOY,PLUG_Z),b=V(xc-IODX,r+1.5+IOY,PLUG_Z);
+    g.add(tube([a,V(a.x,a.y,zb),V(b.x,b.y,zb),b],5.5*MM,AM.cable,18*MM));}
+  const i0=V(xc-IODX,0.5+IOY,PLUG_Z),o1=V(xc+IODX,f.R-0.5+IOY,PLUG_Z),lift=26*MM;
+  g.add(tube([i0,V(i0.x,i0.y+lift,i0.z-30*MM),V(i0.x,i0.y+lift,zo),V(i0.x,i0.y+lift-0.3,zo)],5.5*MM,AM.cable,16*MM),
+        tube([o1,V(o1.x,o1.y+lift,o1.z-30*MM),V(o1.x,o1.y+lift,zo),V(o1.x,o1.y+lift+0.3,zo)],5.5*MM,AM.cable,16*MM));
+  return g;
+}
+const cablesOn=()=>AS.mods&&AS.cables&&AS.ex<4;   // the cables stay in the frame, so they hide while the modules are pulled out
+const onMods=()=>AS.mods,onCables=cablesOn;
+const fromFront=()=>cam.position.z>ctl.target.z+0.05;   // a callout on the face shows only while the face is in view
+const nmod=C=>C===3?'1 x 3':'1 x 2';
+
+// ---------- module: one module alone, seen from the back ----------
+function buildModuleMode(){
+  const Cw=dims(AS.mtype)[1],m=altModule(Cw,face(Cw,1),0,0,1,1);aroot.add(m.g);amod=m;
+  addLabel((Cw===3?'New 1 x 3 module':'Cirrus 1 x 2 module')+', 12 x '+Cw*12+' in',m.g,V(-Cw/2+0.02,-0.32,PT));
+  addLabel('Rear heatsink: supply and card inside',m.g,V(-0.25,0.12,FZ1));
+  addLabel('Knob turns the locking arm',m.g,V(-(Cw/2-LKX),LKY,-82*MM));
+  addLabel('Locking arm, one at each end',m.g,V(Cw/2-6*MM,LKY,ARM_Z));
+  addLabel('Cirrus IN and OUT',m.g,V(0,IOY,PLUG_Z));
+  addLabel('2.5 mm hex key works the lock from the front',m.g,V(Cw/2-LKX,LKY,PT),fromFront);
+  acur={center:V(0,0,-30*MM),size:Math.max(1.2,Cw*0.55),fitW:Cw+0.5,isoDir:[0.72,0.5,-0.95]};
+}
+
+// ---------- block: one block with its modules, seen from the back ----------
+function buildBlockMode(){
+  const [R,C]=dims(AS.btype),wall=wallGroup(C,R),f=altBlock(R,C,0,0,face(C,R),C,R,wall),top=f.mods[R-1],mid=f.mods[Math.floor((R-1)/2)];
+  f.logos.forEach(l=>l.visible=true);f.cab=blockCables(f);
+  addLabel(cap1(NUMW[R])+' '+(C===3?'new 1 x 3':'Cirrus 1 x 2')+' modules, each with its own supply and card',mid.g,V(C*0.18,0.1,FZ1),onMods);
+  addLabel('Locking arm behind the side U',top.g,V(-(C/2-6*MM),LKY,ARM_Z),onMods);
+  addLabel('Knob turns the arm',f.mods[0].g,V(-(C/2-LKX),LKY,-82*MM),onMods);
+  addLabel('Cirrus IN and OUT on every module',f.mods[0].g,V(0,IOY,PLUG_Z),onMods);
+  addLabel('Jumper to the module above',f.g,V(C/2,1+IOY,PLUG_Z-26*MM),onCables);
+  addLabel(BY[AS.k].n+' frame, the same outside',f.g,V(C,R-0.25,-D*0.3));
+  addLabel('Back flange, 2 in hole grid',f.g,V(C-14*MM,R*0.45,-D));
+  acur={center:V(0,0,-D/2),size:Math.max(R,C)+0.6,isoDir:[0.8,0.45,-0.9]};
+}
+
+// ---------- wall: any wall from 2 ft up, laid out as the planner does, with the base design's steel ----------
+function buildWallMode(){
+  const H=AS.H,W=AS.W,fm=face(W,H),wall=wallGroup(W,H),steel=AS.steel,plan=wallPlan(H,W),sl=steelLines(H,W);
+  plan.forEach(q=>altBlock(q.R,q.C,q.x,q.y,fm,W,H,wall));
+  // the same joint rule as the base design: a side M8 wherever the block on the left has a nut at that height, a down M8
+  // wherever the block below has one under it; the bottom row hangs on the steel alone
+  const nutAt=(x,y)=>ablocks.some(n=>n.home.x+n.C===x&&sideY(n.R).some(s=>Math.abs(n.home.y+s-y)<1e-6));
+  const nutBelow=(x,y)=>ablocks.some(n=>n.home.y+n.R===y&&topX(n.C).some(s=>Math.abs(n.home.x+s-x)<1e-6));
+  ablocks.forEach(b=>{
+    if(b.home.x===0)b.logos[0].visible=true;if(b.home.x+b.C===W)b.logos[1].visible=true;
+    b.kit.sbolts.forEach(o=>{o.userData.paired=nutAt(b.home.x,b.home.y+o.position.y);o.visible=o.userData.paired;});
+    b.kit.bolts.forEach(o=>{o.userData.paired=nutBelow(b.home.x+o.position.x,b.home.y);o.visible=o.userData.paired;});
+  });
+  const seams=[];lanes(W).reduce((x,c)=>{if(x>0)seams.push(x);return x+c;},0);
+  const ups=uprights(W);let zUp=null;
+  if(steel==='angle'){
+    sl.ang.forEach(yi=>{const y=yi*IN;
+      wall.add(box(W+0.5,AL,AT,MAT.stringer,W/2,y,-D-AT/2),box(W+0.5,AT,AL,MAT.stringer,W/2,y-AL/2+AT/2,-D-AL/2));
+      for(let xi=3;xi<W*12;xi+=6)wall.add(cyl(8*MM,6*MM,MAT.bolt,xi*IN,y,-D-AT-3*MM,'z',6));});
+    zUp=-D-AL-S4/2;
+    addLabel('Angle on every row line',wall,V(W*0.3,sl.ang[Math.min(1,sl.ang.length-1)]*IN-AL/2,-D-AL));
+  }else if(steel==='tube'){
+    sl.tube.forEach(yi=>{const y=yi*IN;
+      wall.add(box(W+0.8,S4,S4,MAT.stringer,W/2,y-CLIP.hole*MM-S4/2,-D-CT-S4/2));
+      clip(wall,IN,y,false);clip(wall,W-IN,y,false);seams.forEach(x=>clip(wall,x,y,true));});
+    zUp=-D-CT-S4-S4/2;
+    addLabel('4 in tube at mid row',wall,V(W+0.4,sl.tube[sl.tube.length-1]*IN-CLIP.hole*MM-S4/2,-D-CT-S4));
+  }
+  if(zUp!==null){ups.forEach(x=>wall.add(box(S4,H+1.2,S4,MAT.upright,x,H/2,zUp)));
+    addLabel('Uprights, by others',wall,V(ups[ups.length-1],H+0.45,zUp));}
+  const b0=ablocks.find(b=>b.home.x===0&&b.home.y===0);
+  addLabel('Holes on one 2 in grid',wall,V(IN,b0.R*0.5+IN,-D));
+  if(seams.length)addLabel('Four M8s on every side',wall,V(seams[0]+0.02,b0.R-0.5,LOC_Z));
+  addLabel('Logo strip up both ends',wall,V(W,(2+4*Math.round((H*8.4-2)/4))*IN,LOGO_ZC));
+  // one callout for each module size on the wall, on a module near the top of a column of that width
+  for(const C of [3,2]){const b=ablocks.filter(q=>q.C===C).sort((a,c)=>c.home.y-a.home.y||a.home.x-c.home.x)[0];if(!b)continue;
+    addLabel((C===3?'New 1 x 3 modules':'Cirrus 1 x 2 modules')+' in the '+C+' ft columns',b.mods[b.R-1].g,V(C*0.2,0.12,FZ1),onMods);}
+  acur={center:V(0,0,-D-(zUp!==null?0.15:0)),size:Math.max(H,W*0.62)+0.3,fitW:W+1.6,isoDir:[0.9,0.3,-1]};
+}
+
+// ---------- toggles, explode and plays ----------
+function applyToggles(){
+  labelHost.style.display=AS.labels?'':'none';
+  ablocks.forEach(b=>{b.mods.forEach(m=>m.g.visible=AS.mods);if(b.cab)b.cab.visible=cablesOn();});
+  if(amod)amod.g.visible=true;
+  lblDirty=true;boxDirty=true;
+}
+// Block view pulls the modules straight out of the front; Wall view spreads the blocks apart
+function applyExplode(){
+  const e=AS.ex/100;boxDirty=true;
+  if(AS.mode==='block'&&ablocks[0]){const f=ablocks[0];f.mods.forEach(m=>m.g.position.set(m.base.x,m.base.y,e*0.9));if(f.cab)f.cab.visible=cablesOn();}
+  else if(AS.mode==='wall')ablocks.forEach(b=>{b.g.position.copy(b.home).addScaledVector(b.spread,e*0.35);
+    b.kit.bolts.forEach(o=>o.visible=e<0.04&&!!o.userData.paired);b.kit.sbolts.forEach(o=>o.visible=e<0.04&&!!o.userData.paired);});
+}
+function resetExplode(){AS.ex=0;$('#alt-ex').value=0;$('#alt-ex-val').textContent='0%';applyExplode();}
+// Module: turn the locks in and back out
+function playModule(){
+  const m=amod,steps=[[0,'Turn the knob, or a 2.5&nbsp;mm hex key through the face, and the arm swings in so the module can come out the front.'],
+    [1.7,'Turn it back and the arm swings out past the end of the module, behind the side U of the frame, and locks it in.']];
+  const pose=t=>{const a=seg(t,0.25,1.0),b=seg(t,1.8,2.55);m.lock(a*(1-b));armLit(m,(a>0&&a<1)||(b>0&&b<1));};
+  aanim={t:reduceMotion?3.6:0,dur:3.6,step:-2,steps,pose,done:()=>{m.lock(0);armLit(m,false);}};
+}
+// Block: the modules go in from the front, the bottom one first, then their arms turn out; the camera moves in on the far
+// lock of the bottom module while it turns, then back out
+function playBlock(){
+  resetExplode();const f=ablocks[0],T=r=>0.3+r*1.9,dur=T(f.R-1)+2.6,rest=acur;
+  const close={center:V(LKX-f.C/2+0.04,0.5+LKY-f.R/2,-50*MM),size:0.6,fitW:0.95,isoDir:[0.6,0.35,-1]};
+  const steps=[[0,'Plug the bottom module&#39;s leads in behind it and push it in from the front with its arms turned in.',rest],
+    [T(0)+0.75,'Turning the knobs swings both arms out behind the side U and locks the module in. From the front, a 2.5&nbsp;mm hex key turns them through two small holes in the face.',close],
+    [T(1),'The next module goes in above it the same way, its IN on a short jumper from the OUT of the module below.',rest]];
+  if(f.cab)f.cab.visible=false;
+  const pose=t=>f.mods.forEach(m=>{const t0=T(m.r),u=1-seg(t,t0+0.95,t0+1.45);
+    m.g.visible=AS.mods&&t>=t0;m.g.position.set(m.base.x,m.base.y,0.6*(1-seg(t,t0,t0+0.8)));m.lock(u);armLit(m,u>0.001&&u<0.999);});
+  const end=()=>{f.mods.forEach(m=>{m.lock(0);armLit(m,false);m.g.position.copy(m.base);});applyToggles();applyExplode();};
+  aanim={t:reduceMotion?dur:0,dur,step:-2,steps,pose,cleanup:end,done:()=>{end();if(!a0.userCam)setCam('iso');}};
+  const a0=aanim;
+}
+// Wall: the frames go up row by row, bottom first, then the modules go in, row by row, and lock
+function playWall(){
+  resetExplode();
+  const fr=ablocks.slice().sort((a,b)=>a.home.y-b.home.y||a.home.x-b.home.x),df=Math.min(0.45,5/fr.length);
+  fr.forEach((b,i)=>b.t0=0.3+i*df);
+  const tm=fr[fr.length-1].t0+1.1,dm=Math.min(0.5,4/AS.H),tl=tm+(AS.H-1)*dm+0.95,dur=tl+3.2;
+  const n=ablocks.reduce((s,b)=>s+b.R,0);
+  const steps=[[0,'The frames go up first, the bottom row first. Each hangs on the steel through its back flange and bolts to the blocks below and beside it with four M8s a side.'],
+    [tm,'Then the modules go in from the front, the bottom row first: 1&nbsp;x&nbsp;3s in the 3&nbsp;ft columns and 1&nbsp;x&nbsp;2s in the 2&nbsp;ft columns.'],
+    [tl,'Each module locks to its frame with its two arms. With one supply and card in every module, this wall has '+n+' of each.']];
+  const pose=t=>ablocks.forEach(b=>{const k=seg(t,b.t0,b.t0+0.6);
+    b.g.visible=t>=b.t0;b.g.position.set(b.home.x,b.home.y+0.6*(1-k),0);
+    b.kit.bolts.concat(b.kit.sbolts).forEach(o=>o.visible=!!o.userData.paired&&k>=1);
+    b.mods.forEach(m=>{const t1=tm+(b.home.y+m.r)*dm,u=1-seg(t,t1+0.65,t1+0.95);
+      m.g.visible=AS.mods&&t>=t1;m.g.position.set(m.base.x,m.base.y,0.5*(1-seg(t,t1,t1+0.6)));m.lock(u);armLit(m,u>0.001&&u<0.999);});});
+  const end=()=>{ablocks.forEach(b=>{b.g.visible=true;b.mods.forEach(m=>{m.lock(0);armLit(m,false);m.g.position.copy(m.base);});});applyToggles();applyExplode();};
+  aanim={t:reduceMotion?dur:0,dur,step:-2,steps,pose,cleanup:end,done:end};
+}
+function play(){if(!R2)return;if(aanim&&aanim.cleanup)aanim.cleanup();aanim=null;({module:playModule,block:playBlock,wall:playWall})[AS.mode]();}
+let stepTok=0;
+function stepShow(steps,i){const el=$('#alt-step');if(!steps||i<0){el.hidden=true;return;}
+  el.hidden=false;$('#alt-step-n').textContent='Step '+(i+1)+' of '+steps.length;$('#alt-step-t').innerHTML=steps[i][1];}
+
+// ---------- camera, as the base design's ----------
+function fitDist(S){
+  S=S||acur;const w=host.clientWidth||800,h=host.clientHeight||600,t=Math.tan(cam.fov*Math.PI/360);
+  const d=Math.max(S.size*2.1,(S.fitW||S.size)/(1.7*t*(w/h)));
+  return d*(AS.labels?(w<600?1.4:1.12):1);
+}
+const qT=new THREE.Quaternion();
+function tweenTo(pos,target){
+  const a=cam.position.clone().sub(ctl.target),b=pos.clone().sub(target),da=a.length(),db=b.length();
+  camTween={tf:ctl.target.clone(),tt:target.clone(),a:a.normalize(),da,db,q:new THREE.Quaternion().setFromUnitVectors(a,b.normalize()),t:0};}
+function refit(d0){if(!acur||!R2)return;const d1=fitDist();if(Math.abs(d1/d0-1)<.02)return;
+  tweenTo(cam.position.clone().sub(ctl.target).multiplyScalar(d1/d0).add(ctl.target),ctl.target.clone());}
+function setCam(view,instant,S){
+  S=S||acur;if(!S||!R2)return;const c=S.center,d=fitDist(S);
+  const dir=view==='iso'?S.isoDir:{front:[0.0001,0.05,1],rear:[0.0001,0.05,-1],side:[1,0.08,-0.05]}[view];
+  const v=V(...dir).normalize().multiplyScalar(d).add(c);
+  if(instant||reduceMotion){camTween=null;cam.position.copy(v);ctl.target.copy(c);ctl.update();return;}
+  tweenTo(v,c);
+}
+
+// ---------- the controls, captions and readout ----------
+const nm=s=>s.replace('x','&nbsp;x&nbsp;');
+const PLAYS={module:'Turn the locks',block:'Put the modules in',wall:'Play the assembly'};
+const EXPL={block:'Pull the modules out',wall:'Separate the blocks'};
+const CAPS={
+  module:()=>dims(AS.mtype)[1]===3?'The new 1&nbsp;x&nbsp;3: the Cirrus 1&nbsp;x&nbsp;2 made 3&nbsp;ft wide, with the same rear heatsink, locking arms and IN and OUT. Seen from the back.':
+    'The Cirrus 1&nbsp;x&nbsp;2 outdoor module as built today: its own supply and card in the rear heatsink, IN and OUT at the bottom and a locking arm at each end. Seen from the back.',
+  block:()=>{const [R,C]=dims(AS.btype);return 'A '+nm(AS.btype)+' block from the back: '+NUMW[R]+' '+(C===3?'new 1&nbsp;x&nbsp;3':'Cirrus 1&nbsp;x&nbsp;2')+' modules in the '+BY[AS.k].n+
+    ' frame, each locked to the side walls by its two arms and chained IN to OUT with short jumpers. Turn off Modules to see the bare frame.';},
+  wall:()=>{const H=AS.H,W=AS.W,p=wallPlan(H,W);return 'A '+H+'&nbsp;x&nbsp;'+W+'&nbsp;ft wall of '+p.length+' blocks and '+p.reduce((s,q)=>s+q.R,0)+' modules, laid out as the planner does, seen from the back. '+
+    ({angle:'Angles bolt straight to the flange on every row line, never more than 3&nbsp;ft apart.',tube:'Tubes run at mid row on clips bolted into the side flange holes.',none:'The steel is up to the sign company; every row bolts to it through the back flange.'})[AS.steel];}
+};
+function readout(){
+  const c=BY[AS.k],m=AS.mode,hl=s=>'<span class="hl">'+s+'</span>';let title,rows;
+  if(m==='module'){const Cw=dims(AS.mtype)[1],nw=Cw===3;title=nw?'New 1 x 3 module':'Cirrus 1 x 2 module, built today';
+    rows=[['Face','12 x '+Cw*12+' in'],['Depth','4 1/8 in'],['Pixel pitch','4, 6, 9 or 12 mm'],['Supply and card','1 each, in the heatsink'],['Cooling','Passive rear heatsink'],
+      ['IN and OUT','Bottom of the back'],['Locks','2 arms, a knob at each end'],['From the front','2.5 mm hex key'],['Part',nw?hl('New'):'In production']];}
+  else if(m==='block'){const [R,C]=dims(AS.btype);title=c.n+', '+nm(AS.btype)+' block';
+    rows=[['Modules',R+', each '+nmod(C)],['Supplies and cards',R+', one per module'],['Base design, same block','1, in the L hub'],['Locking arms',String(2*R)],
+      ['Jumpers inside the block',String(R-1)],['Joint bolts','8: 4 down, 4 across'],['Screen depth','6 7/8 in'],['Frame outside','Same as the base design']];}
+  else{const H=AS.H,W=AS.W,plan=wallPlan(H,W),cnt={},conv=Math.ceil(H*W/2);let n3=0,n2=0;
+    plan.forEach(q=>{const k=q.R+'x'+q.C;cnt[k]=(cnt[k]||0)+1;if(q.C===3)n3+=q.R;else n2+=q.R;});
+    title='Wall, '+H+' x '+W+' ft';
+    rows=['3x3','3x2','2x3','2x2'].filter(x=>cnt[x]).map(x=>[nm(x)+' blocks',String(cnt[x])]);
+    if(n3)rows.push(['1 x 3 modules, new',String(n3)]);if(n2)rows.push(['1 x 2 modules, today',String(n2)]);
+    rows.push(['Supplies and cards',(n3+n2)+' each'],['Base design',plan.length+' each'],['Conventional, 2 sq ft each',conv+' each'],['Fewer than conventional',hl(fewer(n3+n2,conv))]);}
+  $('#alt-ro-title').innerHTML=title;
+  $('#alt-readout').innerHTML=rows.map(r=>'<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>').join('');
+}
+function syncDom(){
+  const m=AS.mode;
+  $('#alt-g-mod').hidden=m!=='module';$('#alt-g-block').hidden=m!=='block';$('#alt-g-wall').hidden=m!=='wall';
+  $('#alt-play').textContent=PLAYS[m];
+  $('#alt-g-ex').hidden=!EXPL[m];if(EXPL[m])$('#alt-ex-label').textContent=EXPL[m];
+  $('#alt-t-mods').closest('label').hidden=m==='module';$('#alt-t-cables').closest('label').hidden=m!=='block';
+  $('#alt-modecap').innerHTML=CAPS[m]();
+  const w=AS.H+'x'+AS.W;$('#alt-wh').value=AS.H;$('#alt-ww').value=AS.W;
+  document.querySelectorAll('#alt-wallpre [data-wall]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wall===w)));
+  document.querySelectorAll('input[name=altsteel]').forEach(i=>i.checked=i.value===AS.steel);
+  readout();
+}
+function rebuild(keepCam){
+  syncDom();if(!R2)return;
+  clearScene();
+  ({module:buildModuleMode,block:buildBlockMode,wall:buildWallMode})[AS.mode]();
+  applyToggles();applyExplode();lblDirty=true;
+  if(!keepCam)setCam('iso',true);
+}
+(function controls(){
+  const p=$('#alt-picker');
+  CONCEPTS.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='pick fam-'+c.fam.toLowerCase();b.setAttribute('role','tab');b.dataset.ak=c.k;
+    b.setAttribute('aria-selected',c.k===AS.k?'true':'false');
+    b.innerHTML='<span class="no">'+c.fam+'</span><span class="nm">'+c.n+'</span><span class="tg">'+c.made+'</span><span class="badge">'+recOf(c.k)+'</span>';
+    b.addEventListener('click',()=>{if(AS.k===c.k)return;AS.k=c.k;p.querySelectorAll('.pick').forEach(x=>x.setAttribute('aria-selected',x.dataset.ak===AS.k?'true':'false'));rebuild(true);});
+    p.appendChild(b);});
+  const pre=$('#alt-wallpre'),wh=$('#alt-wh'),ww=$('#alt-ww'),setWall=(H,W)=>{AS.H=H;AS.W=W;if(AS.mode==='wall'){rebuild(true);setCam('iso');}else syncDom();};
+  pre.innerHTML=WALLS.map(w=>'<button class="btn" type="button" data-wall="'+w+'" aria-pressed="false">'+w.replace('x',' x ')+'</button>').join('');
+  pre.addEventListener('click',e=>{const b=e.target.closest('[data-wall]');if(b){const [h,w]=b.dataset.wall.split('x').map(Number);setWall(h,w);}});
+  for(let i=2;i<=12;i++)wh.add(new Option(i+' ft',i));
+  for(let i=2;i<=20;i++)ww.add(new Option(i+' ft',i));
+  wh.addEventListener('change',()=>setWall(+wh.value,AS.W));ww.addEventListener('change',()=>setWall(AS.H,+ww.value));
+  document.querySelectorAll('input[name=altsteel]').forEach(i=>i.addEventListener('change',e=>{AS.steel=e.target.value;rebuild(true);}));
+  document.querySelectorAll('input[name=altmode]').forEach(r=>r.addEventListener('change',e=>{AS.mode=e.target.value;AS.ex=0;$('#alt-ex').value=0;$('#alt-ex-val').textContent='0%';rebuild();}));
+  document.querySelectorAll('input[name=altmtype]').forEach(r=>r.addEventListener('change',e=>{AS.mtype=e.target.value;rebuild(true);setCam('iso');}));
+  document.querySelectorAll('input[name=altbtype]').forEach(r=>r.addEventListener('change',e=>{AS.btype=e.target.value;rebuild(true);setCam('iso');}));
+  $('#alt-play').addEventListener('click',play);
+  $('#alt-t-mods').addEventListener('change',e=>{AS.mods=e.target.checked;applyToggles();});
+  $('#alt-t-labels').addEventListener('change',e=>{const d0=acur&&R2?fitDist():1;AS.labels=e.target.checked;applyToggles();refit(d0);});
+  $('#alt-t-cables').addEventListener('change',e=>{AS.cables=e.target.checked;applyToggles();});
+  $('#alt-ex').addEventListener('input',e=>{AS.ex=+e.target.value;$('#alt-ex-val').textContent=AS.ex+'%';if(R2&&!aanim)applyExplode();});
+  document.querySelectorAll('[data-acam]').forEach(b=>b.addEventListener('click',()=>setCam(b.dataset.acam)));
+})();
+
+// ---------- labels: callouts in the free space around the model, laid out as the base design's ----------
+const modelBox=new THREE.Box3(),corner=new THREE.Vector3(),tmp=new THREE.Vector3();
+function modelRect(w,h){
+  if(boxDirty){aroot.updateMatrixWorld(true);modelBox.setFromObject(aroot);boxDirty=false;}
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(let i=0;i<8;i++){
+    corner.set(i&1?modelBox.max.x:modelBox.min.x,i&2?modelBox.max.y:modelBox.min.y,i&4?modelBox.max.z:modelBox.min.z).project(cam);
+    if(corner.z>1)return {x0:0,y0:0,x1:w,y1:h};
+    const sx=(corner.x*.5+.5)*w,sy=(-corner.y*.5+.5)*h;x0=Math.min(x0,sx);x1=Math.max(x1,sx);y0=Math.min(y0,sy);y1=Math.max(y1,sy);}
+  return {x0:Math.max(0,x0),y0:Math.max(0,y0),x1:Math.min(w,x1),y1:Math.min(h,y1)};
+}
+function placeLabel(l,x,y,cls,d){
+  l.el.classList.toggle('r',cls==='r');l.el.classList.toggle('c',cls==='c');
+  l.el.style.transform='translate('+Math.round(x)+'px,'+Math.round(y)+'px)';
+  l.path.style.display=l.dot.style.display='';l.path.setAttribute('d',d);
+  l.dot.setAttribute('cx',l.ax.toFixed(1));l.dot.setAttribute('cy',l.ay.toFixed(1));
+}
+function layoutLabels(){
+  const w=host.clientWidth,h=host.clientHeight,M=10,G=6,P=14,yTop=10,yBot=h-barH-16,items=[];
+  for(const l of alabels){
+    const hide=()=>{l.el.style.display='none';l.path.style.display=l.dot.style.display='none';};
+    if(aanim||(l.when&&!l.when())){hide();continue;}
+    tmp.copy(l.local);l.obj.localToWorld(tmp);tmp.project(cam);
+    const ax=(tmp.x*.5+.5)*w,ay=(-tmp.y*.5+.5)*h;
+    if(tmp.z>1||tmp.z<-1||ax<0||ax>w||ay<0||ay>h){hide();continue;}
+    l.el.style.display='';
+    if(lblDirty||l.w==null){l.w=l.el.offsetWidth;l.h=l.el.offsetHeight;}
+    l.ax=ax;l.ay=ay;items.push(l);
+  }
+  lblDirty=false;
+  if(!items.length)return;
+  const R=modelRect(w,h),rowW=w-2*M;
+  const room={L:R.x0-P-M,R:w-M-R.x1-P,T:R.y0-P-yTop,B:yBot-R.y1-P},load={L:0,R:0,T:0,B:0},use={L:[],R:[],T:[],B:[]};
+  const fits=(s,l)=>{
+    if(s==='L'||s==='R')return room[s]+24>=l.w&&load[s]+l.h<=yBot-yTop;
+    const rows=Math.floor((room[s]+G+6)/(l.h+G));return rows>=1&&load[s]+l.w<=rows*rowW*.95;
+  };
+  for(const l of items){
+    const dist={L:l.ax-R.x0,R:R.x1-l.ax,T:l.ay-R.y0,B:R.y1-l.ay};
+    let order=['L','R','T','B'].sort((a,b)=>dist[a]-dist[b]);
+    if(l.side&&dist[l.side]-dist[order[0]]<40)order=[l.side].concat(order.filter(s=>s!==l.side));
+    const s=order.find(s=>fits(s,l))||(l.ax<w/2?'L':'R');
+    l.side=s;use[s].push(l);load[s]+=(s==='L'||s==='R'?l.h:l.w)+G;
+  }
+  for(const s of ['L','R']){
+    const col=use[s].sort((a,b)=>a.ay-b.ay);if(!col.length)continue;
+    const cw=Math.max(...col.map(l=>l.w)),edge=s==='L'?Math.max(M+cw,R.x0-P):Math.min(w-M-cw,R.x1+P);
+    let y=yTop;for(const l of col){l.y=Math.max(l.ay-l.h/2,y);y=l.y+l.h+G;}
+    y=yBot;for(let i=col.length-1;i>=0;i--){const l=col[i];l.y=Math.min(l.y,y-l.h);y=l.y-G;}
+    y=yTop;for(const l of col){l.y=Math.max(l.y,y);y=l.y+l.h+G;}
+    for(const l of col){
+      const sx=s==='L'?edge+3:edge-3,ex=sx+(s==='L'?8:-8),cy=l.y+l.h/2;
+      placeLabel(l,s==='L'?edge-l.w:edge,l.y,s==='L'?'r':'',
+        'M'+sx.toFixed(1)+' '+cy.toFixed(1)+'H'+ex.toFixed(1)+'L'+l.ax.toFixed(1)+' '+l.ay.toFixed(1));
+    }
+  }
+  for(const s of ['T','B']){
+    const band=use[s].sort((a,b)=>a.ax-b.ax);if(!band.length)continue;
+    const n=Math.max(1,Math.ceil(band.reduce((t,l)=>t+l.w+G,0)/(rowW*.95))),rows=Array.from({length:n},()=>[]);
+    band.forEach((l,i)=>rows[i%n].push(l));
+    let y=s==='T'?R.y0-P:R.y1+P;
+    for(const [ri,row] of rows.entries()){
+      const rh=Math.max(...row.map(l=>l.h)),ry=s==='T'?Math.max(yTop,y-rh):Math.min(yBot-rh,y);
+      if(ri>0&&(s==='T'?y-rh<yTop-2:y+rh>yBot+2)){row.forEach(l=>{l.el.style.display='none';l.path.style.display=l.dot.style.display='none';});continue;}
+      let x=M;for(const l of row){l.x=Math.max(l.ax-l.w/2,x);x=l.x+l.w+G;}
+      x=w-M;for(let i=row.length-1;i>=0;i--){const l=row[i];l.x=Math.min(l.x,x-l.w);x=l.x-G;}
+      x=M;for(const l of row){l.x=Math.max(l.x,x);x=l.x+l.w+G;}
+      for(const l of row){
+        const ly=s==='T'?ry+rh-l.h:ry,lx=l.x+l.w/2,sy=s==='T'?ly+l.h+3:ly-3,ey=sy+(s==='T'?6:-6);
+        placeLabel(l,l.x,ly,'c','M'+lx.toFixed(1)+' '+sy.toFixed(1)+'V'+ey.toFixed(1)+'L'+l.ax.toFixed(1)+' '+l.ay.toFixed(1));
+      }
+      y=s==='T'?ry-G:ry+rh+G;
+    }
+  }
+}
+
+// ---------- the renderer, made the first time the tab opens ----------
+function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h||!R2)return;   // hidden with its tab: keep the last size
+  R2.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+  stageEl.classList.toggle('narrow',w<700);labelHost.style.setProperty('--lw',Math.round(Math.min(200,Math.max(112,w*.2)))+'px');barH=bar.offsetHeight;lblDirty=true;}
+function themeBg2(){if(scene2)scene2.background=new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--scene').trim()||'#e2e6e9');}
+function init(){
+  tried=true;
+  try{R2=new THREE.WebGLRenderer({antialias:true});if(!R2.getContext())throw 0;}catch(e){R2=null;$('#alt-err').style.display='grid';return;}
+  R2.setPixelRatio(Math.min(window.devicePixelRatio||1,2));R2.outputEncoding=THREE.sRGBEncoding;host.appendChild(R2.domElement);
+  scene2=new THREE.Scene();cam=new THREE.PerspectiveCamera(35,1,0.01,500);
+  ctl=new THREE.OrbitControls(cam,R2.domElement);ctl.enableDamping=true;ctl.dampingFactor=0.08;
+  ctl.addEventListener('start',()=>{camTween=null;if(aanim)aanim.userCam=true;});
+  scene2.add(new THREE.HemisphereLight(0xffffff,0x4a5058,0.75));
+  for(const [i,p] of [[0.85,[4,7,6]],[0.6,[-5,4,-7]],[0.35,[6,2,-5]],[0.3,[-6,1,4]]]){const l=new THREE.DirectionalLight(0xffffff,i);l.position.set(...p);scene2.add(l);}
+  themeBg2();
+  if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',themeBg2);
+  new MutationObserver(themeBg2).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  // the same soft studio as the base design for the gloss logo print, made for this renderer
+  const c=document.createElement('canvas');c.width=512;c.height=256;const g=c.getContext('2d');
+  const sky=g.createLinearGradient(0,0,0,256);sky.addColorStop(0,'#f5f7f9');sky.addColorStop(.48,'#a7b0ba');sky.addColorStop(.52,'#3c4148');sky.addColorStop(1,'#16181b');
+  g.fillStyle=sky;g.fillRect(0,0,512,256);g.fillStyle='#ffffff';g.fillRect(56,46,96,54);g.fillRect(318,58,120,46);
+  const t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;t.encoding=THREE.sRGBEncoding;
+  const pm=new THREE.PMREMGenerator(R2);LOGO2=MAT.logo.clone();LOGO2.envMap=pm.fromEquirectangular(t).texture;pm.dispose();t.dispose();
+  if('IntersectionObserver' in window)new IntersectionObserver(e=>{onScreen=e[e.length-1].isIntersecting;}).observe(host);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{lblDirty=true;});
+  resize();rebuild();requestAnimationFrame(tick);
+}
+const clock=new THREE.Clock();
+function tick(){
+  const dt=Math.min(clock.getDelta(),0.05);
+  if(camTween){const c=camTween;c.t=Math.min(1,c.t+dt/0.8);const k=ease(c.t);ctl.target.lerpVectors(c.tf,c.tt,k);
+    qT.identity().slerp(c.q,k);cam.position.copy(c.a).applyQuaternion(qT).multiplyScalar(c.da+(c.db-c.da)*k).add(ctl.target);
+    if(c.t>=1)camTween=null;}
+  if(aanim){
+    aanim.t=Math.min(aanim.t+dt,aanim.dur);aanim.pose(aanim.t);boxDirty=true;
+    let si=-1;aanim.steps.forEach((s,i)=>{if(aanim.t>=s[0])si=i;});
+    if(si!==aanim.step){aanim.step=si;stepShow(aanim.steps,si);
+      const S=si>=0&&aanim.steps[si][2];if(S&&!reduceMotion&&!aanim.userCam&&aanim.t<aanim.dur)setCam('iso',false,S);}   // guided steps move in close
+    if(aanim.t>=aanim.dur){const a=aanim;aanim=null;if(a.done)a.done();boxDirty=true;lblDirty=true;
+      const tok=++stepTok;setTimeout(()=>{if(!aanim&&tok===stepTok)stepShow(null);},3000);}
+  }
+  if(onScreen&&host.clientWidth){ctl.update();R2.render(scene2,cam);if(AS.labels)layoutLabels();}   // not while its tab is closed
+  requestAnimationFrame(tick);
+}
+/* local test hook */
+syncDom();
+new ResizeObserver(()=>{if(!R2){if(!tried&&host.clientWidth&&host.clientHeight)init();}else resize();}).observe(host);
+})();
+
 })();
 </script>
 <script>
@@ -4894,9 +5498,9 @@ tick();
 })();
 </script>
 <script>
-// Page tabs: the base design, and Cabling and Wire Harnesses, a suggested section kept apart from it. The address
-// #cabling, or the id of anything on that tab, opens it, and a link into the closed tab opens that tab first. The base
-// pane only hides, so the 3D stage keeps its state and picks its size back up when it shows again.
+// Page tabs: the base design; Cabling and Wire Harnesses, a suggested section kept apart from it; and the Alternate
+// design. The address #cabling or #alternate, or the id of anything on a tab, opens it, and a link into a closed tab opens
+// that tab first. Panes only hide, so each 3D stage keeps its state and picks its size back up when it shows again.
 (function(){
   const tabs=[...document.querySelectorAll('.tabs [role=tab]')];if(!tabs.length)return;
   const bar=tabs[0].parentElement,paneOf=t=>document.getElementById(t.getAttribute('aria-controls'));
