@@ -274,6 +274,14 @@ svg.dw .sep{fill:none;stroke:var(--paper);stroke-width:.32;stroke-linejoin:round
 #alternate .chip{white-space:normal}
 .altintro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:12px 32px;align-items:center}
 .altintro .sub{margin-bottom:0!important;max-width:none}
+.card h3.altsec{margin:22px 0 8px}
+#alt-shelltable{min-width:880px}
+#alt-shelltable tbody th{white-space:normal;font-size:16px;line-height:1.2;min-width:150px}
+#alt-shelltable td:nth-child(2){min-width:250px}
+#alt-shelltable td:nth-child(3),#alt-shelltable td:nth-child(6){min-width:160px}
+#alt-shelltable td:nth-child(4),#alt-shelltable td:nth-child(5){min-width:110px}
+.altpick{display:block;margin-top:5px;font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+#alt-shell .jfigs .fig{max-width:470px}
 @media (max-width:900px){.altintro{grid-template-columns:minmax(0,1fr)}}
 /* Cabling and Wire Harnesses tab: the VP of Engineering's block wiring proposal, as he styled it (chain colours, power
    and the wiring figures). It only styles that tab; nothing in the base design uses it. */
@@ -1062,10 +1070,57 @@ svg.wz .psub{fill:var(--surface)}
       <div class="group">
         <div class="gtitle" id="alt-ro-title">Rib, 3 x 3 block</div>
         <dl class="readout" id="alt-readout"></dl>
-        <p class="cap">The modules are drawn from a photo of the back of a Cirrus 1&nbsp;x&nbsp;2; their depths and the arms inside the locking bars are estimated.</p>
+        <p class="cap">The modules are drawn from a photo of the back of a Cirrus 1&nbsp;x&nbsp;2; the depth of the heatsink and the arms inside the locking bars are estimated.</p>
       </div>
     </aside>
   </div>
+
+  <!-- The 1 x 3's back shell (David, 2026-10-12 23:08): one polycarbonate piece 3 ft long warps and needs a huge mold, so
+       this card notes the problem and weighs ways to make it, waterproofing first. a2-alt.js draws the two sketches. -->
+  <section class="card" id="alt-shell">
+    <div class="eyebrow">Making the 1&nbsp;x&nbsp;3</div>
+    <h2>A back shell 3&nbsp;ft long</h2>
+    <p class="sub">The 1&nbsp;x&nbsp;3&#39;s back shell is the hardest part in this design to make. Molded in one piece of polycarbonate, it is half again as long as today&#39;s 1&nbsp;x&nbsp;2 shell, which already twists and bows when it comes out of the mold, and it needs a mold and a press half again as big. Splitting it fixes the molding but adds a joint, and that joint has to be as watertight as the rest of the module.</p>
+    <div class="dgrid">
+      <section><h3>Warp</h3><p>Polycarbonate shrinks 0.5 to 0.7% as it cools, about 5 to 6&nbsp;mm over 36&nbsp;in. Any difference in cooling from one side of the part to the other, or between thick and thin walls, turns into a bow or a twist. A bow grows with the square of the length, so for the same molding a 36&nbsp;in shell bows about 2&nbsp;1/4 times as much as today&#39;s 24&nbsp;in one.</p></section>
+      <section><h3>Mold and press</h3><p>The mold and the clamp force both grow with the part&#39;s area, so both go up by half, and fewer molders run presses that size. The plastic has to flow 18&nbsp;in from a gate in the middle, so the part needs several gates, and where their flows meet the knit lines are weaker and hold stress that later comes out as warp.</p></section>
+      <section><h3>Flat enough for a screen</h3><p>The shell sets where the LED boards sit, so any bow ends up in the face. Every module has to sit flush with its neighbors to a fraction of a millimeter, or the seams catch the light and the screen looks blocky up close or from an angle.</p></section>
+    </div>
+
+    <h3 class="altsec">Four ways to make it</h3>
+    <div class="tablewrap"><table id="alt-shelltable">
+      <thead><tr><th>Option</th><th>How it works</th><th>Waterproofing</th><th>Tooling</th><th>Piece cost</th><th>Main risk</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1. One piece, molded better</th><td>One 36&nbsp;in shell, as drawn above, with the warp fought in the tool: several valve gates opened in sequence, even walls, ribs on the back, a filled grade of polycarbonate, steel cut with a reverse bow from a mold flow study, and a fixture that holds each part flat while it cools.</td><td>Best. No new joints.</td><td>High</td><td>Medium, more if warped parts are scrapped</td><td>Today&#39;s 1&nbsp;x&nbsp;2 already fights warp and this part bows about 2&nbsp;1/4 times as much. It may take several rounds of tool changes and still miss.</td></tr>
+        <tr><th scope="row">2. Two halves, the heatsink as the joint</th><td>Two 18&nbsp;in halves meet at the middle, under the heatsink. The heatsink&#39;s base grows to the full 12&nbsp;in height and both halves screw to it. Each half keeps its own locking bar and hangs on the frame by itself, so the joint only has to keep the face flat and the water out.</td><td>Good. Silicone in a tongue and groove along the seam, the heatsink&#39;s gasket over it, and the face potted over it in front.</td><td>Medium: one half mold and a new heatsink casting</td><td>Medium</td><td>A new heatsink for the 1&nbsp;x&nbsp;3 alone: two heatsinks to stock, and its heat and water tests start over.</td></tr>
+        <tr class="recrow"><th scope="row">3. Two halves on a spine <span class="altpick">Recommended</span></th><td>The same split, but the halves screw to a straight aluminum spine, extruded and cut to 12&nbsp;in and set flush in a pocket in the back. Today&#39;s heatsink bolts onto the spine unchanged.</td><td>Good. The same seals as option 2, with today&#39;s heatsink gasket sealing to the spine.</td><td>Medium, the lowest of the four: one half mold and an extrusion die</td><td>Medium, one more part</td><td>One more part and one more gasket than option 2.</td></tr>
+        <tr><th scope="row">4. Two halves welded</th><td>The halves are welded into one shell along the seam, the way many car lamps are sealed, then built up like today&#39;s shell with today&#39;s heatsink.</td><td>Very good once proven. A welded seam can&#39;t work loose.</td><td>Medium: one half mold, weld fixtures and a welder</td><td>Medium, plus a weld cycle</td><td>The weld sets the shell&#39;s length, which has to hold to a fraction of a millimeter for the modules to butt cleanly, and a weld is usually weaker than the plastic around it.</td></tr>
+      </tbody></table></div>
+    <p class="cap" style="margin-top:8px">Also considered: today&#39;s 1&nbsp;x&nbsp;2 shell with a 6&nbsp;in piece added at each end reuses today&#39;s mold, but it makes two joints instead of one, puts them where today&#39;s shell has its edges, and keeps today&#39;s warp in the middle. An aluminum back, extruded and cut to length with molded end caps, stays flat and makes both lengths from one die, but it is a different module from today&#39;s, heavier, and its end caps add two seals.</p>
+
+    <div class="rec" style="margin-top:16px"><b>Recommended: split it at the middle, on a spine</b>
+      <p style="margin:6px 0 0">Two halves meeting under the heatsink. Each half is 18&nbsp;in long against today&#39;s 24&nbsp;in shell, so it bows about half as much as the part made now and runs in a smaller press. Drawn so one half turned 180&deg; is the other, one mold makes both. Start on a spine (option 3): it keeps today&#39;s heatsink and its seal, and an extrusion die is Low tooling. Once volume pays for a new casting, the spine can become part of the heatsink (option 2) to save a part.</p></div>
+
+    <div class="jfigs" style="margin-top:20px">
+      <figure><h3>Where it splits</h3><div id="alt-shellfig1"></div><figcaption>The 1&nbsp;x&nbsp;3 from the back, option 3. Two 18&nbsp;in halves, one part used twice, meet on an aluminum spine under today&#39;s heatsink; the seam, dashed, runs under the spine the full height. Each half keeps its own locking bar.</figcaption></figure>
+      <figure><h3>The seam, cut across</h3><div id="alt-shellfig2"></div><figcaption>Seen from above, the back at the top and the face at the bottom, cut just above the heatsink. Gray is the two shell halves and blue is silicone, drawn thicker than it is. Millimeters.</figcaption></figure>
+    </div>
+    <h3 class="altsec">Keeping the split watertight</h3>
+    <ol>
+      <li>A tongue and groove runs all the way round the seam, across the back and through the top and bottom edges, with silicone in the groove. That alone seals the seam.</li>
+      <li>The spine covers the whole seam on the back, with a formed in place silicone gasket round its edge. Its screws go in from inside the shell, inside the gasket, into blind holes, so no hole is open to the weather.</li>
+      <li>The halves are joined before the LED boards go on, so the face is potted in one piece right over the seam, as today. A board joint falls on the seam, 18&nbsp;in from each end, and pins in the spine set the halves so the pixel pitch runs straight across it.</li>
+      <li>Polycarbonate grows and shrinks with heat about three times as much as aluminum. Each half is pinned to the spine at mid height and screwed through slotted holes above and below, so it can move along the spine without dragging the gasket.</li>
+      <li>A membrane vent lets the shell breathe as it heats and cools, so it never pulls water in past the seals.</li>
+    </ol>
+
+    <h3 class="altsec">Next steps</h3>
+    <ol>
+      <li>Ask the molder for a mold flow study of the 18&nbsp;in half and of the one piece shell. It puts a number on each one&#39;s warp before any steel is cut.</li>
+      <li>Machine or print a pair of halves, join them on a spine, and run them through heat and cold cycling and then the water test, beside a standard 1&nbsp;x&nbsp;2.</li>
+      <li>If they pass, quote one half mold and the spine die. If today&#39;s 1&nbsp;x&nbsp;2 shell keeps giving trouble, the same mold with an insert that shortens it by 6&nbsp;in could make 12&nbsp;in halves for a split 1&nbsp;x&nbsp;2 as well.</li>
+    </ol>
+  </section>
   </div>
 </div>
 
@@ -4842,13 +4897,15 @@ const dims=t=>t.split('x').map(Number);   // rows (height) first, then width
 const cap1=s=>s.charAt(0).toUpperCase()+s.slice(1);
 
 // ---------- the module, from David's photo of the back of a 1 x 2 (2026-10-12) ----------
-// Origin at the middle of the face's back, as a base design panel; the face is 7/8 in thick. The back's sizes are scaled
-// from the photo (its 24 in width is 2,894 pixels); the depths are estimates inside the module's 4 1/8 in. x runs left to
-// right seen from the front, so right to left seen from the back, as in the photo.
-const MOD_D=104.775*MM;                             // 4 1/8 in, face to the backs of the fins
-const BP=-40*MM,ZB=BP-D;                            // the back plate, 62 mm behind the face, where the frame's front sits,
+// Origin at the middle of the face's back, as a base design panel. The module is the face alone, 7/8 in thick, its back
+// plate on the back of it (David, 2026-10-12: only the dark grey thickness, no deeper shell behind it); the heatsink, bars and
+// knobs stand on the plate. The back's sizes are scaled from the photo (its 24 in width is 2,894 pixels); the depths of the
+// parts on the back are estimates. x runs left to right seen from the front, so right to left seen from the back, as in the
+// photo.
+const BP=0,ZB=BP-D;                                 // the back plate, on the back of the face, where the frame's front sits,
                                                     // and the frame's back
-const HB=5*MM,HP=27*MM,ZP=BP-HB-HP,FZ1=PT-MOD_D;    // heatsink: a 5 mm base, a 27 mm body, fins out to 4 1/8 in
+const HB=5*MM,HP=27*MM,FH=11.1*MM,ZP=BP-HB-HP,FZ1=ZP-FH;   // heatsink: a 5 mm base, a 27 mm body and 11 mm fins, so the
+                                                    // module is about 2 9/16 in from its face to the backs of the fins
 const BAR={x:235.2*MM,w:39*MM,h:261*MM,d:5*MM,r:5.5*MM};   // a locking bar 235 mm each side of the middle, on both modules
 const ARM={w:12*MM,t:2*MM,L:30*MM,z:BP-3.5*MM,run:18*MM};  // two arms in each bar, each sliding 18 mm out of an end
 const KZ=BP-BAR.d,KD=9*MM;                          // the star knob, on its bar
@@ -4858,7 +4915,7 @@ const hw=y=>52.1*MM+0.00058/MM*y*y;                 // the heatsink's half width
 const hwb=y=>{const a=hw(-58*MM)+1.5*MM,k=Math.min(1,(-58*MM-y)/(24*MM));   // its base: 1.5 mm proud of the body, then
   return y>=-58*MM?hw(y)+1.5*MM:a+(57.8*MM-a)*k*k*(3-2*k);};                // 115.6 mm wide round the IN and OUT
 const RIBS=[-.657,-.528,-.382,-.235,0,.235,.382,.528,.657];   // the nine fins, as fractions of the half width
-const AM={side:std(srgb(0x4b4e53),.45,.5),hs:std(srgb(0x2a2d31),.5,.42),fin:std(srgb(0x5d6167),.7,.3),dark:std(srgb(0x141618),.2,.55),
+const AM={hs:std(srgb(0x2a2d31),.5,.42),fin:std(srgb(0x5d6167),.7,.3),dark:std(srgb(0x141618),.2,.55),
   copper:std(srgb(0xb47552),.75,.32),knob:std(srgb(0x1f2124),.15,.48),knobTop:std(srgb(0x4a4d52),.5,.42),barSide:std(srgb(0x2b2d31),.4,.5),
   bezel:std(0x1b1d21,.25,.55),cable:std(srgb(0x2c3137),.1,.5)};
 let ENV2=null;const ptex={},pmat={},bodyMats={};
@@ -4980,12 +5037,10 @@ const ringGeo=()=>fgeo('altKnobRing',()=>new THREE.RingGeometry(5*MM,5.9*MM,28))
 // slides their arms: 0 locked (out of the bars' ends), 1 unlocked (in, as in the photo).
 function altModule(Cw,faceMat,u0,v0,du,dv){
   const g=new THREE.Group(),w=Cw-0.5*MM,h=1-0.5*MM;
-  g.add(box(w,h,16*MM,MAT.shell,0,0,8*MM),box(w,h,6*MM,MAT.slab,0,0,19*MM));
+  g.add(box(w,h,16*MM,bodyMats[Cw]||(bodyMats[Cw]=[MAT.shell,MAT.shell,MAT.shell,MAT.shell,MAT.shell,plateMat(Cw)]),0,0,8*MM),box(w,h,6*MM,MAT.slab,0,0,19*MM));
   const pg=new THREE.PlaneGeometry(w,h),uv=pg.attributes.uv;
   for(let i=0;i<uv.count;i++)uv.setXY(i,u0+uv.getX(i)*du,v0+uv.getY(i)*dv);
   const fc=new THREE.Mesh(pg,faceMat);fc.position.z=PT+0.3*MM;g.add(fc);
-  const body=new THREE.Mesh(bgeo(w,h,-BP),bodyMats[Cw]||(bodyMats[Cw]=[AM.side,AM.side,AM.side,AM.side,AM.side,plateMat(Cw)]));
-  body.position.z=BP/2;g.add(body);
   g.add(new THREE.Mesh(barsGeo(Cw),[plateMat(Cw),AM.barSide]),new THREE.Mesh(hsGeo(),AM.hs),new THREE.Mesh(finGeo(),AM.fin),new THREE.Mesh(hsDark(),AM.dark),
     new THREE.Mesh(hsCopper(),AM.copper),new THREE.Mesh(hsPins(),MAT.steel),new THREE.Mesh(hsHoles(),MAT.slot));
   const locks=[];
@@ -5092,7 +5147,7 @@ const nmod=C=>C===3?'1 x 3':'1 x 2';
 // ---------- module: one module alone, seen from the back, its arms in as in the photo ----------
 function buildModuleMode(){
   const Cw=dims(AS.mtype)[1],m=altModule(Cw,face(Cw,1),0,0,1,1);m.lock(1);aroot.add(m.g);amod=m;
-  addLabel((Cw===3?'New 1 x 3 module':'Cirrus 1 x 2 module')+', 12 x '+Cw*12+' in',m.g,V(Cw/2,-0.3,BP/2));   // on its end, seen from either side
+  addLabel((Cw===3?'New 1 x 3 module':'Cirrus 1 x 2 module')+', 12 x '+Cw*12+' in',m.g,V(Cw/2,-0.3,PT/2));   // on its end, seen from either side
   addLabel('Heatsink: supply and card inside',m.g,V(0.03,0.1,FZ1),fromBack);
   addLabel('Knob drives the two arms in its bar',m.g,V(-BAR.x,0.02,KZ-KD),fromBack);
   addLabel('Locking bar, one each side',m.g,V(BAR.x,-0.25,KZ),fromBack);
@@ -5255,7 +5310,7 @@ const CAPS={
 function readout(){
   const c=BY[AS.k],m=AS.mode,hl=s=>'<span class="hl">'+s+'</span>';let title,rows;
   if(m==='module'){const Cw=dims(AS.mtype)[1],nw=Cw===3;title=nw?'New 1 x 3 module':'Cirrus 1 x 2 module, built today';
-    rows=[['Face','12 x '+Cw*12+' in'],['Depth','4 1/8 in'],['Pixel pitch','6, 9 or 12 mm'],['Supply and card','1 each, in the heatsink'],['Cooling','Passive rear heatsink'],
+    rows=[['Face','12 x '+Cw*12+' in'],['Thickness','7/8 in'],['Depth at the fins','About 2 9/16 in'],['Pixel pitch','6, 9 or 12 mm'],['Supply and card','1 each, in the heatsink'],['Cooling','Passive rear heatsink'],
       ['IN and OUT','Under the fins, IN on the right from the back'],['Locks','2 bars, a knob on each'],['Locking arms','2 a bar, out of its ends'],
       ['From the front','2.5 mm Allen key'],['Part',nw?hl('New'):'In production']];}
   else if(m==='block'){const [R,C]=dims(AS.btype);title=c.n+', '+nm(AS.btype)+' block';
@@ -5414,7 +5469,7 @@ function init(){
   g.fillStyle=sky;g.fillRect(0,0,512,256);g.fillStyle='#ffffff';g.fillRect(56,46,96,54);g.fillRect(318,58,120,46);
   const t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;t.encoding=THREE.sRGBEncoding;
   const pm=new THREE.PMREMGenerator(R2);LOGO2=MAT.logo.clone();LOGO2.envMap=pm.fromEquirectangular(t).texture;pm.dispose();t.dispose();
-  ENV2=LOGO2.envMap;[AM.side,AM.hs,AM.fin,AM.copper,AM.knob,AM.knobTop,AM.barSide].forEach(m=>{m.envMap=ENV2;m.envMapIntensity=.5;m.needsUpdate=true;});   // the metal parts catch the same studio
+  ENV2=LOGO2.envMap;[AM.hs,AM.fin,AM.copper,AM.knob,AM.knobTop,AM.barSide].forEach(m=>{m.envMap=ENV2;m.envMapIntensity=.5;m.needsUpdate=true;});   // the metal parts catch the same studio
   if('IntersectionObserver' in window)new IntersectionObserver(e=>{onScreen=e[e.length-1].isIntersecting;}).observe(host);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{lblDirty=true;});
   resize();rebuild();requestAnimationFrame(tick);
@@ -5436,6 +5491,56 @@ function tick(){
   if(onScreen&&host.clientWidth){ctl.update();R2.render(scene2,cam);if(AS.labels)layoutLabels();}   // not while its tab is closed
   requestAnimationFrame(tick);
 }
+// ---------- the 3 ft back shell: two sketches for the card under the viewer ----------
+// Option 3 on that card: two halves on an aluminum spine under today's heatsink. The back view is 10 px to the inch, in mm
+// from the middle of the back; the section through the seam is 3.2 px to the millimeter, seen from above, x across the seam
+// and z from the back (0) to the face (22 mm). Silicone is blue and drawn thicker than it is.
+function drawShellFigs(){
+  const svg=(el,vb,label,o)=>{el.innerHTML='<svg class="fig" viewBox="'+vb+'" role="img" aria-label="'+label+'"><g font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" style="color:var(--muted)">'+o+'</g></svg>';};
+  const rect=(x,y,w,h,fill,ex)=>'<rect x="'+f1(x)+'" y="'+f1(y)+'" width="'+f1(w)+'" height="'+f1(h)+'" fill="'+fill+'"'+(ex||'')+'/>';
+  const e1=$('#alt-shellfig1'),e2=$('#alt-shellfig2');
+  if(e1){const s=10/25.4,cx=200,cy=104,X=x=>cx+x*s,Y=y=>cy-y*s,bx=BAR.x/MM;
+    let o=rect(20,44,179.4,120,'var(--hubfin)',' rx="2"')+rect(200.6,44,179.4,120,'var(--hubfin)',' rx="2"');   // the halves
+    for(const sx of [-1,1])o+=rect(X(sx*bx)-7.7,Y(130.5),15.4,261*s,'var(--hub)',' rx="2.2"')+
+      '<circle cx="'+f1(X(sx*bx))+'" cy="'+f1(cy)+'" r="8.2" fill="var(--frame)" stroke="var(--hub)"/>';   // a locking bar and knob on each
+    o+=rect(X(-64),44,128*s,120,'var(--steel)');                                                   // the spine, the full height
+    o+='<path d="M200 44V164" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="5 3"/>';   // the seam under it
+    o+=rect(X(-57.8),Y(116.7),115.6*s,228.6*s,'var(--hub)',' rx="5"');                            // today's heatsink on the spine
+    for(let i=-3;i<=3;i++)o+='<path d="M'+f1(cx+i*5.6)+' '+f1(Y(106))+'V'+f1(Y(-56))+'" stroke="var(--hubfin)" stroke-width="1.6" stroke-linecap="round"/>';
+    for(const sx of [-1,1])o+='<circle cx="'+f1(X(sx*IO.dx/MM))+'" cy="'+f1(Y(IO.y/MM))+'" r="4.9" fill="var(--frame)"/>';   // IN and OUT
+    o+=ftxt(380,16,'Today&#39;s heatsink, on the spine','end')+flead(300,20,X(50),Y(100));
+    o+=ftxt(20,34,'Locking bar, one per half')+flead(60,38,X(-bx),Y(118));
+    o+=ftxt(20,186,'Half, 18 x 12 in')+flead(50,176,60,140);
+    o+=ftxt(380,186,'Same half, turned 180&deg;','end')+flead(340,176,340,140);
+    o+=ftxt(200,206,'Spine over the seam, full height','middle')+flead(200,196,X(30),Y(-135));
+    svg(e1,'0 0 400 214','The 1 by 3 module from the back, split into two 18 inch halves, one part used twice, the second turned half a turn. An aluminum spine runs the full 12 inch height over the seam in the middle, today&#39;s heatsink sits on the spine, and each half carries one of the two locking bars.',o);}
+  if(e2){const k=3.2,X=x=>21+(x+40)*k,Y=z=>84+z*k,SH='var(--hubfin)',SIL='var(--loc)';
+    const R=(x0,x1,z0,z1,fill,ex)=>rect(X(x0),Y(z0),(x1-x0)*k,(z1-z0)*k,fill,ex);
+    let o='';
+    o+=R(-40,0,6,9,SH)+R(-7,0,9,15,SH);                                   // left half: the floor of the pocket and its seam flange
+    o+=R(0,66,6,9,SH)+R(0,7,9,15,SH)+R(66,69,0,9,SH)+R(69,72,0,3,SH);     // right half: floor, flange, the pocket's wall, the skin beyond
+    o+=R(-32,-28,9,18.4,SH)+R(44,48,9,18.4,SH);                           // bosses under the LED boards
+    o+=R(0,5,9.4,12.6,SIL)+R(0,4,10.1,11.9,SH);                           // the groove full of silicone, the left half's tongue in it
+    o+='<path d="M'+f1(X(0))+' '+f1(Y(6))+'V'+f1(Y(9.4))+'M'+f1(X(0))+' '+f1(Y(12.6))+'V'+f1(Y(15))+'" stroke="var(--surface)" stroke-width="1.6"/>';   // the seam
+    o+=R(-40,64,0,6,'var(--steel)');                                      // the spine, flush with the back (it runs on to -64 past the cut)
+    o+=R(54.5,57.5,4.4,6,SIL,' rx="1.2"');                                // its gasket bead, in a groove round its edge
+    for(const x of [-22,22])o+=R(x-2,x+2,1.5,9,'var(--hub)')+R(x-3.5,x+3.5,9,11.8,'var(--hub)',' rx="1"');   // screws from inside, into blind holes
+    o+=R(38,42,1.5,8.6,'var(--hub)',' rx="1"');                           // a pin
+    o+=R(-40,-0.4,18.4,20,'var(--good)',' fill-opacity=".75"')+R(0.4,72,18.4,20,'var(--good)',' fill-opacity=".75"');   // LED boards, a joint on the seam
+    o+=R(-40,72,20,22,SIL,' fill-opacity=".45"');                         // the face potting, one piece over the seam
+    for(let x=-37;x<72;x+=6)o+=R(x-1.1,x+1.1,20,21.6,'var(--hub)');       // LEDs
+    for(const x of [-40,72])o+='<path d="M'+f1(X(x))+' '+f1(Y(-1.5))+'V'+f1(Y(9))+'l3 2.5-6 3 3 2.5V'+f1(Y(23.5))+'" stroke="currentColor" fill="none" stroke-width=".8"/>';   // cut ends
+    // labels in three rows over the back, each leader dropping straight down clear of the rows below it
+    o+=ftxt(21,16,'Screw from inside, blind hole')+flead(X(-22),20,X(-22),Y(3));
+    o+=ftxt(379,16,'Silicone gasket','end')+flead(X(56),20,X(56),Y(5.2));
+    o+=ftxt(90,34,'Spine, flush with the back')+flead(X(10),38,X(10),Y(3));
+    o+=ftxt(190,52,'Pin locates halves')+flead(X(40),56,X(40),Y(4));
+    o+=ftxt(X(4.5),178,'Tongue and groove, silicone in the groove','middle')+flead(X(4.5),167,X(4.5),Y(11));
+    o+=ftxt(379,196,'LED boards, potted in one piece over the seam','end')+flead(340,185,340,Y(19.2));
+    svg(e2,'0 0 400 204','Section through the seam, seen from above with the back at the top. The two shell halves meet at the middle with a tongue and groove full of silicone. An aluminum spine sits flush in a pocket in the back, over the seam, sealed by a silicone gasket round its edge. Screws from inside the shell run into blind holes in the spine and a pin locates the halves. The LED boards have a joint on the seam and the face is potted in one piece over it.',o);}
+}
+drawShellFigs();
+
 /* local test hook */
 syncDom();
 new ResizeObserver(()=>{if(!R2){if(!tried&&host.clientWidth&&host.clientHeight)init();}else resize();}).observe(host);
